@@ -39,7 +39,6 @@ My dotfiles with some [Thor](https://github.com/wycats/thor/wiki) foo to quickly
 * `git` *[not necessary if you donwload the files manually]*
 * `curl`
 * `Ruby`
-* `rake`
 * `bundler`
 
 ## Setup
