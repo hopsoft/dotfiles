@@ -1,0 +1,3 @@
+CURRENT_DIR=$(ruby -e "puts File.expand_path(File.dirname(__FILE__))")
+alias dotfiles='mvim $CURRENT_DIR'
+alias cloc='$CURRENT_DIR/scripts/cloc-1.53.pl'

@@ -1,0 +1,5 @@
+syntax enable
+set background=dark
+colorscheme solarized
+set enc=utf-8
+set cursorline

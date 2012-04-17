@@ -1,0 +1,6 @@
+set guifont=Anonymous\ Pro:h16
+set background=dark
+colorscheme solarized
+set antialias
+set enc=utf-8
+set cursorline

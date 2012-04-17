@@ -1,0 +1,24 @@
+[color]
+	ui = true
+[user]
+	name = Nathan Hopkins
+	email = natehop@gmail.com
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+#[branch "master"]
+#	remote = origin
+#	merge = refs/heads/master
+[core]
+	excludesfile = $HOME/.gitignore
+[difftool "opendiff"]
+	cmd = opendiff
+	path = /usr/bin/opendiff
+[mergetool "opendiff"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

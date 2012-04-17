@@ -1,0 +1,12 @@
+*~
+.DS_Store
+/.bundle
+/log/*.log
+/tmp
+.rvmrc
+.idea
+*.orig
+.private
+
+/assets/solarized
+/assets/solarized-alt
