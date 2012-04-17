@@ -5,7 +5,7 @@ source $CURRENT_DIR/.aliases
 source $CURRENT_DIR/.private
 
 # Setup BASH completion
-if [ -f $/etc/bash_completion ]; then
+if [ -f $BREW_PREFIX/etc/bash_completion ]; then
   source $BREW_PREFIX/etc/bash_completion
 fi
 
