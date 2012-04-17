@@ -1,4 +1,4 @@
-# Nathan Hopkins' .dotfiles
+# dotfiles
 
 My dotfiles with some [Thor](https://github.com/wycats/thor/wiki) foo to quickly configure a system the way I like it.
 
