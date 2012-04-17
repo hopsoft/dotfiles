@@ -7,7 +7,6 @@ My dotfiles with some [Thor](https://github.com/wycats/thor/wiki) foo to quickly
 ## What the Thor script does
 
 Think of this as the poor man's [Chef](http://www.opscode.com/chef/) recipe book for getting a dev environement setup & configured quickly and consistently.
-
 *In fact... I may switch from thor to chef in the future.*
 
 * Installs and/or updates the following applications
