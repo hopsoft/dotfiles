@@ -145,11 +145,13 @@ class Dotfiles < Thor
 
     # Cataglogs a file or directory by renaming it as [path + 'old' + date]
     def catalog(path)
-      new_path = path.clone
-      new_path << ".old" unless new_path =~ /\.old/i
-      new_path << ".#{Time.now.strftime("%Y%m%d%H%M%S")}"
-      puts "Moving #{path} -> #{new_path}".ljust(80).light_red
-      `mv #{path} #{new_path}` rescue puts $!
+      if File.exists?(path)
+        new_path = path.clone
+        new_path << ".old" unless new_path =~ /\.old/i
+        new_path << ".#{Time.now.strftime("%Y%m%d%H%M%S")}"
+        puts "Moving #{path} -> #{new_path}".ljust(80).light_red
+        `mv #{path} #{new_path}` rescue puts $!
+      end
     end
 
     # Returns the expanded path for the current script.
