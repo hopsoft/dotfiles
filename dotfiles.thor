@@ -17,6 +17,7 @@ class Dotfiles < Thor
     install_vim
     download_solarized
     setup_symlinks
+    setup_executables
     puts "Finished... Your system is now ready to kick some ass!".ljust(80).red
   end
 
@@ -124,6 +125,17 @@ class Dotfiles < Thor
 
     `touch #{File.join(my_path, ".private")}`
     `source $HOME/.bash_profile`
+  end
+
+  desc "setup_executables", "Sets up executables for [dotdir] etc..."
+  def setup_executables
+    puts "Setting up executables".ljust(80, ".").red
+    ["dotdir.rb"].each do |file|
+      target = "/usr/bin/#{file.gsub(/\.rb$/, "")}"
+      source = File.join(my_path, "scripts", file)
+      catalog(target)
+      `sudo ln -s #{source} #{target}`
+    end
   end
 
   no_tasks do

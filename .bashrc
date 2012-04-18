@@ -1,6 +1,3 @@
-CURRENT_DIR=$(ruby -e "puts File.expand_path(File.dirname(__FILE__))")
-BREW_PREFIX=$(brew --prefix)
-
 # set the preferred editor
 export EDITOR=$(which subl)
 if [ -z $EDITOR ]; then
@@ -10,12 +7,13 @@ if [ -z $EDITOR ]; then
   export EDITOR=$(which vim)
 fi
 
-source $CURRENT_DIR/.aliases
-source $CURRENT_DIR/.private
+# source in other dotfiles stuff
+source $(dotdir)/.aliases
+source $(dotdir)/.private
 
 # Setup BASH completion
-if [ -f $BREW_PREFIX/etc/bash_completion ]; then
-  source $BREW_PREFIX/etc/bash_completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  source $(brew --prefix)/etc/bash_completion
 fi
 
 # Show the GIT branch and RVM info on the prompt

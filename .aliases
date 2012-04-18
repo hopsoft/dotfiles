@@ -1,10 +1,11 @@
-CURRENT_DIR=$(ruby -e "puts File.expand_path(File.dirname(__FILE__))")
-
 # count lines of code
-alias cloc='$CURRENT_DIR/scripts/cloc-1.53.pl'
+alias cloc='$(dotdir)/scripts/cloc-1.53.pl'
+
+alias edit='$EDITOR $1'
 
 # edit dotfiles project
-alias edot='$EDITOR $CURRENT_DIR'
+alias edot='$EDITOR $(dotdir)'
 
 # edit a gem in the currently bundled Gemfile
-alias egem='bundle show $1 | xargs $EDITOR'
+edit_bundled_gem() { bundle show "$1" | xargs $EDITOR ; }
+alias egem=edit_bundled_gem
