@@ -1,3 +1,10 @@
 CURRENT_DIR=$(ruby -e "puts File.expand_path(File.dirname(__FILE__))")
-alias dotfiles='mvim $CURRENT_DIR'
+
+# count lines of code
 alias cloc='$CURRENT_DIR/scripts/cloc-1.53.pl'
+
+# edit dotfiles project
+alias edot='$EDITOR $CURRENT_DIR'
+
+# edit a gem in the currently bundled Gemfile
+alias egem='bundle show $1 | xargs $EDITOR'
