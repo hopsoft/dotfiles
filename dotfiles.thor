@@ -91,7 +91,7 @@ class Dotfiles < Thor
   def install_vim
     puts "Installing VIM".ljust(80, ".").red
     catalog(File.join("$HOME", ".vim.old"))
-    `#{install_command} vim` if !in_path(:vim)
+    `#{install_command} vim` if !in_path?(:vim)
     `brew install macvim` if mac? && !in_path?(:mvim)
     `curl -Lo- http://bit.ly/janus-bootstrap | bash`
   end
