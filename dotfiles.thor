@@ -75,7 +75,7 @@ class Dotfiles < Thor
   def install_fonts
     puts "Installing fonts".ljust(80, ".").red
     font_uri = "http://hopsoft.github.com/assets/fonts"
-    font_dir = "~/.fonts"
+    font_dir = "$HOME/.fonts"
     font_dir = "$HOME/Library/Fonts" if mac?
     `mkdir -p #{font_dir}`
     fonts = ["Anonymous Pro.ttf", "Anonymous Pro B.ttf", "Anonymous Pro BI.ttf", "Anonymous Pro I.ttf"]
