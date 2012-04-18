@@ -81,7 +81,7 @@ class Dotfiles < Thor
     fonts.each do |font|
       puts "Installing #{font}".ljust(80, ".").light_red
       path = File.join(font_dir, font)
-      `curl -L #{font_uri}/#{URI.escape(font)} > #{path}`
+      `curl -L #{font_uri}/#{URI.escape(font)} > "#{path}"`
     end
   end
 
