@@ -1,11 +1,24 @@
-# count lines of code
+# Count lines of code
 alias cloc='$(dotdir)/scripts/cloc-1.53.pl'
 
-alias edit='$EDITOR $1'
+# Change directories to the dotfiles project
+alias cdot='cd $(dotdir)'
 
-# edit dotfiles project
+# Edit the current directory with the default editor
+edit_current_dir() {
+  if [ -v $1 ]; then
+    $EDITOR .
+  else
+    $EDITOR $1
+  fi
+}
+alias edit=edit_current_dir
+
+# Edit this dotfiles project
 alias edot='$EDITOR $(dotdir)'
 
-# edit a gem in the currently bundled Gemfile
-edit_bundled_gem() { bundle show "$1" | xargs $EDITOR ; }
+# Edit a gem in the currently bundled Gemfile
+edit_bundled_gem() {
+  bundle show "$1" | xargs $EDITOR ;
+}
 alias egem=edit_bundled_gem
