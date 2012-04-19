@@ -22,3 +22,9 @@ edit_bundled_gem() {
   bundle show "$1" | xargs $EDITOR ;
 }
 alias egem=edit_bundled_gem
+
+# Perform an ACK search on a bundled GEM
+search_bundled_gem() {
+  bundle show "$1" | xargs ack "$2";
+}
+alias sgem=search_bundled_gem
