@@ -1,0 +1,23 @@
+Generated at Fri Apr 20 16:34:03 -0600 2012
+LoadError: no such file to load -- win32/open3
+/Users/nhopkins/Dropbox/.dotfiles/submodules/cookbooks/windows/libraries/ruby_19_patches.rb:3:in `require'
+/Users/nhopkins/Dropbox/.dotfiles/submodules/cookbooks/windows/libraries/ruby_19_patches.rb:3
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/run_context.rb:82:in `load'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/run_context.rb:82:in `load_libraries'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/run_context.rb:120:in `call'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/run_context.rb:120:in `foreach_cookbook_load_segment'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/run_context.rb:119:in `each'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/run_context.rb:119:in `foreach_cookbook_load_segment'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/run_context.rb:117:in `each'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/run_context.rb:117:in `foreach_cookbook_load_segment'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/run_context.rb:80:in `load_libraries'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/run_context.rb:57:in `load'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/client.rb:195:in `setup_run_context'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/client.rb:159:in `run'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/application/solo.rb:192:in `run_application'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/application/solo.rb:183:in `loop'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/application/solo.rb:183:in `run_application'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/application.rb:67:in `run'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/chef-solo:25
+/usr/bin/chef-solo:19:in `load'
+/usr/bin/chef-solo:19

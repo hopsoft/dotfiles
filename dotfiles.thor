@@ -141,6 +141,11 @@ class Dotfiles < Thor
     end
   end
 
+  desc "run_chef", "run_chef"
+  def run_chef
+    `chef-solo -c #{File.join(my_path, "chef", "solo.rb")} -j #{File.join(my_path, "chef", "node.json")}`
+  end
+
   no_tasks do
 
     # Cataglogs a file or directory by renaming it as [path + 'old' + date]

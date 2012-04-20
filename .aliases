@@ -17,6 +17,12 @@ alias edit=edit_current_dir
 # Edit this dotfiles project
 alias edot='$EDITOR $(dotdir)'
 
+# Search all GEMs in the current RVM gemdir
+search_gems() {
+  ack "$1" "$(rvm gemdir)/gems"
+}
+alias sgems=search_gems
+
 # Edit a gem in the currently bundled Gemfile
 edit_bundled_gem() {
   bundle show "$1" | xargs $EDITOR ;

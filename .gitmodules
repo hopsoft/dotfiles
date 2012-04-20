@@ -1,3 +1,0 @@
-[submodule "submodules/cookbooks"]
-	path = submodules/cookbooks
-	url = git@github.com:hopsoft/cookbooks.git
