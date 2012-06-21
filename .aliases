@@ -34,3 +34,6 @@ search_bundled_gem() {
   bundle show "$1" | xargs ack "$2";
 }
 alias sgem=search_bundled_gem
+
+
+alias gp='$HOME/.dotfiles/scripts/github_pages.rb'
