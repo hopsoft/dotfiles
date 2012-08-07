@@ -1,5 +1,5 @@
 # set the preferred editor
-export EDITOR=$(which subl)
+# export EDITOR=$(which subl)
 if [ -z $EDITOR ]; then
   export EDITOR=$(which mvim)
 fi
@@ -22,10 +22,10 @@ export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[00m\]$(__git_ps1 "(%s)"
 # Initialize RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-export PATH=/usr/local/bin:/usr/bin:$PATH
+export PATH=$HOME/.dotfiles/scripts:/usr/local/bin:/usr/bin:$PATH
 
 # Add mysql path to DYLD_LIBRARY_PATH
-export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
+# export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
 # Add mysql/bin to the path
 export PATH=/usr/local/mysql/bin:$PATH
 
@@ -36,3 +36,7 @@ export NODE_PATH=$NODE_PATH:/usr/local/lib/node
 
 #export BUNDLER_EDITOR=/usr/local/bin/mine
 export BUNDLER_EDITOR="/usr/bin/env subl"
+
+export BUNDLE_DEV=true
+export UNITY_PATH="/work/ono/unity"
+

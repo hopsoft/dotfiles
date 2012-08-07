@@ -143,7 +143,9 @@ class Dotfiles < Thor
 
   desc "run_chef", "run_chef"
   def run_chef
-    `chef-solo -c #{File.join(my_path, "chef", "solo.rb")} -j #{File.join(my_path, "chef", "node.json")}`
+    path = File.join(my_path, "chef")
+    puts "FILE_CACHE_PATH='#{path}' COOKBOOK_PATH='#{File.join(path, "cookbooks")}' chef-solo -c '#{File.join(path, "solo.rb")}' -j '#{File.join(path, "node.json")}'"
+    # `FILE_CACHE_PATH="#{path}" COOKBOOK_PATH="#{File.join(path, "cookbooks")}" chef-solo -c #{File.join(path, "solo.rb")} -j #{File.join(path, "node.json")}`
   end
 
   no_tasks do

@@ -1,0 +1,26 @@
+Generated at Fri Apr 20 17:22:38 -0600 2012
+Chef::Exceptions::Package: package[vim] (vim::default line 36) had an error: Chef::Exceptions::Package: No version specified, and no candidate version available for vim
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/provider/package.rb:51:in `action_install'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/resource.rb:440:in `send'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/resource.rb:440:in `run_action'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/runner.rb:45:in `run_action'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/runner.rb:81:in `converge'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/runner.rb:81:in `each'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/runner.rb:81:in `converge'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/resource_collection.rb:94:in `execute_each_resource'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/resource_collection/stepable_iterator.rb:116:in `call'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/resource_collection/stepable_iterator.rb:116:in `call_iterator_block'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/resource_collection/stepable_iterator.rb:85:in `step'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/resource_collection/stepable_iterator.rb:104:in `iterate'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/resource_collection/stepable_iterator.rb:55:in `each_with_index'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/resource_collection.rb:92:in `execute_each_resource'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/runner.rb:76:in `converge'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/client.rb:312:in `converge'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/client.rb:160:in `run'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/application/solo.rb:192:in `run_application'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/application/solo.rb:183:in `loop'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/application/solo.rb:183:in `run_application'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/../lib/chef/application.rb:67:in `run'
+/Library/Ruby/Gems/1.8/gems/chef-0.10.8/bin/chef-solo:25
+/usr/bin/chef-solo:19:in `load'
+/usr/bin/chef-solo:19

@@ -1,3 +1,2 @@
-path = File.expand_path(File.join(File.dirname(__FILE__), "..", "submodules"))
-file_cache_path path
-cookbook_path File.join(path, "cookbooks")
+file_cache_path ENV["FILE_CACHE_PATH"]
+cookbook_path ENV["COOKBOOK_PATH"]
