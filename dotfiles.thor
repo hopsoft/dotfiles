@@ -119,7 +119,17 @@ class Dotfiles < Thor
   desc "setup_symlinks", "Sets up symlinks for [~/.bashrc, ~/.bash_profile, ~/.gitconfig] etc..."
   def setup_symlinks
     puts "Setting up symlinks".ljust(80, ".").red
-    [".bashrc", ".bash_profile", ".gitconfig", ".gitignore", ".vimrc.after", ".gvimrc.after"].each do |file|
+    files = %w(
+      .bashrc
+      .bash_profile
+      .gitconfig
+      .gitignore
+      .vimrc.before
+      .vimrc.after
+      .gvimrc.before
+      .gvimrc.after
+    )
+    files.each do |file|
       target = File.join("$HOME", file)
       source = File.join(my_path, file)
       catalog(target)

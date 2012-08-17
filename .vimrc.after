@@ -1,5 +1,8 @@
+map <Leader>nt :NERDTreeToggle<CR>
+
 syntax enable
 colorscheme solarized
 set background=dark
 set enc=utf-8
 set cursorline
+

@@ -25,7 +25,7 @@ export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[00m\]$(__git_ps1 "(%s)"
 export PATH=$HOME/.dotfiles/scripts:/usr/local/bin:/usr/bin:$PATH
 
 # Add mysql path to DYLD_LIBRARY_PATH
-# export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
+ export DYLD_LIBRARY_PATH=/usr/local/mysql/lib
 # Add mysql/bin to the path
 export PATH=/usr/local/mysql/bin:$PATH
 
