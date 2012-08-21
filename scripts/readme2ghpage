@@ -17,7 +17,9 @@ File.open readme_path, "r" do |readme|
     index.puts "layout: main"
     index.puts "---"
 
+    code = 0
     readme.readlines.each do |line|
+      code += 1 if line.include?("```")
 
       # convert backticks to liquid
       %w(bash ruby).each do |lang|
@@ -26,7 +28,7 @@ File.open readme_path, "r" do |readme|
       line.gsub!("```", "{% endhighlight %}")
 
       # convert headers so they are linkable
-      if line =~ /^#+/
+      if line =~ /^#+/ && code % 2 == 0
         leader = line[0, line.index(/\s/)]
         text = line[line.index(/\s./)..-1].strip
         line = "#{leader} #{text} {##{text.downcase.gsub(/\s/, "-")}}"
