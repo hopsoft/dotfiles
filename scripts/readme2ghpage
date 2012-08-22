@@ -3,7 +3,9 @@
 # checkout the readme from the master branch
 `git checkout gh-pages; git checkout master README.md`
 
+github = "https://github.com/hopsoft/"
 path = `pwd`.gsub(/\n/, "")
+project = path[path.rindex("/") + 1..-1]
 readme_path = File.join(path, "README.md")
 index_path = File.join(path, "index.md")
 
@@ -15,6 +17,7 @@ File.open readme_path, "r" do |readme|
     # write the jekyll front matter
     index.puts "---"
     index.puts "layout: main"
+    index.puts "forkme_url: #{github}#{project}"
     index.puts "---"
 
     code = 0
@@ -36,6 +39,8 @@ File.open readme_path, "r" do |readme|
 
       index.puts line
     end
+
+    index.puts "{% include forkme.html %}"
   end
 end
 
