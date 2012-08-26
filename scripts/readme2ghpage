@@ -16,6 +16,7 @@ File.open readme_path, "r" do |readme|
 
     # write the jekyll front matter
     index.puts "---"
+    index.puts "title: #{project}"
     index.puts "layout: main"
     index.puts "forkme_url: #{github}#{project}"
     index.puts "---"
@@ -40,6 +41,10 @@ File.open readme_path, "r" do |readme|
       index.puts line
     end
 
+    index.puts
+    index.puts "---"
+    index.puts
+    index.puts "{% include disqus.html %}"
     index.puts "{% include forkme.html %}"
   end
 end

@@ -7,6 +7,8 @@
 .idea
 *.orig
 .private
+.yardoc
+_site
 
 /assets/solarized
 /assets/solarized-alt
