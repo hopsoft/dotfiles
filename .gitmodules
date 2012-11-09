@@ -1,0 +1,6 @@
+[submodule ".janus/minibufexpl"]
+	path = .janus/minibufexpl
+	url = git://github.com/fholgado/minibufexpl.vim.git
+[submodule ".janus/tagbar"]
+	path = .janus/tagbar
+	url = git://github.com/majutsushi/tagbar.git

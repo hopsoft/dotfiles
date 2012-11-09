@@ -4,3 +4,7 @@ set background=dark
 set antialias
 set enc=utf-8
 set cursorline
+
+set timeoutlen=250
+map <Leader>t :TagbarToggle<CR>
+map <Leader>h :nohls<CR>

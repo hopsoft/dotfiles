@@ -9,10 +9,10 @@ alias cdot='cd $(dotdir)'
 
 # Edit the current directory with the default editor
 edit_current_dir() {
-  if [ -v $1 ]; then
-    $EDITOR ./
-  else
+  if [ "$1" ]; then
     $EDITOR $1
+  else
+    $EDITOR ./
   fi
 }
 alias edit=edit_current_dir
@@ -50,3 +50,29 @@ alias gl='git log -p $1'
 
 # search git log diffs
 alias gls='git log -p -S$1'
+
+rbenv_switch_ruby() {
+  export RBX_ROOT=$HOME/.rbenv/versions/rbx-2.0.0-dev
+
+  if [ "$PRE_RBX_PATH" ]; then
+    export PATH=$PRE_RBX_PATH
+  fi
+
+  case "$1" in
+  1.8)    rbenv shell 1.8.7-p370
+          ruby -v
+          ;;
+  1.9)    rbenv shell 1.9.3-p194
+          ruby -v
+          ;;
+  jruby)  rbenv shell jruby-1.7.0-preview2
+          ruby -v
+          ;;
+  rbx)    export PRE_RBX_PATH=$PATH
+          export PATH=$RBX_ROOT/gems/1.9/bin:$PATH
+          rbenv shell rbx-2.0.0-dev
+          ruby -v
+          ;;
+  esac
+}
+alias rb='rbenv_switch_ruby'

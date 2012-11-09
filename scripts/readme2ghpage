@@ -44,8 +44,8 @@ File.open readme_path, "r" do |readme|
     index.puts
     index.puts "---"
     index.puts
-    index.puts "{% include disqus.html %}"
     index.puts "{% include forkme.html %}"
+    index.puts "{% include disqus.html %}"
   end
 end
 
