@@ -1,10 +1,10 @@
 # set the preferred editor
  export EDITOR=$(which subl)
 #if [ -z $EDITOR ]; then
-  #export EDITOR=$(which mvim)
+  # export EDITOR=$(which mvim)
 #fi
 #if [ -z $EDITOR ]; then
-  #export EDITOR=$(which vim)
+  # export EDITOR=$(which vim)
 #fi
 
 # source in other dotfiles stuff
