@@ -1,6 +1,4 @@
-# Dotfiles
-
-## Usage
+# Setup
 
 ```
 $ git clone git@github.com:hopsoft/dotfiles.git
