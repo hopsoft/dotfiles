@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+dotdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../" && pwd )"
+file_names=('.bashrc' '.bash_profile' '.dotfiles' '.gitconfig' '.gitignore' '.vimrc' '.gvimrc')
+for file_name in ${file_names[@]}
+do
+  home_path=$HOME/$file_name
+  dot_path=$dotdir/$file_name
+  if [ -a $home_path ]
+  then
+    echo "$home_path already exists!"
+  else
+    ln -sv $dot_path $home_path
+  fi
+done
