@@ -1,6 +1,6 @@
 let mapleader=","
-map <Leader>nt :NERDTreeToggle<CR>
-map <Leader>h :nohls<CR>
+nnoremap <Leader>nt :NERDTreeToggle<CR>
+nnoremap <Leader>h :nohls<CR>
 
 call pathogen#infect('$HOME/.dotfiles/.vim/bundle')
 

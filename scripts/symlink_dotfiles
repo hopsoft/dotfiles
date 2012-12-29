@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 dotdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../" && pwd )"
-file_names=('.bashrc' '.bash_profile' '.gitconfig' '.gitignore' '.vimrc' '.gvimrc')
+file_names=('.bashrc' '.bash_profile' '.gitconfig' '.gitignore' '.vimrc' '.gvimrc' '.zshrc' '.zprofile')
 for file_name in ${file_names[@]}
 do
   home_path=$HOME/$file_name
@@ -12,3 +12,10 @@ do
     ln -sv $dot_path $home_path
   fi
 done
+
+if [ -a $HOME/.oh-my-zsh ]
+then
+  echo "$HOME/.oh-my-zsh already exists!"
+else
+  ln -sv $dot_path/vendor/.oh-my-zsh $HOME/.oh-my-zsh
+fi
