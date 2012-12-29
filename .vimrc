@@ -1,14 +1,16 @@
 let mapleader=","
 map <Leader>nt :NERDTreeToggle<CR>
+map <Leader>h :nohls<CR>
 
-syntax enable
+call pathogen#infect('$HOME/.dotfiles/.vim/bundle')
+
 colorscheme Tomorrow-Night-Eighties
+syntax enable
 set background=dark
+set number
 set enc=utf-8
 set cursorline
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set nolist
-
 set timeoutlen=250
-map <Leader>t :TagbarToggle<CR>
-map <Leader>h :nohls<CR>
+

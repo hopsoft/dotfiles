@@ -27,6 +27,8 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Initialize RVM
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 export PATH=$HOME/.dotfiles/scripts:/usr/local/bin:$PATH
 
@@ -47,7 +49,7 @@ export BUNDLE_DEV=true
 export UNITY_PATH="/work/ono/unity"
 export UNITY_CRAWL_TEMPLATE_ID="241"
 
-# export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
 
 export JRUBY_OPTS="--1.9 -Xcext.enabled=true"
 export RBXOPT="-X19"

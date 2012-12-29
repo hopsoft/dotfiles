@@ -9,3 +9,4 @@
 .private
 .yardoc
 _site
+*.swp
