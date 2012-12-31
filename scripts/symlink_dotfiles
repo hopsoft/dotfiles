@@ -17,5 +17,5 @@ if [ -a $HOME/.oh-my-zsh ]
 then
   echo "$HOME/.oh-my-zsh already exists!"
 else
-  ln -sv $dot_path/vendor/.oh-my-zsh $HOME/.oh-my-zsh
+  ln -sv $dotdir/vendor/.oh-my-zsh $HOME/.oh-my-zsh
 fi
