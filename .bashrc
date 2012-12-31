@@ -1,4 +1,3 @@
-dotdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # set the preferred editor
  export EDITOR=$(which subl)
 #if [ -z $EDITOR ]; then
