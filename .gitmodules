@@ -1,3 +1,6 @@
 [submodule "vendor/tomorrow-theme"]
 	path = vendor/tomorrow-theme
 	url = git://github.com/chriskempson/tomorrow-theme.git
+[submodule ".vim/bundle/ack.vim"]
+	path = .vim/bundle/ack.vim
+	url = git://github.com/mileszs/ack.vim.git
