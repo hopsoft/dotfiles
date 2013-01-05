@@ -16,3 +16,9 @@
 [submodule ".vim/bundle/ack.vim"]
 	path = .vim/bundle/ack.vim
 	url = git://github.com/mileszs/ack.vim.git
+[submodule "vendor/oh-my-zsh"]
+	path = vendor/oh-my-zsh
+	url = git://github.com/robbyrussell/oh-my-zsh.git
+[submodule "vendor/.oh-my-zsh"]
+	path = vendor/.oh-my-zsh
+	url = git://github.com/robbyrussell/oh-my-zsh.git
