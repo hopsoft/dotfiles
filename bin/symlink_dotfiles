@@ -19,3 +19,5 @@ then
 else
   ln -sv $dotdir/vendor/.oh-my-zsh $HOME/.oh-my-zsh
 fi
+
+touch $dotdir/.private
