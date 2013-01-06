@@ -1,4 +1,4 @@
-export EDITOR=$(which subl)
+export EDITOR=/usr/local/bin/mvim
 source $(dotdir)/.aliases
 source $(dotdir)/.private
 
