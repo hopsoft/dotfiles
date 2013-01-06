@@ -7,13 +7,12 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
   source $(brew --prefix)/etc/bash_completion
 fi
 
-export PS1="$($HOME/.rvm/bin/rvm-prompt) $PS1"
-
 # Initialize RBENV
 # export PATH="$HOME/.rbenv/bin:$PATH"
 # if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PS1="$(rvm-prompt) $PS1"
 export PATH=$HOME/.dotfiles/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib

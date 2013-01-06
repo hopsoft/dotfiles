@@ -39,3 +39,4 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 #export PATH=$HOME/.dotfiles/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+export PS1="$(rvm-prompt) $PS1"
