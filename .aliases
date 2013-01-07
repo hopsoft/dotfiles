@@ -1,11 +1,11 @@
 # Count lines of code
-alias cloc='$(dotdir)/scripts/cloc-1.53.pl'
+alias cloc='$DOTDIR/scripts/cloc-1.53.pl'
 
 # Re-sources the .bash_profile
-alias resource='. $(dotdir)/.bash_profile'
+alias resource='. $DOTDIR/.bash_profile'
 
 # Change directories to the dotfiles project
-alias cdot='cd $(dotdir)'
+alias cdot='cd $DOTDIR'
 
 # Edit the current directory with the default editor
 edit_current_dir() {
@@ -18,7 +18,7 @@ edit_current_dir() {
 alias edit=edit_current_dir
 
 # Edit this dotfiles project
-alias edot='$EDITOR $(dotdir)'
+alias edot='$EDITOR $DOTDIR'
 
 # Search all GEMs in the current RVM gemdir
 search_gems() {

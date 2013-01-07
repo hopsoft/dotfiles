@@ -31,7 +31,8 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(rails git ruby)
 
-source $(dotdir)/.bashrc
+export DOTDIR=$HOME/.dotfiles
+source $DOTDIR/.bashrc
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
