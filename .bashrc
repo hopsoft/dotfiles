@@ -4,10 +4,19 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 export DOTDIR=$HOME/.dotfiles
-export PATH="$HOME/.rbenv/bin:$PATH"
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-# export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-# export PS1="$(rvm-prompt) $PS1"
+
+if [ -d $HOME/.rbenv/bin ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  if which rbenv > /dev/null; then
+    eval "$(rbenv init -)" 
+  fi
+fi
+
+if [ -d $HOME/.rvm/bin ]; then
+  export PATH=$PATH:$HOME/.rvm/bin
+  export PS1="$(rvm-prompt) $PS1"
+fi
+
 export PATH=$HOME/.dotfiles/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib
@@ -22,4 +31,8 @@ export RBXOPT="-X19"
 export EDITOR=/usr/local/bin/mvim
 source $DOTDIR/.aliases
 source $DOTDIR/.private
-zsh
+
+if [[ "$SHELL" =~ ".*zsh" ]]; then
+else
+  zsh
+fi
