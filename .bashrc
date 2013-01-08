@@ -14,7 +14,7 @@ fi
 
 if [ -d $HOME/.rvm/bin ]; then
   export PATH=$PATH:$HOME/.rvm/bin
-  export PS1="$(rvm-prompt) $PS1"
+  #export PS1="$(rvm-prompt) $PS1"
 fi
 
 export PATH=$HOME/.dotfiles/bin:$PATH
