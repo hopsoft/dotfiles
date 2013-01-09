@@ -1,9 +1,8 @@
-# Setup BASH completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  source $(brew --prefix)/etc/bash_completion
-fi
-
 export DOTDIR=$HOME/.dotfiles
+
+source $DOTDIR/.aliases
+source $DOTDIR/.private
+
 
 if [ -d $HOME/.rbenv/bin ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
@@ -29,10 +28,8 @@ export UNITY_CRAWL_TEMPLATE_ID="241"
 export JRUBY_OPTS="--1.9 -Xcext.enabled=true"
 export RBXOPT="-X19"
 export EDITOR=/usr/local/bin/mvim
-source $DOTDIR/.aliases
-source $DOTDIR/.private
 
-if [[ "$SHELL" =~ ".*zsh" ]]; then
-else
-  zsh
+# Setup BASH completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  source $(brew --prefix)/etc/bash_completion
 fi
