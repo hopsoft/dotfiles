@@ -33,6 +33,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(rails git ruby)
 
+export SHELL=$(brew --prefix)/bin/zsh
 source $DOTDIR/.bashrc
 
 # Path to your oh-my-zsh configuration.
