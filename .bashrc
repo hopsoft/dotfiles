@@ -17,6 +17,10 @@ if [ -d $HOME/.rvm/bin ]; then
   #export PS1="$(rvm-prompt) $PS1"
 fi
 
+if [ -f $HOME/.private ]; then
+  source $HOME/.private
+fi
+
 export PATH=$HOME/.dotfiles/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib
