@@ -1,15 +1,15 @@
-# Setup BASH completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  source $(brew --prefix)/etc/bash_completion
-fi
-
 export DOTDIR=$HOME/.dotfiles
+export BREW_PREFIX=$(brew --prefix)
 
-if [ -d $HOME/.rbenv/bin ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  if which rbenv > /dev/null; then
-    eval "$(rbenv init -)" 
-  fi
+source $DOTDIR/.aliases
+source $DOTDIR/.private
+
+
+#export RBENV_ROOT=$BREW_PREFIX/opt/rbenv
+export RBENV_ROOT=$HOME/.rbenv
+if [ -d $RBENV_ROOT ]; then
+  export PATH="$BREW_PREFIX/opt/rbenv/bin:$PATH"
+  eval "$(rbenv init -)" 
 fi
 
 if [ -d $HOME/.rvm/bin ]; then
@@ -23,20 +23,18 @@ fi
 
 export PATH=$HOME/.dotfiles/bin:$PATH
 export PATH=/usr/local/bin:$PATH
-export DYLD_LIBRARY_PATH=/usr/local/mysql/lib
-export PATH=/usr/local/mysql/bin:$PATH
+export DYLD_LIBRARY_PATH=$BREW_PREFIX/mysql/lib
+export PATH=$BREW_PREFIX/mysql/bin:$PATH
 export ARCHFLAGS="-arch x86_64"
-export BUNDLER_EDITOR=/usr/local/bin/mvim
+export BUNDLER_EDITOR=$BREW_PREFIX/bin/mvim
 export BUNDLE_DEV=true
 export UNITY_PATH="/work/ono/unity"
 export UNITY_CRAWL_TEMPLATE_ID="241"
 export JRUBY_OPTS="--1.9 -Xcext.enabled=true"
 export RBXOPT="-X19"
-export EDITOR=/usr/local/bin/mvim
-source $DOTDIR/.aliases
-source $DOTDIR/.private
+export EDITOR=$BREW_PREFIX/bin/mvim
 
-if [[ "$SHELL" =~ ".*zsh" ]]; then
-else
-  zsh
+# Setup BASH completion
+if [ -f $BREW_PREFIX/etc/bash_completion ]; then
+  source $BREW_PREFIX/etc/bash_completion
 fi
