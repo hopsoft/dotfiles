@@ -16,7 +16,8 @@ set nolist
 set timeoutlen=400
 
 "" Whitespace / Indentation
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+"" set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set listchars=tab:▸\ ,eol:¬,trail:·
 set autoindent
 set expandtab                   " use spaces, not tabs (optional)
 set wrap                        " wrap lines
