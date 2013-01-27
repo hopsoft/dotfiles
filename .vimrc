@@ -11,7 +11,6 @@ syntax enable
 set background=dark
 set number
 set encoding=utf-8
-set cursorline
 set nolist
 set timeoutlen=400
 
