@@ -11,7 +11,7 @@ syntax enable
 set background=dark
 set number
 set encoding=utf-8
-set nolist
+"" set nolist
 set timeoutlen=400
 
 "" Whitespace / Indentation
