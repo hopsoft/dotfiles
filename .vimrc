@@ -11,8 +11,7 @@ syntax enable
 set background=dark
 set number
 set encoding=utf-8
-set cursorline
-set nolist
+set list
 set timeoutlen=400
 
 "" Whitespace / Indentation
