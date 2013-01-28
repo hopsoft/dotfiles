@@ -33,6 +33,7 @@ export UNITY_CRAWL_TEMPLATE_ID="241"
 export JRUBY_OPTS="--1.9 -Xcext.enabled=true"
 export RBXOPT="-X19"
 export EDITOR=$BREW_PREFIX/bin/mvim
+export GIT_EDITOR=/usr/bin/vim
 
 # Setup BASH completion
 if [ -f $BREW_PREFIX/etc/bash_completion ]; then
