@@ -13,5 +13,5 @@ $ ./bin/symlink_dotfiles
 
 ```
 $ cd ~/.dotfiles
-$ git submodule add git://github.com/path/to/plugin.git .vim/bundle
+$ git submodule add git://github.com/path/to/plugin.git .vim/bundle/plugin_name
 ```
