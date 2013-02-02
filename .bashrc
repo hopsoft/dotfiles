@@ -21,6 +21,7 @@ if [ -f $HOME/.private ]; then
   source $HOME/.private
 fi
 
+export PATH=/usr/local/share/npm/bin:$PATH
 export PATH=$HOME/.dotfiles/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export DYLD_LIBRARY_PATH=$BREW_PREFIX/mysql/lib
@@ -39,3 +40,4 @@ export GIT_EDITOR=/usr/bin/vim
 if [ -f $BREW_PREFIX/etc/bash_completion ]; then
   source $BREW_PREFIX/etc/bash_completion
 fi
+
