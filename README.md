@@ -9,9 +9,17 @@ $ git submodule update
 $ ./bin/symlink_dotfiles
 ```
 
-## Add a VIM plugin
+## Add a vim plugin
 
 ```
 $ cd ~/.dotfiles
 $ git submodule add git://github.com/path/to/plugin.git .vim/bundle/plugin_name
 ```
+
+## Remove a vim plugin
+
+1. Delete the relevant line from the .gitmodules file.
+1. Delete the relevant section from .git/config.
+1. Run git rm --cached path_to_submodule (no trailing slash).
+1. Commit the project.
+
