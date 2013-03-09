@@ -20,6 +20,7 @@ $ git submodule add git://github.com/path/to/plugin.git .vim/bundle/plugin_name
 
 1. Delete the relevant line from the .gitmodules file.
 1. Delete the relevant section from .git/config.
-1. Run git rm --cached path_to_submodule (no trailing slash).
+1. Run `git rm --cached path/to/submodule` (no trailing slash).
+1. Run `rm -rf path/to/submodule`
 1. Commit the project.
 
