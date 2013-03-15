@@ -76,3 +76,7 @@ rbenv_switch_ruby() {
   rbenv rehash
 }
 alias rb='rbenv_switch_ruby'
+
+# based on: https://gist.github.com/jimbojsb/1630790
+alias hl='pbpaste | highlight --syntax=ruby --style=bright -O rtf | pbcopy'
+

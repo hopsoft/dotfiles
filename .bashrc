@@ -22,6 +22,10 @@ if [ -f $HOME/.private ]; then
 fi
 
 export PATH=/usr/local/share/npm/bin:$PATH
+if [ -d /usr/local/lib/node ]; then
+  export NODE_PATH="/usr/local/lib/node"
+fi
+
 export PATH=$HOME/.dotfiles/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export DYLD_LIBRARY_PATH=$BREW_PREFIX/mysql/lib
