@@ -7,12 +7,15 @@ call pathogen#infect('$HOME/.dotfiles/.vim/bundle')
 filetype plugin indent on
 
 colorscheme Tomorrow-Night-Eighties
+set rtp+=$GOROOT/misc/vim
 syntax enable
+syntax on
 set background=dark
 set number
 set encoding=utf-8
 set list
 set timeoutlen=400
+
 
 "" Whitespace / Indentation
 "" set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<

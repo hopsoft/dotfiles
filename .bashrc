@@ -45,3 +45,6 @@ if [ -f $BREW_PREFIX/etc/bash_completion ]; then
   source $BREW_PREFIX/etc/bash_completion
 fi
 
+export GOROOT=/usr/local/Cellar/go/1.0.3
+export GOPATH=/work/go
+export PATH=$GOPATH/bin:$PATH
