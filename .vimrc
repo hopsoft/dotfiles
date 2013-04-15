@@ -31,3 +31,4 @@ set endofline
 "" temp file handling
 set directory=~/tmp,.,/var/tmp,/tmp
 set backupdir=~/tmp,.,~/
+

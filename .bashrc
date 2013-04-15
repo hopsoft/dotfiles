@@ -40,10 +40,6 @@ export RBXOPT="-X19"
 export EDITOR=$BREW_PREFIX/bin/mvim
 export GIT_EDITOR=/usr/bin/vim
 
-# Setup BASH completion
-if [ -f $BREW_PREFIX/etc/bash_completion ]; then
-  source $BREW_PREFIX/etc/bash_completion
-fi
 
 export GOROOT=/usr/local/Cellar/go/1.0.3
 export GOPATH=/work/go
