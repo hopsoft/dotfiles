@@ -15,6 +15,7 @@ set number
 set encoding=utf-8
 set list
 set timeoutlen=400
+set hidden
 
 
 "" Whitespace / Indentation
