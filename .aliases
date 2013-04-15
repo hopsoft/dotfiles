@@ -63,6 +63,9 @@ rbenv_switch_ruby() {
   1.9)    rbenv shell 1.9.3-p286
           ruby -v
           ;;
+  2.0)    rbenv shell 2.0.0-p0
+          ruby -v
+          ;;
   jruby)  rbenv shell jruby-1.7.0-preview2
           ruby -v
           ;;

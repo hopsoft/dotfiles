@@ -1,5 +1,7 @@
 colorscheme Tomorrow-Night-Eighties
-set guifont=Anonymous\ Pro:h16
+"set guifont=Anonymous\ Pro:h16
+"set guifont=Source\ Code\ Pro\ for\ Powerline:h16
+set guifont=Menlo\ for\ Powerline:h15
 set antialias
 set cursorline
 set guioptions-=l " remove the left scrollbar
