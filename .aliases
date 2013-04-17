@@ -38,6 +38,7 @@ alias sgem=search_bundled_gem
 # github pages script
 alias gp='$HOME/.dotfiles/scripts/github_pages.rb'
 
+alias vim=mvim
 
 # vim without sourcing .vimrc
 alias vimx='vim -u NONE -N'
