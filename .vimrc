@@ -32,4 +32,3 @@ set endofline
 set directory=~/tmp,.,/var/tmp,/tmp
 set backupdir=~/tmp,.,~/
 
-set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
