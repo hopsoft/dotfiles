@@ -16,6 +16,7 @@ set encoding=utf-8
 set list
 set timeoutlen=400
 set hidden
+set colorcolumn=80
 
 
 "" Whitespace / Indentation
