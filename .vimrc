@@ -17,6 +17,8 @@ set list
 set timeoutlen=400
 set hidden
 set colorcolumn=80
+set directory=/tmp,.
+set backupdir=/tmp,.
 
 
 "" Whitespace / Indentation
