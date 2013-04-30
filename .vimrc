@@ -35,3 +35,5 @@ set endofline
 set directory=~/tmp,.,/var/tmp,/tmp
 set backupdir=~/tmp,.,~/
 
+filetype plugin on
+
