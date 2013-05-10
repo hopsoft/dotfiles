@@ -13,7 +13,7 @@ syntax on
 set background=dark
 set number
 set encoding=utf-8
-set list
+"set list
 set timeoutlen=400
 set hidden
 set colorcolumn=80
@@ -37,3 +37,5 @@ set backupdir=~/tmp,.,~/
 
 filetype plugin on
 
+" remove trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
