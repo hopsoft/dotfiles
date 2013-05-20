@@ -9,7 +9,7 @@ source $DOTDIR/.private
 export RBENV_ROOT=$HOME/.rbenv
 if [ -d $RBENV_ROOT ]; then
   export PATH="$BREW_PREFIX/opt/rbenv/bin:$PATH"
-  eval "$(rbenv init -)" 
+  eval "$(rbenv init -)"
 fi
 
 if [ -d $HOME/.rvm/bin ]; then
