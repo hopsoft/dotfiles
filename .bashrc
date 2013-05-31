@@ -4,7 +4,6 @@ export BREW_PREFIX=$(brew --prefix)
 source $DOTDIR/.aliases
 source $DOTDIR/.private
 
-
 #export RBENV_ROOT=$BREW_PREFIX/opt/rbenv
 export RBENV_ROOT=$HOME/.rbenv
 if [ -d $RBENV_ROOT ]; then
@@ -40,7 +39,5 @@ export RBXOPT="-X19"
 export EDITOR=$BREW_PREFIX/bin/mvim
 export GIT_EDITOR=/usr/bin/vim
 
-
-export GOROOT=/usr/local/Cellar/go/1.0.3
-export GOPATH=/work/go
-#export PATH=$GOPATH/bin:$PATH
+export GOROOT=/usr/local/Cellar/go/1.1
+export PATH=$PATH:$GOROOT/bin

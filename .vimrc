@@ -8,7 +8,6 @@ call pathogen#infect('$HOME/.dotfiles/.vim/bundle')
 filetype plugin indent on
 
 colorscheme Tomorrow-Night-Eighties
-set rtp+=$GOROOT/misc/vim
 syntax enable
 syntax on
 set background=dark
@@ -41,3 +40,10 @@ filetype plugin on
 
 " remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
+
+" Some Linux distributions set filetype in /etc/vimrc.
+" Clear filetype flags before changing runtimepath to force Vim to reload them.
+filetype off
+filetype plugin indent off
+set runtimepath+=$GOROOT/misc/vim
+filetype plugin indent on
