@@ -11,21 +11,15 @@
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   type = cat-file -t
   dump = cat-file -p
-#[branch "master"]
-#	remote = origin
-#	merge = refs/heads/master
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
 [core]
 	excludesfile = /Users/nhopkins/.gitignore
 [difftool "opendiff"]
 	cmd = /usr/bin/opendiff $LOCAL $REMOTE
 [mergetool "opendiff"]
   cmd = /usr/bin/opendiff $LOCAL $REMOTE -ancestor $BASE -merge $MERGED
-	trustExitCode = true
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree 2.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [push]
 	default = simple

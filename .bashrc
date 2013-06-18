@@ -2,7 +2,6 @@ export DOTDIR=$HOME/.dotfiles
 export BREW_PREFIX=$(brew --prefix)
 
 source $DOTDIR/.aliases
-source $DOTDIR/.private
 
 #export RBENV_ROOT=$BREW_PREFIX/opt/rbenv
 export RBENV_ROOT=$HOME/.rbenv
@@ -41,3 +40,4 @@ export GIT_EDITOR=/usr/bin/vim
 
 export GOROOT=/usr/local/Cellar/go/1.1
 export PATH=$PATH:$GOROOT/bin
+export GOPATH=/work/go
