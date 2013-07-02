@@ -4,7 +4,7 @@ nnoremap <Leader>nt :NERDTreeToggle<CR>
 nnoremap <Leader>h :nohls<CR>
 nnoremap <Leader>fd :cd %:p:h<CR>
 
-call pathogen#infect('$HOME/.dotfiles/.vim/bundle')
+call pathogen#infect('$HOME/.dotfiles/.vim/bundle/{}')
 filetype plugin indent on
 
 colorscheme Tomorrow-Night-Eighties
