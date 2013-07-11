@@ -16,9 +16,10 @@ set encoding=utf-8
 set timeoutlen=400
 set hidden
 set colorcolumn=80
-set directory=/tmp,.
-set backupdir=/tmp,.
+set dir=/tmp
+set backupdir=/tmp
 set noautochdir
+
 
 "" Whitespace / Indentation
 "" set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<

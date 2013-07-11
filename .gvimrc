@@ -8,3 +8,5 @@ set guioptions-=r " remove the right scrollbar
 set guioptions-=R " remove the right scrollbar in split windows
 highlight ColorColumn guibg='#2b2b2b'
 hi EasyMotionTarget guifg='#ffaf00'
+set dir=/tmp
+set backupdir=/tmp
