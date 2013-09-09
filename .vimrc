@@ -19,6 +19,7 @@ set colorcolumn=80
 set dir=/tmp
 set backupdir=/tmp
 set noautochdir
+set shell=/bin/bash
 
 
 "" Whitespace / Indentation
@@ -48,3 +49,6 @@ filetype off
 filetype plugin indent off
 set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
+
+set tags=./tags,tags,$RUBY_PATH/lib/ruby/tags
+
