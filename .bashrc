@@ -37,7 +37,7 @@ export UNITY_CRAWL_TEMPLATE_ID="241"
 export JRUBY_OPTS="--1.9 -Xcext.enabled=true"
 export RBXOPT="-X19"
 export EDITOR=$BREW_PREFIX/bin/mvim
-export GIT_EDITOR=$BREW_PREFIX/bin/mvim
+export GIT_EDITOR=/usr/bin/vim
 
 export GOROOT=/usr/local/Cellar/go/1.1.1
 export PATH=$PATH:$GOROOT/bin
