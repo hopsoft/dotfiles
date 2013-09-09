@@ -23,3 +23,5 @@
 	trustExitCode = true
 [push]
 	default = simple
+[remote "origin"]
+	push = HEAD
