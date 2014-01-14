@@ -4,11 +4,10 @@ alias resource='. $DOTDIR/.bash_profile'
 # Change directories to the dotfiles project
 alias cdot='cd $DOTDIR'
 
-# Create a tmp dir for the preferred editor to use for swap files & backups
-editor_tmp_dir=/tmp/editor
-mkdir -p $editor_tmp_dir
-alias clean_editor="rm $editor_tmp_dir/**/*"
-$clean_editor_tmp_files
+delete_editor_tmp_files() {
+  rm -rf /tmp/editor
+  mkdir -p /tmp/editor
+}
 
 # Edit the current directory with the default editor
 edit_current_dir() {
@@ -19,7 +18,7 @@ edit_current_dir() {
   fi
 }
 alias edit=edit_current_dir
-alias clean_edit="$clean_editor_tmp_files $edit_current_dir"
+alias clean_edit="delete_editor_tmp_files && edit_current_dir"
 
 # Edit this dotfiles project
 alias edot='$EDITOR $DOTDIR'
