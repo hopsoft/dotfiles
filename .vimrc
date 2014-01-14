@@ -16,8 +16,6 @@ set encoding=utf-8
 set timeoutlen=400
 set hidden
 set colorcolumn=80
-set dir=/tmp
-set backupdir=/tmp
 set noautochdir
 set shell=/bin/bash
 
@@ -35,8 +33,8 @@ set backspace=indent,eol,start  " backspace through everything in insert mode
 set endofline
 
 "" temp file handling
-set directory=~/tmp,.,/var/tmp,/tmp
-set backupdir=~/tmp,.,~/
+set dir=/tmp/editor
+set backupdir=/tmp/editor
 
 filetype plugin on
 

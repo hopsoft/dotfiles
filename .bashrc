@@ -1,3 +1,4 @@
+export HOSTNAME=$(hostname)
 export DOTDIR=$HOME/.dotfiles
 export BREW_PREFIX=$(brew --prefix)
 
