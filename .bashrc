@@ -28,7 +28,7 @@ fi
 
 export PATH=$HOME/.dotfiles/bin:$PATH
 export PATH=/usr/local/bin:$PATH
-export DYLD_LIBRARY_PATH=$BREW_PREFIX/mysql/lib
+#export DYLD_LIBRARY_PATH=$BREW_PREFIX/mysql/lib
 export PATH=$BREW_PREFIX/mysql/bin:$PATH
 export ARCHFLAGS="-arch x86_64"
 export BUNDLER_EDITOR=$BREW_PREFIX/bin/mvim
