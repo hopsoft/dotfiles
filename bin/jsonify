@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "json"
+require "awesome_print"
+
+ap JSON.load(ARGV[0])

@@ -21,6 +21,8 @@
 [mergetool "opendiff"]
   cmd = /usr/bin/opendiff $LOCAL $REMOTE -ancestor $BASE -merge $MERGED
 	trustExitCode = true
+[merge]
+  tool = opendiff
 [push]
 	default = simple
 [remote "origin"]

@@ -93,6 +93,4 @@ alias hl='pbpaste | highlight --syntax=ruby --style=bright -O rtf | pbcopy'
 alias ctags="$(brew --prefix)/bin/ctags -R --exclude=.git --exclude=log $1"
 alias cruby='cd $RUBY_PATH/lib/ruby'
 alias ruby_ctags='cruby && ctags * && cd -'
-
-alias mou="/Applications/Mou.app/Contents/MacOS/Mou $1 &"
-
+alias jsonfiy='$DOTDIR/bin/jsonify'
