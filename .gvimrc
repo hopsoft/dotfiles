@@ -1,5 +1,5 @@
 colorscheme Tomorrow-Night-Eighties
-set guifont=Menlo:h15
+set guifont=Meslo\ LG\ M\ for\ Powerline:h15
 set antialias
 set cursorline
 set guioptions-=l " remove the left scrollbar
