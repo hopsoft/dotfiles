@@ -15,7 +15,7 @@ set number
 set encoding=utf-8
 set timeoutlen=400
 set hidden
-set colorcolumn=80
+set colorcolumn=120
 set noautochdir
 set shell=/bin/bash
 
