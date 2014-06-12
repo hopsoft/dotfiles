@@ -94,3 +94,5 @@ alias ctags="$(brew --prefix)/bin/ctags -R --exclude=.git --exclude=log $1"
 alias cruby='cd $RUBY_PATH/lib/ruby'
 alias ruby_ctags='cruby && ctags * && cd -'
 alias jsonfiy='$DOTDIR/bin/jsonify'
+alias rake='noglob rake'
+alias bundle='noglob bundle'
