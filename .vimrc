@@ -3,6 +3,7 @@ let mapleader=","
 nnoremap <Leader>nt :NERDTreeToggle<CR>
 nnoremap <Leader>h :nohls<CR>
 nnoremap <Leader>fd :cd %:p:h<CR>
+vnoremap <Leader>fh :Tab /\w:\zs/r0l1l0<CR>
 
 call pathogen#infect('$HOME/.dotfiles/.vim/bundle/{}')
 filetype plugin indent on
@@ -54,6 +55,3 @@ set tags=./tags
 let g:vim_markdown_folding_disabled=1
 let g:airline_powerline_fonts=1
 
-if exists(":Tabularize")
-  vmap <Leader>h :Tab /\w:\zs/r0l1l0<CR>
-endif
