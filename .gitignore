@@ -10,3 +10,7 @@
 .yardoc
 _site
 *.swp
+coverage
+.env
+tags
+prof

@@ -15,7 +15,7 @@
 	remote = origin
 	merge = refs/heads/master
 [core]
-	excludesfile = /Users/nhopkins/.gitignore
+	excludesfile = /Users/nathan/.gitignore
 [difftool "opendiff"]
 	cmd = /usr/bin/opendiff $LOCAL $REMOTE
 [mergetool "opendiff"]

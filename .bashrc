@@ -40,8 +40,6 @@ export RBXOPT="-X19"
 export EDITOR=$BREW_PREFIX/bin/mvim
 export GIT_EDITOR=/usr/bin/vim
 
-#export GOROOT=/usr/local/Cellar/go/1.1.2
-export PATH=$PATH:/usr/local/Cellar/go/1.1.2/bin
 export GOPATH=~/work/go
-
+export PATH=$GOPATH:$PATH
 
