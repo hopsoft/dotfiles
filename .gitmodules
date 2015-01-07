@@ -94,3 +94,6 @@
 [submodule ".vim/bundle/vim-elixir"]
 	path = .vim/bundle/vim-elixir
 	url = https://github.com/elixir-lang/vim-elixir.git
+[submodule ".vim/bundle/swift.vim"]
+	path = .vim/bundle/swift.vim
+	url = git@github.com:Keithbsmiley/swift.vim.git
