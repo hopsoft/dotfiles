@@ -97,3 +97,6 @@
 [submodule ".vim/bundle/swift.vim"]
 	path = .vim/bundle/swift.vim
 	url = git@github.com:Keithbsmiley/swift.vim.git
+[submodule ".vim/bundle/vim-jsx"]
+	path = .vim/bundle/vim-jsx
+	url = https://github.com/mxw/vim-jsx.git
