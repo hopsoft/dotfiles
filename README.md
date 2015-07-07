@@ -1,6 +1,29 @@
-# Setup
+# Setup new Machine
+
+
+```
+# install homebrew: http://brew.sh/
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+```
 
 ```sh
+# install desired packages
+brew install postgresql
+brew install macvim
+brew install ctags
+brew install rbenv
+brew install ruby-build
+brew install the_silver_searcher
+brew install zsh
+brew install zsh-lovers
+brew install zsh-completions
+brew install zsh-syntax-highlighting
+# etc...
+```
+
+```sh
+# setup dotfiles
 cd ~
 git clone git@github.com:hopsoft/dotfiles.git .dotfiles
 cd ~/.dotfiles
