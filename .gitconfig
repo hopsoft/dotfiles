@@ -11,9 +11,6 @@
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   type = cat-file -t
   dump = cat-file -p
-[branch "master"]
-	remote = origin
-	merge = refs/heads/master
 [core]
 	excludesfile = /Users/nathan/.gitignore
 [difftool "opendiff"]
@@ -27,3 +24,7 @@
 	default = simple
 [remote "origin"]
 	push = HEAD
+[filter "media"]
+	clean = git media clean %f
+	smudge = git media smudge %f
+	required = true
