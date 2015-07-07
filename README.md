@@ -32,6 +32,12 @@ git submodule update
 ./bin/symlink_dotfiles
 ```
 
+```sh
+# install pathogen for vim: https://github.com/tpope/vim-pathogen
+mkdir -p ~/.vim/autoload ~/.vim/bundle
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+```
+
 ## Update to latest submodule versions
 
 ```sh
