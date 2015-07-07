@@ -37,9 +37,6 @@
 [submodule ".vim/bundle/vim-ruby"]
 	path = .vim/bundle/vim-ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
-[submodule "vim-golang"]
-	path = vim-golang
-	url = git://github.com/jnwhiteh/vim-golang.git
 [submodule ".vim/bundle/vim-multiple-cursors"]
 	path = .vim/bundle/vim-multiple-cursors
 	url = git://github.com/terryma/vim-multiple-cursors.git
