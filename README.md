@@ -1,4 +1,4 @@
-# Setup a New Machine
+## Setup a New Machine
 
 1. Install homebrew: http://brew.sh/
 
