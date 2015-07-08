@@ -1,42 +1,44 @@
-# Setup new Machine
+# Setup a New Machine
 
+1. Install homebrew: http://brew.sh/
 
-```
-# install homebrew: http://brew.sh/
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    ```sh
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    ```
 
-```
+1. Install desired packages
 
-```sh
-# install desired packages
-brew install postgresql
-brew install macvim
-brew install ctags
-brew install rbenv
-brew install ruby-build
-brew install the_silver_searcher
-brew install zsh
-brew install zsh-lovers
-brew install zsh-completions
-brew install zsh-syntax-highlighting
-# etc...
-```
+    ```sh
+    brew install postgresql
+    brew install macvim
+    brew install ctags
+    brew install rbenv
+    brew install ruby-build
+    brew install the_silver_searcher
+    brew install zsh
+    brew install zsh-lovers
+    brew install zsh-completions
+    brew install zsh-syntax-highlighting
+    # etc...
+    ```
 
-```sh
-# setup dotfiles
-cd ~
-git clone git@github.com:hopsoft/dotfiles.git .dotfiles
-cd ~/.dotfiles
-git submodule init
-git submodule update
-./bin/symlink_dotfiles
-```
+1. Setup dotfiles
 
-```sh
-# install pathogen for vim: https://github.com/tpope/vim-pathogen
-mkdir -p ~/.vim/autoload ~/.vim/bundle
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-```
+    ```sh
+    cd ~
+    git clone git@github.com:hopsoft/dotfiles.git .dotfiles
+    cd ~/.dotfiles
+    git submodule init
+    git submodule update
+    ./bin/symlink_dotfiles
+    ```
+
+1. Install pathogen for vim: https://github.com/tpope/vim-pathogen
+
+    ```sh
+    mkdir -p ~/.vim/autoload ~/.vim/bundle
+    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+    ```
 
 ## Update to latest submodule versions
 
