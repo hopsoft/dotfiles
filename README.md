@@ -1,4 +1,4 @@
-## Setup a New Machine
+## Setup a new machine
 
 1. Install homebrew: http://brew.sh/
 
@@ -38,6 +38,13 @@
     ```sh
     mkdir -p ~/.vim/autoload ~/.vim/bundle
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+    ```
+
+1. Install Powerline fonts: https://github.com/powerline/fonts
+
+    ```sh
+    git clone https://github.com/powerline/fonts.git ~/fonts
+    ~/fonts/.install.sh
     ```
 
 ## Update to latest submodule versions
