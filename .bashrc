@@ -43,6 +43,7 @@ export GIT_EDITOR=/usr/bin/vim
 export GOPATH=~/work/go
 export PATH=$GOPATH:$PATH
 
+export PATH="/usr/local/bin:$PATH"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
