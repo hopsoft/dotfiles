@@ -49,8 +49,9 @@ filetype plugin indent off
 set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 
-"set tags=./tags,tags,$RUBY_PATH/lib/ruby/tags
-set tags=./tags
+set tags=./tags,tags,$RUBY_PATH/lib/ruby/tags
+"set tags=./tags
+set complete-=i
 
 let g:vim_markdown_folding_disabled=1
 let g:airline_powerline_fonts=1
