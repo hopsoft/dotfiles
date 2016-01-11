@@ -4,12 +4,8 @@ export BREW_PREFIX=$(brew --prefix)
 
 source $DOTDIR/.aliases
 
-#export RBENV_ROOT=$BREW_PREFIX/opt/rbenv
-export RBENV_ROOT=$HOME/.rbenv
-if [ -d $RBENV_ROOT ]; then
-  export PATH="$BREW_PREFIX/opt/rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
+export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export RUBY_PATH=$(rbenv root)/versions/$(rbenv version-name)
 
 if [ -d $HOME/.rvm/bin ]; then
@@ -43,7 +39,9 @@ export GIT_EDITOR=/usr/bin/vim
 export GOPATH=~/work/go
 export PATH=$GOPATH:$PATH
 
-export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+if which exenv > /dev/null; then eval "$(exenv init -)"; fi
