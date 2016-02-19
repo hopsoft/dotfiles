@@ -39,9 +39,9 @@ export GIT_EDITOR=/usr/bin/vim
 export GOPATH=~/work/go
 export PATH=$GOPATH:$PATH
 
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
 if which exenv > /dev/null; then eval "$(exenv init -)"; fi
