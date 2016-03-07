@@ -96,3 +96,5 @@ alias ruby_ctags='cruby && ctags * && cd -'
 alias jsonfiy='$DOTDIR/bin/jsonify'
 alias rake='noglob rake'
 alias bundle='noglob bundle'
+
+alias docker-init='eval $(docker-machine env default)'
