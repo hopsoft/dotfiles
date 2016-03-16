@@ -100,3 +100,6 @@
 [submodule ".vim/bundle/elm.vim"]
 	path = .vim/bundle/elm.vim
 	url = https://github.com/lambdatoast/elm.vim.git
+[submodule ".vim/bundle/raml"]
+	path = .vim/bundle/raml
+	url = https://github.com/IN3D/vim-raml.git
