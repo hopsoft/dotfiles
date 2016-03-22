@@ -18,7 +18,7 @@ edit_current_dir() {
   fi
 }
 alias edit=edit_current_dir
-alias clean_edit="delete_editor_tmp_files && edit_current_dir"
+alias clean-edit="delete_editor_tmp_files && edit_current_dir"
 
 # Edit this dotfiles project
 alias edot='$EDITOR $DOTDIR'

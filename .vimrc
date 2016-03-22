@@ -5,6 +5,11 @@ nnoremap <Leader>h :nohls<CR>
 nnoremap <Leader>fd :cd %:p:h<CR>
 vnoremap <Leader>fh :Tab /\w:\zs/r0l1l0<CR>
 
+set guifont=Meslo\ LG\ M\ for\ Powerline:h15
+set cursorline
+highlight ColorColumn guibg='#2b2b2b'
+hi EasyMotionTarget guifg='#ffaf00'
+
 call pathogen#infect('$HOME/.dotfiles/.vim/bundle/{}')
 filetype plugin indent on
 

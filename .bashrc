@@ -33,8 +33,8 @@ export UNITY_PATH="/work/ono/unity"
 export UNITY_CRAWL_TEMPLATE_ID="241"
 export JRUBY_OPTS="--1.9 -Xcext.enabled=true"
 export RBXOPT="-X19"
-export EDITOR=$BREW_PREFIX/bin/mvim
-export GIT_EDITOR=/usr/bin/vim
+export EDITOR=$BREW_PREFIX/bin/nvim
+export GIT_EDITOR=$BREW_PREFIX/bin/nvim
 
 export GOPATH=~/work/go
 export PATH=$GOPATH:$PATH
