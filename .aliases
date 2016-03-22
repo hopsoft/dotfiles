@@ -102,3 +102,4 @@ alias dm-ssh='docker-machine ssh ${1:-default}'
 alias dm-init='eval $(docker-machine env ${1:-default})'
 alias myip='curl ifconfig.co/x-real-ip'
 alias docker-init='eval $(docker-machine env default)'
+
