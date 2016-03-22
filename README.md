@@ -11,7 +11,11 @@
     ```sh
     brew install postgresql
     brew install macvim
+    brew install neovim/neovim/neovim
     brew install ctags
+    brew install tmux
+    brew install erlang
+    brew install exenv
     brew install rbenv
     brew install ruby-build
     brew install the_silver_searcher
