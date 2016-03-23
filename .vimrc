@@ -19,9 +19,6 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 call pathogen#infect('$HOME/.dotfiles/.vim/bundle/{}')
 filetype plugin indent on
 
-colorscheme Tomorrow-Night-Eighties
-syntax enable
-syntax on
 set background=dark
 set number
 set encoding=utf-8
@@ -63,3 +60,6 @@ set complete-=i
 let g:vim_markdown_folding_disabled=1
 let g:airline_powerline_fonts=1
 
+syntax enable
+syntax on
+colorscheme Tomorrow-Night-Eighties
