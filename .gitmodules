@@ -103,3 +103,6 @@
 [submodule ".vim/bundle/raml"]
 	path = .vim/bundle/raml
 	url = https://github.com/IN3D/vim-raml.git
+[submodule ".vim/bundle/vitality"]
+	path = .vim/bundle/vitality
+	url = https://github.com/sjl/vitality.vim.git

@@ -5,10 +5,16 @@ nnoremap <Leader>h :nohls<CR>
 nnoremap <Leader>fd :cd %:p:h<CR>
 vnoremap <Leader>fh :Tab /\w:\zs/r0l1l0<CR>
 
+" neovim configuration
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+endif
+
 set guifont=Meslo\ LG\ M\ for\ Powerline:h15
 set cursorline
 highlight ColorColumn guibg='#2b2b2b'
 hi EasyMotionTarget guifg='#ffaf00'
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 call pathogen#infect('$HOME/.dotfiles/.vim/bundle/{}')
 filetype plugin indent on
@@ -25,7 +31,6 @@ set colorcolumn=120
 set noautochdir
 set shell=/bin/bash
 
-
 "" Whitespace / Indentation
 "" set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set listchars=tab:▸\ ,eol:¬,trail:·
@@ -37,6 +42,8 @@ set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
 au FileType javascript setl sw=2 ts=2 expandtab
 set backspace=indent,eol,start  " backspace through everything in insert mode
 set endofline
+" remove trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
 
 "" temp file handling
 set dir=/tmp/editor
@@ -44,15 +51,10 @@ set backupdir=/tmp/editor
 
 filetype plugin on
 
-" remove trailing whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
-
 " Some Linux distributions set filetype in /etc/vimrc.
 " Clear filetype flags before changing runtimepath to force Vim to reload them.
 filetype off
-filetype plugin indent off
 set runtimepath+=$GOROOT/misc/vim
-filetype plugin indent on
 
 set tags=./tags,tags,$RUBY_PATH/lib/ruby/tags
 "set tags=./tags
