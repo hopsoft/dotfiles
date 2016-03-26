@@ -60,6 +60,7 @@ set complete-=i
 let g:vim_markdown_folding_disabled=1
 let g:airline_powerline_fonts=1
 
+set completefunc=emoji#complete
 syntax enable
 syntax on
 colorscheme Tomorrow-Night-Eighties
