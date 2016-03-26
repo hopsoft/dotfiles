@@ -106,3 +106,6 @@
 [submodule ".vim/bundle/vitality"]
 	path = .vim/bundle/vitality
 	url = https://github.com/sjl/vitality.vim.git
+[submodule ".vim/bundle/vim-emoji"]
+	path = .vim/bundle/vim-emoji
+	url = https://github.com/junegunn/vim-emoji.git
