@@ -89,9 +89,9 @@ alias rb='rbenv_switch_ruby'
 # based on: https://gist.github.com/jimbojsb/1630790
 alias hl='pbpaste | highlight --syntax=ruby --style=bright -O rtf | pbcopy'
 
-alias ctags="$(brew --prefix)/bin/ctags -R --exclude=.git --exclude=log $1"
 alias cruby='cd $RUBY_PATH/lib/ruby'
-alias ruby_ctags='cruby && ctags * && cd -'
+alias ctags="$(brew --prefix)/bin/ctags -R --exclude=.git --exclude=log --exclude=node_modules $1"
+alias ctags-ruby='cruby && $(brew --prefix)/bin/ctags -R . && cd -'
 alias jsonfiy='$DOTDIR/bin/jsonify'
 alias rake='noglob rake'
 alias bundle='noglob bundle'

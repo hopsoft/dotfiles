@@ -1,5 +1,4 @@
-export HOSTNAME=$(hostname)
-export DOTDIR=$HOME/.dotfiles
+export HOSTNAME=$(hostname) export DOTDIR=$HOME/.dotfiles
 export BREW_PREFIX=$(brew --prefix)
 
 source $DOTDIR/.aliases
@@ -27,14 +26,14 @@ export PATH=/usr/local/bin:$PATH
 #export DYLD_LIBRARY_PATH=$BREW_PREFIX/mysql/lib
 export PATH=$BREW_PREFIX/mysql/bin:$PATH
 export ARCHFLAGS="-arch x86_64"
-export BUNDLER_EDITOR=$BREW_PREFIX/bin/mvim
 export BUNDLE_DEV=true
 export UNITY_PATH="/work/ono/unity"
 export UNITY_CRAWL_TEMPLATE_ID="241"
 export JRUBY_OPTS="--1.9 -Xcext.enabled=true"
 export RBXOPT="-X19"
 export EDITOR=$BREW_PREFIX/bin/nvim
-export GIT_EDITOR=$BREW_PREFIX/bin/nvim
+export GIT_EDITOR=$EDITOR
+export BUNDLER_EDITOR=$EDITOR
 
 export GOPATH=~/work/go
 export PATH=$GOPATH:$PATH
