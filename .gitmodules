@@ -109,3 +109,6 @@
 [submodule ".vim/bundle/vim-emoji"]
 	path = .vim/bundle/vim-emoji
 	url = https://github.com/junegunn/vim-emoji.git
+[submodule ".vim/bundle/nerdcommenter"]
+	path = .vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
