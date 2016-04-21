@@ -17,6 +17,7 @@ hi EasyMotionTarget guifg='#ffaf00'
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 call pathogen#infect('$HOME/.dotfiles/.vim/bundle/{}')
+filetype plugin on
 filetype plugin indent on
 
 set background=dark
@@ -45,8 +46,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 "" temp file handling
 set dir=/tmp/editor
 set backupdir=/tmp/editor
-
-filetype plugin on
 
 " Some Linux distributions set filetype in /etc/vimrc.
 " Clear filetype flags before changing runtimepath to force Vim to reload them.
