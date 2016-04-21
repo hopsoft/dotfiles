@@ -1,0 +1,25 @@
+AllCops:
+  TargetRubyVersion: 2.2
+  Exclude:
+    - 'vendor/**/*'
+    - 'test/**/*'
+    - 'tmp/**/*'
+
+Style/Encoding:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/WhileUntilModifier:
+  MaxLineLength: 120
+
+Style/IfUnlessModifier:
+  MaxLineLength: 120
+
+Metrics/LineLength:
+  Max: 120
+

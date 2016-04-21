@@ -58,6 +58,7 @@ set complete-=i
 
 let g:vim_markdown_folding_disabled=1
 let g:airline_powerline_fonts=1
+let g:vimrubocop_config = "$HOME/.rubocop.yml"
 
 set completefunc=emoji#complete
 syntax enable
