@@ -15,7 +15,7 @@ edit_current_dir() {
   if [ "$1" ]; then
     $EDITOR $1 $2
   else
-    $EDITOR ./
+    $EDITOR
   fi
 }
 alias edit=edit_current_dir
