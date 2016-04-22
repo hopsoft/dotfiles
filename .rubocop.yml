@@ -1,15 +1,27 @@
 AllCops:
   TargetRubyVersion: 2.2
   Exclude:
-    - 'vendor/**/*'
-    - 'test/**/*'
-    - 'tmp/**/*'
+    - "vendor/**/*"
+    - "test/**/*"
+    - "tmp/**/*"
 
-Style/Encoding:
-  Enabled: true
+Documentation:
+  Enabled: false
 
-Style/FrozenStringLiteralComment:
-  EnforcedStyle: always
+Metrics/AbcSize:
+  Max: 25
+
+Metrics/ModuleLength:
+  Max: 300
+
+Metrics/ClassLength:
+  Max: 300
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/LineLength:
+  Max: 120
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
@@ -20,6 +32,29 @@ Style/WhileUntilModifier:
 Style/IfUnlessModifier:
   MaxLineLength: 120
 
-Metrics/LineLength:
-  Max: 120
+Style/TrailingBlankLines:
+  EnforcedStyle: final_newline
 
+Style/SpaceAroundEqualsInParameterDefault:
+  Enabled: false
+
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+
+Style/EmptyLinesAroundClassBody:
+  EnforcedStyle: no_empty_lines
+
+Style/HashSyntax:
+  EnforcedStyle: ruby19
+
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Style/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Style/MultilineBlockChain:
+  Enabled: false
+
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
