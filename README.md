@@ -54,6 +54,8 @@
 ## Update to latest submodule versions
 
 ```sh
+git submodule init
+git submodule update
 git submodule foreach git pull origin master
 ```
 
