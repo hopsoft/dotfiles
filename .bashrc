@@ -34,7 +34,7 @@ export RBXOPT="-X19"
 export EDITOR=$BREW_PREFIX/bin/nvim
 export GIT_EDITOR=$EDITOR
 export BUNDLER_EDITOR=$EDITOR
-export RUBYGEMS_GEMDEPS=-
+#export RUBYGEMS_GEMDEPS=-
 
 export GOPATH=~/work/go
 export PATH=$GOPATH:$PATH
