@@ -118,3 +118,6 @@
 [submodule ".vim/bundle/vim-material-theme"]
 	path = .vim/bundle/vim-material-theme
 	url = https://github.com/jdkanani/vim-material-theme
+[submodule ".vim/bundle/base16-vim"]
+	path = .vim/bundle/base16-vim
+	url = https://github.com/chriskempson/base16-vim.git
