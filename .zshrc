@@ -31,7 +31,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(rails git ruby)
+plugins=(colored-man-pages tmux git ruby rails)
 
 export SHELL=$(brew --prefix)/bin/zsh
 source $DOTDIR/.bashrc
