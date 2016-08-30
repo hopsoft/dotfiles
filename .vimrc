@@ -32,6 +32,7 @@ set shell=/bin/bash
 "" Whitespace / Indentation
 "" set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set listchars=tab:▸\ ,eol:¬,trail:·
+set lcs+=space:· " show dot for whitespaces
 set list
 set autoindent
 set expandtab                   " use spaces, not tabs (optional)
