@@ -3,7 +3,6 @@ export BREW_PREFIX=$(brew --prefix)
 
 source $DOTDIR/.aliases
 
-export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export RUBY_PATH=$(rbenv root)/versions/$(rbenv version-name)
 
@@ -22,7 +21,6 @@ if [ -d /usr/local/lib/node ]; then
 fi
 
 export PATH=$HOME/.dotfiles/bin:$PATH
-export PATH=/usr/local/bin:$PATH
 #export DYLD_LIBRARY_PATH=$BREW_PREFIX/mysql/lib
 export PATH=$BREW_PREFIX/mysql/bin:$PATH
 export ARCHFLAGS="-arch x86_64"
@@ -42,6 +40,9 @@ export PATH=$GOPATH:$PATH
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="$HOME/.rbenv/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
 if which exenv > /dev/null; then eval "$(exenv init -)"; fi
+
+export RBENV_ROOT=/usr/local/var/rbenv
+eval "$(rbenv init -)"
