@@ -130,9 +130,3 @@
 [submodule ".vim/bundle/vim-autotag"]
 	path = .vim/bundle/vim-autotag
 	url = git://github.com/craigemery/vim-autotag.git
-[submodule ".vim/bundle/vim-fastunite"]
-	path = .vim/bundle/vim-fastunite
-	url = https://github.com/rstacruz/vim-fastunite.git
-[submodule ".vim/bundle/unite"]
-	path = .vim/bundle/unite
-	url = https://github.com/Shougo/unite.vim.git
