@@ -1,5 +1,6 @@
 let mapleader=","
 
+nnoremap <Leader>tb :TagbarToggle<CR>
 nnoremap <Leader>nt :NERDTreeToggle<CR>
 nnoremap <Leader>h :nohls<CR>
 nnoremap <Leader>fd :cd %:p:h<CR>

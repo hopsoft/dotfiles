@@ -4,9 +4,6 @@
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
-[submodule ".vim/bundle/ctrlp.vim"]
-	path = .vim/bundle/ctrlp.vim
-	url = git://github.com/kien/ctrlp.vim.git
 [submodule ".vim/bundle/ack.vim"]
 	path = .vim/bundle/ack.vim
 	url = git://github.com/mileszs/ack.vim.git
@@ -124,3 +121,18 @@
 [submodule ".vim/bundle/vim-easygrep"]
 	path = .vim/bundle/vim-easygrep
 	url = https://github.com/dkprice/vim-easygrep.git
+[submodule ".vim/bundle/tagbar"]
+	path = .vim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule ".vim/bundle/CoffeeTags"]
+	path = .vim/bundle/CoffeeTags
+	url = https://github.com/lukaszkorecki/CoffeeTags.git
+[submodule ".vim/bundle/vim-autotag"]
+	path = .vim/bundle/vim-autotag
+	url = git://github.com/craigemery/vim-autotag.git
+[submodule ".vim/bundle/vim-fastunite"]
+	path = .vim/bundle/vim-fastunite
+	url = https://github.com/rstacruz/vim-fastunite.git
+[submodule ".vim/bundle/unite"]
+	path = .vim/bundle/unite
+	url = https://github.com/Shougo/unite.vim.git
