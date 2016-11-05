@@ -21,6 +21,7 @@ call pathogen#infect('$HOME/.dotfiles/.vim/bundle/{}')
 filetype plugin on
 filetype plugin indent on
 
+set autoread
 set background=dark
 set number
 set encoding=utf-8
@@ -69,7 +70,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
 let g:ctrlp_match_window=''
