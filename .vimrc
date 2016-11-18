@@ -73,11 +73,6 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
-" Add fuzzy finder (fzf) exexutable to vim's runtime path
-set rtp+=/usr/local/opt/fzf
-" Replace the default dictionary completion with fzf-based fuzzy completion
-inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
-
 let g:ctrlp_match_window=''
 let g:ctrlp_working_path_mode=''
 let g:ctrlp_max_files=0
