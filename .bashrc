@@ -41,6 +41,7 @@ export PATH=$GOPATH:$PATH
 export PATH="/usr/local/heroku/bin:$PATH"
 
 export PATH="$HOME/.rbenv/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="$PATH:$HOME/Library/Android/sdk/tools:$HOME/Library/Android/sdk/platform-tools"
 
 if which exenv > /dev/null; then eval "$(exenv init -)"; fi
 
