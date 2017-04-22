@@ -66,18 +66,18 @@ let g:vimrubocop_config="$HOME/.rubocop.yml"
 
 " Use The Silver Searcher for CTRL-P
 " https://blog.mikecordell.com/2015/01/27/better-fuzzy-search-with-ctrl-p-in-vim.html
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
+"if executable('ag')
+"  " Use ag over grep
+"  set grepprg=ag\ --nogroup\ --nocolor
+"
+"  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+"  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+"endif
 
 let g:ctrlp_match_window=''
 let g:ctrlp_working_path_mode=''
 let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=40
+let g:ctrlp_max_depth=50
 let g:ctrlp_follow_symlinks=1
 let g:ctrlp_custom_ignore = {
   \ 'dir':  'vendor'
