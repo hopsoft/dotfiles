@@ -87,3 +87,4 @@ set completefunc=emoji#complete
 syntax enable
 syntax on
 colorscheme Tomorrow-Night-Eighties
+set conceallevel=0
