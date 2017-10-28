@@ -22,8 +22,6 @@
   tool = opendiff
 [push]
 	default = simple
-[remote "origin"]
-	push = HEAD
 [filter "media"]
 	clean = git media clean %f
 	smudge = git media smudge %f

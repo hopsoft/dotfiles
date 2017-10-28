@@ -15,11 +15,6 @@ if [ -f $HOME/.private ]; then
   source $HOME/.private
 fi
 
-export PATH=/usr/local/share/npm/bin:$PATH
-if [ -d /usr/local/lib/node ]; then
-  export NODE_PATH="/usr/local/lib/node"
-fi
-
 export PATH=$HOME/.dotfiles/bin:$PATH
 #export DYLD_LIBRARY_PATH=$BREW_PREFIX/mysql/lib
 export PATH=$BREW_PREFIX/mysql/bin:$PATH
@@ -47,3 +42,6 @@ if which exenv > /dev/null; then eval "$(exenv init -)"; fi
 
 export RBENV_ROOT=/usr/local/var/rbenv
 eval "$(rbenv init -)"
+
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
