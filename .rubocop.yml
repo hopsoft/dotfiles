@@ -1,60 +1,97 @@
 AllCops:
-  TargetRubyVersion: 2.2
+  TargetRubyVersion: 2.3
+  # RuboCop has a bunch of cops enabled by default. This setting tells RuboCop
+  # to ignore them, so only the ones explicitly set in this file are enabled.
+  DisabledByDefault: true
   Exclude:
-    - "vendor/**/*"
-    - "test/**/*"
-    - "tmp/**/*"
+    - '**/bin/*'
+    - '**/db/**/*'
+    - '**/templates/**/*'
+    - '**/vendor/**/*'
+    - '**/node_modules/**/*'
 
-Documentation:
-  Enabled: false
+# Prefer &&/|| over and/or.
+Style/AndOr:
+  Enabled: true
 
-Metrics/AbcSize:
-  Max: 25
+# Do not use braces for hash literals when they are the last argument of a
+# method call.
+Style/BracesAroundHashParameters:
+  Enabled: true
 
-Metrics/ModuleLength:
-  Max: 300
+# Align `when` with `case`.
+Layout/CaseIndentation:
+  Enabled: true
 
-Metrics/ClassLength:
-  Max: 300
+# No extra empty lines.
+Layout/EmptyLines:
+  Enabled: true
 
-Metrics/MethodLength:
-  Max: 20
+# In a regular class definition, no empty lines around the body.
+Layout/EmptyLinesAroundClassBody:
+  Enabled: true
 
-Metrics/LineLength:
-  Max: 120
+# In a regular module definition, no empty lines around the body.
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: true
 
+# Use Ruby >= 1.9 syntax for hashes. Prefer { a: :b } over { :a => :b }.
+Style/HashSyntax:
+  Enabled: true
+
+# Method definitions after `private` or `protected` isolated calls need one
+# extra level of indentation.
+Layout/IndentationConsistency:
+  Enabled: true
+  EnforcedStyle: rails
+
+# Two spaces, no tabs (for indentation).
+Layout/IndentationWidth:
+  Enabled: true
+
+# Defining a method with parameters needs parentheses.
+Style/MethodDefParentheses:
+  Enabled: true
+
+# Use `foo {}` not `foo{}`.
+Layout/SpaceBeforeBlockBraces:
+  Enabled: true
+
+# Use `foo { bar }` not `foo {bar}`.
+Layout/SpaceInsideBlockBraces:
+  Enabled: true
+
+# Use `{ a: 1 }` not `{a:1}`.
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: true
+
+# Check quotes usage according to lint rule below.
 Style/StringLiterals:
+  Enabled: true
   EnforcedStyle: double_quotes
 
-Style/WhileUntilModifier:
-  MaxLineLength: 120
+# Detect hard tabs, no hard tabs.
+Layout/Tab:
+  Enabled: true
 
-Style/IfUnlessModifier:
-  MaxLineLength: 120
+# Blank lines should not have any spaces.
+Layout/TrailingBlankLines:
+  Enabled: true
 
-Style/TrailingBlankLines:
-  EnforcedStyle: final_newline
+# No trailing whitespace.
+Layout/TrailingWhitespace:
+  Enabled: true
 
-Style/SpaceAroundEqualsInParameterDefault:
-  Enabled: false
+# Use quotes for string literals when they are enough.
+Style/UnneededPercentQ:
+  Enabled: true
 
-Style/Alias:
-  EnforcedStyle: prefer_alias_method
+# Align `end` with the matching keyword or starting expression except for
+# assignments, where it should be aligned with the LHS.
+Lint/EndAlignment:
+  Enabled: true
+  EnforcedStyleAlignWith: variable
 
-Style/EmptyLinesAroundClassBody:
-  EnforcedStyle: no_empty_lines
-
-Style/HashSyntax:
-  EnforcedStyle: ruby19
-
-Style/MultilineMethodCallIndentation:
-  EnforcedStyle: indented
-
-Style/MultilineOperationIndentation:
-  EnforcedStyle: indented
-
-Style/MultilineBlockChain:
-  Enabled: false
-
-Style/BlockDelimiters:
-  EnforcedStyle: braces_for_chaining
+# Use my_method(my_arg) not my_method( my_arg ) or my_method my_arg.
+Lint/RequireParentheses:
+  Enabled: true

@@ -83,7 +83,8 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  'vendor'
   \ }
 
-let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_javascript_checkers = ['eslint']
+let g:ale_javascript_eslint_use_global = 1
 
 set completefunc=emoji#complete
 syntax enable
