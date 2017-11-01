@@ -6,6 +6,7 @@ nnoremap <Leader>nt :NERDTreeToggle<CR>
 nnoremap <Leader>h :nohls<CR>
 nnoremap <Leader>fd :cd %:p:h<CR>
 vnoremap <Leader>fh :Tab /\w:\zs/r0l1l0<CR>
+nmap K <Plug>(devdocs-under-cursor)
 
 " neovim configuration
 if has('nvim')
