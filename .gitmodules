@@ -130,3 +130,9 @@
 [submodule ".vim/bundle/devdocs.vim"]
 	path = .vim/bundle/devdocs.vim
 	url = https://github.com/rhysd/devdocs.vim.git
+[submodule ".vim/bundle/rufo-vim"]
+	path = .vim/bundle/rufo-vim
+	url = https://github.com/ruby-formatter/rufo-vim.git
+[submodule ".vim/bundle/vim-gitgutter"]
+	path = .vim/bundle/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git

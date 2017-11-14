@@ -85,7 +85,10 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 "let g:syntastic_javascript_checkers = ['eslint']
-let g:ale_javascript_eslint_use_global = 1
+let g:ale_javascript_eslint_use_global=1
+
+" Enable rufo (ruby formatting on file save)
+let g:rufo_auto_formatting=0
 
 set completefunc=emoji#complete
 syntax enable
