@@ -85,7 +85,11 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 "let g:syntastic_javascript_checkers = ['eslint']
-let g:ale_javascript_eslint_use_global=1
+"let g:ale_javascript_eslint_use_global=1
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
 
 " Enable rufo (ruby formatting on file save)
 let g:rufo_auto_formatting=0

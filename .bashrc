@@ -45,3 +45,5 @@ eval "$(rbenv init -)"
 
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
+
+# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
