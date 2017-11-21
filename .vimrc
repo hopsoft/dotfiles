@@ -65,15 +65,9 @@ let g:vim_markdown_folding_disabled=1
 let g:airline_powerline_fonts=1
 let g:vimrubocop_config="$HOME/.rubocop.yml"
 
-" Use The Silver Searcher for CTRL-P
-" https://blog.mikecordell.com/2015/01/27/better-fuzzy-search-with-ctrl-p-in-vim.html
-"if executable('ag')
-"  " Use ag over grep
-"  set grepprg=ag\ --nogroup\ --nocolor
-"
-"  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-"  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-"endif
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 let g:ctrlp_match_window=''
 let g:ctrlp_working_path_mode=''
