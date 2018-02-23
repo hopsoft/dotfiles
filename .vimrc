@@ -63,7 +63,6 @@ set complete-=i
 
 let g:vim_markdown_folding_disabled=1
 let g:airline_powerline_fonts=1
-let g:vimrubocop_config="$HOME/.rubocop.yml"
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -75,7 +74,8 @@ let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=50
 let g:ctrlp_follow_symlinks=1
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  'vendor'
+  \ 'dir':  '\v[\/](\.git$|tags|doc|tmp|cache|node_modules)',
+  \ 'file': '\v[\/](\.so\|\.dat|\.DS_Store)$'
   \ }
 
 "let g:syntastic_javascript_checkers = ['eslint']

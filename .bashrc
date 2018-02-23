@@ -43,7 +43,4 @@ if which exenv > /dev/null; then eval "$(exenv init -)"; fi
 export RBENV_ROOT=/usr/local/var/rbenv
 eval "$(rbenv init -)"
 
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
-
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
