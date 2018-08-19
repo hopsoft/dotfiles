@@ -1,7 +1,10 @@
-export HOSTNAME=$(hostname) export DOTDIR=$HOME/.dotfiles
+export HOSTNAME=$(hostname)
+export DOTDIR=$HOME/.dotfiles
 export BREW_PREFIX=$(brew --prefix)
 
-source $DOTDIR/.aliases
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+. $DOTDIR/.aliases
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export RUBY_PATH=$(rbenv root)/versions/$(rbenv version-name)
@@ -12,7 +15,7 @@ if [ -d $HOME/.rvm/bin ]; then
 fi
 
 if [ -f $HOME/.private ]; then
-  source $HOME/.private
+  . $HOME/.private
 fi
 
 export PATH=$HOME/.dotfiles/bin:$PATH
@@ -20,8 +23,6 @@ export PATH=$HOME/.dotfiles/bin:$PATH
 export PATH=$BREW_PREFIX/mysql/bin:$PATH
 export ARCHFLAGS="-arch x86_64"
 export BUNDLE_DEV=true
-export UNITY_PATH="/work/ono/unity"
-export UNITY_CRAWL_TEMPLATE_ID="241"
 export JRUBY_OPTS="--1.9 -Xcext.enabled=true"
 export RBXOPT="-X19"
 export EDITOR=$BREW_PREFIX/bin/nvim
@@ -33,7 +34,7 @@ export GOPATH=~/work/go
 export PATH=$GOPATH:$PATH
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+#export PATH="/usr/local/heroku/bin:$PATH"
 
 export PATH="$HOME/.rbenv/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="$PATH:$HOME/Library/Android/sdk/tools:$HOME/Library/Android/sdk/platform-tools"
@@ -43,4 +44,4 @@ if which exenv > /dev/null; then eval "$(exenv init -)"; fi
 export RBENV_ROOT=/usr/local/var/rbenv
 eval "$(rbenv init -)"
 
-# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export ERL_AFLAGS="-kernel shell_history enabled"

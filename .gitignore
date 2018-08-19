@@ -14,3 +14,4 @@ coverage
 .env
 tags
 prof
+.tool-versions
