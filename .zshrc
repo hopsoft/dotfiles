@@ -36,12 +36,7 @@ plugins=(colored-man-pages tmux git ruby rails)
 export SHELL=$(brew --prefix)/bin/zsh
 source $DOTDIR/.bashrc
 
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
-source $ZSH/oh-my-zsh.sh
-
-# Customize to your needs...
-#export PATH=$HOME/.dotfiles/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+#source $DOTDIR/vendor/oh-my-zsh/oh-my-zsh.sh
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=(/usr/local/share/zsh-completions $fpath)
