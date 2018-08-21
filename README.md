@@ -22,6 +22,10 @@
     # etc...
     ```
 
+1. Install oh-my-zsh
+
+  Follow instructions at: https://github.com/robbyrussell/oh-my-zsh
+
 1. Setup dotfiles
 
     ```sh

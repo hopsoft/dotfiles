@@ -13,4 +13,7 @@ do
   fi
 done
 
+rm $HOME/.zshrc
+ln -sv $dotdir/.zshrc $HOME/.zshrc
+
 touch $dotdir/.private
