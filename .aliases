@@ -4,7 +4,7 @@ alias resource='. $DOTDIR/.bash_profile'
 # Change directories to the dotfiles project
 alias cdot='cd $DOTDIR'
 alias ghdot='open https://github.com/hopsoft/dotfiles'
-alias udot='cdot && git submodule init && git submodule update && git submodule foreach git pull origin master && cd -'
+alias udot='cdot && git submodule init && git submodule update && git submodule foreach git pull --depth=1 origin master && cd -'
 
 delete_editor_tmp_files() {
   rm -rf /tmp/editor
