@@ -1,5 +1,28 @@
 let mapleader=","
 
+call plug#begin('~/.vim/plugged')
+Plug 'airblade/vim-gitgutter'
+Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plug 'easymotion/vim-easymotion'
+Plug 'ervandew/supertab'
+Plug 'godlygeek/tabular'
+Plug 'junegunn/vim-emoji'
+Plug 'kien/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'sjl/vitality.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'w0rp/ale'
+call plug#end()
+
 inoremap jk <esc>
 nnoremap <Leader>tb :TagbarToggle<CR>
 nnoremap <Leader>nt :NERDTreeToggle<CR>
@@ -18,10 +41,6 @@ set cursorline
 highlight ColorColumn guibg='#2b2b2b'
 hi EasyMotionTarget guifg='#ffaf00'
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-
-call pathogen#infect('$HOME/.dotfiles/.vim/bundle/{}')
-filetype plugin on
-filetype plugin indent on
 
 set autoread
 set background=dark
@@ -78,15 +97,10 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v[\/](\.so\|\.dat|\.DS_Store)$'
   \ }
 
-"let g:syntastic_javascript_checkers = ['eslint']
-"let g:ale_javascript_eslint_use_global=1
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
-
-" Enable rufo (ruby formatting on file save)
-let g:rufo_auto_formatting=0
 
 set completefunc=emoji#complete
 syntax enable

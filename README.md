@@ -9,15 +9,11 @@
 1. Install desired packages
 
     ```sh
-    brew install postgresql
-    brew install macvim
-    brew install neovim/neovim/neovim
+    brew update
+    brew install neovim
     brew install ctags
     brew install tmux
-    brew install erlang
-    brew install exenv
-    brew install rbenv
-    brew install ruby-build
+    brew install asdf
     brew install the_silver_searcher
     brew install zsh
     brew install zsh-lovers
@@ -32,17 +28,17 @@
     cd ~
     git clone git@github.com:hopsoft/dotfiles.git .dotfiles
     cd ~/.dotfiles
-    git submodule init
-    git submodule update
     ./bin/symlink_dotfiles
     ```
 
-1. Install pathogen for vim: https://github.com/tpope/vim-pathogen
+1. Install plug for vim: https://github.com/junegunn/vim-plug
 
     ```sh
-    mkdir -p ~/.vim/autoload ~/.vim/bundle
-    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+    mkdir -p ~/.vim/autoload
+    curl -fLo ~/.vim/autoload https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     ```
+
+    Run `:PlugInstall` after launching vim or neovim.
 
 1. Install Powerline fonts: https://github.com/powerline/fonts
 
@@ -50,27 +46,3 @@
     git clone https://github.com/powerline/fonts.git ~/fonts
     ~/fonts/.install.sh
     ```
-
-## Update to latest submodule versions
-
-```sh
-git submodule init
-git submodule update
-git submodule foreach git pull origin master
-```
-
-## Add a vim plugin
-
-```sh
-cd ~/.dotfiles
-git submodule add git://github.com/path/to/plugin.git .vim/bundle/plugin_name
-```
-
-## Remove a vim plugin
-
-1. Delete the relevant line from the .gitmodules file.
-1. Delete the relevant section from .git/config.
-1. Run `git rm --cached path/to/submodule` (no trailing slash).
-1. Run `rm -rf path/to/submodule`
-1. Commit the project.
-

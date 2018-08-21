@@ -20,7 +20,4 @@ else
   ln -sv $dotdir/vendor/.oh-my-zsh $HOME/.oh-my-zsh
 fi
 
-rm -fv $dotdir/.vim/bundle/tomorrow-theme
-ln -sv $dotdir/vendor/tomorrow-theme/vim $dotdir/.vim/bundle/tomorrow-theme
-
 touch $dotdir/.private
