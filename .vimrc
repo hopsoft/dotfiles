@@ -14,6 +14,7 @@ Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/vitality.vim'
+Plug 'soramugi/auto-ctags.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -87,6 +88,7 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+let g:auto_ctags=1
 let g:ctrlp_match_window=''
 let g:ctrlp_working_path_mode=''
 let g:ctrlp_max_files=0
