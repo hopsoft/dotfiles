@@ -21,6 +21,8 @@ export PATH=$PATH:$HOME/.dotfiles/bin
 # postgres
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/10/bin
 
+export PATH=$PATH:$HOME/bin
+
 . /usr/local/opt/asdf/asdf.sh
 . /usr/local/etc/bash_completion.d
 
