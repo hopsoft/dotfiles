@@ -5,9 +5,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/base16-vim'
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plug 'easymotion/vim-easymotion'
+Plug 'elixir-editors/vim-elixir'
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-emoji'
+Plug 'kchmck/vim-coffee-script'
 Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
@@ -88,7 +90,7 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-let g:auto_ctags=1
+let g:auto_ctags_tags_args = ['--exclude=node_modules']
 let g:ctrlp_match_window=''
 let g:ctrlp_working_path_mode=''
 let g:ctrlp_max_files=0
