@@ -2,6 +2,10 @@
 --exclude=.git
 --exclude=vendor/*
 --exclude=node_modules/*
+--exclude=**/node_modules/*
+--exclude=_build/*
+--exclude=**/dist/*
+--exclude=*.min.js
 --exclude=db/*
 --exclude=log/*
 

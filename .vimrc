@@ -12,6 +12,7 @@ Plug 'junegunn/vim-emoji'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
+Plug 'mhinz/vim-mix-format'
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -101,6 +102,7 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v[\/](\.so\|\.dat|\.DS_Store)$'
   \ }
 
+let g:mix_format_on_save = 1
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fix_on_save = 1
