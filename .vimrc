@@ -14,6 +14,8 @@ Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-mix-format'
 Plug 'mileszs/ack.vim'
+Plug 'ngmy/vim-rubocop'
+Plug 'ruby-formatter/rufo-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/vitality.vim'
@@ -80,8 +82,7 @@ set backupdir=/tmp/editor
 filetype off
 set runtimepath+=$GOROOT/misc/vim
 
-set tags=./tags,tags,$RUBY_PATH/lib/ruby/tags
-"set tags=./tags
+set tags=./tags,$HOME/tags,$RUBY_PATH/lib/ruby/tags
 set complete-=i
 
 let g:vim_markdown_folding_disabled=1
@@ -91,7 +92,8 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-let g:auto_ctags_tags_args = ['--exclude=node_modules']
+let g:auto_ctags = 1
+let g:auto_ctags_tags_args = ['--exclude=node_modules', '--tag-relative=yes', '--recurse=yes', '--sort=yes']
 let g:ctrlp_match_window=''
 let g:ctrlp_working_path_mode=''
 let g:ctrlp_max_files=0
@@ -102,11 +104,17 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v[\/](\.so\|\.dat|\.DS_Store)$'
   \ }
 
-let g:mix_format_on_save = 1
-let g:ale_fixers = {}
-let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_linters = {}
+let g:ale_linters.javascript = ['eslint']
+let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace']}
+let g:ale_fixers.javascript = ['prettier']
+let g:ale_javascript_prettier_use_global = 1
+let g:ale_fixers.css = ['prettier']
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+
+" ruby formatting
+"let g:rufo_auto_formatting = 1
 
 set completefunc=emoji#complete
 syntax enable
