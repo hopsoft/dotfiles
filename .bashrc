@@ -19,7 +19,7 @@ export DOTDIR=$HOME/.dotfiles
 export PATH=$PATH:$HOME/.dotfiles/bin
 
 # postgres
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/10/bin
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/11/bin
 
 export PATH=$PATH:$HOME/bin
 

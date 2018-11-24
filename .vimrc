@@ -2,13 +2,13 @@ let mapleader=","
 
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'chriskempson/base16-vim'
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plug 'easymotion/vim-easymotion'
 Plug 'elixir-editors/vim-elixir'
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
-Plug 'junegunn/vim-emoji'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
@@ -19,7 +19,6 @@ Plug 'ruby-formatter/rufo-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/vitality.vim'
-Plug 'soramugi/auto-ctags.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -42,21 +41,27 @@ if has('nvim')
   tnoremap <Esc> <C-\><C-n>
 endif
 
+syntax enable
+syntax on
+colorscheme Tomorrow-Night-Eighties
+filetype plugin on
+
 set guifont=Meslo\ LG\ M\ for\ Powerline:h15
-set cursorline
-highlight ColorColumn guibg='#2b2b2b'
+"set cursorline
+"highlight ColorColumn guibg='#2b2b2b'
 hi EasyMotionTarget guifg='#ffaf00'
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 set autoread
 set background=dark
-set number
-set encoding=utf-8
-set timeoutlen=400
-set hidden
 set colorcolumn=111
+set conceallevel=0
+set encoding=utf-8
+set hidden
 set noautochdir
+set number
 set shell=/bin/bash
+set timeoutlen=400
 
 "" Whitespace / Indentation
 "" set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
@@ -77,13 +82,8 @@ autocmd BufWritePre * :%s/\s\+$//e
 set dir=/tmp/editor
 set backupdir=/tmp/editor
 
-" Some Linux distributions set filetype in /etc/vimrc.
-" Clear filetype flags before changing runtimepath to force Vim to reload them.
-filetype off
-set runtimepath+=$GOROOT/misc/vim
-
-set tags=./tags,$HOME/tags,$RUBY_PATH/lib/ruby/tags
-set complete-=i
+set tags=./tags,/
+"set complete-=i
 
 let g:vim_markdown_folding_disabled=1
 let g:airline_powerline_fonts=1
@@ -92,8 +92,6 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-let g:auto_ctags = 1
-let g:auto_ctags_tags_args = ['--exclude=node_modules', '--tag-relative=yes', '--recurse=yes', '--sort=yes']
 let g:ctrlp_match_window=''
 let g:ctrlp_working_path_mode=''
 let g:ctrlp_max_files=0
@@ -113,11 +111,9 @@ let g:ale_fixers.css = ['prettier']
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
 
-" ruby formatting
-"let g:rufo_auto_formatting = 1
-
-set completefunc=emoji#complete
-syntax enable
-syntax on
-colorscheme Tomorrow-Night-Eighties
-set conceallevel=0
+" SEE: https://blog.schembri.me/post/solargraph-in-vim/
+"let g:LanguageClient_serverCommands = {
+"  \ 'ruby': ['tcp://localhost:7658']
+"  \ }
+"let g:LanguageClient_autoStop = 0
+"autocmd FileType ruby setlocal omnifunc=LanguageClient#complete

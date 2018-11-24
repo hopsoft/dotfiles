@@ -1,13 +1,13 @@
 --recurse=yes
---exclude=.git
---exclude=vendor/*
---exclude=node_modules/*
---exclude=**/node_modules/*
---exclude=_build/*
 --exclude=**/dist/*
+--exclude=**/node_modules/*
 --exclude=*.min.js
---exclude=db/*
+--exclude=.git
+--exclude=_build/*
 --exclude=log/*
+--exclude=node_modules/*
+--exclude=public/assets/*
+--exclude=vendor/**/vendor/*
 
 
 --langdef=Elixir
