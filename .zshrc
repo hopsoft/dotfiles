@@ -66,7 +66,6 @@ plugins=(
   brew
   bundler
   colored-man-pages
-  cp
   git
   history
   osx
