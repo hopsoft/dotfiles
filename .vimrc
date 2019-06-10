@@ -41,7 +41,7 @@ if has('nvim')
 endif
 
 set guifont=Meslo\ LG\ M\ for\ Powerline:h15
-set cursorline
+"set cursorline
 highlight ColorColumn guibg='#2b2b2b'
 hi EasyMotionTarget guifg='#ffaf00'
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -52,7 +52,6 @@ set number
 set encoding=utf-8
 set timeoutlen=400
 set hidden
-set colorcolumn=111
 set noautochdir
 set shell=/bin/bash
 
@@ -115,3 +114,8 @@ syntax enable
 syntax on
 colorscheme Tomorrow-Night-Eighties
 set conceallevel=0
+
+set lazyredraw
+set colorcolumn=111
+"set synmaxcol=110
+syntax sync minlines=256

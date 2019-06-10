@@ -28,3 +28,5 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/11/bin
 if [ -f $HOME/.private ]; then
   . $HOME/.private
 fi
+
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
