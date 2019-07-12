@@ -14,6 +14,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-mix-format'
 Plug 'mileszs/ack.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/vitality.vim'
