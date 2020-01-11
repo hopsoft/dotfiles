@@ -30,3 +30,6 @@ if [ -f $HOME/.private ]; then
 fi
 
 export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+eval $(thefuck --alias)
+
+source /Users/nathan/Library/Preferences/org.dystroy.broot/launcher/bash/br

@@ -14,6 +14,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-mix-format'
 Plug 'mileszs/ack.vim'
+Plug 'mustache/vim-mustache-handlebars'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -94,10 +95,10 @@ let g:auto_ctags_tags_args = ['--exclude=node_modules']
 let g:ctrlp_match_window=''
 let g:ctrlp_working_path_mode=''
 let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=50
+let g:ctrlp_max_depth=100
 let g:ctrlp_follow_symlinks=1
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git$|tags|doc|tmp|cache|node_modules)',
+  \ 'dir':  '\v[\/](\.git$|tags|tmp|cache|node_modules)',
   \ 'file': '\v[\/](\.so\|\.dat|\.DS_Store)$'
   \ }
 
