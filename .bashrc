@@ -52,3 +52,5 @@ PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
 # rubymotion
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+ulimit -n 1024

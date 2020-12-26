@@ -11,11 +11,14 @@ Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-emoji'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kien/ctrlp.vim'
+Plug 'leafOfTree/vim-vue-plugin'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-mix-format'
 Plug 'mileszs/ack.vim'
+Plug 'morhetz/gruvbox'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/vitality.vim'
@@ -43,7 +46,7 @@ if has('nvim')
 endif
 
 set guifont=Meslo\ LG\ M\ for\ Powerline:h15
-"set cursorline
+set cursorline
 highlight ColorColumn guibg='#2b2b2b'
 hi EasyMotionTarget guifg='#ffaf00'
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -115,10 +118,14 @@ let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
 set completefunc=emoji#complete
 syntax enable
 syntax on
-colorscheme Tomorrow-Night-Eighties
+"colorscheme Tomorrow-Night-Eighties
+g:gruvbox_contrast_dark soft
+colorscheme gruvbox
+
 set conceallevel=0
 
 set lazyredraw
 set colorcolumn=111
 "set synmaxcol=110
 syntax sync minlines=256
+let g:vim_vue_plugin_load_full_syntax = 1
