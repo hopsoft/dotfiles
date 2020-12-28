@@ -1,7 +1,9 @@
 export ARCHFLAGS="-arch x86_64"
 
 # homebrew
-export BREW_PREFIX=$(brew --prefix)
+if command -v brew &> /dev/null; then
+  export BREW_PREFIX=$(brew --prefix)
+fi
 
 # editors
 export EDITOR=$BREW_PREFIX/bin/nvim
@@ -21,8 +23,13 @@ export PATH=$PATH:$HOME/.dotfiles/bin
 # postgres
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/11/bin
 
-. /usr/local/opt/asdf/asdf.sh
-. /usr/local/etc/bash_completion.d
+if [ -f /usr/local/opt/asdf/asdf.sh ]; then
+  . /usr/local/opt/asdf/asdf.sh
+fi
+
+if [ -f /usr/local/etc/bash_completion.d ]; then
+  . /usr/local/etc/bash_completion.d
+fi
 
 . $DOTDIR/.aliases
 if [ -f $HOME/.private ]; then
@@ -45,9 +52,13 @@ fi
 # libffi
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/opt/libffi/lib/pkgconfig"
 
-eval $(thefuck --alias)
+if command -v thefuck &> /dev/null; then
+  eval $(thefuck --alias)
+fi
 
-source /Users/nathan/Library/Preferences/org.dystroy.broot/launcher/bash/br
+if [ -f /Users/nathan/Library/Preferences/org.dystroy.broot/launcher/bash/br ]; then
+  . /Users/nathan/Library/Preferences/org.dystroy.broot/launcher/bash/br
+fi
 PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
 # rubymotion

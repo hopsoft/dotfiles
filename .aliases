@@ -91,7 +91,11 @@ alias rb='rbenv_switch_ruby'
 alias hl='pbpaste | highlight --syntax=ruby --style=bright -O rtf | pbcopy'
 
 alias cdruby='cd $RUBY_PATH/lib/ruby'
-alias ctags="$(brew --prefix)/bin/ctags -R $1 && coffeetags -R -a -f tags"
+
+if command -v brew &> /dev/null; then
+  alias ctags="$(brew --prefix)/bin/ctags -R $1 && coffeetags -R -a -f tags"
+fi
+
 alias ctags-ruby='cdruby && $(brew --prefix)/bin/ctags -R . && cd -'
 alias jsonfiy='$DOTDIR/bin/jsonify'
 #alias rake='noglob rake'
