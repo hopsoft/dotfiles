@@ -110,6 +110,9 @@ source $ZSH/oh-my-zsh.sh
 export DOTDIR="$HOME/.dotfiles"
 source $DOTDIR/.bashrc
 
+if [ -f /.dockerenv ]; then
+  PROMPT="🐳 $PROMPT"
+fi
 
 if command -v brew &> /dev/null; then
   export SHELL=$(brew --prefix)/bin/zsh
