@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/nathan/.oh-my-zsh"
+export ZSH="~/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -109,9 +109,13 @@ source $ZSH/oh-my-zsh.sh
 
 export DOTDIR=$HOME/.dotfiles
 source $DOTDIR/.bashrc
-export SHELL=$(brew --prefix)/bin/zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fpath=(/usr/local/share/zsh-completions $fpath)
 
-# heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/nathan/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
+if command -v brew &> /dev/null; then
+  export SHELL=$(brew --prefix)/bin/zsh
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  fpath=(/usr/local/share/zsh-completions $fpath)
+
+  # heroku autocomplete setup
+  HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+fi
