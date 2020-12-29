@@ -6,7 +6,11 @@ if command -v brew &> /dev/null; then
 fi
 
 # editors
-export EDITOR=$BREW_PREFIX/bin/nvim
+if command -v nvim &> /dev/null; then
+  export EDITOR=$(which nvim)
+else
+  export EDITOR=$(which vim)
+fi
 export GIT_EDITOR=$EDITOR
 export BUNDLER_EDITOR=$EDITOR
 
