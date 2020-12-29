@@ -119,7 +119,7 @@ set completefunc=emoji#complete
 syntax enable
 syntax on
 "colorscheme Tomorrow-Night-Eighties
-g:gruvbox_contrast_dark soft
+let g:gruvbox_contrast_dark='soft'
 colorscheme gruvbox
 
 set conceallevel=0
