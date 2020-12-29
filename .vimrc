@@ -30,6 +30,7 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
+Plug 'wincent/terminus'
 call plug#end()
 
 inoremap jk <esc>
