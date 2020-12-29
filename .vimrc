@@ -120,7 +120,7 @@ syntax enable
 syntax on
 "colorscheme Tomorrow-Night-Eighties
 let g:gruvbox_contrast_dark='soft'
-colorscheme gruvbox
+silent! colorscheme gruvbox
 
 set conceallevel=0
 
