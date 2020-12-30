@@ -111,7 +111,7 @@ export DOTDIR="$HOME/.dotfiles"
 source $DOTDIR/.bashrc
 
 if [ -f /.dockerenv ]; then
-  PROMPT="🐳 $PROMPT"
+  PROMPT="$PROMPT 🐳"
 fi
 
 if command -v brew &> /dev/null; then
