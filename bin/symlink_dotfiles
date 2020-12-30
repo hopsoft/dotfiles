@@ -15,5 +15,6 @@ done
 
 rm $HOME/.zshrc
 ln -sv $dotdir/.zshrc $HOME/.zshrc
+ln -sv $dotdir/coc-settings.json $HOME/.vim/coc-settings.json
 
 touch $dotdir/.private
