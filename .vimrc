@@ -91,10 +91,6 @@ set complete-=i
 let g:vim_markdown_folding_disabled=1
 let g:airline_powerline_fonts=1
 
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-
 let g:auto_ctags_tags_args = ['--exclude=node_modules']
 let g:ctrlp_match_window=''
 let g:ctrlp_working_path_mode=''
