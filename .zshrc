@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+export DOTDIR="$HOME/.dotfiles"
+. $DOTDIR/.bashrc
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -63,7 +66,6 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   asdf
-  brew
   bundler
   colored-man-pages
   git
@@ -107,18 +109,15 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export DOTDIR="$HOME/.dotfiles"
-source $DOTDIR/.bashrc
 
-if [ -f /.dockerenv ]; then
-  PROMPT="$PROMPT🐳 "
-fi
+[ -f /.dockerenv ] && PROMPT="$PROMPT🐳 "
 
 if command -v brew &> /dev/null; then
-  export SHELL=$(brew --prefix)/bin/zsh
-  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  fpath=(/usr/local/share/zsh-completions $fpath)
-
-  # heroku autocomplete setup
-  HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+  export SHELL="$BREW_PREFIX/bin/zsh"
 fi
+
+# asdf .......................................................................................................
+[ -f "$BREW_PREFIX/opt/asdf/asdf.sh" ] && . "$BREW_PREFIX/opt/asdf/asdf.sh"
+[ -f "$BREW_PREFIX/opt/asdf/etc/bash_completion.d/asdf.bash" ] && . "$BREW_PREFIX/opt/asdf/etc/bash_completion.d/asdf.bash"
+
+compaudit | xargs chmod g-w,o-w
