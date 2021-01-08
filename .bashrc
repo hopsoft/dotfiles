@@ -28,7 +28,9 @@ export DOTDIR=$HOME/.dotfiles
 export PATH=$PATH:$HOME/.dotfiles/bin
 
 # postgres ...................................................................................................
-#PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+if [ -d /Applications/Postgres.app ]; then
+  export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+fi
 
 # completions ................................................................................................
 [ -f "$BREW_PREFIX/etc/profile.d/bash_completion.sh" ] && . "$BREW_PREFIX/etc/profile.d/bash_completion.sh"

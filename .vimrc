@@ -8,6 +8,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'elixir-editors/vim-elixir'
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
+Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
 Plug 'junegunn/vim-emoji'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kien/ctrlp.vim'
