@@ -127,3 +127,4 @@ set colorcolumn=111
 "set synmaxcol=110
 syntax sync minlines=256
 let g:vim_vue_plugin_load_full_syntax = 1
+let g:ackprg = 'ag --vimgrep'

@@ -1,1 +1,4 @@
-vendor/**/*
+log
+node_modules
+tags
+vendor
