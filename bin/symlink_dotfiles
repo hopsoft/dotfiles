@@ -13,6 +13,10 @@ do
   fi
 done
 
+mkdir -p $HOME/.config/nvim
+rm $HOME/.config/nvim/init.vim
+ln -sv $dotdir/.config/nvim/init.vim $HOME/.config/nvim/init.vim
+
 rm $HOME/.zshrc
 ln -sv $dotdir/.zshrc $HOME/.zshrc
 ln -sv $dotdir/coc-settings.json $HOME/.vim/coc-settings.json
