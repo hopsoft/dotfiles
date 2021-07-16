@@ -68,16 +68,26 @@ plugins=(
   asdf
   bundler
   colored-man-pages
+  dash
+  docker
+  docker-compose
+  fzf
+  gem
   git
+  heroku
   history
+  mix
   osx
   rails
   rake-fast
+  redis-cli
   ruby
+  safe-paste
   tmux
   yarn
 )
 
+export FZF_BASE="$BREW_PREFIX/bin/fzf"
 source $ZSH/oh-my-zsh.sh
 
 # User configuration

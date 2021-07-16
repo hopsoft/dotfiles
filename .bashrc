@@ -39,6 +39,7 @@ if [ -d "$BREW_PREFIX/etc/bash_completion.d/" ]; then
     [ -f "$bcfile" ] && . $bcfile
   done
 fi
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 . $DOTDIR/.aliases
 if [ -f $HOME/.private ]; then

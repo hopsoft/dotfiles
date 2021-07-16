@@ -102,11 +102,65 @@ alias jsonfiy='$DOTDIR/bin/jsonify'
 #alias bundle='noglob bundle'
 alias b='bundle'
 alias be='bundle exec'
-alias dm='docker-machine'
-alias dm-ip='docker-machine ip ${1:-default}'
-alias dm-ssh='docker-machine ssh ${1:-default}'
-alias dm-init='eval $(docker-machine env ${1:-default})'
 alias myip='curl ifconfig.co/x-real-ip'
 alias brew-prune='cd "$(brew --repo)" && git prune && git gc && cd -'
 alias tmux='tmux -2'
 alias kill-rails='lsof -t -i tcp:3000 | xargs kill -KILL'
+
+alias ddown='docker-compose down'
+
+docker_compose_up () {
+  docker-compose up -d "$@"
+}
+alias dup='docker_compose_up'
+
+docker_exec () {
+  project=$(basename $(pwd))
+  name="$1"
+  shift
+  docker exec -it "$project-$name" "$@"
+}
+alias dexec='docker_exec'
+
+docker_tail () {
+  project=$(basename $(pwd))
+  name="$1"
+  shift
+  docker logs -f "$@" "$project-$name"
+}
+alias dtail='docker_tail'
+
+docker_attach () {
+  project=$(basename $(pwd))
+  docker attach "$project-$@"
+}
+alias dattach='docker_attach'
+
+docker_command () {
+  command="$1"
+  shift
+
+  if [[ -z "$@" ]]; then
+    docker-compose "$command"
+  else
+    name="$1"
+    shift
+    project=$(basename $(pwd))
+    docker "$command" "$@" "$project-$name"
+  fi
+}
+
+docker_start () {
+  docker_command start "$@"
+}
+alias dstart='docker_start'
+
+docker_stop () {
+  docker_command stop "$@"
+}
+alias dstop='docker_stop'
+
+docker_restart () {
+  docker_command restart "$@"
+}
+alias drestart='docker_restart'

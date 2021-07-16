@@ -8,7 +8,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'elixir-editors/vim-elixir'
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
-Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
 Plug 'junegunn/vim-emoji'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kien/ctrlp.vim'
@@ -23,7 +22,6 @@ Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/vitality.vim'
-Plug 'soramugi/auto-ctags.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -104,7 +102,7 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v[\/](\.so\|\.dat|\.DS_Store)$'
   \ }
 
-let g:mix_format_on_save = 1
+let g:mix_format_on_save = 0
 let g:ale_linters = {}
 let g:ale_linters['ruby'] = ['standardrb']
 let g:ale_linters['javascript'] = ['']
