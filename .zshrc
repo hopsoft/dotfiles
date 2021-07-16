@@ -120,6 +120,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+if [[ -n $SSH_CONNECTION ]]; then
+  PROMPT="🔐 %{$fg[magenta]%}%n%{$fg[white]%}@%{$fg[magenta]%}%m%{$reset_color%}$PROMPT"
+fi
 [ -f /.dockerenv ] && PROMPT="$PROMPT🐳 "
 
 if command -v brew &> /dev/null; then
