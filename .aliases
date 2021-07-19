@@ -121,6 +121,7 @@ docker_exec () {
   docker exec -it "$project-$name" "$@"
 }
 alias dexec='docker_exec'
+alias dx='docker_exec'
 
 docker_tail () {
   project=$(basename $(pwd))
@@ -129,12 +130,14 @@ docker_tail () {
   docker logs -f "$@" "$project-$name"
 }
 alias dtail='docker_tail'
+alias dt='docker_tail'
 
 docker_attach () {
   project=$(basename $(pwd))
   docker attach "$project-$@"
 }
 alias dattach='docker_attach'
+alias da='docker_attach'
 
 docker_command () {
   command="$1"
