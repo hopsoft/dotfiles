@@ -94,6 +94,8 @@ alias cdruby='cd $RUBY_PATH/lib/ruby'
 
 if command -v brew &> /dev/null; then
   alias ctags="$(brew --prefix)/bin/ctags -R $1 && coffeetags -R -a -f tags"
+else
+  alias ctags="/usr/bin/ctags -f .tags --options=$HOME/.ctags -R ."
 fi
 
 alias ctags-ruby='cdruby && $(brew --prefix)/bin/ctags -R . && cd -'
