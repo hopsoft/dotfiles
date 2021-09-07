@@ -9,13 +9,14 @@
 .idea
 .private
 .rvmrc
+.tags
+.tmuxinator.yml
 .yardoc
+/**/node_modules
 /.bundle
 /log/*.log
+/node_modules
 /tmp
 _site
 coverage
 prof
-/node_modules
-/**/node_modules
-.tmuxinator.yml
