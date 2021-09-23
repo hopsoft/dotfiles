@@ -99,7 +99,7 @@ else
   ctags_prefix="/usr/bin/"
 fi
 ctags_command="$ctags_prefix$ctags_suffix"
-alias ctags="echo $ctags_command && $ctags_command"
+alias ctags="$ctags_command"
 
 alias jsonfiy='$DOTDIR/bin/jsonify'
 alias b='bundle'

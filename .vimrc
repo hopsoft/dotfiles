@@ -70,7 +70,8 @@ set list
 set listchars=tab:▸\ ,eol:¬,trail:·
 set noautochdir
 set number
-set shell=/bin/bash
+set shell=/opt/homebrew/bin/zsh
+set shellcmdflag=-ic
 set tabstop=2 shiftwidth=2 " a tab is two spaces (or set this to 4)
 set tags=.tags
 set timeoutlen=400
