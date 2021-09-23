@@ -1,6 +1,7 @@
 let mapleader=","
 
 call plug#begin('~/.vim/plugged')
+Plug '/opt/homebrew/opt/fzf'
 Plug 'airblade/vim-gitgutter'
 Plug 'cespare/vim-toml'
 Plug 'chriskempson/base16-vim'
@@ -41,6 +42,7 @@ nnoremap <Leader>h :nohls<CR>
 nnoremap <Leader>nt :NERDTreeToggle<CR>
 nnoremap <Leader>tb :TagbarToggle<CR>
 vnoremap <Leader>fh :Tab /\w:\zs/r0l1l0<CR>
+nnoremap <Leader>f :FZF!<CR>
 
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>

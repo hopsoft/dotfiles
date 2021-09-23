@@ -1,9 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export DOTDIR="$HOME/.dotfiles"
-. $DOTDIR/.bashrc
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -84,11 +81,12 @@ plugins=(
   ruby
   safe-paste
   tmux
+  web-search
   yarn
+  zsh-autosuggestions
 )
 
-export FZF_BASE="$BREW_PREFIX/bin/fzf"
-source $ZSH/oh-my-zsh.sh
+. $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -119,18 +117,61 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+compaudit | xargs chmod g-w,o-w
 
-if [[ -n $SSH_CONNECTION ]]; then
-  PROMPT="🔐 %{$fg[magenta]%}%n%{$fg[white]%}@%{$fg[magenta]%}%m%{$reset_color%}$PROMPT"
+# homebrew ...................................................................................................
+if [ -d /opt/homebrew/bin ]; then
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 fi
-[ -f /.dockerenv ] && PROMPT="$PROMPT🐳 "
-
 if command -v brew &> /dev/null; then
-  export SHELL="$BREW_PREFIX/bin/zsh"
+  export BREW_PREFIX=$(brew --prefix)
 fi
+
+# editors ....................................................................................................
+if command -v nvim &> /dev/null; then
+  export EDITOR=$(which nvim)
+else
+  export EDITOR=$(which vim)
+fi
+export GIT_EDITOR=$EDITOR
+export BUNDLER_EDITOR=$EDITOR
+
+# dotfiles ...................................................................................................
+export DOTDIR=$HOME/.dotfiles
+export PATH=$PATH:$HOME/.dotfiles/bin
+
+# langs ......................................................................................................
+
+# ruby .......................................................................................................
+export BUNDLE_DEV=true
+
+# erlang/elixir ..............................................................................................
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+# apps .......................................................................................................
 
 # asdf .......................................................................................................
 [ -f "$BREW_PREFIX/opt/asdf/asdf.sh" ] && . "$BREW_PREFIX/opt/asdf/asdf.sh"
 [ -f "$BREW_PREFIX/opt/asdf/etc/bash_completion.d/asdf.bash" ] && . "$BREW_PREFIX/opt/asdf/etc/bash_completion.d/asdf.bash"
 
-compaudit | xargs chmod g-w,o-w
+# fzf ........................................................................................................
+export FZF_BASE="$BREW_PREFIX/bin/fzf"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# postgres ...................................................................................................
+if [ -d /Applications/Postgres.app ]; then
+  export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+fi
+
+# prompt .....................................................................................................
+if [[ -n $SSH_CONNECTION ]]; then
+  PROMPT="🔐 %{$fg[magenta]%}%n%{$fg[white]%}@%{$fg[magenta]%}%m%{$reset_color%}$PROMPT"
+fi
+[ -f /.dockerenv ] && PROMPT="$PROMPT🐳 "
+
+# aliases ....................................................................................................
+eval $(thefuck --alias)
+. $DOTDIR/.aliases
+if [ -f $HOME/.private ]; then
+  . $HOME/.private
+fi

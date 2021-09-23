@@ -17,15 +17,27 @@ fi
 export GIT_EDITOR=$EDITOR
 export BUNDLER_EDITOR=$EDITOR
 
+# dotfiles ...................................................................................................
+export DOTDIR=$HOME/.dotfiles
+export PATH=$PATH:$HOME/.dotfiles/bin
+
+# langs ......................................................................................................
+
 # ruby .......................................................................................................
 export BUNDLE_DEV=true
 
 # erlang/elixir ..............................................................................................
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-# dotfiles ...................................................................................................
-export DOTDIR=$HOME/.dotfiles
-export PATH=$PATH:$HOME/.dotfiles/bin
+# apps .......................................................................................................
+
+# asdf .......................................................................................................
+[ -f "$BREW_PREFIX/opt/asdf/asdf.sh" ] && . "$BREW_PREFIX/opt/asdf/asdf.sh"
+[ -f "$BREW_PREFIX/opt/asdf/etc/bash_completion.d/asdf.bash" ] && . "$BREW_PREFIX/opt/asdf/etc/bash_completion.d/asdf.bash"
+
+# fzf ........................................................................................................
+export FZF_BASE="$BREW_PREFIX/bin/fzf"
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # postgres ...................................................................................................
 if [ -d /Applications/Postgres.app ]; then
@@ -39,11 +51,14 @@ if [ -d "$BREW_PREFIX/etc/bash_completion.d/" ]; then
     [ -f "$bcfile" ] && . $bcfile
   done
 fi
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# aliases ....................................................................................................
+eval $(thefuck --alias)
 . $DOTDIR/.aliases
 if [ -f $HOME/.private ]; then
   . $HOME/.private
 fi
 
 ulimit -n 1024
+
+exec zsh

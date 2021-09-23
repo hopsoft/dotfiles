@@ -1,6 +1,24 @@
 #!/usr/bin/env bash
 dotdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../" && pwd )"
-file_names=('.bashrc' '.bash_profile' '.gitconfig' '.gitignore' '.ignore' '.vimrc' '.gvimrc' '.zshrc' '.zprofile' '.irbrc' '.tmux.conf' '.rubocop.yml' '.ctags.opts' '.pryrc' '.tmux.conf.local')
+file_names=(
+  '.bash_profile'
+  '.bashrc'
+  '.ctags.opts'
+  '.fzf.bash'
+  '.fzf.zsh'
+  '.gitconfig'
+  '.gitignore'
+  '.gvimrc'
+  '.ignore'
+  '.irbrc'
+  '.pryrc'
+  '.rubocop.yml'
+  '.tmux.conf'
+  '.tmux.conf.local'
+  '.vimrc'
+  '.zprofile'
+  '.zshrc'
+)
 for file_name in ${file_names[@]}
 do
   home_path=$HOME/$file_name
