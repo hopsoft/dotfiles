@@ -99,6 +99,16 @@ let g:ctrlp_max_files=0
 let g:ctrlp_working_path_mode=''
 let g:gruvbox_contrast_dark='soft'
 let g:mix_format_on_save = 0
+let g:tagbar_type_ruby = {
+  \ 'kinds' : [
+    \ 'm:modules',
+    \ 'c:classes',
+    \ 'd:describes',
+    \ 'C:contexts',
+    \ 'f:methods',
+    \ 'F:singleton methods'
+  \ ]
+\ }
 let g:vim_markdown_folding_disabled=1
 let g:vim_vue_plugin_load_full_syntax = 1
 
