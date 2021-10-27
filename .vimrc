@@ -35,6 +35,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
 Plug 'wincent/terminus'
+Plug 'yggdroot/indentline'
 call plug#end()
 
 inoremap jk <esc>
@@ -101,6 +102,7 @@ let g:ctrlp_match_window=''
 let g:ctrlp_max_depth=100
 let g:ctrlp_max_files=0
 let g:ctrlp_working_path_mode=''
+let g:indentLine_char = '┊'
 let g:gruvbox_contrast_dark='soft'
 let g:mix_format_on_save = 0
 let g:tagbar_type_ruby = {
