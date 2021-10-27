@@ -2,6 +2,7 @@ let mapleader=","
 
 call plug#begin('~/.vim/plugged')
 Plug '/opt/homebrew/opt/fzf'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'cespare/vim-toml'
 Plug 'chriskempson/base16-vim'
@@ -21,6 +22,7 @@ Plug 'morhetz/gruvbox'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rizzatti/dash.vim'
+Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/vitality.vim'
@@ -40,6 +42,7 @@ nmap K <Plug>(devdocs-under-cursor)
 nnoremap <Leader>fd :cd %:p:h<CR>
 nnoremap <Leader>h :nohls<CR>
 nnoremap <Leader>nt :NERDTreeToggle<CR>
+nnoremap <Leader>nf :NERDTreeFind<CR>
 nnoremap <Leader>tb :TagbarToggle<CR>
 vnoremap <Leader>fh :Tab /\w:\zs/r0l1l0<CR>
 nnoremap <Leader>f :FZF!<CR>
@@ -62,7 +65,8 @@ set dir=/tmp/editor
 set encoding=utf-8
 set endofline
 set expandtab " use spaces, not tabs (optional)
-set guifont=Meslo\ LG\ M\ for\ Powerline:h15
+"set guifont=Meslo\ LG\ M\ for\ Powerline:h14
+set guifont=MesloLGM\ Nerd\ Font:h14
 set hidden
 set lazyredraw
 set lcs+=space:· " show dot for whitespaces
@@ -111,6 +115,12 @@ let g:tagbar_type_ruby = {
 \ }
 let g:vim_markdown_folding_disabled=1
 let g:vim_vue_plugin_load_full_syntax = 1
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_airline_statusline = 1
+let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_ctrlp = 1
+let g:webdevicons_enable_nerdtree = 1
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 
 au FileType javascript setl sw=2 ts=2 expandtab
 autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespace on save
