@@ -106,7 +106,7 @@ alias b='bundle'
 alias be='bundle exec'
 alias myip='curl ifconfig.co/x-real-ip'
 alias brew-prune='cd "$(brew --repo)" && git prune && git gc && cd -'
-alias tmux='tmux -2'
+#alias tmux='tmux -2'
 alias kill-rails='lsof -t -i tcp:3000 | xargs kill -KILL'
 
 alias ddown='docker-compose down'
@@ -169,3 +169,5 @@ docker_restart () {
   docker_command restart "$@"
 }
 alias drestart='docker_restart'
+
+alias tf='terraform'

@@ -73,8 +73,8 @@ plugins=(
   git
   heroku
   history
+  macos
   mix
-  osx
   rails
   rake-fast
   redis-cli
