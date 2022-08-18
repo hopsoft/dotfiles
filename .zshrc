@@ -57,35 +57,6 @@ ZSH_THEME="robbyrussell"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  asdf
-  bundler
-  colored-man-pages
-  dash
-  docker
-  docker-compose
-  fzf
-  gem
-  git
-  heroku
-  history
-  macos
-  mix
-  rails
-  rake-fast
-  redis-cli
-  ruby
-  safe-paste
-  tmux
-  web-search
-  yarn
-  zsh-autosuggestions
-)
-
 . $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -175,3 +146,33 @@ eval $(thefuck --alias)
 if [ -f $HOME/.private ]; then
   . $HOME/.private
 fi
+
+# plugins ....................................................................................................
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  asdf
+  bundler
+  colored-man-pages
+  dash
+  docker
+  docker-compose
+  fzf
+  gem
+  git
+  heroku
+  history
+  macos
+  mix
+  rails
+  rake-fast
+  redis-cli
+  ruby
+  safe-paste
+  tmux
+  web-search
+  yarn
+  zsh-autosuggestions
+)
