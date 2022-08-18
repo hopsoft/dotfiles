@@ -17,7 +17,7 @@
 1. Setup dotfiles
 
     ```sh
-    git clone git@github.com:hopsoft/dotfiles.git ~/.dotfiles
+    git clone -o github git@github.com:hopsoft/dotfiles.git ~/.dotfiles
     cd ~/.dotfiles
     ./bin/symlink_dotfiles
     ```
@@ -39,6 +39,6 @@
 1. Setup tmux config: https://github.com/gpakosz/.tmux
 
     ```sh
-    git clone https://github.com/gpakosz/.tmux.git ~/.tmux
+    git clone -o github https://github.com/gpakosz/.tmux.git ~/.tmux
     ln -s -f ~/.tmux/.tmux.conf ~/.tmux.conf
     ```
