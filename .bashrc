@@ -32,8 +32,8 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # apps .......................................................................................................
 
 # asdf .......................................................................................................
-[ -f "$BREW_PREFIX/opt/asdf/asdf.sh" ] && . "$BREW_PREFIX/opt/asdf/asdf.sh"
-[ -f "$BREW_PREFIX/opt/asdf/etc/bash_completion.d/asdf.bash" ] && . "$BREW_PREFIX/opt/asdf/etc/bash_completion.d/asdf.bash"
+[ -f "$BREW_PREFIX/lib/asdf.sh" ] && . "$BREW_PREFIX/lib/asdf.sh"
+[ -f "$BREW_PREFIX/etc/bash_completion.d/asdf.bash" ] && . "$BREW_PREFIX/etc/bash_completion.d/asdf.bash"
 
 # fzf ........................................................................................................
 export FZF_BASE="$BREW_PREFIX/bin/fzf"

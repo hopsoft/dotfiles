@@ -121,13 +121,9 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 # apps .......................................................................................................
 
-# asdf .......................................................................................................
-[ -f "$BREW_PREFIX/opt/asdf/asdf.sh" ] && . "$BREW_PREFIX/opt/asdf/asdf.sh"
-[ -f "$BREW_PREFIX/opt/asdf/etc/bash_completion.d/asdf.bash" ] && . "$BREW_PREFIX/opt/asdf/etc/bash_completion.d/asdf.bash"
-
 # fzf ........................................................................................................
 export FZF_BASE="$BREW_PREFIX/bin/fzf"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && . ~/.fzf.zsh
 
 # postgres ...................................................................................................
 if [ -d /Applications/Postgres.app ]; then

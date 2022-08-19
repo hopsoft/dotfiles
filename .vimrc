@@ -1,13 +1,13 @@
 let mapleader=","
 
 call plug#begin('~/.vim/plugged')
+"Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+"Plug 'ervandew/supertab'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'w0rp/ale'
-"Plug 'ervandew/supertab'
 Plug '/opt/homebrew/opt/fzf'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'cespare/vim-toml'
 Plug 'chriskempson/base16-vim'
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
@@ -114,13 +114,13 @@ let g:ctrlp_max_files=0
 let g:ctrlp_working_path_mode=''
 let g:indentLine_char_list = ['┊', '¦']
 let g:gruvbox_contrast_dark='soft'
-let g:LanguageClient_autoStop = 0
-let g:LanguageClient_serverCommands = {
-  \ 'ruby': ['solargraph', 'stdio'],
-  \ 'javascript': ['typescript-language-server', '--stdio'],
-  \ 'terraform': ['terraform-ls', 'serve'],
-  \ 'typescript': ['typescript-language-server', '--stdio']
-\ }
+"let g:LanguageClient_autoStop = 0
+"let g:LanguageClient_serverCommands = {
+  "\ 'ruby': ['solargraph', 'stdio'],
+  "\ 'javascript': ['typescript-language-server', '--stdio'],
+  "\ 'terraform': ['terraform-ls', 'serve'],
+  "\ 'typescript': ['typescript-language-server', '--stdio']
+"\ }
 let g:mix_format_on_save = 0
 let g:tagbar_type_ruby = {
   \ 'kinds' : [
@@ -140,9 +140,10 @@ let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_ctrlp = 1
 let g:webdevicons_enable_nerdtree = 1
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+let g:python3_host_prog = '$BREW_PREFIX/bin/python3'
 
 autocmd BufEnter * call ncm2#enable_for_buffer()
-autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
+"autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
 
 au BufRead,BufNewFile *.jb setfiletype ruby
 au FileType javascript setl sw=2 ts=2 expandtab
