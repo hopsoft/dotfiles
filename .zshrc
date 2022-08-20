@@ -57,35 +57,6 @@ ZSH_THEME="robbyrussell"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  asdf
-  bundler
-  colored-man-pages
-  dash
-  docker
-  docker-compose
-  fzf
-  gem
-  git
-  heroku
-  history
-  macos
-  mix
-  rails
-  rake-fast
-  redis-cli
-  ruby
-  safe-paste
-  tmux
-  web-search
-  yarn
-  zsh-autosuggestions
-)
-
 . $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -151,12 +122,12 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # apps .......................................................................................................
 
 # asdf .......................................................................................................
-[ -f "$BREW_PREFIX/opt/asdf/asdf.sh" ] && . "$BREW_PREFIX/opt/asdf/asdf.sh"
-[ -f "$BREW_PREFIX/opt/asdf/etc/bash_completion.d/asdf.bash" ] && . "$BREW_PREFIX/opt/asdf/etc/bash_completion.d/asdf.bash"
+[ -f "$BREW_PREFIX/opt/asdf/libexec/asdf.sh" ] && . "$BREW_PREFIX/opt/asdf/libexec/asdf.sh"
+[ -f "$BREW_PREFIX/etc/bash_completion.d/asdf.bash" ] && . "$BREW_PREFIX/etc/bash_completion.d/asdf.bash"
 
 # fzf ........................................................................................................
 export FZF_BASE="$BREW_PREFIX/bin/fzf"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && . ~/.fzf.zsh
 
 # postgres ...................................................................................................
 if [ -d /Applications/Postgres.app ]; then
@@ -175,3 +146,33 @@ eval $(thefuck --alias)
 if [ -f $HOME/.private ]; then
   . $HOME/.private
 fi
+
+# plugins ....................................................................................................
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  asdf
+  bundler
+  colored-man-pages
+  dash
+  docker
+  docker-compose
+  fzf
+  gem
+  git
+  heroku
+  history
+  macos
+  mix
+  rails
+  rake-fast
+  redis-cli
+  ruby
+  safe-paste
+  tmux
+  web-search
+  yarn
+  zsh-autosuggestions
+)

@@ -2,7 +2,6 @@
 *.log
 *.orig
 *.swp
-*.tool-versions
 *~
 .DS_Store
 .env
@@ -11,6 +10,7 @@
 .rvmrc
 .tags
 .tmuxinator.yml
+.tool-versions
 .yardoc
 .yalc
 yalc.lock

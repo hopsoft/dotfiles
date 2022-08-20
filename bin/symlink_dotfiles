@@ -13,7 +13,6 @@ file_names=(
   '.irbrc'
   '.pryrc'
   '.rubocop.yml'
-  '.tmux.conf'
   '.tmux.conf.local'
   '.vimrc'
   '.zprofile'

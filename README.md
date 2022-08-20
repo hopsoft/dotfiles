@@ -17,27 +17,28 @@
 1. Setup dotfiles
 
     ```sh
-    git clone git@github.com:hopsoft/dotfiles.git ~/.dotfiles
+    git clone -o github git@github.com:hopsoft/dotfiles.git ~/.dotfiles
     cd ~/.dotfiles
     ./bin/symlink_dotfiles
     ```
 
 1. Install plug for vim: https://github.com/junegunn/vim-plug
 
-    Then run `vim --not-a-term +PlugInstall +qall`
+    Then run `:PlugInstall` after launching neovim.
 
-    or `:PlugInstall` after launching neovim.
-
-1. Install Powerline fonts: https://github.com/powerline/fonts
+1. Install Fonts
 
     ```sh
-    git clone https://github.com/powerline/fonts.git ~/fonts
-    ~/fonts/.install.sh
+    git clone -o github https://github.com/powerline/fonts.git ~/work/powerline/fonts
+    ~/work/powerline/fonts/install.sh
+
+    git clone -o github https://github.com/ryanoasis/nerd-fonts.git ~/work/ryanoasis/nerd-fonts
+    ~/work/ryanoasis/nerd-fonts/install.sh
     ```
 
 1. Setup tmux config: https://github.com/gpakosz/.tmux
 
     ```sh
-    git clone https://github.com/gpakosz/.tmux.git ~/.tmux
+    git clone -o github https://github.com/gpakosz/.tmux.git ~/.tmux
     ln -s -f ~/.tmux/.tmux.conf ~/.tmux.conf
     ```

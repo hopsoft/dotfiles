@@ -3,9 +3,10 @@ let mapleader=","
 call plug#begin('~/.vim/plugged')
 "Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 "Plug 'ervandew/supertab'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'w0rp/ale'
 Plug '/opt/homebrew/opt/fzf'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'YorickPeterse/vim-paper'
 Plug 'airblade/vim-gitgutter'
 Plug 'cespare/vim-toml'
 Plug 'chriskempson/base16-vim'
@@ -26,8 +27,6 @@ Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'ncm2/ncm2'
-Plug 'nelstrom/vim-mac-classic-theme'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rizzatti/dash.vim'
 Plug 'roxma/nvim-yarp'
 Plug 'ryanoasis/vim-devicons'
@@ -41,7 +40,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-Plug 'w0rp/ale'
 Plug 'wincent/terminus'
 Plug 'yggdroot/indentline'
 call plug#end()
@@ -99,13 +97,14 @@ set wrap " wrap lines
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 let g:ackprg = 'ag --vimgrep'
 let g:airline_powerline_fonts=1
-let g:ale_linters = {}
-let g:ale_linters['ruby'] = ['standardrb']
-let g:ale_fix_on_save = 1
-let g:ale_fixers = {}
-let g:ale_fixers['ruby'] = ['standardrb']
-let g:ale_fixers['javascript'] = ['prettier-standard']
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+"let g:ale_fix_on_save = 1
+"let g:ale_fixers = {}
+"let g:ale_fixers['javascript'] = ['prettier-standard']
+"let g:ale_fixers['ruby'] = ['standardrb']
+"let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+"let g:ale_linters = {}
+"let g:ale_linters['javascript'] = ['prettier-standard']
+"let g:ale_linters['ruby'] = ['standardrb']
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git$|tmp|cache|node_modules)',
   \ 'file': '\v[\/](\.so\|\.dat|\.tags|tags|\.DS_Store)$'
@@ -143,6 +142,7 @@ let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_ctrlp = 1
 let g:webdevicons_enable_nerdtree = 1
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+let g:python3_host_prog = '$BREW_PREFIX/bin/python3'
 
 autocmd BufEnter * call ncm2#enable_for_buffer()
 "autocmd FileType ruby setlocal omnifunc=LanguageClient#complete

@@ -1,7 +1,7 @@
 [color]
 	ui = true
 [user]
-	name = Hopsoft
+	name = Nate Hopkins (hopsoft)
 	email = natehop@gmail.com
 [alias]
 	co = checkout
@@ -12,7 +12,7 @@
   type = cat-file -t
   dump = cat-file -p
 [core]
-	excludesfile = /Users/nathan/.gitignore
+	excludesfile = ~/.gitignore
 [difftool "opendiff"]
 	cmd = /usr/bin/opendiff $LOCAL $REMOTE
 [mergetool "opendiff"]
