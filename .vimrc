@@ -3,7 +3,9 @@ let mapleader=","
 call plug#begin('~/.vim/plugged')
 "Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 "Plug 'ervandew/supertab'
+"Plug 'ncm2/ncm2'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'roxma/nvim-yarp'
 "Plug 'w0rp/ale'
 Plug '/opt/homebrew/opt/fzf'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -26,9 +28,7 @@ Plug 'mhinz/vim-mix-format'
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'ncm2/ncm2'
 Plug 'rizzatti/dash.vim'
-Plug 'roxma/nvim-yarp'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -144,7 +144,7 @@ let g:webdevicons_enable_nerdtree = 1
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 let g:python3_host_prog = '$BREW_PREFIX/bin/python3'
 
-autocmd BufEnter * call ncm2#enable_for_buffer()
+"autocmd BufEnter * call ncm2#enable_for_buffer()
 "autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
 
 au BufRead,BufNewFile *.jb setfiletype ruby
