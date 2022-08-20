@@ -12,6 +12,8 @@
 .tags
 .tmuxinator.yml
 .yardoc
+.yalc
+yalc.lock
 /**/node_modules
 /.bundle
 /log/*.log

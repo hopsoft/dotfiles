@@ -1,18 +1,18 @@
 let mapleader=","
 
 call plug#begin('~/.vim/plugged')
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'w0rp/ale'
+"Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 "Plug 'ervandew/supertab'
 Plug '/opt/homebrew/opt/fzf'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'YorickPeterse/vim-paper'
 Plug 'airblade/vim-gitgutter'
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'cespare/vim-toml'
 Plug 'chriskempson/base16-vim'
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plug 'easymotion/vim-easymotion'
 Plug 'elixir-editors/vim-elixir'
+Plug 'github/copilot.vim'
 Plug 'github/copilot.vim'
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform'
@@ -26,6 +26,8 @@ Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'ncm2/ncm2'
+Plug 'nelstrom/vim-mac-classic-theme'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rizzatti/dash.vim'
 Plug 'roxma/nvim-yarp'
 Plug 'ryanoasis/vim-devicons'
@@ -39,6 +41,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
+Plug 'w0rp/ale'
 Plug 'wincent/terminus'
 Plug 'yggdroot/indentline'
 call plug#end()
@@ -64,6 +67,7 @@ endif
 "set guifont=Meslo\ LG\ M\ for\ Powerline:h14
 "set shell=/opt/homebrew/bin/zsh
 "set shellcmdflag=-ic
+"set relativenumber
 set autoindent
 set autoread
 set background=dark
@@ -95,14 +99,13 @@ set wrap " wrap lines
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 let g:ackprg = 'ag --vimgrep'
 let g:airline_powerline_fonts=1
-"let g:ale_fix_on_save = 1
-"let g:ale_fixers = {}
-"let g:ale_fixers['javascript'] = ['prettier-standard']
-"let g:ale_fixers['ruby'] = ['standardrb']
-"let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
-"let g:ale_linters = {}
-"let g:ale_linters['javascript'] = ['prettier-standard']
-"let g:ale_linters['ruby'] = ['standardrb']
+let g:ale_linters = {}
+let g:ale_linters['ruby'] = ['standardrb']
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {}
+let g:ale_fixers['ruby'] = ['standardrb']
+let g:ale_fixers['javascript'] = ['prettier-standard']
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git$|tmp|cache|node_modules)',
   \ 'file': '\v[\/](\.so\|\.dat|\.tags|tags|\.DS_Store)$'
@@ -114,13 +117,13 @@ let g:ctrlp_max_files=0
 let g:ctrlp_working_path_mode=''
 let g:indentLine_char_list = ['┊', '¦']
 let g:gruvbox_contrast_dark='soft'
-let g:LanguageClient_autoStop = 0
-let g:LanguageClient_serverCommands = {
-  \ 'ruby': ['solargraph', 'stdio'],
-  \ 'javascript': ['typescript-language-server', '--stdio'],
-  \ 'terraform': ['terraform-ls', 'serve'],
-  \ 'typescript': ['typescript-language-server', '--stdio']
-\ }
+"let g:LanguageClient_autoStop = 0
+"let g:LanguageClient_serverCommands = {
+"  \ 'ruby': ['solargraph', 'stdio'],
+"  \ 'javascript': ['typescript-language-server', '--stdio'],
+"  \ 'terraform': ['terraform-ls', 'serve'],
+"  \ 'typescript': ['typescript-language-server', '--stdio']
+"\ }
 let g:mix_format_on_save = 0
 let g:tagbar_type_ruby = {
   \ 'kinds' : [
@@ -142,7 +145,7 @@ let g:webdevicons_enable_nerdtree = 1
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 
 autocmd BufEnter * call ncm2#enable_for_buffer()
-autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
+"autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
 
 au BufRead,BufNewFile *.jb setfiletype ruby
 au FileType javascript setl sw=2 ts=2 expandtab

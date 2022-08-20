@@ -104,6 +104,7 @@ alias ctags="$ctags_command"
 alias jsonfiy='$DOTDIR/bin/jsonify'
 alias b='bundle'
 alias be='bundle exec'
+alias dbe="doppler run -- bundle exec"
 alias myip='curl ifconfig.co/x-real-ip'
 alias brew-prune='cd "$(brew --repo)" && git prune && git gc && cd -'
 #alias tmux='tmux -2'

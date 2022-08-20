@@ -25,6 +25,7 @@ export PATH=$PATH:$HOME/.dotfiles/bin
 
 # ruby .......................................................................................................
 export BUNDLE_DEV=true
+export DISABLE_SPRING=true
 
 # erlang/elixir ..............................................................................................
 export ERL_AFLAGS="-kernel shell_history enabled"
