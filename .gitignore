@@ -11,9 +11,8 @@
 .tags
 .tmuxinator.yml
 .tool-versions
-.yardoc
 .yalc
-yalc.lock
+.yardoc
 /**/node_modules
 /.bundle
 /log/*.log
@@ -21,4 +20,6 @@ yalc.lock
 /tmp
 _site
 coverage
+master.key
 prof
+yalc.lock
