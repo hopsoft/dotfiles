@@ -3,6 +3,7 @@ let mapleader=","
 call plug#begin('~/.vim/plugged')
 "Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 "Plug 'ervandew/supertab'
+"Plug 'github/copilot.vim'
 "Plug 'ncm2/ncm2'
 "Plug 'roxma/nvim-yarp'
 Plug '/opt/homebrew/opt/fzf'
@@ -13,8 +14,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plug 'easymotion/vim-easymotion'
 Plug 'elixir-editors/vim-elixir'
-Plug 'github/copilot.vim'
-Plug 'github/copilot.vim'
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform'
 Plug 'junegunn/vim-emoji'
@@ -43,6 +42,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
 Plug 'wincent/terminus'
 Plug 'yggdroot/indentline'
+Plug 'zorab47/procfile.vim'
 call plug#end()
 
 
