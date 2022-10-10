@@ -22,4 +22,5 @@ _site
 coverage
 master.key
 prof
+tags
 yalc.lock

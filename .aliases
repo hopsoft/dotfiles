@@ -92,14 +92,14 @@ alias hl='pbpaste | highlight --syntax=ruby --style=bright -O rtf | pbcopy'
 
 alias cdruby='cd $RUBY_PATH/lib/ruby'
 
-ctags_suffix='ctags --options=$HOME/.ctags.opts .'
-if command -v brew &> /dev/null; then
-  ctags_prefix="$(brew --prefix)/bin/"
-else
-  ctags_prefix="/usr/bin/"
-fi
-ctags_command="$ctags_prefix$ctags_suffix"
-alias ctags="$ctags_command"
+# ctags_suffix='ctags --options=$HOME/.ctags.opts .'
+# if command -v brew &> /dev/null; then
+#   ctags_prefix="$(brew --prefix)/bin/"
+# else
+#   ctags_prefix="/usr/bin/"
+# fi
+# ctags_command="$ctags_prefix$ctags_suffix"
+# alias ctags="$ctags_command"
 
 alias jsonfiy='$DOTDIR/bin/jsonify'
 alias b='bundle'
