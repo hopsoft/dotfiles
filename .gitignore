@@ -23,4 +23,5 @@ coverage
 master.key
 prof
 tags
+tags.*
 yalc.lock
