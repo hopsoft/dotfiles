@@ -1,14 +1,13 @@
--f .tags
 --links=yes
 --recurse=yes
 --exclude=*.min.js
 --exclude=.git
 --exclude=build
+--exclude=builds
 --exclude=coverage
 --exclude=dist
 --exclude=log
 --exclude=node_modules
---exclude=public/assets
---exclude=public/packs
+--exclude=public
 --exclude=tmp
 --exclude=vendor

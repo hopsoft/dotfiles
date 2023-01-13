@@ -30,6 +30,10 @@ do
   fi
 done
 
+mkdir -p $HOME/.ctags.d
+rm $HOME/.ctags.d/default.ctags
+ln -sv $dotdir/.ctags.opts $HOME/.ctags.d/default.ctags
+
 mkdir -p $HOME/.config/nvim
 rm $HOME/.config/nvim/init.vim
 ln -sv $dotdir/.config/nvim/init.vim $HOME/.config/nvim/init.vim
