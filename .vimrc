@@ -2,26 +2,28 @@ let mapleader=","
 
 call plug#begin('~/.vim/plugged')
 "Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
-"Plug 'ervandew/supertab'
-"Plug 'ncm2/ncm2'
-"Plug 'roxma/nvim-yarp'
-"Plug 'mileszs/ack.vim'
 "Plug 'cespare/vim-toml'
-"Plug 'hashivim/vim-terraform'
-"Plug 'mhinz/vim-mix-format'
-"Plug 'elixir-editors/vim-elixir'
 "Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-"Plug 'mustache/vim-mustache-handlebars'
+"Plug 'elixir-editors/vim-elixir'
+"Plug 'ervandew/supertab'
+"Plug 'hashivim/vim-terraform'
 "Plug 'kchmck/vim-coffee-script'
 "Plug 'leafOfTree/vim-vue-plugin'
+"Plug 'mhinz/vim-mix-format'
+"Plug 'mileszs/ack.vim'
+"Plug 'mustache/vim-mustache-handlebars'
+"Plug 'ncm2/ncm2'
+"Plug 'roxma/nvim-yarp'
 "Plug 'tpope/vim-surround'
 Plug '/opt/homebrew/opt/fzf'
+Plug 'MunifTanjim/nui.nvim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'github/copilot.vim'
 Plug 'godlygeek/tabular'
+Plug 'jackMort/ChatGPT.nvim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/vim-emoji'
 Plug 'kien/ctrlp.vim'
@@ -29,6 +31,9 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'rizzatti/dash.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
@@ -46,7 +51,6 @@ Plug 'wincent/terminus'
 Plug 'yggdroot/indentline'
 Plug 'zorab47/procfile.vim'
 call plug#end()
-
 
 "inoremap jk <esc>
 nmap <F5> <Plug>(lcn-menu)
@@ -162,3 +166,12 @@ highlight ColorColumn guibg='#2b2b2b'
 syntax enable
 syntax on
 syntax sync minlines=256
+
+" ChatGPT Setup
+lua << EOF
+  require("chatgpt").setup({
+    keymaps = {
+      submit = "<C-s>"
+    }
+  })
+EOF
