@@ -166,11 +166,27 @@ syntax enable
 syntax on
 syntax sync minlines=256
 
-" ChatGPT Setup
+"
+
+" OpenAI / ChatGPT Setup
 lua << EOF
+  local os = require("os")
   require("chatgpt").setup({
-    keymaps = {
+    openai_params = {
+      max_tokens = 400,
+      temperature = 0.1
+    },
+
+    chat = {
+      max_line_length = 110,
+    },
+
+    popup_input = {
       submit = "<C-s>"
-    }
+    },
+
+    predefined_chat_gpt_prompts = "https://raw.githubusercontent.com/hopsoft/dotfiles/main/openai/chat/prompts.csv",
+
+    actions_paths = { os.getenv("DOTDIR") .. "/openai/chat/actions.json" },
   })
 EOF
