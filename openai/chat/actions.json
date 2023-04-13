@@ -1,0 +1,48 @@
+{
+
+  "rdoc": {
+    "type": "chat",
+    "opts": {
+      "template": "Document the following Ruby method using RDoc (Ruby Documentation System) syntax. Include documentation for any parameters, return values, up to 3 examples, and any other relevant information that would help a user understand how to use this method. Also sprinkle in a little humor and peronsality.\n\n{{input}}.",
+      "strategy": "edit",
+      "params": {
+        "model": "gpt-3.5-turbo"
+      }
+    }
+  },
+
+  "rdoc!": {
+    "type": "edit",
+    "opts": {
+      "template": "{{input}}",
+      "strategy": "prepend",
+      "params": {
+        "model": "code-davinci-edit-001",
+        "instruction": "Document the following Ruby method using RDoc (Ruby Documentation System) syntax. Include documentation for any parameters, return values, up to 3 examples, and any other relevant information that would help a user understand how to use this method. Also sprinkle in a little humor and peronsality."
+      }
+    }
+  },
+
+  "yardoc": {
+    "type": "chat",
+    "opts": {
+      "template": "Document the following Ruby method using YARD syntax. Include documentation for any parameters, return values, up to 3 examples, and any other relevant information that would help a user understand how to use this method. Also sprinkle in a little humor and peronsality.\n\n{{input}}",
+      "strategy": "edit",
+      "params": {
+        "model": "gpt-3.5-turbo"
+      }
+    }
+  },
+
+  "yardoc!": {
+    "type": "edit",
+    "opts": {
+      "template": "{{input}}",
+      "strategy": "prepend",
+      "params": {
+        "model": "code-davinci-edit-001",
+        "instruction": "Document the following Ruby method using YARD syntax. Include documentation for any parameters, return values, up to 3 examples, and any other relevant information that would help a user understand how to use this method. Also sprinkle in a little humor and peronsality."
+      }
+    }
+  }
+}
