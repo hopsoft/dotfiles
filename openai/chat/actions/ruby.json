@@ -1,0 +1,69 @@
+{
+  "explain-ruby": {
+    "type": "chat",
+    "opts": {
+      "template": "Explain this Ruby code to an expert Ruby developer and highlight the pros and cons of the implementation. Omit backticks from your answer.\n\n{{input}}",
+      "strategy": "edit",
+      "params": {
+        "model": "gpt-3.5-turbo"
+      }
+    }
+  },
+
+  "refactor-ruby": {
+    "type": "chat",
+    "opts": {
+      "template": "Refactor the following Ruby code for ideal readablity, reliability, maintainablity, performance, and robustness. Show your work and explain the changes with Ruby comments.\n\n{{input}}",
+      "strategy": "edit",
+      "params": {
+        "model": "gpt-3.5-turbo"
+      }
+    }
+  },
+
+  "rdoc": {
+    "type": "chat",
+    "opts": {
+      "template": "Document the following Ruby method using RDoc (Ruby Documentation System) syntax. Include documentation for any parameters, return values, an example, and any other relevant information that would help a user understand how to use this method. Also sprinkle in a little humor and peronsality.\n\n{{input}}",
+      "strategy": "edit",
+      "params": {
+        "model": "gpt-3.5-turbo"
+      }
+    }
+  },
+
+  "rdoc!": {
+    "type": "edit",
+    "opts": {
+      "template": "{{input}}",
+      "strategy": "prepend",
+      "params": {
+        "model": "code-davinci-edit-001",
+        "instruction": "Document the following Ruby method using RDoc (Ruby Documentation System) syntax. Include documentation for any parameters, return values, an example, and any other relevant information that would help a user understand how to use this method. Also sprinkle in a little humor and peronsality."
+      }
+    }
+  },
+
+  "yardoc": {
+    "type": "chat",
+    "opts": {
+      "template": "Document the following Ruby method using YARD syntax. Include some personality and document parameters, return values, 1 example, and any other relevant information that would help a user understand how to use this method.\n\n{{input}}",
+      "strategy": "edit",
+      "params": {
+        "model": "gpt-3.5-turbo"
+      }
+    }
+  },
+
+  "yardoc!": {
+    "type": "edit",
+    "opts": {
+      "template": "{{input}}",
+      "strategy": "prepend",
+      "params": {
+        "model": "code-davinci-edit-001",
+        "instruction": "Document the following Ruby method using YARD syntax. Include some personality and document parameters, return values, 1 example, and any other relevant information that would help a user understand how to use this method."
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "explain-rails": {
+    "type": "chat",
+    "opts": {
+      "template": "Explain this Ruby on Rails code to an expert Rails developer and highlight the pros and cons of the implementation. Omit backticks from your answer.\n\n{{input}}",
+      "strategy": "edit",
+      "params": {
+        "model": "gpt-3.5-turbo"
+      }
+    }
+  },
+
+  "refactor-rails": {
+    "type": "chat",
+    "opts": {
+      "template": "Refactor the following Ruby on Rails code for ideal readablity, reliability, maintainablity, performance, and robustness. Show your work and explain the changes with Ruby comments.\n\n{{input}}",
+      "strategy": "edit",
+      "params": {
+        "model": "gpt-3.5-turbo"
+      }
+    }
+  },
+
+  "write-rails-test": {
+    "type": "chat",
+    "opts": {
+      "template": "Write a Ruby on Rails ActiveSupport::TestCase unit test for the following method.\n\n{{input}}",
+      "strategy": "edit",
+      "params": {
+        "model": "gpt-3.5-turbo"
+      }
+    }
+  },
+
+  "write-rails-job-test": {
+    "type": "chat",
+    "opts": {
+      "template": "Write a Ruby on Rails ActiveJob::TestCase test for the following ActiveJob peform method.\n\n{{input}}",
+      "strategy": "edit",
+      "params": {
+        "model": "gpt-3.5-turbo"
+      }
+    }
+  }
+}

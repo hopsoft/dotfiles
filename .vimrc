@@ -19,6 +19,7 @@ Plug '/opt/homebrew/opt/fzf'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
+Plug 'arcticicestudio/nord-vim'
 Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'github/copilot.vim'
@@ -66,6 +67,10 @@ vnoremap <Leader>fh :Tab /\w:\zs/r0l1l0<CR>
 
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
+endif
+
+if has('termguicolors')
+  set termguicolors
 endif
 
 "set guifont=Meslo\ LG\ M\ for\ Powerline:h14
@@ -166,27 +171,53 @@ syntax enable
 syntax on
 syntax sync minlines=256
 
-"
-
+" ============================================================================================================
 " OpenAI / ChatGPT Setup
+" ============================================================================================================
+command! Ai ChatGPT
+command! Aiact ChatGPTActAs
+command! -nargs=* -range Airun :<line1>,<line2>ChatGPTRun <args>
 lua << EOF
   local os = require("os")
   require("chatgpt").setup({
     openai_params = {
-      max_tokens = 400,
-      temperature = 0.1
+      max_tokens = 600,
+      temperature = 0.3
     },
 
     chat = {
-      max_line_length = 110,
+      sessions_window = {
+        win_options = {
+          winhighlight = "Normal:NormalFloat,FloatingBorder:FloatBorder",
+        },
+      },
+    },
+
+    popup_window = {
+      win_options = {
+        winhighlight = "Normal:NormalFloat,FloatingBorder:FloatBorder",
+      },
     },
 
     popup_input = {
-      submit = "<C-s>"
+      submit = "<C-s>",
+      win_options = {
+        winhighlight = "Normal:DiagnosticOk,FloatingBorder:FloatBorder",
+      },
+    },
+
+    settings_window = {
+      win_options = {
+        winhighlight = "Normal:NormalFloat,FloatingBorder:FloatBorder",
+      },
     },
 
     predefined_chat_gpt_prompts = "https://raw.githubusercontent.com/hopsoft/dotfiles/main/openai/chat/prompts.csv",
 
-    actions_paths = { os.getenv("DOTDIR") .. "/openai/chat/actions.json" },
+    actions_paths = {
+      os.getenv("DOTDIR") .. "/openai/chat/actions/fun.json",
+      os.getenv("DOTDIR") .. "/openai/chat/actions/rails.json",
+      os.getenv("DOTDIR") .. "/openai/chat/actions/ruby.json",
+    },
   })
 EOF
