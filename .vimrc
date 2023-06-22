@@ -1,39 +1,23 @@
 let mapleader=","
 
 call plug#begin('~/.vim/plugged')
-"Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
-"Plug 'cespare/vim-toml'
-"Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-"Plug 'elixir-editors/vim-elixir'
-"Plug 'ervandew/supertab'
-"Plug 'hashivim/vim-terraform'
-"Plug 'kchmck/vim-coffee-script'
-"Plug 'leafOfTree/vim-vue-plugin'
-"Plug 'mhinz/vim-mix-format'
-"Plug 'mileszs/ack.vim'
-"Plug 'mustache/vim-mustache-handlebars'
-"Plug 'ncm2/ncm2'
-"Plug 'roxma/nvim-yarp'
-"Plug 'tpope/vim-surround'
-Plug '/opt/homebrew/opt/fzf'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
-Plug 'arcticicestudio/nord-vim'
 Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'github/copilot.vim'
 Plug 'godlygeek/tabular'
+Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'jackMort/ChatGPT.nvim'
-Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/vim-emoji'
-Plug 'kien/ctrlp.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
 Plug 'rizzatti/dash.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
@@ -52,30 +36,22 @@ Plug 'yggdroot/indentline'
 Plug 'zorab47/procfile.vim'
 call plug#end()
 
-"inoremap jk <esc>
 nmap <F5> <Plug>(lcn-menu)
 nmap <silent> K <Plug>(lcn-hover)
 nmap <silent> gd <Plug>(lcn-definition)
-"nmap K <Plug>(devdocs-under-cursor)
-nnoremap <Leader>f :FZF!<CR>
+nnoremap <Leader>f <cmd>lua require('fzf-lua').grep()<CR>
 nnoremap <Leader>fd :cd %:p:h<CR>
 nnoremap <Leader>h :nohls<CR>
 nnoremap <Leader>nf :NERDTreeFind<CR>
 nnoremap <Leader>nt :NERDTreeToggle<CR>
 nnoremap <Leader>tb :TagbarToggle<CR>
+nnoremap <c-P> <cmd>lua require('fzf-lua').files()<CR>
 vnoremap <Leader>fh :Tab /\w:\zs/r0l1l0<CR>
 
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
 endif
 
-if has('termguicolors')
-  set termguicolors
-endif
-
-"set guifont=Meslo\ LG\ M\ for\ Powerline:h14
-"set shell=/opt/homebrew/bin/zsh
-"set shellcmdflag=-ic
 "set relativenumber
 set autoindent
 set autoread
@@ -91,7 +67,7 @@ set cursorline
 set dir=/tmp/editor
 set encoding=utf-8
 set endofline
-set expandtab " use spaces, not tabs (optional)
+set expandtab " use spaces, not tabs
 set guifont=MesloLGM\ Nerd\ Font:h14
 set hidden
 set lazyredraw
@@ -100,9 +76,9 @@ set list
 set listchars=tab:▸\ ,eol:¬,trail:·
 set noautochdir
 set number
-set tabstop=2 shiftwidth=2 " a tab is two spaces (or set this to 4)
+set tabstop=2 shiftwidth=2 " a tab is two spaces
 set timeoutlen=400
-set wrap " wrap lines
+set wrap
 
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 let g:ackprg = 'ag --vimgrep'
@@ -117,25 +93,9 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_linters = {}
 let g:ale_linters['javascript'] = ['prettier-standard']
 let g:ale_linters['ruby'] = ['standardrb']
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git$|tmp|cache|node_modules)',
-  \ 'file': '\v[\/](\.so\|\.dat|\.tags|tags|\.DS_Store)$'
-  \ }
-let g:ctrlp_follow_symlinks=1
-let g:ctrlp_match_window=''
-let g:ctrlp_max_depth=100
-let g:ctrlp_max_files=0
-let g:ctrlp_working_path_mode=''
 let g:indentLine_char_list = ['┊', '¦']
 let g:gruvbox_contrast_dark='soft'
 let g:gutentags_enabled=1
-"let g:LanguageClient_autoStop = 0
-"let g:LanguageClient_serverCommands = {
-"  \ 'ruby': ['solargraph', 'stdio'],
-"  \ 'javascript': ['typescript-language-server', '--stdio'],
-"  \ 'terraform': ['terraform-ls', 'serve'],
-"  \ 'typescript': ['typescript-language-server', '--stdio']
-"\ }
 let g:mix_format_on_save = 0
 let g:tagbar_type_ruby = {
   \ 'kinds' : [
@@ -157,9 +117,6 @@ let g:webdevicons_enable_nerdtree = 1
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 let g:python3_host_prog = '$BREW_PREFIX/bin/python3'
 
-"autocmd BufEnter * call ncm2#enable_for_buffer()
-"autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
-
 au BufRead,BufNewFile *.jb setfiletype ruby
 au FileType javascript setl sw=2 ts=2 expandtab
 autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespace on save
@@ -177,47 +134,61 @@ syntax sync minlines=256
 command! Ai ChatGPT
 command! Aiact ChatGPTActAs
 command! -nargs=* -range Airun :<line1>,<line2>ChatGPTRun <args>
+
 lua << EOF
-  local os = require("os")
-  require("chatgpt").setup({
-    openai_params = {
-      max_tokens = 600,
-      temperature = 0.3
-    },
+local os = require("os")
+require("chatgpt").setup({
+openai_params = {
+  max_tokens = 600,
+  temperature = 0.3
+  },
 
-    chat = {
-      sessions_window = {
-        win_options = {
-          winhighlight = "Normal:NormalFloat,FloatingBorder:FloatBorder",
-        },
+chat = {
+  sessions_window = {
+    win_options = {
+      winhighlight = "Normal:NormalFloat,FloatingBorder:FloatBorder",
       },
     },
+  },
 
-    popup_window = {
-      win_options = {
-        winhighlight = "Normal:NormalFloat,FloatingBorder:FloatBorder",
-      },
+popup_window = {
+  win_options = {
+    winhighlight = "Normal:NormalFloat,FloatingBorder:FloatBorder",
     },
+  },
 
-    popup_input = {
-      submit = "<C-s>",
-      win_options = {
-        winhighlight = "Normal:DiagnosticOk,FloatingBorder:FloatBorder",
-      },
+popup_input = {
+  submit = "<C-s>",
+  win_options = {
+    winhighlight = "Normal:DiagnosticOk,FloatingBorder:FloatBorder",
     },
+  },
 
-    settings_window = {
-      win_options = {
-        winhighlight = "Normal:NormalFloat,FloatingBorder:FloatBorder",
-      },
+settings_window = {
+  win_options = {
+    winhighlight = "Normal:NormalFloat,FloatingBorder:FloatBorder",
     },
+  },
 
-    predefined_chat_gpt_prompts = "https://raw.githubusercontent.com/hopsoft/dotfiles/main/openai/chat/prompts.csv",
+predefined_chat_gpt_prompts = "https://raw.githubusercontent.com/hopsoft/dotfiles/main/openai/chat/prompts.csv",
 
-    actions_paths = {
-      os.getenv("DOTDIR") .. "/openai/chat/actions/fun.json",
-      os.getenv("DOTDIR") .. "/openai/chat/actions/rails.json",
-      os.getenv("DOTDIR") .. "/openai/chat/actions/ruby.json",
-    },
-  })
+actions_paths = {
+  os.getenv("DOTDIR") .. "/openai/chat/actions/fun.json",
+  os.getenv("DOTDIR") .. "/openai/chat/actions/rails.json",
+  os.getenv("DOTDIR") .. "/openai/chat/actions/ruby.json",
+  },
+})
+
+require('fzf-lua').setup{
+  winopts = {
+    preview = {
+      delay = 25
+    }
+  },
+  grep = {
+    input_prompt = 'Search: ',
+    prompt = 'Results: ',
+    rg_opts = "--line-number --no-heading --color=always --smart-case --follow --vimgrep"
+  }
+}
 EOF
