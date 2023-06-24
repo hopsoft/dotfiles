@@ -162,3 +162,7 @@ docker_restart () {
 alias drestart='docker_restart'
 
 alias tf='terraform'
+
+alias ctr="containers $@"
+alias infra="containers $@"
+alias stack="containers $@"

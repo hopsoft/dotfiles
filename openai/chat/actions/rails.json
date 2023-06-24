@@ -2,7 +2,7 @@
   "explain-rails": {
     "type": "chat",
     "opts": {
-      "template": "Explain this Ruby on Rails code to an expert Rails developer and highlight the pros and cons of the implementation. Omit backticks from your answer.\n\n{{input}}",
+      "template": "Explain this Ruby on Rails code to an expert Rails developer. Highlight the pros and cons of the implementation as bullet points. Omit backticks from your answer.\n\n{{input}}",
       "strategy": "edit",
       "params": {
         "model": "gpt-3.5-turbo"

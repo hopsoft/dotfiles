@@ -3,7 +3,6 @@ dotdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../" && pwd )"
 file_names=(
   '.bash_profile'
   '.bashrc'
-  '.ctags.opts'
   '.fzf.bash'
   '.fzf.zsh'
   '.gitconfig'
@@ -32,11 +31,13 @@ done
 
 mkdir -p $HOME/.ctags.d
 rm $HOME/.ctags.d/default.ctags
-ln -sv $dotdir/.ctags.opts $HOME/.ctags.d/default.ctags
+ln -sv $dotdir/default.ctags $HOME/.ctags.d/default.ctags
 
 mkdir -p $HOME/.config/nvim
 rm $HOME/.config/nvim/init.vim
+rm $HOME/.config/nvim/init.lua
 ln -sv $dotdir/.config/nvim/init.vim $HOME/.config/nvim/init.vim
+ln -sv $dotdir/.config/nvim/init.lua $HOME/.config/nvim/init.lua
 
 rm $HOME/.zshrc
 ln -sv $dotdir/.zshrc $HOME/.zshrc
