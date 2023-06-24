@@ -1,8 +1,10 @@
 vim.cmd("call plug#begin('~/.vim/plugged')")
+
 vim.cmd("Plug 'MunifTanjim/nui.nvim'")
 vim.cmd("Plug 'Xuyuanp/nerdtree-git-plugin'")
 vim.cmd("Plug 'airblade/vim-gitgutter'")
 vim.cmd("Plug 'chriskempson/base16-vim'")
+vim.cmd("Plug 'duane9/nvim-rg'")
 vim.cmd("Plug 'easymotion/vim-easymotion'")
 vim.cmd("Plug 'github/copilot.vim'")
 vim.cmd("Plug 'godlygeek/tabular'")
@@ -32,4 +34,5 @@ vim.cmd("Plug 'w0rp/ale'")
 vim.cmd("Plug 'wincent/terminus'")
 vim.cmd("Plug 'yggdroot/indentline'")
 vim.cmd("Plug 'zorab47/procfile.vim'")
+
 vim.cmd("call plug#end()")
