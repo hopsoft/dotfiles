@@ -63,7 +63,7 @@ vim.opt.tabstop = 2
 vim.opt.timeoutlen = 400
 vim.opt.wrap = true
 
-vim.cmd [[autocmd BufWritePre * :%s/\\s\\+$//e]]
+vim.cmd([[autocmd BufWritePre * :%s/\s\+$//e]])
 vim.cmd("au BufRead,BufNewFile *.jb setfiletype ruby")
 vim.cmd("au FileType javascript setl sw=2 ts=2 expandtab")
 vim.cmd("colorscheme gruvbox")
