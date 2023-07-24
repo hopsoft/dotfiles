@@ -29,16 +29,16 @@
 1. Install Fonts
 
     ```sh
-    git clone -o github https://github.com/powerline/fonts.git ~/work/powerline/fonts
+    git clone -o github --depth 1 https://github.com/powerline/fonts.git ~/work/powerline/fonts
     ~/work/powerline/fonts/install.sh
 
-    git clone -o github https://github.com/ryanoasis/nerd-fonts.git ~/work/ryanoasis/nerd-fonts
+    git clone -o github --depth 1 https://github.com/ryanoasis/nerd-fonts.git ~/work/ryanoasis/nerd-fonts
     ~/work/ryanoasis/nerd-fonts/install.sh
     ```
 
 1. Setup tmux config: https://github.com/gpakosz/.tmux
 
     ```sh
-    git clone -o github https://github.com/gpakosz/.tmux.git ~/.tmux
+    git clone --depth 1 -o github https://github.com/gpakosz/.tmux.git ~/.tmux
     ln -s -f ~/.tmux/.tmux.conf ~/.tmux.conf
     ```
