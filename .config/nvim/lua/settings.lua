@@ -1,5 +1,4 @@
 -- Environment
-vim.env.NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 
 -- Globals
 vim.g.NERDTreeDisableSpecialCharacters = 1
@@ -31,8 +30,17 @@ vim.g.tagbar_type_ruby = {
   }
 }
 vim.g.vim_markdown_folding_disabled = 1
+vim.g.loaded_perl_provider = 0
 
 -- Options
+vim.opt.guicursor = {
+  "n-v-c:block",
+  "i-ci-ve:ver25",
+  "r-cr:hor20",
+  "o:hor50",
+  "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
+  "sm:block-blinkwait175-blinkoff150-blinkon175"
+}
 vim.opt.autochdir = false
 vim.opt.autoindent = true
 vim.opt.autoread = true
