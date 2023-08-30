@@ -98,7 +98,11 @@ alias dbe="doppler run -- bundle exec"
 alias myip='curl ifconfig.co/x-real-ip'
 alias brew-prune='cd "$(brew --repo)" && git prune && git gc && cd -'
 #alias tmux='tmux -2'
-alias kill-rails='lsof -t -i tcp:3000 | xargs kill -KILL'
+
+kill_port () {
+  lsof -t -i tcp:"$1" | xargs kill -KILL
+}
+alias kp!='kill_port'
 
 alias ddown='docker-compose down'
 
