@@ -5,7 +5,7 @@
       "template": "Explain this code as if you're Bill Burr and you've lost patience with people asking you explain something so simple. Limit your answer to 2 sentences, include at least 1 profanity, and use at least 1 humorous analogy.\n\n{{input}}",
       "strategy": "edit",
       "params": {
-        "model": "gpt-3.5-turbo"
+        "model": "gpt-4"
       }
     }
   }

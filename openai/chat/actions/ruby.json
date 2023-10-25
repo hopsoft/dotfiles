@@ -5,7 +5,7 @@
       "template": "Explain this Ruby code to an expert Ruby developer. Highlight the pros and cons of the implementation as bullet points. Omit backticks from your answer.\n\n{{input}}",
       "strategy": "edit",
       "params": {
-        "model": "gpt-3.5-turbo"
+        "model": "gpt-4"
       }
     }
   },
@@ -16,7 +16,7 @@
       "template": "Refactor the following Ruby code for ideal readablity, reliability, maintainablity, performance, and robustness. Show your work and explain the changes with Ruby comments.\n\n{{input}}",
       "strategy": "edit",
       "params": {
-        "model": "gpt-3.5-turbo"
+        "model": "gpt-4"
       }
     }
   },
@@ -27,7 +27,7 @@
       "template": "Document the following Ruby method using RDoc (Ruby Documentation System) syntax. Include documentation for any parameters, return values, an example, and any other relevant information that would help a user understand how to use this method. Also sprinkle in a little humor and peronsality.\n\n{{input}}",
       "strategy": "edit",
       "params": {
-        "model": "gpt-3.5-turbo"
+        "model": "gpt-4"
       }
     }
   },
@@ -38,7 +38,7 @@
       "template": "{{input}}",
       "strategy": "prepend",
       "params": {
-        "model": "code-davinci-edit-001",
+        "model": "gpt-4",
         "instruction": "Document the following Ruby method using RDoc (Ruby Documentation System) syntax. Include documentation for any parameters, return values, an example, and any other relevant information that would help a user understand how to use this method. Also sprinkle in a little humor and peronsality."
       }
     }
@@ -50,7 +50,7 @@
       "template": "Document the following Ruby method using YARD syntax. Include some personality and document parameters, return values, 1 example, and any other relevant information that would help a user understand how to use this method.\n\n{{input}}",
       "strategy": "edit",
       "params": {
-        "model": "gpt-3.5-turbo"
+        "model": "gpt-4"
       }
     }
   },
@@ -61,7 +61,7 @@
       "template": "{{input}}",
       "strategy": "prepend",
       "params": {
-        "model": "code-davinci-edit-001",
+        "model": "gpt-4",
         "instruction": "Document the following Ruby method using YARD syntax. Include some personality and document parameters, return values, 1 example, and any other relevant information that would help a user understand how to use this method."
       }
     }
