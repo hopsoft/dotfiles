@@ -2,7 +2,7 @@
   "explain-ruby": {
     "type": "chat",
     "opts": {
-      "template": "Explain this Ruby code to an expert Ruby developer. Highlight the pros and cons of the implementation as bullet points. Omit backticks from your answer.\n\n{{input}}",
+      "template": "Explain this Ruby code to an expert Ruby developer. Highlight the pros and cons of the implementation as bullet points. Omit backticks from your answer.\n\n```\n{{input}}\n```",
       "strategy": "edit",
       "params": {
         "model": "gpt-4"
@@ -13,7 +13,7 @@
   "refactor-ruby": {
     "type": "chat",
     "opts": {
-      "template": "Refactor the following Ruby code for ideal readablity, reliability, maintainablity, performance, and robustness. Show your work and explain the changes with Ruby comments.\n\n{{input}}",
+      "template": "Refactor the following Ruby code for ideal readablity, reliability, maintainablity, performance, and robustness. Show your work and explain the changes with Ruby comments.\n\n```\n{{input}}\n```",
       "strategy": "edit",
       "params": {
         "model": "gpt-4"
@@ -21,48 +21,14 @@
     }
   },
 
-  "rdoc": {
+  "yard": {
     "type": "chat",
     "opts": {
-      "template": "Document the following Ruby method using RDoc (Ruby Documentation System) syntax. Include documentation for any parameters, return values, an example, and any other relevant information that would help a user understand how to use this method. Also sprinkle in a little humor and peronsality.\n\n{{input}}",
-      "strategy": "edit",
-      "params": {
-        "model": "gpt-4"
-      }
-    }
-  },
-
-  "rdoc!": {
-    "type": "edit",
-    "opts": {
-      "template": "{{input}}",
+      "template": "Document the following Ruby method using YARD syntax. Include parameters, return values, an example if appropriate, and relevant information that will help a user understand how to use the method. Keep the documentation brief and to the point. Match the indentation depth used in the Ruby method. Do not wrap the answer in markdown.\n\n{{input}}",
       "strategy": "prepend",
       "params": {
         "model": "gpt-4",
-        "instruction": "Document the following Ruby method using RDoc (Ruby Documentation System) syntax. Include documentation for any parameters, return values, an example, and any other relevant information that would help a user understand how to use this method. Also sprinkle in a little humor and peronsality."
-      }
-    }
-  },
-
-  "yardoc": {
-    "type": "chat",
-    "opts": {
-      "template": "Document the following Ruby method using YARD syntax. Include some personality and document parameters, return values, 1 example, and any other relevant information that would help a user understand how to use this method.\n\n{{input}}",
-      "strategy": "edit",
-      "params": {
-        "model": "gpt-4"
-      }
-    }
-  },
-
-  "yardoc!": {
-    "type": "edit",
-    "opts": {
-      "template": "{{input}}",
-      "strategy": "prepend",
-      "params": {
-        "model": "gpt-4",
-        "instruction": "Document the following Ruby method using YARD syntax. Include some personality and document parameters, return values, 1 example, and any other relevant information that would help a user understand how to use this method."
+        "stop": ["def "]
       }
     }
   }
