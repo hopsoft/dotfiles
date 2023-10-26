@@ -32,6 +32,17 @@ vim.g.tagbar_type_ruby = {
 vim.g.vim_markdown_folding_disabled = 1
 vim.g.loaded_perl_provider = 0
 
+-- Aliases
+vim.cmd([[command! Ai ChatGPT]])
+vim.cmd([[command! AiAct ChatGPTActAs]])
+vim.cmd([[command! AiRun ChatGPTRun]])
+
+-- Mappings
+vim.api.nvim_set_keymap('i', '<ESC>', 'pumvisible() ? "<C-e>" : "<ESC>"', { expr = true, noremap = true })
+vim.api.nvim_set_keymap('i', 'jk', '<ESC>', { noremap = true })
+vim.api.nvim_set_keymap('c', '<ESC>', 'pumvisible() ? "<C-e>" : "<ESC>"', { expr = true, noremap = true })
+vim.api.nvim_set_keymap('c', 'jk', '<ESC>', { noremap = true })
+
 -- Options
 vim.opt.guicursor = {
   "n-v-c:block",

@@ -98,28 +98,20 @@ if command -v brew &> /dev/null; then
   export BREW_PREFIX=$(brew --prefix)
 fi
 
-# editors ....................................................................................................
-if command -v nvim &> /dev/null; then
-  export EDITOR=$(which nvim)
-else
-  export EDITOR=$(which vim)
-fi
-export GIT_EDITOR=$EDITOR
-export BUNDLER_EDITOR=$EDITOR
-
 # dotfiles ...................................................................................................
 export DOTDIR=$HOME/.dotfiles
 export PATH=$PATH:$HOME/.dotfiles/bin
 
-# langs ......................................................................................................
+# LANGS ......................................................................................................
 
 # ruby .......................................................................................................
 export BUNDLE_DEV=true
+export DISABLE_SPRING=true
 
 # erlang/elixir ..............................................................................................
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-# apps .......................................................................................................
+# APPS .......................................................................................................
 
 # asdf .......................................................................................................
 [ -f "$BREW_PREFIX/opt/asdf/libexec/asdf.sh" ] && . "$BREW_PREFIX/opt/asdf/libexec/asdf.sh"
@@ -127,12 +119,42 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 # fzf ........................................................................................................
 export FZF_BASE="$BREW_PREFIX/bin/fzf"
-[ -f ~/.fzf.zsh ] && . ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # postgres ...................................................................................................
 if [ -d /Applications/Postgres.app ]; then
   export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 fi
+
+# completions ................................................................................................
+[ -f "$BREW_PREFIX/etc/profile.d/bash_completion.sh" ] && . "$BREW_PREFIX/etc/profile.d/bash_completion.sh"
+if [ -d "$BREW_PREFIX/etc/bash_completion.d/" ]; then
+  for bcfile in "$BREW_PREFIX/etc/bash_completion.d/*"; do
+    [ -f "$bcfile" ] && . $bcfile
+  done
+fi
+
+# aliases ....................................................................................................
+eval $(thefuck --alias)
+. $DOTDIR/.aliases
+
+# secrets ....................................................................................................
+if [ -f $HOME/.private ]; then
+  . $HOME/.private
+fi
+
+# editors ....................................................................................................
+if [[ -f "$HOME/.asdf/shims/nvim" ]]; then
+  export EDITOR="$HOME/.asdf/shims/nvim"
+else
+  if command -v nvim &> /dev/null; then
+    export EDITOR=$(which nvim)
+  else
+    export EDITOR=$(which vim)
+  fi
+fi
+export GIT_EDITOR=$EDITOR
+export BUNDLER_EDITOR=$EDITOR
 
 # prompt .....................................................................................................
 if [[ -n $SSH_CONNECTION ]]; then
@@ -140,18 +162,8 @@ if [[ -n $SSH_CONNECTION ]]; then
 fi
 [ -f /.dockerenv ] && PROMPT="$PROMPT🐳 "
 
-# aliases ....................................................................................................
-eval $(thefuck --alias)
-. $DOTDIR/.aliases
-if [ -f $HOME/.private ]; then
-  . $HOME/.private
-fi
+ulimit -n 1024
 
-# plugins ....................................................................................................
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(
   asdf
   bundler
