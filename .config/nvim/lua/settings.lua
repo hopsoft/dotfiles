@@ -32,10 +32,23 @@ vim.g.tagbar_type_ruby = {
 vim.g.vim_markdown_folding_disabled = 1
 vim.g.loaded_perl_provider = 0
 
+-- Functions
+function _G.reloadNeovimInit()
+  vim.cmd("source " .. vim.fn.expand("$HOME/.dotfiles/.config/nvim/init.lua"))
+  print("Neovim configuration reloaded")
+end
+
+_G.execChatGPTRun = function(start_line, end_line, args)
+  local range_str = start_line .. "," .. end_line
+  vim.cmd(string.format("%sChatGPTRun %s", range_str, args))
+end
+
 -- Aliases
+vim.cmd("command! Reinit lua reloadNeovimInit()")
 vim.cmd([[command! Ai ChatGPT]])
 vim.cmd([[command! AiAct ChatGPTActAs]])
-vim.cmd([[command! AiRun ChatGPTRun]])
+vim.cmd("command! -range -nargs=* AiRun lua execChatGPTRun(<line1>, <line2>, <f-args>)")
+vim.cmd("command! -range AiYard lua execChatGPTRun(<line1>, <line2>, 'yard')")
 
 -- Mappings
 vim.api.nvim_set_keymap('i', '<ESC>', 'pumvisible() ? "<C-e>" : "<ESC>"', { expr = true, noremap = true })
