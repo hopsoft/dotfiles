@@ -43,12 +43,13 @@ _G.execChatGPTRun = function(start_line, end_line, args)
   vim.cmd(string.format("%sChatGPTRun %s", range_str, args))
 end
 
--- Aliases
+-- Aliases/Commands
 vim.cmd("command! Reinit lua reloadNeovimInit()")
-vim.cmd([[command! Ai ChatGPT]])
-vim.cmd([[command! AiAct ChatGPTActAs]])
+vim.cmd("command! Ai ChatGPT")
+vim.cmd("command! AiAct ChatGPTActAs")
 vim.cmd("command! -range -nargs=* AiRun lua execChatGPTRun(<line1>, <line2>, <f-args>)")
 vim.cmd("command! -range AiYard lua execChatGPTRun(<line1>, <line2>, 'yard')")
+vim.cmd([[command! RubyPrefixConstants %s/\s\([A-Z]\)\@=/ ::/g]])
 
 -- Mappings
 vim.api.nvim_set_keymap('i', '<ESC>', 'pumvisible() ? "<C-e>" : "<ESC>"', { expr = true, noremap = true })
