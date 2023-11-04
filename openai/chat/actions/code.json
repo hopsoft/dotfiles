@@ -3,11 +3,12 @@
     "type": "chat",
     "opts": {
       "title": "Code Review",
-      "template": "Review the following {{language}} code for logic issues, inefficiencies, or non-adherence to SOLID principles or other best practices:\n\n```{{input}}\n\n``` Suggest improvements using {{language}}'s standard library for better readability, maintainability, and performance. Provide practical, actionable advice. Don't explain the existing code. Keep feedback brief and to the point.",
+      "template": "Review the following {{language}} code for logic issues, inefficiencies, or non-adherence to SOLID principles or other best practices:\n\n```{{input}}\n\n``` Suggest improvements using {{language}}'s standard library for better readability, maintainability, and performance. Provide practical, actionable advice, and code examples when appropriate.",
       "strategy": "edit",
       "max_tokens": 4096,
       "params": {
-        "model": "gpt-4"
+        "model": "gpt-4",
+        "temperature": 0
       }
     },
     "args": {
