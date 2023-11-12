@@ -49,12 +49,6 @@ alias gp='$HOME/.dotfiles/scripts/github_pages.rb'
 # vim without sourcing .vimrc
 alias vimx='vim -u NONE -N'
 
-# git log with diff
-alias gl='git log -p $1'
-
-# search git log diffs
-alias gls='git log -p -S$1'
-
 rbenv_switch_ruby() {
   export RBX_ROOT=$HOME/.rbenv/versions/rbx-2.0.0-dev
 

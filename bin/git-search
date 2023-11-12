@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+code_results = `git log --color -S'#{ARGV[0]}' #{ARGV[1..].join " "}`
+message_results = `git log --color --grep='#{ARGV[0]}' #{ARGV[1..].join " "}`
+puts [code_results, message_results].join("\n")
