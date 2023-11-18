@@ -13,7 +13,8 @@
     },
     "args": {
       "person": {
-        "type": "string"
+        "type": "string",
+        "optional": "false"
       },
       "activity": {
         "type": "string",
