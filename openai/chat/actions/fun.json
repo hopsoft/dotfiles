@@ -14,7 +14,7 @@
     "args": {
       "person": {
         "type": "string",
-        "optional": "true"
+        "optional": "false"
       },
       "activity": {
         "type": "string",
