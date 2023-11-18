@@ -20,6 +20,32 @@
     }
   },
 
+  "review-as": {
+    "type": "chat",
+    "opts": {
+      "title": "Personal Code Review",
+      "template": "Imagine you are {{person}} explaining this code. Provide a brief analysis while also {{activity}}, and relate this to your review. Limit your response to 3 sentences. Address your note to `Nate`. Also, include a closing salution and sign the response `{{person}}`.\n\n{{input}}",
+      "strategy": "display",
+      "params": {
+        "model": "gpt-4",
+        "temperature": 2,
+        "max_tokens": 512
+      }
+    },
+    "args": {
+      "person": {
+        "type": "string",
+        "optional": "false",
+        "default": "DHH"
+      },
+      "activity": {
+        "type": "string",
+        "optional": "true",
+        "default": "coaching me to write Rails code like a Rails core member"
+      }
+    }
+  },
+
   "refactor": {
     "type": "chat",
     "opts": {

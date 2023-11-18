@@ -144,8 +144,7 @@ require('chatgpt').setup({
   },
   use_openai_functions_for_edits = false,
   actions_paths = {
-    os.getenv('DOTDIR') .. '/openai/chat/actions/code.json',
-    os.getenv('DOTDIR') .. '/openai/chat/actions/fun.json',
+    os.getenv('DOTDIR') .. '/openai/chat/actions/code.json'
   },
   show_quickfixes_cmd = "Trouble quickfix",
   --predefined_chat_gpt_prompts = "https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/prompts.csv",
