@@ -14,13 +14,11 @@
     "args": {
       "person": {
         "type": "string",
-        "optional": "true",
-        "default": "Bill Burr"
+        "optional": "true"
       },
       "activity": {
         "type": "string",
-        "optional": "true",
-        "default": "angrily telling me about the annoyances of your day"
+        "optional": "true"
       }
     }
   }
