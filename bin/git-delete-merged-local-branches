@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# List merged and deleted branches (excluding 'main' and 'master')
+git for-each-ref --format="%(refname:short) %(upstream:trackshort)" refs/heads | grep -v 'null' | while read line; do
+  branch=$(echo "$line" | awk '{print $1}')
+  tracking=$(echo "$line" | awk '{print $2}')
+  if [ "$branch" != "main" ] && [ "$branch" != "master" ]; then
+    if ! git show-branch "$branch" "$tracking" >/dev/null 2>&1; then
+      echo "---"
+      read -p "Delete local branch '$branch'? [y/N] " answer </dev/tty
+      answer=$(echo "$answer" | tr '[:upper:]' '[:lower:]')  # Convert to lowercase
+      if [ "$answer" == "y" ]; then
+        # Delete the local branch
+        git branch -D "$branch"
+        echo "Deleted branch '$branch'"
+      fi
+    fi
+  fi
+done

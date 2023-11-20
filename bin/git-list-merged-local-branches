@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+git for-each-ref --format="%(refname:short) %(upstream:trackshort)" refs/heads | grep -v 'null' | while read branch tracking; do
+  if [ "$branch" != "main" ] && [ "$branch" != "master" ]; then
+    if ! git show-branch "$branch" "$tracking" >/dev/null 2>&1; then
+      echo "$branch"
+    fi
+  fi
+done

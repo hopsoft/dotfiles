@@ -1,13 +1,14 @@
+-- Neovim --
 function _G.reloadNeovimInit()
   vim.cmd("source " .. vim.fn.expand("$HOME/.dotfiles/.config/nvim/init.lua"))
   print("Neovim configuration reloaded")
 end
 
+-- Open AI / ChatGPT (jackMort/ChatGPT.nvim') --
 _G.execChatGPTRun = function(start_line, end_line, args)
   local range_str = start_line .. "," .. end_line
   vim.cmd(string.format("%sChatGPTRun %s", range_str, args))
 end
-
 vim.cmd("command! Reinit lua reloadNeovimInit()")
 vim.cmd("command! Ai ChatGPT")
 vim.cmd("command! AiAct ChatGPTActAs")
