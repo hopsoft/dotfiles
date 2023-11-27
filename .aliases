@@ -49,38 +49,6 @@ alias gp='$HOME/.dotfiles/scripts/github_pages.rb'
 # vim without sourcing .vimrc
 alias vimx='vim -u NONE -N'
 
-rbenv_switch_ruby() {
-  export RBX_ROOT=$HOME/.rbenv/versions/rbx-2.0.0-dev
-
-  if [ "$PRE_RBX_PATH" ]; then
-    export PATH=$PRE_RBX_PATH
-  fi
-
-  case "$1" in
-  1.8)    rbenv shell 1.8.7-p370
-          ruby -v
-          ;;
-  # 1.9)    rbenv shell 1.9.3-p194
-  1.9)    rbenv shell 1.9.3-p286
-          ruby -v
-          ;;
-  2.0)    rbenv shell 2.0.0-p0
-          ruby -v
-          ;;
-  jruby)  rbenv shell jruby-1.7.0-preview2
-          ruby -v
-          ;;
-  rbx)    export PRE_RBX_PATH=$PATH
-          export PATH=$RBX_ROOT/gems/1.9/bin:$PATH
-          rbenv shell rbx-2.0.0-dev
-          ruby -v
-          ;;
-  esac
-
-  rbenv rehash
-}
-alias rb='rbenv_switch_ruby'
-
 # based on: https://gist.github.com/jimbojsb/1630790
 alias hl='pbpaste | highlight --syntax=ruby --style=bright -O rtf | pbcopy'
 alias cdruby='cd $RUBY_PATH/lib/ruby'
@@ -97,70 +65,4 @@ kill_port () {
   lsof -t -i tcp:"$1" | xargs kill -KILL
 }
 alias kp!='kill_port'
-
-alias ddown='docker-compose down'
-
-docker_compose_up () {
-  docker-compose up -d "$@"
-}
-alias dup='docker_compose_up'
-
-docker_exec () {
-  project=$(basename $(pwd))
-  name="$1"
-  shift
-  docker exec -it "$project-$name" "$@"
-}
-alias dexec='docker_exec'
-alias dx='docker_exec'
-
-docker_tail () {
-  project=$(basename $(pwd))
-  name="$1"
-  shift
-  docker logs -f "$@" "$project-$name"
-}
-alias dtail='docker_tail'
-alias dt='docker_tail'
-
-docker_attach () {
-  project=$(basename $(pwd))
-  docker attach "$project-$@"
-}
-alias dattach='docker_attach'
-alias da='docker_attach'
-
-docker_command () {
-  command="$1"
-  shift
-
-  if [[ -z "$@" ]]; then
-    docker-compose "$command"
-  else
-    name="$1"
-    shift
-    project=$(basename $(pwd))
-    docker "$command" "$@" "$project-$name"
-  fi
-}
-
-docker_start () {
-  docker_command start "$@"
-}
-alias dstart='docker_start'
-
-docker_stop () {
-  docker_command stop "$@"
-}
-alias dstop='docker_stop'
-
-docker_restart () {
-  docker_command restart "$@"
-}
-alias drestart='docker_restart'
-
 alias tf='terraform'
-
-alias ctr="containers $@"
-alias infra="containers $@"
-alias stack="containers $@"
