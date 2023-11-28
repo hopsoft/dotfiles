@@ -10,7 +10,6 @@ vim.g.coc_global_extensions = {
   'coc-markdown-preview-enhanced',
   'coc-markdownlint',
   'coc-solargraph',
-  'coc-spell-checker',
   'coc-stylelintplus',
   'coc-svg',
   'coc-tailwindcss',

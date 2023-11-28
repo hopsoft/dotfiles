@@ -14,7 +14,7 @@ def symlink_files(*files)
 
     FileUtils.mkdir_p File.dirname(homepath)
 
-    if File.symlink? homepath
+    if !File.exist?(homepath) || File.symlink?(homepath)
       FileUtils.ln_s dotpath, homepath, force: true, verbose: true
       next
     end
@@ -50,6 +50,7 @@ symlink_files *%w[
   .irbrc
   .pryrc
   .rubocop.yml
+  .tmux.conf
   .zshrc
 ]
 
