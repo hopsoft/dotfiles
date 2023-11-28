@@ -1,2 +1,1 @@
-export DOTDIR=$HOME/.dotfiles
-#. $DOTDIR/.bashrc
+export DOTDIR="$HOME/.dotfiles"

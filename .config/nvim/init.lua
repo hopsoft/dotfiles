@@ -3,6 +3,7 @@ require("plugins")
 require("mappings")
 require("settings")
 require("commands")
+require("coc")
 require("fzf")
 
 -- require("chatgpt") doesn't work

@@ -1,6 +1,3 @@
-# Re-sources the .bash_profile
-alias resource='. $DOTDIR/.bash_profile'
-
 # Change directories to the dotfiles project
 alias cdot='cd $DOTDIR'
 alias ghdot='open https://github.com/hopsoft/dotfiles'
@@ -65,4 +62,4 @@ kill_port () {
   lsof -t -i tcp:"$1" | xargs kill -KILL
 }
 alias kp!='kill_port'
-alias tf='terraform'
+alias tx="tmuxinator $@"

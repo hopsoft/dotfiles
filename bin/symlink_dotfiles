@@ -1,46 +1,57 @@
-#!/usr/bin/env bash
-dotdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../" && pwd )"
-file_names=(
-  '.bash_profile'
-  '.bashrc'
-  '.fzf.bash'
-  '.fzf.zsh'
-  '.gitconfig'
-  '.gitignore'
-  '.gvimrc'
-  '.ignore'
-  '.irbrc'
-  '.pryrc'
-  '.rubocop.yml'
-  '.tmux.conf.local'
-  '.vimrc'
-  '.zprofile'
-  '.zshrc'
-)
-for file_name in ${file_names[@]}
-do
-  home_path=$HOME/$file_name
-  dot_path=$dotdir/$file_name
-  if [ -a $home_path ]
-  then
-    echo "$home_path already exists!"
-  else
-    ln -sv $dot_path $home_path
-  fi
-done
+#!/usr/bin/env ruby
 
-mkdir -p $HOME/.ctags.d
-rm $HOME/.ctags.d/default.ctags
-ln -sv $dotdir/default.ctags $HOME/.ctags.d/default.ctags
+require 'fileutils'
 
-mkdir -p $HOME/.config/nvim
-rm $HOME/.config/nvim/init.vim
-rm $HOME/.config/nvim/init.lua
-ln -sv $dotdir/.config/nvim/init.vim $HOME/.config/nvim/init.vim
-ln -sv $dotdir/.config/nvim/init.lua $HOME/.config/nvim/init.lua
+DOTDIR = File.expand_path('../', File.dirname(__FILE__))
 
-rm $HOME/.zshrc
-ln -sv $dotdir/.zshrc $HOME/.zshrc
-ln -sv $dotdir/coc-settings.json $HOME/.vim/coc-settings.json
+FileUtils.touch File.join(Dir.home, '.private')
 
-touch $dotdir/.private
+def symlink_files(*files)
+  files.each do |filename|
+    puts "---"
+    homepath = File.join(Dir.home, filename)
+    dotpath = File.join(DOTDIR, filename)
+
+    FileUtils.mkdir_p File.dirname(homepath)
+
+    if File.symlink? homepath
+      FileUtils.ln_s dotpath, homepath, force: true, verbose: true
+      next
+    end
+
+    print "File '#{homepath}' already exists. Delete? (y/n) "
+
+    if gets.chomp.downcase == "y"
+      FileUtils.rm_f homepath, verbose: true
+      FileUtils.ln_s dotpath, homepath, force: true, verbose: true
+    else
+      puts "Skipping '#{homepath}'"
+    end
+  end
+end
+
+def symlink_directory(directory_name)
+  homepath = File.join(Dir.home, directory_name)
+  dotpath = File.join(DOTDIR, directory_name)
+
+  dotfiles = Dir.glob(File.join(dotpath, '*'))
+    .select { |f| File.file? f }
+    .map { |f| "#{directory_name}/#{File.basename(f)}" }
+
+  symlink_files *dotfiles
+end
+
+symlink_files *%w[
+  .bashrc
+  .fzf.zsh
+  .gitconfig
+  .gitignore
+  .ignore
+  .irbrc
+  .pryrc
+  .rubocop.yml
+  .zshrc
+]
+
+symlink_directory ".ctags.d"
+symlink_directory ".config"
