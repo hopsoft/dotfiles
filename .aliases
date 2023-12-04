@@ -62,4 +62,7 @@ kill_port () {
   lsof -t -i tcp:"$1" | xargs kill -KILL
 }
 alias kp!='kill_port'
-alias tx="tmuxinator $@"
+alias x="tmuxinator $@"
+alias xstart="tmuxinator $@"
+alias xstop="tmux kill-session -t $@"
+alias xlist="tmux list-sessions"

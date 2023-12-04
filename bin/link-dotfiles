@@ -1,16 +1,17 @@
 #!/usr/bin/env ruby
 
-require 'fileutils'
+require "pry"
+require "fileutils"
 
-DOTDIR = File.expand_path('../', File.dirname(__FILE__))
+DOTDIR = File.expand_path("../", File.dirname(__FILE__))
 
-FileUtils.touch File.join(Dir.home, '.private')
+FileUtils.touch File.join(Dir.home, ".private")
 
 def symlink_files(*files)
-  files.each do |filename|
+  files.each do |file|
     puts "---"
-    homepath = File.join(Dir.home, filename)
-    dotpath = File.join(DOTDIR, filename)
+    homepath = File.join(Dir.home, file)
+    dotpath = File.join(DOTDIR, file)
 
     FileUtils.mkdir_p File.dirname(homepath)
 
@@ -31,17 +32,14 @@ def symlink_files(*files)
 end
 
 def symlink_directory(directory_name)
-  homepath = File.join(Dir.home, directory_name)
-  dotpath = File.join(DOTDIR, directory_name)
-
-  dotfiles = Dir.glob(File.join(dotpath, '*'))
+  dotfiles = Dir.glob(File.join(DOTDIR, directory_name, "**", "*"))
     .select { |f| File.file? f }
-    .map { |f| "#{directory_name}/#{File.basename(f)}" }
+    .map { |f| f.sub("#{DOTDIR}/", "") }
 
-  symlink_files *dotfiles
+  symlink_files(*dotfiles)
 end
 
-symlink_files *%w[
+symlink_files(*%w[
   .bashrc
   .fzf.zsh
   .gitconfig
@@ -52,7 +50,7 @@ symlink_files *%w[
   .rubocop.yml
   .tmux.conf
   .zshrc
-]
+])
 
 symlink_directory ".ctags.d"
 symlink_directory ".config"
