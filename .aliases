@@ -63,6 +63,6 @@ kill_port () {
 }
 alias kp!='kill_port'
 alias x="tmuxinator $@"
-alias xstart="tmuxinator $@"
-alias xstop="tmux kill-session -t $@"
+alias xup="tmuxinator $@"
+alias xdown="tmux kill-session -t $@"
 alias xlist="tmux list-sessions"
