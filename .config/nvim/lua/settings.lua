@@ -1,4 +1,5 @@
 -- Globals
+vim.g.copilot_node_command = "$HOME/.asdf/installs/nodejs/20.10.0/bin/node"
 vim.g.NERDTreeDisableSpecialCharacters = 1
 vim.g.ackprg = 'rg --vimgrep'
 vim.g.airline_powerline_fonts = 1
