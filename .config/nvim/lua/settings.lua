@@ -69,17 +69,3 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.timeoutlen = 400
 vim.opt.wrap = true
-
--- Setup
-vim.cmd([[autocmd BufWritePre * :%s/\s\+$//e]])
-vim.cmd("au BufRead,BufNewFile *.jb setfiletype ruby")
-vim.cmd("au FileType javascript setl sw=2 ts=2 expandtab")
-vim.cmd("colorscheme gruvbox")
-vim.cmd("filetype off")
-vim.cmd("hi ColorColumn guibg='#2b2b2b'")
-vim.cmd("hi EasyMotionTarget guifg='#ffaf00'")
-vim.cmd("syntax enable")
-vim.cmd("syntax on")
-vim.cmd("syntax sync minlines=256")
-vim.cmd('set completeopt+=menuone')
-vim.cmd('set completeopt+=noselect')

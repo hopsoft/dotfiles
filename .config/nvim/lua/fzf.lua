@@ -12,18 +12,24 @@ end
 require('fzf-lua').setup{
   winopts = {
     preview = {
-      delay = 25
+      delay = 0
     }
   },
   grep = {
-    input_prompt = 'Search: ',
+    input_prompt = 'fzf: ',
     prompt = 'Results: ',
-    rg_opts = '--line-number --no-heading --color=always --smart-case --follow --vimgrep',
+    rg_opts = ' --ignore-case --fixed-strings --follow --pretty --vimgrep',
     cwd = find_project_root()
   },
   files = {
     cwd = find_project_root()
-  }
+  },
+  files_ignore = {
+    'application.js.map',
+    'coverage',
+    'node_modules',
+    'pkg',
+  },
 }
 
 vim.api.nvim_set_keymap('n', '<Leader>f', '<cmd>lua require("fzf-lua").grep()<CR>', {})
