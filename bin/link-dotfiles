@@ -41,6 +41,7 @@ end
 
 symlink_files(*%w[
   .bashrc
+  .bat.zsh
   .fzf.zsh
   .gitconfig
   .gitignore

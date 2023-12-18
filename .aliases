@@ -66,3 +66,5 @@ alias x="tmuxinator $@"
 alias xup="tmuxinator $@"
 alias xdown="tmux kill-session -t $@"
 alias xlist="tmux list-sessions"
+
+eval $(thefuck --alias)

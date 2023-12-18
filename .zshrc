@@ -112,17 +112,13 @@ export DISABLE_SPRING=true
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # APPS .......................................................................................................
+[[ -f $DOTDIR/.aliases ]] && . $DOTDIR/.aliases
+[[ -f $HOME/.bat.zsh ]] && . "$HOME/.bat.zsh"
+[[ -f $HOME/.fzf.zsh ]] && . "$HOME/.fzf.zsh"
 
 # asdf .......................................................................................................
 [ -f "$BREW_PREFIX/opt/asdf/libexec/asdf.sh" ] && . "$BREW_PREFIX/opt/asdf/libexec/asdf.sh"
 [ -f "$BREW_PREFIX/etc/bash_completion.d/asdf.bash" ] && . "$BREW_PREFIX/etc/bash_completion.d/asdf.bash"
-
-# bat ........................................................................................................
-export BAT_THEME="gruvbox-dark"
-
-# fzf ........................................................................................................
-export FZF_BASE="$BREW_PREFIX/bin/fzf"
-[ -f "$HOME/.fzf.zsh" ] && source ~/.fzf.zsh
 
 # postgres ...................................................................................................
 if [ -d /Applications/Postgres.app ]; then
@@ -136,10 +132,6 @@ if [ -d "$BREW_PREFIX/etc/bash_completion.d/" ]; then
     [ -f "$bcfile" ] && . $bcfile
   done
 fi
-
-# aliases ....................................................................................................
-eval $(thefuck --alias)
-. $DOTDIR/.aliases
 
 # secrets ....................................................................................................
 if [ -f $HOME/.private ]; then
