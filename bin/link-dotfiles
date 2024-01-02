@@ -50,6 +50,7 @@ symlink_files(*%w[
   .pryrc
   .rubocop.yml
   .tmux.conf
+  .yard.zsh
   .zshrc
 ])
 

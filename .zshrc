@@ -115,6 +115,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 [[ -f $DOTDIR/.aliases ]] && . $DOTDIR/.aliases
 [[ -f $HOME/.bat.zsh ]] && . "$HOME/.bat.zsh"
 [[ -f $HOME/.fzf.zsh ]] && . "$HOME/.fzf.zsh"
+[[ -f $HOME/.yard.zsh ]] && . "$HOME/.yard.zsh"
 
 # asdf .......................................................................................................
 [ -f "$BREW_PREFIX/opt/asdf/libexec/asdf.sh" ] && . "$BREW_PREFIX/opt/asdf/libexec/asdf.sh"
