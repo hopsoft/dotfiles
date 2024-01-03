@@ -70,7 +70,7 @@
     "type": "chat",
     "opts": {
       "template": "Document the following Ruby class, module, or method using YARD syntax. Add summary documentation for classes and modules, and document all public and protected methods. Include parameters and return values, but omit examples. Include relevant information that will help programmers how to work with the code. Keep the documentation brief and to the point. Do not use markdown syntax.\n\n{{input}}",
-      "strategy": "edit",
+      "strategy": "replace",
       "params": {
         "model": "gpt-4",
         "stop": ["def "]
