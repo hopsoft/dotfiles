@@ -69,7 +69,7 @@
   "yard": {
     "type": "chat",
     "opts": {
-      "template": "Document the following Ruby class, module, or methods using YARD syntax. Add summary documentation for classes and modules. Document all public and protected methods. Include parameters and return values, but omit examples. ONLY add comments; DO NOT omit or modify any of the original code in your answer. DO NOT wrap your answer in Markdown.\n\n{{input}}",
+      "template": "Document the following Ruby class, module, or methods using YARD syntax. Add summary documentation for classes and modules. Document all public and protected methods. Include parameters and return values, but omit examples. ONLY add comments; DO NOT omit or modify any of the original code in your answer. Your answer should return the original Ruby code with only the addition of doc comments.\n\n{{input}}",
       "strategy": "replace",
       "max_tokens": 4096,
       "params": {
