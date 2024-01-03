@@ -16,6 +16,7 @@ vim.cmd("syntax on")
 vim.cmd("syntax sync minlines=256")
 vim.cmd('set completeopt+=menuone')
 vim.cmd('set completeopt+=noselect')
+vim.cmd('autocmd VimEnter,WinEnter,BufWinEnter * setlocal nohlsearch')
 vim.cmd([[autocmd BufWritePre * :%s/\s\+$//e]])
 
 -- Open AI / ChatGPT (jackMort/ChatGPT.nvim') --
