@@ -66,11 +66,11 @@
     }
   },
 
-  "yardoc": {
+  "yard": {
     "type": "chat",
     "opts": {
-      "template": "Document the following Ruby method using YARD syntax. Include parameters, return values, an example if appropriate, and relevant information that will help a user understand how to use the method. Keep the documentation brief and to the point. Match the indentation depth used in the Ruby method. Do not wrap the answer in markdown.\n\n{{input}}",
-      "strategy": "prepend",
+      "template": "Document the following Ruby class, module, or method using YARD syntax. Add summary documentation for classes and modules, and document all public and protected methods. Include parameters and return values, but omit examples. Include relevant information that will help programmers how to work with the code. Keep the documentation brief and to the point. Do not use markdown syntax.\n\n{{input}}",
+      "strategy": "edit",
       "params": {
         "model": "gpt-4",
         "stop": ["def "]
