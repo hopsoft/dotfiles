@@ -49,6 +49,7 @@ symlink_files(*%w[
   .irbrc
   .pryrc
   .rubocop.yml
+  .ruby.zsh
   .tmux.conf
   .yard.zsh
   .zshrc
