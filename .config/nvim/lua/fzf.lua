@@ -16,7 +16,7 @@ require('fzf-lua').setup{
     }
   },
   grep = {
-    input_prompt = 'fzf: ',
+    input_prompt = 'Find: ',
     prompt = 'Results: ',
     rg_opts = ' --ignore-case --no-fixed-strings --follow --pretty --vimgrep',
     cwd = find_project_root()
