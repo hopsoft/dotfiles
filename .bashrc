@@ -1,1 +1,1 @@
-exec zsh
+#exec zsh

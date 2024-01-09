@@ -5,9 +5,9 @@
       "title": "Code Review",
       "template": "Review the following {{language}} code for logic issues, inefficiencies, or non-adherence to SOLID principles or other best practices:\n\n```{{input}}\n\n``` Suggest improvements using {{language}}'s standard library for better readability, maintainability, and performance. Provide practical, actionable advice, and code examples when appropriate.",
       "strategy": "edit",
-      "max_tokens": 4096,
+      "max_tokens": 2048,
       "params": {
-        "model": "gpt-4",
+        "model": "gpt-3.5-turbo",
         "temperature": 0
       }
     },
@@ -27,9 +27,9 @@
       "template": "Imagine you are {{person}} explaining this code. Provide a brief analysis while also {{activity}}, and relate this to your review. Limit your response to 3 sentences. Address your note to `Nate`. Also, include a closing salution and sign the response `{{person}}`.\n\n{{input}}",
       "strategy": "display",
       "params": {
-        "model": "gpt-4",
+        "model": "gpt-3.5-turbo",
         "temperature": 2,
-        "max_tokens": 512
+        "max_tokens": 2048
       }
     },
     "args": {
@@ -52,7 +52,7 @@
       "title": "Code Refactor",
       "template": "Refactor the following {{language}} code to optimize readability, reliability, maintainability, performance, and robustness.\n\n{{input}}",
       "strategy": "edit",
-      "max_tokens": 4096,
+      "max_tokens": 2048,
       "params": {
         "model": "gpt-4"
       }
@@ -69,9 +69,9 @@
   "yard": {
     "type": "chat",
     "opts": {
-      "template": "Document the following Ruby class, module, or methods using YARD syntax. Add summary documentation for classes and modules. Document all public and protected methods. Include parameters and return values, but omit examples. ONLY add comments; DO NOT omit or modify any of the original code in your answer. Your answer should return the original Ruby code with only the addition of doc comments.\n\n{{input}}",
+      "template": "Document the following Ruby class, module, or methods using YARD syntax. Add summary documentation for classes and modules. Document all public and protected methods. Include parameters and return values, but omit examples. ONLY add comments; DO NOT omit or modify any of the original code in your answer. Your answer should return the original Ruby code with only the addition of doc comments. Only add YARD comments, do not comment the internals.\n\n{{input}}",
       "strategy": "replace",
-      "max_tokens": 4096,
+      "max_tokens": 2048,
       "params": {
         "model": "gpt-4"
       }
