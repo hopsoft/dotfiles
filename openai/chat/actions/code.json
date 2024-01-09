@@ -7,7 +7,7 @@
       "strategy": "edit",
       "max_tokens": 2048,
       "params": {
-        "model": "gpt-3.5-turbo",
+        "model": "gpt-4",
         "temperature": 0
       }
     },
@@ -41,7 +41,7 @@
       "activity": {
         "type": "string",
         "optional": "true",
-        "default": "coaching me to write Rails code like a Rails core member"
+        "default": "coaching me to write Rails code like a Rails core team member or Basecamp employee"
       }
     }
   },
