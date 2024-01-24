@@ -1,2 +1,0 @@
-# Rails ActiveRecord scopes
---regex-ruby=/^[ \t]*scope[ \t]*:([a-zA-Z0-9_]+)/\1/

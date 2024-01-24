@@ -17,6 +17,8 @@ vim.g.ale_linters = {
 }
 vim.g.indentLine_char_list = {'┊', '¦'}
 vim.g.gutentags_enabled = 1
+vim.g.gutentags_ctags_executable_ruby = 'ripper-tags'
+vim.g.gutentags_ctags_extra_args = {'--ignore-unsupported-options', '--recursive'}
 vim.g.mix_format_on_save = 0
 vim.g.tagbar_type_ruby = {
   kinds = {
