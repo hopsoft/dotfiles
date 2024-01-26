@@ -69,7 +69,21 @@
   "rdoc": {
     "type": "chat",
     "opts": {
-      "template": "Document the following Ruby class, module, or methods using RDoc syntax. Add summary documentation for classes and modules. Document all public and protected methods. Include parameters and return values, but omit examples. ONLY add comments; DO NOT omit or modify any of the original code in your answer. Your answer should return the original Ruby code with only the addition of RDoc comments. Only add RDoc comments, do not comment the internals.\n\n{{input}}",
+      "template": "Please document the provided Ruby class, module, or methods using RDoc syntax. Include summary documentation for classes and modules, as well as documentation for all public and protected methods. Remember to include parameters and return values, but omit examples. Use RDoc syntax and formatting, not YARD. Only add comments and do not modify or omit any of the original code.\n\n{{input}}",
+      "template": "",
+      "strategy": "replace",
+      "max_tokens": 2048,
+      "params": {
+        "model": "gpt-4"
+      }
+    }
+  },
+
+  "sdoc": {
+    "type": "chat",
+    "opts": {
+      "template": "Please document the provided Ruby class, module, or methods using SDoc syntax, which is used to document Ruby on Rails APIs. Include summary documentation for classes and modules, as well as documentation for all public and protected methods. Remember to include parameters and return values, but omit examples. Use SDoc syntax and formatting, not YARD. Only add comments and do not modify or omit any of the original code.\n\n{{input}}",
+      "template": "",
       "strategy": "replace",
       "max_tokens": 2048,
       "params": {
