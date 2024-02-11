@@ -13,6 +13,7 @@
 .tool-versions
 .yalc
 .yardoc
+.yarn
 /**/node_modules
 /.bundle
 /log/*.log
