@@ -2,7 +2,8 @@
   "Lua.diagnostics.enable": true,
   "Lua.diagnostics.globals": ["vim"],
   "git.blameUseRealTime": true,
-  "git.addGBlameToVirtualText": true,
+  "git.addGBlameToVirtualText": false,
+  "git.enableGlobalStatus": true,
   "git.enableGutters": true,
   "markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": true,
   "solargraph.useBundler": false

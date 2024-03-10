@@ -27,21 +27,7 @@ vim.g.ale_linters = {
 }
 vim.g.indentLine_char_list = {'┊', '¦'}
 vim.g.gutentags_enabled = 1
-vim.g.gutentags_ctags_executable_ruby = 'ripper-tags --ignore-unsupported-options'
-vim.g.gutentags_ctags_extra_args = {}
-vim.g.mix_format_on_save = 0
-vim.g.tagbar_type_ruby = {
-  kinds = {
-    'm:modules',
-    'c:classes',
-    'd:describes',
-    'C:contexts',
-    'f:methods',
-    'F:singleton methods'
-  }
-}
-vim.g.vim_markdown_folding_disabled = 1
-vim.g.loaded_perl_provider = 0
+vim.g.tagbar_sort = 0
 
 -- Options --
 vim.opt.guicursor = {
@@ -68,6 +54,7 @@ vim.opt.dir = '/tmp/editor'
 vim.opt.encoding = 'utf-8'
 vim.opt.endofline = true
 vim.opt.expandtab = true
+vim.opt.foldenable = false
 vim.opt.guifont = 'MesloLGM\\ Nerd\\ Font:h14'
 vim.opt.hidden = true
 vim.opt.lazyredraw = true
