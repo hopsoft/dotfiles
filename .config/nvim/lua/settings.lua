@@ -18,14 +18,14 @@ vim.g.ale_javascript_prettier_options =
   '--single-quote' ..
   '--tab-width 2' ..
   '--trailing-comma none'
-vim.g.ale_lint_delay = 1500
-vim.g.ale_lint_on_text_changed = 'never'
+vim.g.ale_lint_delay = 350
+vim.g.ale_linters_ignore = {'erb'} -- TODO: Revisit... ale doesn't handle erb files well
+vim.g.ale_lint_on_text_changed = 'normal'
 vim.g.ale_linters = {
   javascript = {'prettier'},
   ruby = {'standardrb'},
-  erb = {'erb'},
 }
-vim.g.indentLine_char_list = {'┊', '¦'}
+vim.g.indentLine_char_list = {'⏐', '⁞', '⋮', '⠅' }
 vim.g.gutentags_enabled = 1
 vim.g.tagbar_sort = 0
 
