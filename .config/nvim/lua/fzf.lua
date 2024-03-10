@@ -31,6 +31,3 @@ require('fzf-lua').setup{
     'pkg',
   },
 }
-
-vim.api.nvim_set_keymap('n', '<Leader>f', '<cmd>lua require("fzf-lua").grep()<CR>', {})
-vim.api.nvim_set_keymap('n', '<c-P>', '<cmd>lua require("fzf-lua").files()<CR>', {})

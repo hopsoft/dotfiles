@@ -1,4 +1,4 @@
--- Globals
+-- Globals --
 vim.g.copilot_node_command = "$HOME/.asdf/installs/nodejs/20.10.0/bin/node"
 vim.g.NERDTreeDisableSpecialCharacters = 1
 vim.g.ackprg = 'rg --vimgrep'
@@ -23,6 +23,7 @@ vim.g.ale_lint_on_text_changed = 'never'
 vim.g.ale_linters = {
   javascript = {'prettier'},
   ruby = {'standardrb'},
+  erb = {'erb'},
 }
 vim.g.indentLine_char_list = {'┊', '¦'}
 vim.g.gutentags_enabled = 1
@@ -42,7 +43,7 @@ vim.g.tagbar_type_ruby = {
 vim.g.vim_markdown_folding_disabled = 1
 vim.g.loaded_perl_provider = 0
 
--- Options
+-- Options --
 vim.opt.guicursor = {
   "n-v-c:block",
   "i-ci-ve:ver25",
@@ -67,6 +68,9 @@ vim.opt.dir = '/tmp/editor'
 vim.opt.encoding = 'utf-8'
 vim.opt.endofline = true
 vim.opt.expandtab = true
+vim.opt.foldmethod = 'syntax'
+vim.opt.foldlevel = 99
+vim.opt.foldopen = 'block,insert,jump,mark,percent,quickfix,search,tag,undo'
 vim.opt.guifont = 'MesloLGM\\ Nerd\\ Font:h14'
 vim.opt.hidden = true
 vim.opt.lazyredraw = true

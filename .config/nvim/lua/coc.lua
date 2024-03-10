@@ -1,26 +1,26 @@
 vim.g.coc_global_extensions = {
+  '@yaegassy/coc-nginx',
   'coc-css',
-  'coc-xml',
   'coc-docker',
-  'coc-git',
   'coc-html',
-  'coc-html-css-support',
   'coc-htmlhint',
-  'coc-json',
+  'coc-lua',
   'coc-markdown-preview-enhanced',
   'coc-markdownlint',
+  'coc-marketplace',
   'coc-solargraph',
-  'coc-stylelintplus',
   'coc-svg',
   'coc-tailwindcss',
   'coc-toml',
-  'coc-typos',
+  'coc-tsserver',
   'coc-webview',
+  'coc-xml',
   'coc-yaml',
 }
 
 vim.g.coc_settings = {
   solargraph = {
     useBundler = true,
+    formatting = true,
   },
 }
