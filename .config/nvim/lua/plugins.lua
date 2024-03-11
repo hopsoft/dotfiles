@@ -15,6 +15,7 @@ vim.cmd("Plug 'majutsushi/tagbar'") ------------------------------------- Displa
 vim.cmd("Plug 'mg979/vim-visual-multi'") -------------------------------- Multiple cursors
 vim.cmd("Plug 'morhetz/gruvbox'") --------------------------------------- Retro groove color scheme
 vim.cmd("Plug 'neoclide/coc.nvim', {'branch': 'release'}") -------------- VSCode-like extension support
+vim.cmd("Plug 'neovim/nvim-lspconfig'") --------------------------------- Quickstart LSP configs
 vim.cmd("Plug 'nvim-lua/plenary.nvim'") --------------------------------- Lua asynchronous programming using coroutines
 vim.cmd("Plug 'nvim-telescope/telescope.nvim'") ------------------------- Fuzzy finder for lists with preview
 vim.cmd("Plug 'nvim-tree/nvim-web-devicons'") --------------------------- File type icons
@@ -29,7 +30,6 @@ vim.cmd("Plug 'tpope/vim-fugitive'") ------------------------------------ Git in
 vim.cmd("Plug 'tpope/vim-rails'") --------------------------------------- Ruby on Rails power tools
 vim.cmd("Plug 'vim-airline/vim-airline'") ------------------------------- Status bar
 vim.cmd("Plug 'vim-scripts/restore_view.vim'") -------------------------- Autosave/restore cursor position and folds
-vim.cmd("Plug 'w0rp/ale'") ---------------------------------------------- Syntax checker and fixer
 vim.cmd("Plug 'wincent/terminus'") -------------------------------------- Enhanced terminal integration (iTerm, tmux)
 vim.cmd("Plug 'yggdroot/indentline'") ----------------------------------- Visualize indention levels
 

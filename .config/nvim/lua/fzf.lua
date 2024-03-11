@@ -1,3 +1,5 @@
+Current.fzf = require('fzf-lua')
+
 local function find_project_root()
   -- Use git to determine the project root
   local output = vim.fn.systemlist('git rev-parse --show-toplevel')
@@ -9,25 +11,19 @@ local function find_project_root()
   end
 end
 
-require('fzf-lua').setup{
+Current.fzf.setup({
   winopts = {
     preview = {
       delay = 0
     }
   },
   grep = {
-    input_prompt = 'Find: ',
+    input_prompt = 'Search: ',
     prompt = 'Results: ',
-    rg_opts = ' --ignore-case --no-fixed-strings --follow --pretty --vimgrep',
+    rg_opts = '--hidden --smart-case --vimgrep',
     cwd = find_project_root()
   },
   files = {
     cwd = find_project_root()
   },
-  files_ignore = {
-    'application.js.map',
-    'coverage',
-    'node_modules',
-    'pkg',
-  },
-}
+})

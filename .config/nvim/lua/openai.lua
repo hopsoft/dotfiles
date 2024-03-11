@@ -1,3 +1,5 @@
+Current.chatgpt = require('chatgpt')
+
 -- SEE: https://github.com/jackMort/ChatGPT.nvim/blob/main/lua/chatgpt/config.lua
 local settings = {
   api_key_cmd = nil,
@@ -177,4 +179,4 @@ local settings = {
   },
 }
 
-require('chatgpt').setup(settings)
+Current.chatgpt.setup(settings)

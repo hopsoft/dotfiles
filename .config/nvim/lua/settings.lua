@@ -1,30 +1,8 @@
 -- Globals --
-vim.g.copilot_node_command = "$HOME/.asdf/installs/nodejs/20.10.0/bin/node"
 vim.g.NERDTreeDisableSpecialCharacters = 1
-vim.g.ackprg = 'rg --vimgrep'
+vim.g.ackprg = 'rg --hidden --smart-case --vimgrep'
 vim.g.airline_powerline_fonts = 1
-vim.g.ale_fix_on_save = 1
-vim.g.ale_fixers = {
-  javascript = {'prettier'},
-  ruby = {'standardrb'},
-}
-vim.g.ale_javascript_prettier_options =
-  '--arrow-parens avoid' ..
-  '--embedded-language-formatting auto' ..
-  '--html-whitespace-sensitivity css' ..
-  '--no-semi' ..
-  '--print-width 110' ..
-  '--prose-wrap preserve' ..
-  '--single-quote' ..
-  '--tab-width 2' ..
-  '--trailing-comma none'
-vim.g.ale_lint_delay = 350
-vim.g.ale_linters_ignore = {'erb'} -- TODO: Revisit... ale doesn't handle erb files well
-vim.g.ale_lint_on_text_changed = 'normal'
-vim.g.ale_linters = {
-  javascript = {'prettier'},
-  ruby = {'standardrb'},
-}
+vim.g.copilot_node_command = vim.fn.system("echo -n $(asdf which node)")
 vim.g.indentLine_char_list = {'⏐', '⁞', '⋮', '⠅' }
 vim.g.gutentags_enabled = 1
 vim.g.tagbar_sort = 0

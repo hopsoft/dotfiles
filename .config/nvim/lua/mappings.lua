@@ -12,5 +12,5 @@ vim.api.nvim_set_keymap('n', '<Leader>nf', ':NERDTreeFind<CR>', {}) ------------
 vim.api.nvim_set_keymap('n', '<Leader>tb', ':TagbarToggle<CR>', {}) ---------------------------- toggle tagbar
 
 -- FZF --
-vim.api.nvim_set_keymap('n', '<c-P>', '<cmd>lua require("fzf-lua").files()<CR>', {}) -------------- find files
-vim.api.nvim_set_keymap('n', '<Leader>f', '<cmd>lua require("fzf-lua").grep()<CR>', {}) --------- search files
+vim.api.nvim_set_keymap('n', '<c-P>', '<cmd>lua Current.fzf.files()<CR>', {}) --------------------- find files
+vim.api.nvim_set_keymap('n', '<Leader>f', '<cmd>lua Current.fzf.grep()<CR>', {}) ---------------- search files
