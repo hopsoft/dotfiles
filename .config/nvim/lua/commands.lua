@@ -19,7 +19,10 @@ vim.cmd('set completeopt+=noselect')
 vim.cmd('autocmd VimEnter,WinEnter,BufWinEnter * setlocal nohlsearch')
 vim.cmd([[autocmd BufWritePre * :%s/\s\+$//e]])
 
--- Open AI / ChatGPT (jackMort/ChatGPT.nvim') --
+-- CoC --
+vim.cmd("command! -nargs=0 Fmt execute 'CocCommand prettier.formatFile'")
+
+-- Open AI (jackMort/ChatGPT.nvim') --
 _G.execChatGPTRun = function(start_line, end_line, args)
   local range_str = start_line .. "," .. end_line
   vim.cmd(string.format("%sChatGPTRun %s", range_str, args))

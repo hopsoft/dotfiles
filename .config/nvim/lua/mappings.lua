@@ -1,16 +1,25 @@
 vim.g.mapleader = ","
 
+local defaults = {noremap = true, silent = true}
+
+local function map(mode, shortcut, action, opts)
+  vim.api.nvim_set_keymap(mode, shortcut, action, opts or defaults)
+end
+
 -- Neovim --
-vim.api.nvim_set_keymap('i', 'jk', '<esc>', {}) ----------------------------------------------- escape with jk
-vim.api.nvim_set_keymap('n', '<Leader>h', ':set hls! hls?<CR>', { noremap = true }) ------ toggle highlighting
+map('n', 'jk', '<ESC>') -- escape with jk
+map('n', '<Leader>h', ':set hls! hls?<CR>') ----------------- toggle highlighting
+
+-- CoC --
+map('n', '<leader>g', ':CocCommand git.foldUnchanged<CR>') -- toggle folding unchanged lines
 
 -- NERDTree --
-vim.api.nvim_set_keymap('n', '<Leader>nt', ':NERDTreeToggle<CR>', {}) ------------------------ toggle nerdtree
-vim.api.nvim_set_keymap('n', '<Leader>nf', ':NERDTreeFind<CR>', {}) -------------------- find file in nerdtree
+map('n', '<Leader>nt', ':NERDTreeToggle<CR>') --------------- toggle nerdtree
+map('n', '<Leader>nf', ':NERDTreeFind<CR>') ----------------- find file in nerdtree
 
 -- Tagbar --
-vim.api.nvim_set_keymap('n', '<Leader>tb', ':TagbarToggle<CR>', {}) ---------------------------- toggle tagbar
+map('n', '<Leader>tb', ':TagbarToggle<CR>') ----------------- toggle tagbar
 
 -- FZF --
-vim.api.nvim_set_keymap('n', '<c-P>', '<cmd>lua Current.fzf.files()<CR>', {}) --------------------- find files
-vim.api.nvim_set_keymap('n', '<Leader>f', '<cmd>lua Current.fzf.grep()<CR>', {}) ---------------- search files
+map('n', '<c-P>', '<cmd>lua Current.fzf.files()<CR>') ------- find files
+map('n', '<Leader>f', '<cmd>lua Current.fzf.grep()<CR>') ---- search files

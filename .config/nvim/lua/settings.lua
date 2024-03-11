@@ -5,6 +5,8 @@ vim.g.airline_powerline_fonts = 1
 vim.g.copilot_node_command = vim.fn.system("echo -n $(asdf which node)")
 vim.g.indentLine_char_list = {'⏐', '⁞', '⋮', '⠅' }
 vim.g.gutentags_enabled = 1
+vim.g.gutentags_generate_on_missing = 1
+vim.g.gutentags_generate_on_write = 1
 vim.g.tagbar_sort = 0
 
 -- Options --
