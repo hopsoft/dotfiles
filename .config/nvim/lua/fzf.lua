@@ -14,7 +14,7 @@ end
 Current.fzf.setup({
   winopts = {
     preview = {
-      delay = 0
+      delay = 100
     }
   },
   grep = {

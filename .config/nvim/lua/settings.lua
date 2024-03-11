@@ -46,5 +46,5 @@ vim.opt.runtimepath:append('~/.vim')
 vim.opt.runtimepath:append('~/.vim/after')
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
-vim.opt.timeoutlen = 400
+vim.opt.timeoutlen = 350
 vim.opt.wrap = true

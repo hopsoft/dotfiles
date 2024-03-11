@@ -5,6 +5,12 @@
   "git.blameUseRealTime": true,
   "git.enableGlobalStatus": true,
   "git.enableGutters": true,
+  "git.floatConfig": {
+    "maxWidth": 80,
+    "maxHeight": 30,
+    "shadow": true,
+    "close": true
+  },
   "markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": true,
   "prettier.enable": true,
   "prettier.tabWidth": 2,
@@ -18,9 +24,11 @@
   "prettier.htmlWhitespaceSensitivity": "css",
   "prettier.endOfLine": "lf",
   "prettier.semi": false,
+  "prettier.disableLanguages": [
+    "ruby"
+  ],
   "solargraph.logLevel": "info",
   "solargraph.checkGemVersion": true,
-  "markdownlint.onChange": true,
   "tailwindCSS.headwind.runOnSave": true,
   "tailwindCSS.headwind.removeDuplicates": true,
   "solargraph.completion": true,
