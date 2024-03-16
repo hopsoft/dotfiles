@@ -14,7 +14,6 @@ vim.cmd("Plug 'ludovicchabant/vim-gutentags'") -------------------------- Automa
 vim.cmd("Plug 'majutsushi/tagbar'") ------------------------------------- Display tags in a sidebar
 vim.cmd("Plug 'mg979/vim-visual-multi'") -------------------------------- Multiple cursors
 vim.cmd("Plug 'morhetz/gruvbox'") --------------------------------------- Retro groove color scheme
-vim.cmd("Plug 'neoclide/coc.nvim', {'branch': 'release'}") -------------- VSCode-like extension support
 vim.cmd("Plug 'neovim/nvim-lspconfig'") --------------------------------- Quickstart LSP configs
 vim.cmd("Plug 'nvim-lua/plenary.nvim'") --------------------------------- Lua asynchronous programming using coroutines
 vim.cmd("Plug 'nvim-telescope/telescope.nvim'") ------------------------- Fuzzy finder for lists with preview
