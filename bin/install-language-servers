@@ -6,6 +6,7 @@ brew = %w[
   dockerfile-language-server
   elixir-ls
   lua-language-server
+  ninja
   python-lsp-server
   solargraph
   sql-language-server

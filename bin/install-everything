@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+
+brew = %w[
+  asdf
+  awscli
+  bash-completion
+  brotli
+  caddy
+  chromedriver
+  cloc
+  doctl
+  flyctl
+  fzf
+  gh
+  git
+  heroku
+  httpie
+  jemalloc
+  jq
+  msgpack
+  pygments
+  ruby-build
+  siege
+  sqlite
+  telnet
+  the_silver_searcher
+  thefuck
+  tmux
+  tree
+  vim
+  wget
+  zlib
+  zsh
+  zsh-completions
+  zsh-lovers
+]
+
+commands = [
+  "brew update",
+  "brew install #{brew.join " "}",
+  "install-language-servers",
+  "install-formatters",
+]
+
+exec commands.join(" && ")

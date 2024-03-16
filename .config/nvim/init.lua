@@ -16,9 +16,11 @@ require("language_servers/go")
 require("language_servers/html")
 require("language_servers/json")
 require("language_servers/lua")
+require("language_servers/null")
 require("language_servers/python")
-require("language_servers/ruby")
-require("language_servers/solargraph")
+--require("language_servers/ruby") -- Ruby
+--require("language_servers/solargraph") -- Ruby
+require("language_servers/standardrb") -- Ruby
 require("language_servers/sql")
 require("language_servers/tailwindcss")
 require("language_servers/typescript")

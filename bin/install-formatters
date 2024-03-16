@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+rubygems = %w[
+  standard
+]
+
+npm = %w[
+  prettier
+  @prettier/plugin-xml
+  prettier prettier-plugin-toml
+  prettier-plugin-nginx
+  prettier-plugin-sql
+]
+
+commands = [
+  "gem install #{rubygems.join " "}",
+  "npm install -g #{npm.join " "}"
+]
+
+exec commands.join(" && ")

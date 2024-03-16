@@ -19,6 +19,7 @@ vim.cmd("Plug 'nvim-lua/plenary.nvim'") --------------------------------- Lua as
 vim.cmd("Plug 'nvim-telescope/telescope.nvim'") ------------------------- Fuzzy finder for lists with preview
 vim.cmd("Plug 'nvim-tree/nvim-web-devicons'") --------------------------- File type icons
 vim.cmd("Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}") -- Easy tree-sitter UI usage
+vim.cmd("Plug 'nvimtools/none-ls.nvim'") -------------------------------- Inject LSP diagnostics, code actions, etc. with Lua
 vim.cmd("Plug 'rizzatti/dash.vim'") ------------------------------------- Dash documentation search
 vim.cmd("Plug 'scrooloose/nerdcommenter'") ------------------------------ Comment/uncomment lines
 vim.cmd("Plug 'scrooloose/nerdtree'") ----------------------------------- Tree explorer (directory structure, etc.)
