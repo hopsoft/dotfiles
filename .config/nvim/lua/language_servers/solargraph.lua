@@ -1,5 +1,5 @@
--- INSTALL: gem install solargraph
 -- SEE: https://www.andersevenrud.net/neovim.github.io/lsp/configurations/solargraph/
+-- SEE: ../../../bin/install-language-servers
 
 require('lspconfig').solargraph.setup({
   bundlerPath = "bundle",

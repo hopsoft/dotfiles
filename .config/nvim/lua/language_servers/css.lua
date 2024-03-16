@@ -1,4 +1,4 @@
 -- INSTALL: npm i -g vscode-langservers-extracted
--- SEE: https://www.andersevenrud.net/neovim.github.io/lsp/configurations/cssls/
+-- SEE: ../../../bin/install-language-servers
 
 require('lspconfig').cssls.setup({})

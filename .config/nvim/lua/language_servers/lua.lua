@@ -1,6 +1,6 @@
--- INSTALL: brew install lua-language-server
 -- SEE: https://luals.github.io/#neovim-install
 -- SEE: https://www.andersevenrud.net/neovim.github.io/lsp/configurations/sumneko_lua/
+-- SEE: ../../../bin/install-language-servers
 
 local handle = io.popen("brew --prefix)/bin/lua-language-server")
 local root_path = handle:read("*a")

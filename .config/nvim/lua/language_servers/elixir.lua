@@ -1,4 +1,4 @@
 -- INSTALL: brew install elixir-ls
--- SEE: https://www.andersevenrud.net/neovim.github.io/lsp/configurations/elixirls/
+-- SEE: ../../../bin/install-language-servers
 
 require('lspconfig').elixirls.setup({})

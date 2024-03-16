@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+brew = %w[
+  bash-language-server
+  crystalline
+  dockerfile-language-server
+  elixir-ls
+  lua-language-server
+  python-lsp-server
+  solargraph
+  sql-language-server
+  tailwindcss-language-server
+  typescript-language-server
+  vscode-langservers-extracted
+  yaml-language-server
+]
+
+rubygems = %w[
+  ruby-lsp
+]
+
+npm = %w[
+  vls
+]
+
+commands = [
+  "brew install #{brew.join " "}",
+  "gem install #{rubygems.join " "}",
+  "npm install -g #{npm.join " "}"
+]
+
+exec commands.join(" && ")

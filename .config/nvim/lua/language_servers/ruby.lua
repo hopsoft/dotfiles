@@ -1,6 +1,6 @@
--- INSTALL: gem install ruby-lsp
 -- SEE: https://github.com/Shopify/ruby-lsp
 -- SEE: https://github.com/Shopify/ruby-lsp/blob/main/EDITORS.md#Neovim-LSP
+-- SEE: ../../../bin/install-language-servers
 
 Current.ruby_lsp_timers = {}
 local function setup_diagnostics(client, buffer)
