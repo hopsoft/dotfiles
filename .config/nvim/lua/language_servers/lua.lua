@@ -1,33 +1,51 @@
--- SEE: https://luals.github.io/#neovim-install
+-- luacheck: globals vim
 -- SEE: https://www.andersevenrud.net/neovim.github.io/lsp/configurations/sumneko_lua/
 -- SEE: ../../../bin/install-language-servers
 
-local handle = io.popen("brew --prefix)/bin/lua-language-server")
-local root_path = handle:read("*a")
-handle:close()
-local binary = root_path.."/bin/macOS/lua-language-server"
-local runtime_path = vim.split(package.path, ';')
+local lua_ls = require('lspconfig').lua_ls
 
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
+lua_ls.cmd = { Current.brew_prefix .. "/bin/lua-language-server" }
 
-require('lspconfig').lua_ls.setup({
-  cmd = {binary, "-E", root_path .. "/main.lua"};
-  settings = {
-    Lua = {
-      runtime = {
-        version = 'LuaJIT',
-        path = runtime_path,
-      },
-      diagnostics = {
-        globals = {'vim'},
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      telemetry = {
-        enable = false,
-      },
+lua_ls.setup({
+  Lua = {
+    color = { mode = "Semantic" },
+    completion = {
+      autoRequire = true,
+      callSnippet = "Both",
+      displayContext = 10,
+      enable = true,
+      keywordSnippet = "Replace",
+      showParams = true,
+      workspaceWord = true,
+    },
+    diagnostics = {
+      enable = true,
+      globals = { 'vim' }
+    },
+    hint = {
+      enable = true ,
+      paramName = true,
+    },
+    hover = {
+      documentation = true,
+      enable = true,
+      enumsLimit = 10,
+      previewFields = 20,
+      viewNumber = true,
+      viewString = true,
+      viewStringMax = 1000,
+    },
+    signatureHelp = { enable = true },
+    telemetry = { enable = false },
+    window = { progressBar = true, statusBar = true },
+    workspace = {
+      checkThirdParty = true,
+      ignoreDir = { ".git", ".vscode", "node_modules" },
+      ignoreSubmodules = true,
+      library = vim.api.nvim_get_runtime_file("", true),
+      maxPreload = 1000,
+      preloadFileSize = 100,
+      useGitIgnore = true,
     },
   },
 })

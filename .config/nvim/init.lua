@@ -1,5 +1,11 @@
 -- luacheck: globals vim
-Current = {} -- Custom container for global variables across the entire configuration
+_G.vim = vim
+
+-- Custom container for global variables across the entire configuration
+-- Inspired by Rails' CurrentAttributes
+Current = {
+  brew_prefix = vim.fn.system("brew --prefix"):gsub("[\n\r]+", "")
+}
 
 package.path = os.getenv("HOME") .. '/.config/nvim/lua/?.lua;' .. package.path
 
@@ -19,8 +25,8 @@ require("language_servers/lua")
 require("language_servers/null")
 require("language_servers/python")
 --require("language_servers/ruby") -- Ruby
---require("language_servers/solargraph") -- Ruby
-require("language_servers/standardrb") -- Ruby
+require("language_servers/solargraph") -- Ruby
+require("language_servers/standardrb") -- Ruby (formatting)
 require("language_servers/sql")
 require("language_servers/tailwindcss")
 require("language_servers/typescript")
