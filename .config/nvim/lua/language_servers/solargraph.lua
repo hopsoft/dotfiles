@@ -4,20 +4,22 @@
 local solargraph = require('lspconfig').solargraph
 
 solargraph.setup({
-  bundlerPath = "bundle",
-  checkGemVersion = true,
-  commandPath = "solargraph",
-  completion = true,
-  definitions = true,
-  diagnostics = true,
-  externalServer = { host = "localhost", port = 7658 },
-  folding = true,
-  formatting = false,
-  hover = true,
-  logLevel = "warn",
-  references = true,
-  rename = true,
-  symbols = true,
-  transport = "socket",
-  useBundler = false,
+  settings = {
+    bundlerPath = "bundle",
+    checkGemVersion = true,
+    commandPath = "solargraph",
+    completion = true,
+    definitions = true,
+    diagnostics = true,
+    externalServer = { host = "localhost", port = 7658 },
+    folding = true,
+    formatting = false,
+    hover = true,
+    logLevel = "warn",
+    references = true,
+    rename = true,
+    symbols = true,
+    transport = "stdio", -- "stdio" | "socket"
+    useBundler = false,
+  },
 })

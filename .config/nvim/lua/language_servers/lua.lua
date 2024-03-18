@@ -23,7 +23,7 @@ lua_ls.setup({
       globals = { 'vim' }
     },
     hint = {
-      enable = true ,
+      enable = true,
       paramName = true,
     },
     hover = {
@@ -48,4 +48,15 @@ lua_ls.setup({
       useGitIgnore = true,
     },
   },
+})
+
+-- format on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.lua",
+  callback = function()
+    vim.lsp.buf.format({
+      async = true,
+      timeout_ms = 1000,
+    })
+  end,
 })
