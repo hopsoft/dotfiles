@@ -13,7 +13,6 @@ brew = %w[
   fzf
   gh
   git
-  heroku
   httpie
   jemalloc
   jq
