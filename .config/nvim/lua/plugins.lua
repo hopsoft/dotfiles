@@ -1,37 +1,43 @@
 vim.cmd("call plug#begin('~/.vim/plugged')")
 
-vim.cmd("Plug 'MunifTanjim/nui.nvim'") ---------------------------------- UI Component Library
-vim.cmd("Plug 'Xuyuanp/nerdtree-git-plugin'") --------------------------- NERDTree with git status
-vim.cmd("Plug 'airblade/vim-gitgutter'") -------------------------------- Shows git diff markers in the sign column
-vim.cmd("Plug 'chriskempson/base16-vim'") ------------------------------- Base16 color support
-vim.cmd("Plug 'duane9/nvim-rg'") ---------------------------------------- Fast recursive search
-vim.cmd("Plug 'easymotion/vim-easymotion'") ----------------------------- Quick navigation (jump to line, word, etc.)
-vim.cmd("Plug 'github/copilot.vim'") ------------------------------------ GitHub Copilot (OpenAI coding assistant)
-vim.cmd("Plug 'godlygeek/tabular'") ------------------------------------- Quickly align text
-vim.cmd("Plug 'ibhagwan/fzf-lua'") -------------------------------------- Fuzzy finder
-vim.cmd("Plug 'jackMort/ChatGPT.nvim'") --------------------------------- OpenAI/ChatGPT chat assistant
-vim.cmd("Plug 'junegunn/vim-emoji'") ------------------------------------ Emoji support
-vim.cmd("Plug 'ludovicchabant/vim-gutentags'") -------------------------- Automatic tag management
-vim.cmd("Plug 'majutsushi/tagbar'") ------------------------------------- Display tags in a sidebar
-vim.cmd("Plug 'mg979/vim-visual-multi'") -------------------------------- Multiple cursors
-vim.cmd("Plug 'morhetz/gruvbox'") --------------------------------------- Retro groove color scheme
-vim.cmd("Plug 'neovim/nvim-lspconfig'") --------------------------------- Quickstart LSP configs
-vim.cmd("Plug 'nvim-lua/plenary.nvim'") --------------------------------- Lua asynchronous programming using coroutines
-vim.cmd("Plug 'nvim-telescope/telescope.nvim'") ------------------------- Fuzzy finder for lists with preview
-vim.cmd("Plug 'nvim-tree/nvim-web-devicons'") --------------------------- File type icons
+vim.cmd("Plug 'L3MON4D3/LuaSnip', {'do': 'make install_jsregexp'}")    -- Snippets plugin
+vim.cmd("Plug 'MunifTanjim/nui.nvim'")                                 -- UI Component Library
+vim.cmd("Plug 'Xuyuanp/nerdtree-git-plugin'")                          -- NERDTree with git status
+vim.cmd("Plug 'airblade/vim-gitgutter'")                               -- Shows git diff markers in the sign column
+vim.cmd("Plug 'chriskempson/base16-vim'")                              -- Base16 color support
+vim.cmd("Plug 'duane9/nvim-rg'")                                       -- Fast recursive search
+vim.cmd("Plug 'easymotion/vim-easymotion'")                            -- Quick navigation (jump to line, word, etc.)
+vim.cmd("Plug 'github/copilot.vim'")                                   -- GitHub Copilot (OpenAI coding assistant)
+vim.cmd("Plug 'godlygeek/tabular'")                                    -- Quickly align text
+vim.cmd("Plug 'hrsh7th/cmp-buffer'")                                   -- Completion for buffer words
+vim.cmd("Plug 'hrsh7th/cmp-cmdline'")                                  -- Completion for command line
+vim.cmd("Plug 'hrsh7th/cmp-nvim-lsp'")                                 -- Supports more types of completion (LSP)
+vim.cmd("Plug 'hrsh7th/cmp-path'")                                     -- Completion for filesystem paths
+vim.cmd("Plug 'hrsh7th/nvim-cmp'")                                     -- Autocompletion plugin with LSP support
+vim.cmd("Plug 'ibhagwan/fzf-lua'")                                     -- Fuzzy finder
+vim.cmd("Plug 'jackMort/ChatGPT.nvim'")                                -- OpenAI/ChatGPT chat assistant
+vim.cmd("Plug 'junegunn/vim-emoji'")                                   -- Emoji support
+vim.cmd("Plug 'ludovicchabant/vim-gutentags'")                         -- Automatic tag management
+vim.cmd("Plug 'majutsushi/tagbar'")                                    -- Display tags in a sidebar
+vim.cmd("Plug 'mg979/vim-visual-multi'")                               -- Multiple cursors
+vim.cmd("Plug 'morhetz/gruvbox'")                                      -- Retro groove color scheme
+vim.cmd("Plug 'neovim/nvim-lspconfig'")                                -- Quickstart LSP configs
+vim.cmd("Plug 'nvim-lua/plenary.nvim'")                                -- Lua asynchronous programming using coroutines
+vim.cmd("Plug 'nvim-telescope/telescope.nvim'")                        -- Fuzzy finder for lists with preview
+vim.cmd("Plug 'nvim-tree/nvim-web-devicons'")                          -- File type icons
 vim.cmd("Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}") -- Easy tree-sitter UI usage
-vim.cmd("Plug 'nvimtools/none-ls.nvim'") -------------------------------- Inject LSP diagnostics, code actions, etc. with Lua
-vim.cmd("Plug 'rizzatti/dash.vim'") ------------------------------------- Dash documentation search
-vim.cmd("Plug 'scrooloose/nerdcommenter'") ------------------------------ Comment/uncomment lines
-vim.cmd("Plug 'scrooloose/nerdtree'") ----------------------------------- Tree explorer (directory structure, etc.)
-vim.cmd("Plug 'sjl/vitality.vim'") -------------------------------------- Buffer autosave/restore support
-vim.cmd("Plug 'tpope/vim-dotenv'") -------------------------------------- Support for .env and Procfile files
-vim.cmd("Plug 'tpope/vim-endwise'") ------------------------------------- Auto-close code blocks
-vim.cmd("Plug 'tpope/vim-fugitive'") ------------------------------------ Git integration
-vim.cmd("Plug 'tpope/vim-rails'") --------------------------------------- Ruby on Rails power tools
-vim.cmd("Plug 'vim-airline/vim-airline'") ------------------------------- Status bar
-vim.cmd("Plug 'vim-scripts/restore_view.vim'") -------------------------- Autosave/restore cursor position and folds
-vim.cmd("Plug 'wincent/terminus'") -------------------------------------- Enhanced terminal integration (iTerm, tmux)
-vim.cmd("Plug 'yggdroot/indentline'") ----------------------------------- Visualize indention levels
+vim.cmd("Plug 'nvimtools/none-ls.nvim'")                               -- Inject LSP diagnostics, code actions, etc. with Lua
+vim.cmd("Plug 'rizzatti/dash.vim'")                                    -- Dash documentation search
+vim.cmd("Plug 'scrooloose/nerdcommenter'")                             -- Comment/uncomment lines
+vim.cmd("Plug 'scrooloose/nerdtree'")                                  -- Tree explorer (directory structure, etc.)
+vim.cmd("Plug 'sjl/vitality.vim'")                                     -- Buffer autosave/restore support
+vim.cmd("Plug 'tpope/vim-dotenv'")                                     -- Support for .env and Procfile files
+vim.cmd("Plug 'tpope/vim-endwise'")                                    -- Auto-close code blocks
+vim.cmd("Plug 'tpope/vim-fugitive'")                                   -- Git integration
+vim.cmd("Plug 'tpope/vim-rails'")                                      -- Ruby on Rails power tools
+vim.cmd("Plug 'vim-airline/vim-airline'")                              -- Status bar
+vim.cmd("Plug 'vim-scripts/restore_view.vim'")                         -- Autosave/restore cursor position and folds
+vim.cmd("Plug 'wincent/terminus'")                                     -- Enhanced terminal integration (iTerm, tmux)
+vim.cmd("Plug 'yggdroot/indentline'")                                  -- Visualize indention levels
 
 vim.cmd("call plug#end()")
