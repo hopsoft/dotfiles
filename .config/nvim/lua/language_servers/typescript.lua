@@ -4,6 +4,10 @@
 local tsserver = require('lspconfig').tsserver
 
 tsserver.setup({
+  on_attach = function(client)
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+  end,
   settings = {
     javascript = {
       jsEnable = false,                                                             -- Enable/disable TypeScript language features for JavaScript files (default: true)

@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 brew = %w[
+  1password-cli
   asdf
   awscli
   bash-completion
@@ -9,6 +10,7 @@ brew = %w[
   chromedriver
   cloc
   doctl
+  fd
   flyctl
   fzf
   gh
@@ -20,6 +22,7 @@ brew = %w[
   pygments
   ruby-build
   siege
+  speedtest-cli
   sqlite
   telnet
   the_silver_searcher
