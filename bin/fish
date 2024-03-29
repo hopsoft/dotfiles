@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require "tempfile"
+
+Tempfile.create do |file|
+  file.write $stdin.read
+  file.flush
+  preview = "rg --pretty --fixed-strings --before-context=2 --after-context=4 {} #{file.path}"
+  `fzf --ansi --header="⚲ Search..." --preview-label="✓ Matches" --preview-label-pos=4 --separator="---" --preview=\"#{preview}\" --preview-window=wrap,60% < #{file.path}`
+end
