@@ -61,7 +61,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     local filepath = vim.fn.expand('%:p')
     if filepath and #filepath > 0 then
       vim.fn.system('standardrb --fix ' .. filepath)
-      vim.cmd('edit!')
     end
   end,
 })
