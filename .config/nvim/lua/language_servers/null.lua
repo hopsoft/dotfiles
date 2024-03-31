@@ -26,9 +26,6 @@ local prettier_config = {
 }
 
 local sources = {
-  -- standardrb for Ruby files
-  null_ls.builtins.formatting.rubyfmt.with({ command = "standardrb --fix" }),
-
   -- Prettier for JavaScript, TypeScript, JSON, CSS, YAML, Markdown
   null_ls.builtins.formatting.prettier.with({ config = prettier_config }),
 
@@ -53,6 +50,18 @@ null_ls.setup({
           vim.lsp.buf.format({ bufnr = bufnr })
         end,
       })
+    end
+  end,
+})
+
+-- format ruby files on save with the standard gem
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.builder", "*.erb", "*.gemspec", "*.rake", "*.rb", "*.rbw", "*.rdoc", "*.ru", "*.yaml", "*.yml" },
+  callback = function()
+    local filepath = vim.fn.expand('%:p')
+    if filepath and #filepath > 0 then
+      vim.fn.system('standardrb --fix ' .. filepath)
+      vim.cmd('edit!')
     end
   end,
 })
