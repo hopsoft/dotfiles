@@ -1,13 +1,13 @@
+package.path = os.getenv("HOME") .. '/.config/nvim/?.lua;' .. package.path
+package.path = os.getenv("HOME") .. '/.config/nvim/lua/?.lua;' .. package.path
+package.path = os.getenv("HOME") .. '/.config/nvim/lua/commands/?.lua;' .. package.path
+package.path = os.getenv("HOME") .. '/.config/nvim/lua/language_servers/?.lua;' .. package.path
+
 -- luacheck: globals vim
 _G.vim = vim
 
--- Custom container for global variables across the entire configuration
--- Inspired by Rails' CurrentAttributes
-Current = {
-  brew_prefix = vim.fn.system("brew --prefix"):gsub("[\n\r]+", "")
-}
-
-package.path = os.getenv("HOME") .. '/.config/nvim/lua/?.lua;' .. package.path
+-- load current globals
+require("current")
 
 -- load plugins
 require("plugins")

@@ -27,10 +27,7 @@ local prettier_config = {
 
 local sources = {
   -- standardrb for Ruby files
-  null_ls.builtins.formatting.rubyfmt.with({
-    command = "standardrb --fix",
-    filetypes = { "ruby" },
-  }),
+  null_ls.builtins.formatting.rubyfmt.with({ command = "standardrb --fix" }),
 
   -- Prettier for JavaScript, TypeScript, JSON, CSS, YAML, Markdown
   null_ls.builtins.formatting.prettier.with({ config = prettier_config }),
@@ -41,7 +38,6 @@ local sources = {
     extra_filetypes = { "xml", "sql", "nginx", "toml" },
   })
 }
-
 
 null_ls.setup({
   sources = sources,

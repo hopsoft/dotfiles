@@ -1,5 +1,4 @@
-package.path = os.getenv("HOME") .. '/.config/nvim/lua/language_servers/?.lua;' .. package.path
-
+-- SEE: ./language_servers/*.lua
 require("bash")
 require("crystal")
 require("css")
