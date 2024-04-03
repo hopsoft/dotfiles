@@ -18,6 +18,7 @@ brew = %w[
   httpie
   jemalloc
   jq
+  lnav
   msgpack
   pygments
   ruby-build
