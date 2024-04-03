@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+begin
+  require "rainbow"
+rescue LoadError
+  system "gem install rainbow"
+  require "rainbow"
+end
+
+text = ARGV[0]
+modifiers = ARGV[1..]
+styled = Rainbow(text)
+
+modifiers.each do |modifier|
+  styled = styled.public_send(modifier)
+end
+
+print styled

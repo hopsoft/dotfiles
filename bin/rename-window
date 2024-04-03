@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+# applies the escape sequence required to set the title of a terminal window
+
+escaped = "\033]2;#{ARGV.join " "}\033\\"
+print escaped
