@@ -1,5 +1,5 @@
 ---- Gets the latest version of node installed by asdf
-local node_path = vim.fn.system("asdf where nodejs $(asdf list nodejs | tail -n 1)"):gsub("%s+$", "")
+local node_path = vim.fn.system("asdf where nodejs"):gsub("%s+$", "")
 
 vim.g.NERDTreeDisableSpecialCharacters = 1 --------------------------- Disable special characters in NERDTree
 vim.g.ackprg = 'rg --hidden --smart-case --vimgrep' ------------------ Set ack program to use ripgrep

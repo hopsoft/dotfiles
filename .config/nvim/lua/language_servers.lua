@@ -10,7 +10,6 @@ require("json")
 require("lua")
 require("null")
 require("python")
---require("ruby")     -- Ruby
 require("solargraph") -- Ruby
 require("standardrb") -- Ruby (formatting)
 require("sql")

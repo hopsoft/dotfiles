@@ -53,18 +53,3 @@ null_ls.setup({
     end
   end,
 })
-
--- format ruby files on save with the standard gem
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.builder", "*.erb", "*.gemspec", "*.rake", "*.rb", "*.rbw", "*.rdoc", "*.ru", "*.yaml", "*.yml" },
-  callback = function()
-    local filepath = vim.fn.expand('%:p')
-    if filepath and #filepath > 0 then
-      vim.fn.jobstart('standardrb --fix ' .. vim.fn.shellescape(filepath), {
-        on_exit = function(_j, _return_val, _event_type)
-          vim.cmd('edit!')
-        end,
-      })
-    end
-  end,
-})

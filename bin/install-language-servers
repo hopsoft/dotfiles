@@ -17,7 +17,6 @@ brew = %w[
 ]
 
 rubygems = %w[
-  ruby-lsp
 ]
 
 npm = %w[
