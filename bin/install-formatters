@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-rubygems = %w[
+gems = %w[
   standard
 ]
 
@@ -13,8 +13,10 @@ npm = %w[
 ]
 
 commands = [
-  "gem install #{rubygems.join " "}",
+  "gem install #{gems.join " "}",
   "npm install -g #{npm.join " "}"
 ]
 
-exec commands.join(" && ")
+command = commands.join(" && ")
+puts command
+exec command

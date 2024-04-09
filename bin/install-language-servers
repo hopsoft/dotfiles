@@ -16,17 +16,15 @@ brew = %w[
   yaml-language-server
 ]
 
-rubygems = %w[
-]
-
 npm = %w[
   vls
 ]
 
 commands = [
   "brew install #{brew.join " "}",
-  "gem install #{rubygems.join " "}",
   "npm install -g #{npm.join " "}"
 ]
 
-exec commands.join(" && ")
+command = commands.join(" && ")
+puts command
+exec command

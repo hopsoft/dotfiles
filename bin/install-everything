@@ -45,4 +45,6 @@ commands = [
   "install-formatters",
 ]
 
-exec commands.join(" && ")
+command = commands.join(" && ")
+puts command
+exec command
