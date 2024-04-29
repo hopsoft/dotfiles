@@ -23,3 +23,10 @@ solargraph.setup({
     useBundler = false,
   },
 })
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "*runfile" },
+  callback = function()
+    vim.bo.filetype = "ruby"
+  end
+})

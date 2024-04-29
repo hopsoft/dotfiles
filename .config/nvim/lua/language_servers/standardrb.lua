@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- format ruby files on save with the standard gem
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.builder", "*.erb", "*.gemspec", "*.rake", "*.rb", "*.rbw", "*.rdoc", "*.ru", "*.yaml", "*.yml" },
+  pattern = { "*.builder", "*.erb", "*.gemspec", "*.rake", "*.rb", "*.rbw", "*.rdoc", "*.ru", "*.yaml", "*.yml", "*runfile" },
   callback = function()
     vim.lsp.buf.format({ async = true })
   end,

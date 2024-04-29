@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+rubygems = %w[
+  "runfile",
+  "whirly"
+]
+
+commands = [
+  "gem install #{rubygems.join " "}",
+]
+
+exec commands.join(" && ")
