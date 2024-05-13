@@ -2,6 +2,12 @@
 
 1. Install [Homebrew](https://brew.sh/)
 
+TODOS:
+ - [ ] Install oh-my-zsh
+ - [ ] Install asdf with homebrew
+ - [ ] Install ruby with asdf
+ - [ ] Install lua with asdf
+
 1. Setup dotfiles
 
    ```sh
