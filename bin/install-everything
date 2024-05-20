@@ -29,7 +29,9 @@ brew = %w[
   the_silver_searcher
   thefuck
   tmux
+  tmuxinator
   tree
+  universal-ctags
   vim
   wget
   zlib

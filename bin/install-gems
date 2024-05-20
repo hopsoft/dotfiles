@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 rubygems = %w[
-  "runfile",
-  "whirly"
+  runfile
+  whirly
 ]
 
 commands = [
