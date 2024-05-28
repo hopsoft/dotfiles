@@ -3,23 +3,31 @@
 1. Install [Homebrew](https://brew.sh/)
 
 TODOS:
- - [ ] Install oh-my-zsh
- - [ ] Install asdf with homebrew
- - [ ] Install ruby with asdf
- - [ ] Install lua with asdf
+
+- [ ] Install oh-my-zsh
+- [ ] Install asdf with homebrew
+- [ ] Install ruby with asdf
+- [ ] Install lua with asdf
 
 1. Setup dotfiles
 
    ```sh
    git clone -o github git@github.com:hopsoft/dotfiles.git ~/.dotfiles
    cd ~/.dotfiles
-   ./bin/symlink_dotfiles
+   ./bin/link-dotfiles
    ```
 
 1. Install packages
 
    ```sh
    install-everything
+   ```
+
+1. Update git config
+
+   ```sh
+   git config --global user.name "Your Name"
+   git config --global user.email "your-email@example.com"
    ```
 
 1. Install plug for vim: https://github.com/junegunn/vim-plug

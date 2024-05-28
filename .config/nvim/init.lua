@@ -18,6 +18,7 @@ require("language_servers")
 -- configure individual plugins
 require("fzf")
 require("openai")
+require("sourcegraph")
 
 -- configure
 require("mappings")
