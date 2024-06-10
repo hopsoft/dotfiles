@@ -1,5 +1,4 @@
---links=yes
---recurse=yes
+--append=yes
 --exclude=*.min.js
 --exclude=.git
 --exclude=build
@@ -11,3 +10,12 @@
 --exclude=public
 --exclude=tmp
 --exclude=vendor
+--languages=JavaScript,JSON,Lua,Python,RDoc,RSpec,Ruby,Sh,SQL,SVG,TypeScript,YAML,XML,Zsh
+--links=yes
+--recurse=yes
+--recurse=yes
+
+# lanaguage specific options
+--javascript-kinds=+cf
+--python-kinds=+cfm
+--ruby-kinds=+cfm

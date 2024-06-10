@@ -9,7 +9,6 @@ vim.g.gutentags_enabled = 1 ------------------------------------------ Enable gu
 vim.g.gutentags_generate_on_missing = 1 ------------------------------ Generate tags on missing
 vim.g.gutentags_generate_on_write = 1 -------------------------------- Generate tags on write
 vim.g.indentLine_char_list = { '⏐', '⁞', '⋮', '⠅' } ------------------ Set indentation line characters
-vim.g.tagbar_sort = 0 ------------------------------------------------ Disable tagbar sorting
 
 -- Options --
 vim.opt.guicursor = { ------------------------------------------------ Set cursor styles for various modes

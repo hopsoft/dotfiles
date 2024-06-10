@@ -49,6 +49,7 @@ alias vimx='vim -u NONE -N'
 # based on: https://gist.github.com/jimbojsb/1630790
 alias hl='pbpaste | highlight --syntax=ruby --style=bright -O rtf | pbcopy'
 alias cdruby='cd $RUBY_PATH/lib/ruby'
+alias ctags="ctags . $(bundle show --paths) ./node_modules"
 alias ctags-with-gems='ctags . $(bundle list --paths)'
 alias jsonfiy='$DOTDIR/bin/jsonify'
 alias b='bundle'
