@@ -27,7 +27,6 @@ brew = %w[
   sqlite
   telnet
   the_silver_searcher
-  thefuck
   tmux
   tmuxinator
   tree
