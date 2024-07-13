@@ -7,11 +7,11 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local prettier_config = {
   arrowParens = "avoid",
   bracketSameLine = true,
-  bracketSpacing = true,
+  bracketSpacing = false,
   embeddedLanguageFormatting = "auto",
   insertPragma = false,
   jsxSingleQuote = false,
-  plugins = {},
+  plugins = { "tailwindcss" },
   printWidth = 120,
   proseWrap = "preserve",
   quoteProps = "as-needed",
@@ -32,7 +32,7 @@ local sources = {
   -- Prettier with plugins for additional file types
   null_ls.builtins.formatting.prettier.with({
     config = prettier_config,
-    extra_filetypes = { "xml", "sql", "nginx", "toml" },
+    extra_filetypes = { "erb", "nginx", "sql", "toml", "xml" },
   })
 }
 

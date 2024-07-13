@@ -22,6 +22,7 @@ brew = %w[
   msgpack
   pygments
   ruby-build
+  rustywind
   siege
   speedtest-cli
   sqlite

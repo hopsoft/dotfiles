@@ -10,7 +10,8 @@ tsserver.setup({
   end,
   settings = {
     javascript = {
-      jsEnable = false,                                                             -- Enable/disable TypeScript language features for JavaScript files (default: true)
+      format = { enable = false },
+      jsEnable = true,                                                              -- Enable/disable TypeScript language features for JavaScript files (default: true)
       allowJs = true,                                                               -- Enable/disable diagnostic features for JavaScript files (default: true)
       checkJs = false,                                                              -- Enable/disable checking of JavaScript files (default: true)
       autoDiscovery = true,                                                         -- Enable/disable automatic type acquisition for JavaScript files (default: true)
@@ -25,6 +26,9 @@ tsserver.setup({
       includeInlayParameterNameHints = false,                                       -- Enable/disable inclusion of comments in the language service output (default: false)
       includeInlayParameterNameHintsWhenArgumentMatchesName = false,                -- Enable/disable inclusion of parameter name hints in the language service output (default: false)
       includeInlayParameterNameHintsWhenArgumentMatchesNameButNotIdentical = false, -- Enable/disable inclusion of parameter name hints for unused arguments (default: false)
+    },
+    typescript = {
+      format = { enable = false },
     },
   },
 })

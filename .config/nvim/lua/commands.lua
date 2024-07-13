@@ -1,4 +1,5 @@
 -- SEE: ./commands/*.lua
+
 require("openai")
 require("sort_selected_line")                                          -- Sorts visual selection on a single line
 
@@ -14,3 +15,5 @@ vim.cmd('autocmd VimEnter,WinEnter,BufWinEnter * setlocal nohlsearch') -- Automa
 vim.cmd('set completeopt+=menuone')                                    -- Adds 'menuone' to completion options, showing the completion menu even for a single match
 vim.cmd('set completeopt+=noselect')                                   -- Adds 'noselect' to completion options, preventing automatic selection of the first completion item
 vim.cmd([[autocmd BufWritePre * :%s/\s\+$//e]])                        -- Automatically trims trailing whitespace from all lines on buffer write (save)
+
+vim.api.nvim_set_hl(0, 'MsgArea', { fg = '#ffffff', bg = '#161515' })  -- Update message area to match airline theme (jellybeans)

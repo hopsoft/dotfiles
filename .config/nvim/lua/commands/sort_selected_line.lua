@@ -8,7 +8,7 @@ local function sort(text, delimiter)
 end
 
 local function sort_selection(options)
-  local delimiter = options.args or ", "
+  local delimiter = options.args.first or " "
   local selection = Current.selection()
   local buffer, head, tail, lines, selected =
       selection.buffer,
@@ -19,7 +19,6 @@ local function sort_selection(options)
 
   if not #lines == 1 then return end
 
-  local delimiter = #options.args > 0 and options.args or ", "
   local sorted = sort(selected[1], delimiter)
   vim.api.nvim_buf_set_text(buffer, head.line - 1, head.column - 1, tail.line - 1, tail.column, { sorted })
 end

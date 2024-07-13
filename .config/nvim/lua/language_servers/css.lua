@@ -1,4 +1,6 @@
 -- INSTALL: npm i -g vscode-langservers-extracted
 -- SEE: ../../../bin/install-language-servers
 
-require('lspconfig').cssls.setup({})
+local cssls = require('lspconfig').cssls
+
+cssls.setup({})

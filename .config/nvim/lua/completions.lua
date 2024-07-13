@@ -1,5 +1,6 @@
 require('luasnip.loaders.from_snipmate').lazy_load()
 
+local lspkind = require("lspkind")
 local cmp = require('cmp')
 
 cmp.setup({
@@ -24,12 +25,22 @@ cmp.setup({
   }),
   sources = cmp.config.sources(
     {
-      { name = 'nvim_lsp' },
       { name = 'luasnip' },
+      { name = 'nvim_lsp' },
+      { name = "supermaven", priority = 1000 },
     },
     { { name = 'buffer' } }
-  )
+  ),
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = "symbol",
+      max_width = 80,
+      symbol_map = { Supermaven = "𝐒" },
+    })
+  },
 })
+
+vim.api.nvim_set_hl(0, "CmpItemKindSupermaven", { fg = "#f80000" })
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
@@ -58,6 +69,7 @@ cmp.setup.cmdline(':', {
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Add langauge server capabilities
+--require('lspconfig')['ruby_ls'].setup({ capabilities = capabilities })
 require('lspconfig')['bashls'].setup({ capabilities = capabilities })
 require('lspconfig')['crystalline'].setup({ capabilities = capabilities })
 require('lspconfig')['cssls'].setup({ capabilities = capabilities })
@@ -67,7 +79,6 @@ require('lspconfig')['html'].setup({ capabilities = capabilities })
 require('lspconfig')['jsonls'].setup({ capabilities = capabilities })
 require('lspconfig')['lua_ls'].setup({ capabilities = capabilities })
 require('lspconfig')['pylsp'].setup({ capabilities = capabilities })
---require('lspconfig')['ruby_ls'].setup({ capabilities = capabilities })
 require('lspconfig')['solargraph'].setup({ capabilities = capabilities })
 require('lspconfig')['sqlls'].setup({ capabilities = capabilities })
 require('lspconfig')['tailwindcss'].setup({ capabilities = capabilities })

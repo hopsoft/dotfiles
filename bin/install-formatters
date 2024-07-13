@@ -7,9 +7,10 @@ gems = %w[
 npm = %w[
   prettier
   @prettier/plugin-xml
-  prettier prettier-plugin-toml
   prettier-plugin-nginx
   prettier-plugin-sql
+  prettier-plugin-tailwindcss
+  prettier-plugin-toml
 ]
 
 commands = [

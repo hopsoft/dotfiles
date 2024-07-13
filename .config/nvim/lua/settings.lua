@@ -1,9 +1,11 @@
 ---- Gets the latest version of node installed by asdf
 local node_path = vim.fn.system("asdf where nodejs"):gsub("%s+$", "")
 
-vim.g.NERDTreeDisableSpecialCharacters = 1 --------------------------- Disable special characters in NERDTree
 vim.g.ackprg = 'rg --hidden --smart-case --vimgrep' ------------------ Set ack program to use ripgrep
 vim.g.airline_powerline_fonts = 1 ------------------------------------ Enable powerline fonts for airline
+vim.g.airline_statusline_ontop = 1 ----------------------------------- Move airline to the top
+vim.g.airline_theme = 'jellybeans' ----------------------------------- Set airline theme
+vim.g['airline#extensions#tabline#enabled'] = 1 ---------------------- Enable airline tabline
 vim.g.copilot_node_command = node_path .. "/bin/node" ---------------- Set Copilot node command
 vim.g.gutentags_enabled = 1 ------------------------------------------ Enable gutentags
 vim.g.gutentags_generate_on_missing = 1 ------------------------------ Generate tags on missing
@@ -23,8 +25,7 @@ vim.opt.autochdir = false -------------------------------------------- Disable a
 vim.opt.autoindent = true -------------------------------------------- Enable auto-indentation
 vim.opt.autoread = true ---------------------------------------------- Reload files when changed outside of Vim
 vim.opt.background = 'dark' ------------------------------------------ Set dark background
-vim.opt.backspace = 'indent,eol,start' ------------------------------- Allow backspace over indentation, end of line,
----------------------------------------------------------------------- and start of line
+vim.opt.backspace = 'indent,eol,start' ------------------------------- Allow backspace over indentation
 vim.opt.backupdir = '/tmp/editor' ------------------------------------ Set backup directory
 vim.opt.colorcolumn = '121' ------------------------------------------ Highlight column 111
 vim.opt.complete:remove('i') ----------------------------------------- Remove insert mode completion
@@ -39,9 +40,10 @@ vim.opt.expandtab = true --------------------------------------------- Use space
 vim.opt.foldenable = false ------------------------------------------- Disable folding
 vim.opt.guifont = 'MesloLGM\\ Nerd\\ Font:h14' ----------------------- Set GUI font
 vim.opt.hidden = true ------------------------------------------------ Allow switching between unsaved buffers
+vim.opt.laststatus = 0 ----------------------------------------------- Disable status line (using airline)
 vim.opt.lazyredraw = true -------------------------------------------- Disable redrawing during macros
 vim.opt.list = true -------------------------------------------------- Display invisible characters
-vim.opt.listchars:append({ tab = '▸\\ ', eol = '¬', trail = '·' }) --- Set invisible character symbols
+vim.opt.listchars:append({ tab = '\\ ⇥', eol = '↵', trail = '―' }) --- Set invisible character symbols
 vim.opt.number = true ------------------------------------------------ Show line numbers
 vim.opt.relativenumber = false --------------------------------------- Disable relative line numbers
 vim.opt.runtimepath:append('~/.vim') --------------------------------- Add ~/.vim to runtime path
