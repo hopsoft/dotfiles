@@ -19,9 +19,5 @@ require("mappings")
 require("commands")
 require("completions")
 
--- configure individual plugins
-require("fzf")
-require("openai")
-
 -- load language servers
 require("language_servers")

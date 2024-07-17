@@ -43,7 +43,7 @@ vim.opt.hidden = true ------------------------------------------------ Allow swi
 vim.opt.laststatus = 0 ----------------------------------------------- Disable status line (using airline)
 vim.opt.lazyredraw = true -------------------------------------------- Disable redrawing during macros
 vim.opt.list = true -------------------------------------------------- Display invisible characters
-vim.opt.listchars:append({ tab = '\\ ⇥', eol = '↵', trail = '―' }) --- Set invisible character symbols
+vim.opt.listchars:append({ tab = '\\ ⇥', eol = '↲', trail = '―' }) --- Set invisible character symbols
 vim.opt.number = true ------------------------------------------------ Show line numbers
 vim.opt.relativenumber = false --------------------------------------- Disable relative line numbers
 vim.opt.runtimepath:append('~/.vim') --------------------------------- Add ~/.vim to runtime path

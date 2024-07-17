@@ -44,3 +44,7 @@ vim.cmd("Plug 'wincent/terminus'")                                     -- Enhanc
 vim.cmd("Plug 'yggdroot/indentline'")                                  -- Visualize indention levels
 
 vim.cmd("call plug#end()")
+
+-- configure plugins
+require("fzf")
+require("openai")
