@@ -1,28 +1,112 @@
+# General
 *.dump
 *.log
 *.orig
 *.swp
 *~
 .DS_Store
+Thumbs.db
+
+# Environment and configuration
 .env
-.idea
-.private
-.rvmrc
-.tags
+.env.*
+*.env
+config/master.key
+master.key
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.atom/
 .tmuxinator.yml
 .tool-versions
-.yalc
-.yardoc
-.yarn
-/**/node_modules
-/.bundle
-/log/*.log
-/node_modules
-/tmp
-_site
-coverage
-master.key
-prof
+.tags
 tags
 tags.*
+
+# Language-specific
+## Ruby/Rails
+/.bundle
+/vendor/bundle
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/storage/*
+!/storage/.keep
+/public/assets
+.byebug_history
+/config/master.key
+/coverage
+
+## JavaScript/Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.yarn-integrity
+.yalc
 yalc.lock
+.pnp.*
+.npm
+
+## Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+## Elixir
+/_build
+/deps
+/*.ez
+erl_crash.dump
+
+# Build and compile files
+*.o
+*.out
+*.class
+*.jar
+
+# Logs and databases
+*.sqlite3
+*.sqlite3-journal
+
+# OS generated files
+.Spotlight-V100
+.Trashes
+
+# Version managers
+.ruby-version
+.python-version
+.node-version
+
+# Documentation
+.yardoc
+_yardoc/
+doc/
+rdoc/
+
+# Testing
+/coverage/
+.rspec
+/spec/tmp
+/test/tmp
+/test/version_tmp
+
+# Misc
+*.bak
+*.tmp
+*.temp
+.private
+.rvmrc
+_site/
+.sass-cache/

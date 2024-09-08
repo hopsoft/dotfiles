@@ -1,3 +1,63 @@
+# homebrew ...................................................................................................
+if [ -d /opt/homebrew/bin ]; then
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+fi
+if command -v brew &> /dev/null; then
+  export BREW_PREFIX=$(brew --prefix)
+fi
+
+# completions ................................................................................................
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
+# asdf .......................................................................................................
+[ -f "$BREW_PREFIX/opt/asdf/libexec/asdf.sh" ] && . "$BREW_PREFIX/opt/asdf/libexec/asdf.sh"
+[ -f "$BREW_PREFIX/opt/asdf/etc/bash_completion.d" ] && . "$BREW_PREFIX/opt/asdf/etc/bash_completion.d"
+
+# dotfiles ...................................................................................................
+export DOTDIR=$HOME/.dotfiles
+export PATH=$PATH:$HOME/.dotfiles/bin
+
+# ruby .......................................................................................................
+export BUNDLE_DEV=true
+export DISABLE_SPRING=true
+
+# erlang/elixir ..............................................................................................
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+# env ........................................................................................................
+[[ -f $DOTDIR/.aliases ]] && . $DOTDIR/.aliases
+[[ -f $HOME/.bat.zsh ]] && . "$HOME/.bat.zsh"
+[[ -f $HOME/.fzf.zsh ]] && . "$HOME/.fzf.zsh"
+
+# postgres ...................................................................................................
+if [ -d /Applications/Postgres.app ]; then
+  export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+fi
+
+# secrets ....................................................................................................
+if [ -f $HOME/.private ]; then
+  . $HOME/.private
+fi
+
+# editors ....................................................................................................
+if [[ -f "$HOME/.asdf/shims/nvim" ]]; then
+  export EDITOR="$HOME/.asdf/shims/nvim"
+else
+  if command -v nvim &> /dev/null; then
+    export EDITOR=$(which nvim)
+  else
+    export EDITOR=$(which vim)
+  fi
+fi
+export GIT_EDITOR=$EDITOR
+export BUNDLER_EDITOR=$EDITOR
+
+# zsh .........................................................................................................
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -21,7 +81,7 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -39,7 +99,7 @@ ZSH_THEME="robbyrussell"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -90,68 +150,6 @@ ZSH_THEME="robbyrussell"
 
 compaudit | xargs chmod g-w,o-w
 
-# homebrew ...................................................................................................
-if [ -d /opt/homebrew/bin ]; then
-  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-fi
-if command -v brew &> /dev/null; then
-  export BREW_PREFIX=$(brew --prefix)
-fi
-
-# dotfiles ...................................................................................................
-export DOTDIR=$HOME/.dotfiles
-export PATH=$PATH:$HOME/.dotfiles/bin
-
-# LANGS ......................................................................................................
-
-# ruby .......................................................................................................
-export BUNDLE_DEV=true
-export DISABLE_SPRING=true
-
-# erlang/elixir ..............................................................................................
-export ERL_AFLAGS="-kernel shell_history enabled"
-
-# ENV ........................................................................................................
-[[ -f $DOTDIR/.aliases ]] && . $DOTDIR/.aliases
-[[ -f $HOME/.bat.zsh ]] && . "$HOME/.bat.zsh"
-[[ -f $HOME/.fzf.zsh ]] && . "$HOME/.fzf.zsh"
-[[ -f $HOME/.ruby.zsh ]] && . "$HOME/.ruby.zsh"
-
-# asdf .......................................................................................................
-[ -f "$BREW_PREFIX/opt/asdf/libexec/asdf.sh" ] && . "$BREW_PREFIX/opt/asdf/libexec/asdf.sh"
-[ -f "$BREW_PREFIX/etc/bash_completion.d/asdf.bash" ] && . "$BREW_PREFIX/etc/bash_completion.d/asdf.bash"
-
-# postgres ...................................................................................................
-if [ -d /Applications/Postgres.app ]; then
-  export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-fi
-
-# completions ................................................................................................
-[ -f "$BREW_PREFIX/etc/profile.d/bash_completion.sh" ] && . "$BREW_PREFIX/etc/profile.d/bash_completion.sh"
-if [ -d "$BREW_PREFIX/etc/bash_completion.d/" ]; then
-  for bcfile in "$BREW_PREFIX/etc/bash_completion.d/*"; do
-    [ -f "$bcfile" ] && . $bcfile
-  done
-fi
-
-# secrets ....................................................................................................
-if [ -f $HOME/.private ]; then
-  . $HOME/.private
-fi
-
-# editors ....................................................................................................
-if [[ -f "$HOME/.asdf/shims/nvim" ]]; then
-  export EDITOR="$HOME/.asdf/shims/nvim"
-else
-  if command -v nvim &> /dev/null; then
-    export EDITOR=$(which nvim)
-  else
-    export EDITOR=$(which vim)
-  fi
-fi
-export GIT_EDITOR=$EDITOR
-export BUNDLER_EDITOR=$EDITOR
-
 # prompt .....................................................................................................
 if [[ -n $SSH_CONNECTION ]]; then
   PROMPT="🔐 %{$fg[magenta]%}%n%{$fg[white]%}@%{$fg[magenta]%}%m%{$reset_color%}$PROMPT"
@@ -161,26 +159,38 @@ fi
 ulimit -n 1024
 
 plugins=(
+  1password
   asdf
+  brew
+  bun
   bundler
   colored-man-pages
+  colorize
   dash
   docker
   docker-compose
   fzf
   gem
+  gh
   git
+  git-fast
   heroku
   history
+  httpie
+  iterm2
   macos
   mix
+  pip
+  python
   rails
   rake-fast
   redis-cli
   ruby
   safe-paste
   tmux
+  tmuxinator
   web-search
   yarn
   zsh-autosuggestions
+  zsh-interactive-cd
 )

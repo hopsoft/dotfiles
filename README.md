@@ -37,11 +37,11 @@ TODOS:
 1. Install Fonts
 
    ```sh
-   git clone -o github --depth 1 https://github.com/powerline/fonts.git ~/work/powerline/fonts
-   ~/work/powerline/fonts/install.sh
+   git clone -o github --depth 1 https://github.com/powerline/fonts.git ~/code/powerline/fonts
+   ~/code/powerline/fonts/install.sh
 
-   git clone -o github --depth 1 https://github.com/ryanoasis/nerd-fonts.git ~/work/ryanoasis/nerd-fonts
-   ~/work/ryanoasis/nerd-fonts/install.sh
+   git clone -o github --depth 1 https://github.com/ryanoasis/nerd-fonts.git ~/code/ryanoasis/nerd-fonts
+   ~/code/ryanoasis/nerd-fonts/install.sh
    ```
 
 1. Setup tmux config: https://github.com/gpakosz/.tmux

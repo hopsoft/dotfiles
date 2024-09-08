@@ -1,1 +1,1 @@
-export DOTDIR="$HOME/.dotfiles"
+#export DOTDIR="$HOME/.dotfiles"
