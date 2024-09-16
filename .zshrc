@@ -25,6 +25,7 @@ export PATH=$PATH:$HOME/.dotfiles/bin
 # ruby .......................................................................................................
 export BUNDLE_DEV=true
 export DISABLE_SPRING=true
+. $DOTDIR/.ruby.zsh
 
 # erlang/elixir ..............................................................................................
 export ERL_AFLAGS="-kernel shell_history enabled"
@@ -36,7 +37,8 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 # postgres ...................................................................................................
 if [ -d /Applications/Postgres.app ]; then
-  export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+  #export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+  export PATH="/Applications/Postgres.app/Contents/Versions/14/bin:$PATH"
 fi
 
 # secrets ....................................................................................................

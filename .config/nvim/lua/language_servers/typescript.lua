@@ -1,9 +1,9 @@
 -- SEE: https://www.andersevenrud.net/neovim.github.io/lsp/configurations/tsserver/
 -- SEE: ../../../bin/install-language-servers
 
-local tsserver = require('lspconfig').tsserver
+local ts_ls = require('lspconfig').ts_ls
 
-tsserver.setup({
+ts_ls.setup({
   --on_attach = function(client)
   --client.resolved_capabilities.document_formatting = false
   --client.resolved_capabilities.document_range_formatting = false
