@@ -4,7 +4,8 @@ require("openai")
 require("sort_selected_line")                                          -- Sorts visual selection on a single line
 
 vim.cmd("au BufRead,BufNewFile *.jb setfiletype ruby")                 -- Sets filetype to Ruby for .jb files
-vim.cmd("colorscheme gruvbox")                                         -- Sets the colorscheme
+--vim.cmd("colorscheme gruvbox")                                         -- Sets the colorscheme
+vim.cmd("colorscheme nightfox")                                        -- Sets the colorscheme
 vim.cmd("filetype off")                                                -- Turns off filetype detection (usually to reconfigure it later)
 vim.cmd("hi ColorColumn guibg='#2b2b2b'")                              -- Sets the background color of the color column (used to indicate text width limit)
 vim.cmd("hi EasyMotionTarget guifg='#ffaf00'")                         -- Sets the font color for targets of the EasyMotion plugin
