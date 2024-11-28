@@ -1,6 +1,7 @@
 vim.cmd("call plug#begin('~/.vim/plugged')")
 
 --vim.cmd("Plug 'github/copilot.vim'")                                   -- GitHub Copilot (OpenAI coding assistant)
+--vim.cmd("Plug 'jackMort/ChatGPT.nvim'")                                -- OpenAI/ChatGPT chat assistant
 vim.cmd("Plug 'EdenEast/nightfox.nvim'")                               -- Customizable theme for neovim with support for lsp
 vim.cmd("Plug 'L3MON4D3/LuaSnip', {'do': 'make install_jsregexp'}")    -- Snippets plugin
 vim.cmd("Plug 'MunifTanjim/nui.nvim'")                                 -- UI Component Library
@@ -18,7 +19,6 @@ vim.cmd("Plug 'hrsh7th/cmp-nvim-lsp'")                                 -- Suppor
 vim.cmd("Plug 'hrsh7th/cmp-path'")                                     -- Completion for filesystem paths
 vim.cmd("Plug 'hrsh7th/nvim-cmp'")                                     -- Autocompletion plugin with LSP support
 vim.cmd("Plug 'ibhagwan/fzf-lua'")                                     -- Fuzzy finder
-vim.cmd("Plug 'jackMort/ChatGPT.nvim'")                                -- OpenAI/ChatGPT chat assistant
 vim.cmd("Plug 'junegunn/vim-emoji'")                                   -- Emoji support
 vim.cmd("Plug 'ludovicchabant/vim-gutentags'")                         -- Automatic tag management
 vim.cmd("Plug 'majutsushi/tagbar'")                                    -- Display tags in a sidebar
@@ -51,5 +51,5 @@ vim.cmd("Plug 'yggdroot/indentline'")                                  -- Visual
 vim.cmd("call plug#end()")
 
 -- configure plugins
+-- require("openai")
 require("fzf")
-require("openai")
