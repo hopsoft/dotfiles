@@ -1,0 +1,6 @@
+AmazingPrint.defaults = {
+  indent: -2,
+  index: false,
+  object_id: false,
+  ruby19_syntax: true
+}

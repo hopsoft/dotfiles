@@ -19,6 +19,7 @@ vim.cmd("Plug 'hrsh7th/cmp-nvim-lsp'")                                 -- Suppor
 vim.cmd("Plug 'hrsh7th/cmp-path'")                                     -- Completion for filesystem paths
 vim.cmd("Plug 'hrsh7th/nvim-cmp'")                                     -- Autocompletion plugin with LSP support
 vim.cmd("Plug 'ibhagwan/fzf-lua'")                                     -- Fuzzy finder
+vim.cmd("Plug 'isobit/vim-caddyfile'")                                 -- Caddyfile syntax highlighting
 vim.cmd("Plug 'junegunn/vim-emoji'")                                   -- Emoji support
 vim.cmd("Plug 'ludovicchabant/vim-gutentags'")                         -- Automatic tag management
 vim.cmd("Plug 'majutsushi/tagbar'")                                    -- Display tags in a sidebar
