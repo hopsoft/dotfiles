@@ -2,6 +2,7 @@ vim.cmd("call plug#begin('~/.vim/plugged')")
 
 --vim.cmd("Plug 'github/copilot.vim'")                                   -- GitHub Copilot (OpenAI coding assistant)
 --vim.cmd("Plug 'jackMort/ChatGPT.nvim'")                                -- OpenAI/ChatGPT chat assistant
+
 vim.cmd("Plug 'EdenEast/nightfox.nvim'")                               -- Customizable theme for neovim with support for lsp
 vim.cmd("Plug 'L3MON4D3/LuaSnip', {'do': 'make install_jsregexp'}")    -- Snippets plugin
 vim.cmd("Plug 'MunifTanjim/nui.nvim'")                                 -- UI Component Library
@@ -20,6 +21,7 @@ vim.cmd("Plug 'hrsh7th/cmp-path'")                                     -- Comple
 vim.cmd("Plug 'hrsh7th/nvim-cmp'")                                     -- Autocompletion plugin with LSP support
 vim.cmd("Plug 'ibhagwan/fzf-lua'")                                     -- Fuzzy finder
 vim.cmd("Plug 'isobit/vim-caddyfile'")                                 -- Caddyfile syntax highlighting
+vim.cmd("Plug 'jlcrochet/vim-rbs'")                                    -- Syntax highlighting and indentation for Ruby Signature (RBS) files
 vim.cmd("Plug 'junegunn/vim-emoji'")                                   -- Emoji support
 vim.cmd("Plug 'ludovicchabant/vim-gutentags'")                         -- Automatic tag management
 vim.cmd("Plug 'majutsushi/tagbar'")                                    -- Display tags in a sidebar
@@ -48,7 +50,6 @@ vim.cmd("Plug 'vim-airline/vim-airline-themes'")                       -- Airlin
 vim.cmd("Plug 'vim-scripts/restore_view.vim'")                         -- Autosave/restore cursor position and folds
 vim.cmd("Plug 'wincent/terminus'")                                     -- Enhanced terminal integration (iTerm, tmux)
 vim.cmd("Plug 'yggdroot/indentline'")                                  -- Visualize indention levels
-
 vim.cmd("call plug#end()")
 
 -- configure plugins
