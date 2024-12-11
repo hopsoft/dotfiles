@@ -37,8 +37,8 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 # postgres ...................................................................................................
 if [ -d /Applications/Postgres.app ]; then
-  #export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-  export PATH="/Applications/Postgres.app/Contents/Versions/14/bin:$PATH"
+  export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+  #export PATH="/Applications/Postgres.app/Contents/Versions/14/bin:$PATH"
 fi
 
 # secrets ....................................................................................................
