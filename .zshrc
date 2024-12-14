@@ -22,6 +22,9 @@ fi
 export DOTDIR=$HOME/.dotfiles
 export PATH=$PATH:$HOME/.dotfiles/bin
 
+# podman ......................................................................................................
+export PODMAN_COMPOSE_WARNING_LOGS=false
+
 # ruby .......................................................................................................
 export BUNDLE_DEV=true
 export DISABLE_SPRING=true
@@ -37,8 +40,10 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 # postgres ...................................................................................................
 if [ -d /Applications/Postgres.app ]; then
-  export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
   #export PATH="/Applications/Postgres.app/Contents/Versions/14/bin:$PATH"
+  #export PATH="/Applications/Postgres.app/Contents/Versions/15/bin:$PATH"
+  export PATH="/Applications/Postgres.app/Contents/Versions/16/bin:$PATH"
+  #export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 fi
 
 # secrets ....................................................................................................
@@ -164,7 +169,6 @@ plugins=(
   1password
   asdf
   brew
-  bun
   bundler
   colored-man-pages
   colorize
@@ -175,7 +179,6 @@ plugins=(
   gem
   gh
   git
-  git-fast
   heroku
   history
   httpie

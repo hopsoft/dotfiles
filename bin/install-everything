@@ -20,6 +20,8 @@ brew = %w[
   jq
   lnav
   msgpack
+  podman
+  podman-desktop
   pygments
   ruby-build
   rustywind

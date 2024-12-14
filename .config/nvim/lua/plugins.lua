@@ -11,6 +11,7 @@ vim.cmd("Plug 'airblade/vim-gitgutter'")                               -- Shows 
 vim.cmd("Plug 'chriskempson/base16-vim'")                              -- Base16 color support
 vim.cmd("Plug 'duane9/nvim-rg'")                                       -- Fast recursive search
 vim.cmd("Plug 'easymotion/vim-easymotion'")                            -- Quick navigation (jump to line, word, etc.)
+vim.cmd("Plug 'esensar/nvim-dev-container'")                           -- Neovim dev container support
 vim.cmd("Plug 'folke/tokyonight.nvim'")                                -- Dark Neovim theme written in Lua
 vim.cmd("Plug 'folke/twilight.nvim'")                                  -- Dims inactive portions of the code you're editing
 vim.cmd("Plug 'godlygeek/tabular'")                                    -- Quickly align text
