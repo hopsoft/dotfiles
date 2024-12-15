@@ -64,24 +64,3 @@ cmp.setup.cmdline(':', {
     { { name = 'cmdline' } }
   )
 })
-
--- Set up lspconfig
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
--- Add langauge server capabilities
---require('lspconfig')['ruby_ls'].setup({ capabilities = capabilities })
-require('lspconfig')['bashls'].setup({ capabilities = capabilities })
-require('lspconfig')['crystalline'].setup({ capabilities = capabilities })
-require('lspconfig')['cssls'].setup({ capabilities = capabilities })
-require('lspconfig')['elixirls'].setup({ capabilities = capabilities })
-require('lspconfig')['gopls'].setup({ capabilities = capabilities })
-require('lspconfig')['html'].setup({ capabilities = capabilities })
-require('lspconfig')['jsonls'].setup({ capabilities = capabilities })
-require('lspconfig')['lua_ls'].setup({ capabilities = capabilities })
-require('lspconfig')['pylsp'].setup({ capabilities = capabilities })
-require('lspconfig')['solargraph'].setup({ capabilities = capabilities })
-require('lspconfig')['sqlls'].setup({ capabilities = capabilities })
-require('lspconfig')['tailwindcss'].setup({ capabilities = capabilities })
-require('lspconfig')['ts_ls'].setup({ capabilities = capabilities })
-require('lspconfig')['vuels'].setup({ capabilities = capabilities })
-require('lspconfig')['yamlls'].setup({ capabilities = capabilities })

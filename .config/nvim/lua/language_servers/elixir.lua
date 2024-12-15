@@ -1,4 +1,6 @@
 -- INSTALL: brew install elixir-ls
 -- SEE: ../../../bin/install-language-servers
 
-require('lspconfig').elixirls.setup({})
+Current.lsp.config.elixirls.setup({
+  capabilities = Current.lsp.capabilities,
+})

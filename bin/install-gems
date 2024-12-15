@@ -2,6 +2,8 @@
 
 rubygems = %w[
   runfile
+  solargraph
+  standard
   whirly
 ]
 

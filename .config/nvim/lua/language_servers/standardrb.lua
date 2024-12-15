@@ -1,21 +1,13 @@
 -- SEE: https://github.com/standardrb/standard/wiki/IDE:-neovim
 
-vim.opt.signcolumn = "yes"
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "ruby",
-  group = vim.api.nvim_create_augroup("RubyLSP", { clear = true }),
-  callback = function()
-    vim.lsp.start {
-      name = "standard",
-      cmd = { "standardrb", "--lsp" },
-    }
-  end,
+Current.lsp.config.standardrb.setup({
+  cmd = { 'standardrb', '--lsp' },
+  filetypes = { 'ruby' },
 })
 
--- format ruby files on save with the standard gem
+-- Format Ruby files on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.builder", "*.erb", "*.gemspec", "*.rake", "*.rb", "*.rbw", "*.rdoc", "*.ru", "*.yaml", "*.yml", "*runfile" },
+  pattern = { "*.rb", "*.rake", "*.gemspec", "*.ru" },
   callback = function()
     vim.lsp.buf.format({ async = true })
   end,

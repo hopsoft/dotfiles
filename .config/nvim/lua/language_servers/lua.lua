@@ -2,7 +2,7 @@
 -- SEE: https://www.andersevenrud.net/neovim.github.io/lsp/configurations/sumneko_lua/
 -- SEE: ../../../bin/install-language-servers
 
-local lua_ls = require('lspconfig').lua_ls
+local lua_ls = Current.lsp.config.lua_ls
 
 lua_ls.cmd = { Current.brew_prefix .. "/bin/lua-language-server" }
 

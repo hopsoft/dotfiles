@@ -7,11 +7,15 @@ package.path = os.getenv("HOME") .. '/.config/nvim/lua/plugins/?.lua;' .. packag
 -- luacheck: globals vim
 _G.vim = vim
 
+-- load plugins
+require("plugins")
+
 -- load current globals
 require("current")
 
--- load plugins
-require("plugins")
+-- configure plugins
+-- require("openai")
+require("fzf")
 
 -- configure
 require("settings")

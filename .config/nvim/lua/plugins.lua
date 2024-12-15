@@ -36,6 +36,7 @@ vim.cmd("Plug 'nvim-tree/nvim-web-devicons'")                          -- File t
 vim.cmd("Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}") -- Easy tree-sitter UI usage
 vim.cmd("Plug 'nvimtools/none-ls.nvim'")                               -- Inject LSP diagnostics, code actions, etc. with Lua
 vim.cmd("Plug 'onsails/lspkind.nvim'")                                 -- vscode-like pictograms for neovim lsp completion items
+vim.cmd("Plug 'prabirshrestha/vim-lsp'")                               -- Async language server protocol plugin for neovim
 vim.cmd("Plug 'rebelot/kanagawa.nvim'")                                -- Dark colorscheme inspired by the colors of the famous painting by Katsushika Hokusai
 vim.cmd("Plug 'rizzatti/dash.vim'")                                    -- Dash documentation search
 vim.cmd("Plug 'scrooloose/nerdcommenter'")                             -- Comment/uncomment lines
@@ -52,7 +53,3 @@ vim.cmd("Plug 'vim-scripts/restore_view.vim'")                         -- Autosa
 vim.cmd("Plug 'wincent/terminus'")                                     -- Enhanced terminal integration (iTerm, tmux)
 vim.cmd("Plug 'yggdroot/indentline'")                                  -- Visualize indention levels
 vim.cmd("call plug#end()")
-
--- configure plugins
--- require("openai")
-require("fzf")

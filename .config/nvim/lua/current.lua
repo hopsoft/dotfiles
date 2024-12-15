@@ -1,7 +1,13 @@
 -- Custom container for global functions and variables across the entire configuration
 -- Inspired by Rails' CurrentAttributes
+
 Current = {
   brew_prefix = vim.fn.system("brew --prefix"):gsub("[\n\r]+", ""),
+
+  lsp = {
+    config = require('lspconfig'),
+    capabilities = require('cmp_nvim_lsp').default_capabilities()
+  },
 
   -- Returns the metadata about the current selection
   selection = function()

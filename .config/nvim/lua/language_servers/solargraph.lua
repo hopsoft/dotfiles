@@ -1,16 +1,15 @@
 -- SEE: https://www.andersevenrud.net/neovim.github.io/lsp/configurations/solargraph/
 -- SEE: ../../../bin/install-language-servers
 
-local solargraph = require('lspconfig').solargraph
-
-solargraph.setup({
+Current.lsp.config.solargraph.setup({
+  capabilities = Current.lsp.capabilities,
   settings = {
     bundlerPath = "bundle",
     checkGemVersion = true,
     commandPath = "solargraph",
     completion = true,
     definitions = true,
-    diagnostics = true,
+    diagnostics = false,
     externalServer = { host = "localhost", port = 7658 },
     folding = true,
     formatting = false,

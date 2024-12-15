@@ -1,3 +1,5 @@
 -- SEE: https://www.andersevenrud.net/neovim.github.io/lsp/configurations/gopls/
 
-require('lspconfig').gopls.setup({})
+Current.lsp.config.gopls.setup({
+  capabilities = Current.lsp.capabilities,
+})

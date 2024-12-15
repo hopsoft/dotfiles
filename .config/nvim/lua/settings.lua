@@ -21,6 +21,7 @@ vim.opt.guicursor = { ------------------------------------------------ Set curso
   "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
   "sm:block-blinkwait175-blinkoff150-blinkon175"
 }
+vim.opt.shell = vim.fn.system('which zsh'):gsub("\n", "")
 vim.opt.autochdir = false -------------------------------------------- Disable auto-changing of the current directory
 vim.opt.autoindent = true -------------------------------------------- Enable auto-indentation
 vim.opt.autoread = true ---------------------------------------------- Reload files when changed outside of Vim
