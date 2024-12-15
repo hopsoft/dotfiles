@@ -9,7 +9,7 @@ Current.lsp.config.solargraph.setup({
     commandPath = "solargraph",
     completion = true,
     definitions = true,
-    diagnostics = false,
+    diagnostics = true,
     externalServer = { host = "localhost", port = 7658 },
     folding = true,
     formatting = false,
