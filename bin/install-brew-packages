@@ -1,0 +1,84 @@
+#!/usr/bin/env ruby
+
+dependency = `which brew`.chomp
+if dependency.empty?
+  puts "Install Homebrew before running this script: \e[34mhttps://brew.sh/\e[0m"
+  exit 1
+end
+
+packages = %w[
+  1password-cli
+  asdf
+  awscli
+  bash-completion
+  bash-language-server
+  brotli
+  caddy
+  chromedriver
+  cloc
+  crystalline
+  dockerfile-language-server
+  doctl
+  elixir-ls
+  fd
+  flyctl
+  fzf
+  gh
+  git
+  httpie
+  jemalloc
+  jq
+  lnav
+  lua-language-server
+  msgpack
+  ninja
+  pygments
+  python-lsp-server
+  ruby-build
+  rustywind
+  siege
+  solargraph
+  speedtest-cli
+  sql-language-server
+  sqlite
+  tailwindcss-language-server
+  telnet
+  the_silver_searcher
+  tmux
+  tmuxinator
+  tree
+  typescript-language-server
+  universal-ctags
+  vim
+  vscode-langservers-extracted
+  wget
+  yaml-language-server
+  zlib
+  zsh
+  zsh-completions
+  zsh-lovers
+]
+
+installed = `brew list --formula`.split("\n")
+installed.concat `brew list --cask`.split("\n")
+outdated = `brew outdated --formula`.split("\n")
+
+install = packages - installed
+upgrade = packages & outdated
+
+if install.empty? && upgrade.empty?
+  puts "All Homebrew packages are installed and up to date!"
+  exit 0
+end
+
+commands = []
+commands << "brew update" if upgrade.any?
+commands << "brew install #{install.join(" ")}" if install.any?
+commands << "brew upgrade #{upgrade.join(" ")}" if upgrade.any?
+command = commands.join(" && ")
+
+puts "Installing and/or updating Homebrew packages..."
+puts command
+print "➜ "
+
+exec command

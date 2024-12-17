@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+
+dependency = `which node`.chomp
+if dependency.empty?
+  puts "Install NodeJS before running this script: \e[34mhttps://nodejs.org/en/\e[0m"
+  exit 1
+end
+
+dependency = `which npm`.chomp
+if dependency.empty?
+  puts "Install NPM before running this script: \e[34mhttps://docs.npmjs.com/downloading-and-installing-node-js-and-npm\e[0m"
+  exit 1
+end
+
+packages = %w[
+  @prettier/plugin-xml
+  prettier
+  prettier-plugin-nginx
+  prettier-plugin-sql
+  prettier-plugin-tailwindcss
+  prettier-plugin-toml
+  vls
+]
+
+installed = `npm list -g --depth=0 2>/dev/null`.split("\n")[1..]
+  .map { _1.scan(/@?\w.*(?=@\d)/) }.flatten.compact
+
+outdated = `npm outdated -g --depth=0 2>/dev/null`.split("\n")[1..]
+  .map { _1.scan(/@?\w.*(?=@\d)/) }.flatten.compact
+
+install = packages - installed
+upgrade = packages & outdated
+
+if install.empty? && upgrade.empty?
+  puts "All npm packages are installed and up to date!"
+  exit 0
+end
+
+commands = []
+commands << "npm install -g #{install.join(" ")}" if install.any?
+commands << "npm update -g #{upgrade.join(" ")}" if upgrade.any?
+command = commands.join(" && ")
+
+puts "Installing and/or updating NPM packages..."
+print "➜ "
+puts command
+
+exec command

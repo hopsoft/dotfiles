@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+dependency = `which ruby`.chomp
+if dependency.empty?
+  puts "Install Ruby before running this script: \e[34mhttps://www.ruby-lang.org/en/\e[0m"
+  exit 1
+end
+
+packages = %w[
+  amazing_print
+  rainbow
+  solargraph
+  standard
+]
+
+installed = `gem list --no-versions`.split("\n")
+
+install = packages - installed
+upgrade = packages & installed
+
+if install.empty? && upgrade.empty?
+  puts "All Ruby GEMs are installed and up to date!"
+  exit 0
+end
+
+commands = []
+commands << "gem install #{install.join(" ")}" if install.any?
+commands << "gem update #{upgrade.join(" ")}" if upgrade.any?
+command = commands.join(" && ")
+
+puts "Installing and/or updating Ruby GEMs..."
+print "➜ "
+puts command
+
+exec command

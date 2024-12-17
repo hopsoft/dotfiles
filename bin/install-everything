@@ -1,54 +1,12 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env bash
 
-brew = %w[
-  1password-cli
-  asdf
-  awscli
-  bash-completion
-  brotli
-  caddy
-  chromedriver
-  cloc
-  doctl
-  fd
-  flyctl
-  fzf
-  gh
-  git
-  httpie
-  jemalloc
-  jq
-  lnav
-  msgpack
-  podman
-  podman-desktop
-  pygments
-  ruby-build
-  rustywind
-  siege
-  speedtest-cli
-  sqlite
-  telnet
-  the_silver_searcher
-  tmux
-  tmuxinator
-  tree
-  universal-ctags
-  vim
-  wget
-  zlib
-  zsh
-  zsh-completions
-  zsh-lovers
-]
+if ! command -v ruby >/dev/null 2>&1; then
+  echo "Install Ruby before running this script: https://www.ruby-lang.org/en/"
+  exit 1
+fi
 
-commands = [
-  "brew update",
-  "brew install #{brew.join " "}",
-  "install-language-servers",
-  "install-formatters",
-]
+echo "Installing and/or updating everything..."
 
-command = commands.join(" && ")
-puts command
-exec command
+install-brew-packages
+install-javascript-packages
+install-ruby-packages
