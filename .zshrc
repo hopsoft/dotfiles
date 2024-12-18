@@ -34,7 +34,7 @@ export DISABLE_SPRING=true
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # env ........................................................................................................
-[[ -f $DOTDIR/.aliases ]] && . $DOTDIR/.aliases
+[[ -f $DOTDIR/.aliases ]] && . $HOME/.aliases
 [[ -f $HOME/.bat.zsh ]] && . "$HOME/.bat.zsh"
 [[ -f $HOME/.fzf.zsh ]] && . "$HOME/.fzf.zsh"
 

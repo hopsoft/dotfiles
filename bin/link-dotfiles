@@ -39,6 +39,7 @@ def symlink_directory(directory_name)
 end
 
 symlink_files(*%w[
+  .aliases
   .bashrc
   .bat.zsh
   .fzf.zsh
