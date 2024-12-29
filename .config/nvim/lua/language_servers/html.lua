@@ -3,4 +3,11 @@
 
 Current.lsp.config.html.setup({
   capabilities = Current.lsp.capabilities,
+  settings = {
+    html = {
+      format = {
+        enable = false  -- Disable LSP formatting to avoid conflicts with Prettier
+      }
+    }
+  }
 })

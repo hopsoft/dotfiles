@@ -4,35 +4,32 @@
 local null_ls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-local prettier_config = {
-  arrowParens = "avoid",
-  bracketSameLine = true,
-  bracketSpacing = false,
-  embeddedLanguageFormatting = "auto",
-  insertPragma = false,
-  jsxSingleQuote = false,
-  plugins = { "tailwindcss" },
-  printWidth = 120,
-  proseWrap = "preserve",
-  quoteProps = "as-needed",
-  requirePragma = false,
-  semi = false,
-  singleAttributePerLine = false,
-  singleQuote = true,
-  tabWidth = 2,
-  trailingComma = "none",
-  useTabs = false,
-  vueIndentScriptAndStyle = false,
-}
-
 local sources = {
-  -- Prettier for JavaScript, TypeScript, JSON, CSS, YAML, Markdown
-  null_ls.builtins.formatting.prettier.with({ config = prettier_config }),
-
-  -- Prettier with plugins for additional file types
+  -- Single Prettier configuration for all file types
   null_ls.builtins.formatting.prettier.with({
-    config = prettier_config,
-    extra_filetypes = { "erb", "nginx", "sql", "toml", "xml" },
+    extra_args = {
+      "--arrow-parens", "avoid",
+      "--bracket-same-line", "true",
+      "--bracket-spacing", "false",
+      "--embedded-language-formatting", "auto",
+      "--end-of-line", "lf",
+      "--html-whitespace-sensitivity", "css",
+      "--jsx-single-quote", "true",
+      "--print-width", "120",
+      "--prose-wrap", "preserve",
+      "--quote-props", "as-needed",
+      "--semi", "false",
+      "--single-quote", "true",
+      "--tab-width", "2",
+      "--trailing-comma", "none",
+      "--use-tabs", "false",
+      "--vue-indent-script-and-style", "false",
+      "--xml-quote-attributes", "single",
+      "--xml-whitespace-sensitivity", "ignore",
+      "--plugin", "@prettier/plugin-xml",
+      "--plugin", "prettier-plugin-tailwindcss"
+    },
+    extra_filetypes = { "erb", "nginx", "sql", "toml", "xml", "html", "svg" },
   })
 }
 
