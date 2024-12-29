@@ -2,5 +2,5 @@
 -- SEE: ../../../bin/install-language-servers
 
 Current.lsp.config.tailwindcss.setup({
-  capabilities = Current.lsp.capabilities,
+  capabilities = Current.lsp.capabilities
 })

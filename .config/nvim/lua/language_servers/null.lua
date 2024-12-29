@@ -4,10 +4,35 @@
 local null_ls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-local sources = {
-  -- Single Prettier configuration for all file types
-  null_ls.builtins.formatting.prettier.with({
-    extra_args = {
+local sources = {}
+
+-- Rustywind formatter for Tailwind class sorting
+table.insert(sources, null_ls.builtins.formatting.rustywind.with({
+  filetypes = { "eex", "erb", "hbs", "heex", "html", "jsx", "php", "svelte", "tsx", "vue" },
+  command = "rustywind",
+  args = { "--stdin" },
+  to_stdin = true
+}))
+
+-- HTML/ERB specific formatter with Prettier
+table.insert(sources, null_ls.builtins.formatting.prettier.with({
+  command = "prettier",
+  args = function(params)
+    return {
+      "--parser", "html",
+      "--stdin-filepath", params.fname
+    }
+  end,
+  filetypes = { "eex", "erb", "hbs", "heex", "html", "jsx", "php", "svelte", "tsx", "vue" },
+  to_stdin = true
+}))
+
+-- Other file types formatter
+table.insert(sources, null_ls.builtins.formatting.prettier.with({
+  command = "prettier",
+  args = function(params)
+    return {
+      "--parser", params.ft == "javascript" and "babel" or params.ft,
       "--arrow-parens", "avoid",
       "--bracket-same-line", "true",
       "--bracket-spacing", "false",
@@ -26,27 +51,36 @@ local sources = {
       "--vue-indent-script-and-style", "false",
       "--xml-quote-attributes", "single",
       "--xml-whitespace-sensitivity", "ignore",
-      "--plugin", "@prettier/plugin-xml",
-      "--plugin", "prettier-plugin-tailwindcss"
-    },
-    extra_filetypes = { "erb", "nginx", "sql", "toml", "xml", "html", "svg" },
+      "--stdin-filepath", params.fname
+    }
+  end,
+  filetypes = { "css", "graphql", "javascript", "json", "markdown", "scss", "svg", "typescript", "yaml" },
+  to_stdin = true
+}))
+
+-- Setup autoformatting
+local function format_if_supported(bufnr)
+  local filetype = vim.bo[bufnr].filetype
+  for _, source in ipairs(sources) do
+    if vim.tbl_contains(source.filetypes, filetype) then
+      vim.lsp.buf.format({ bufnr = bufnr })
+      break
+    end
+  end
+end
+
+local function setup_formatting(client, bufnr)
+  if not client.supports_method("textDocument/formatting") then return end
+
+  vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    group = augroup,
+    buffer = bufnr,
+    callback = function() format_if_supported(bufnr) end
   })
-}
+end
 
 null_ls.setup({
   sources = sources,
-
-  -- Configure format on save
-  on_attach = function(client, bufnr)
-    if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format({ bufnr = bufnr })
-        end,
-      })
-    end
-  end,
+  on_attach = setup_formatting
 })

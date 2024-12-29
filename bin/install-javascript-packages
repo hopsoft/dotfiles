@@ -16,6 +16,7 @@ packages = %w[
   @prettier/plugin-xml
   prettier
   prettier-plugin-nginx
+  prettier-plugin-organize-attributes
   prettier-plugin-sql
   prettier-plugin-tailwindcss
   prettier-plugin-toml

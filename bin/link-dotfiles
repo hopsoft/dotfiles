@@ -47,6 +47,7 @@ symlink_files(*%w[
   .gitignore
   .ignore
   .irbrc
+  .prettierrc.json
   .pryrc
   .rubocop.yml
   .ruby.zsh
