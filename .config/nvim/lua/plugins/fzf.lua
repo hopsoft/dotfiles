@@ -20,8 +20,9 @@ Current.fzf.setup({
   grep = {
     input_prompt = 'Search: ',
     prompt = 'Results: ',
-    rg_opts = '--hidden --smart-case --vimgrep',
-    cwd = find_project_root()
+    rg_opts = '--hidden --smart-case --vimgrep --line-number --column',
+    cwd = find_project_root(),
+    silent = true
   },
   files = {
     cwd = find_project_root()
