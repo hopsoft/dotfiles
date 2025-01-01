@@ -8,7 +8,12 @@ end
 
 packages = %w[
   amazing_print
+  asciidoctor
+  asciidoctor-diagram
+  asciidoctor-mathematical
+  asciidoctor-pdf
   rainbow
+  rouge
   solargraph
   standard
 ]
