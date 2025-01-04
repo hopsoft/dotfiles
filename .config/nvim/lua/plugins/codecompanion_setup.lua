@@ -19,5 +19,3 @@ CodeCompanion.setup({
     },
   },
 })
-
-print(string.format("CodeCompanion setup complete!\n\n%s", vim.inspect(adapter)))
