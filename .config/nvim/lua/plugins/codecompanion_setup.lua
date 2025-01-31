@@ -72,17 +72,22 @@ end
 require("codecompanion").setup({
   adapters = {
     deepseek_coder = build_adapter("ollama", {
-      name = "deepseek-coder",
+      name = "Ollama: Deepseek Coder V2 16b",
       schema = { model = { default = "deepseek-coder-v2:16b" } },
     }),
 
     deepseek_r1 = build_adapter("ollama", {
-      name = "deepseek-r1",
+      name = "Ollama: Deepseek R1 14b",
       schema = { model = { default = "deepseek-r1:14b" } },
     }),
 
+    mistral = build_adapter("ollama", {
+      name = "Ollama: Mistral v0.3 7b", -- Vutr Inference
+      schema = { model = { default = "mistral:7b" } },
+    }),
+
     qwen_coder = build_adapter("ollama", {
-      name = "qwen-coder",
+      name = "Ollama: Qwen Coder 2.5 14b", -- Vutr Inference
       schema = { model = { default = "qwen2.5-coder:14b" } },
     }),
   },
@@ -104,9 +109,9 @@ require("codecompanion").setup({
       show_header_separator = false, -- Show header separators in chat buffer? Set false if using a formatting plugin (default: false)
       separator = "─", -- Separator between different messages in chat buffer (default: "─")
       show_references = true, -- Show references from `/` commands and `#` variables in chat buffer? (default: true)
-      show_settings = true, -- Show LLM settings at top of chat buffer? (default: false)
+      show_settings = false, -- Show LLM settings at top of chat buffer? (default: false)
       show_token_count = true, -- Show token count for responses? (default: true)
-      start_in_insert_mode = true, -- Open chat buffer in insert mode? (default: false)
+      start_in_insert_mode = false, -- Open chat buffer in insert mode? (default: false)
     },
 
     code_actions = {
