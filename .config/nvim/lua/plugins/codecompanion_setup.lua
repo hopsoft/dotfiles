@@ -71,23 +71,38 @@ end
 
 require("codecompanion").setup({
   adapters = {
-    deepseek_coder = build_adapter("ollama", {
+    -- Hopsoft LLC: AnythingLLM Instance
+    anythingllm_software_engineer = adapters.extend("openai_compatible", {
+      name = "AnythingLLM: Software Engineer",
+      env = {
+        url = "https://hopsoft.useanything.com/api",
+        chat_url = "/v1/openai/chat/completions",
+        api_key = "cmd:op read 'op://Private/AnythingLLM/API KEYS/main'",
+      },
+      headers = { ["Authorization"] = "Bearer ${api_key}" },
+      opts = { ignore_system_prompt = true },
+      schema = { model = { default = "software-engineer" } },
+    }),
+
+    -- Local Ollama Instance
+    ollama_deepseek_coder = build_adapter("ollama", {
       name = "Ollama: Deepseek Coder V2 16b",
       schema = { model = { default = "deepseek-coder-v2:16b" } },
     }),
 
-    deepseek_r1 = build_adapter("ollama", {
+    ollama_deepseek_r1 = build_adapter("ollama", {
       name = "Ollama: Deepseek R1 14b",
       schema = { model = { default = "deepseek-r1:14b" } },
     }),
 
-    mistral = build_adapter("ollama", {
-      name = "Ollama: Mistral v0.3 7b", -- Vutr Inference
+    -- Local Ollama: Quantized versions of Vutr Inference models
+    ollama_mistral = build_adapter("ollama", {
+      name = "Ollama: Mistral v0.3 7b",
       schema = { model = { default = "mistral:7b" } },
     }),
 
-    qwen_coder = build_adapter("ollama", {
-      name = "Ollama: Qwen Coder 2.5 14b", -- Vutr Inference
+    ollama_qwen_coder = build_adapter("ollama", {
+      name = "Ollama: Qwen Coder 2.5 14b",
       schema = { model = { default = "qwen2.5-coder:14b" } },
     }),
   },
@@ -114,21 +129,10 @@ require("codecompanion").setup({
       start_in_insert_mode = false, -- Open chat buffer in insert mode? (default: false)
     },
 
-    code_actions = {
-      provider = "telescope", -- default|telescope|mini_pick
-    },
-
-    context = {
-      provider = "telescope", -- default|telescope|mini_pick
-    },
-
-    inline = {
-      layout = "vertical", -- vertical|horizontal|buffer (default: vertical)
-    },
-
-    prompts = {
-      provider = "telescope", -- default|telescope|mini_pick
-    },
+    code_actions = { provider = "telescope" }, -- default|telescope|mini_pick
+    context = { provider = "telescope" },      -- default|telescope|mini_pick
+    inline = { layout = "vertical" },          -- vertical|horizontal|buffer (default: vertical)
+    prompts = { provider = "telescope" },      -- default|telescope|mini_pick
   },
 
   opts = {
@@ -137,22 +141,20 @@ require("codecompanion").setup({
 
   strategies = {
     chat = {
-      adapter = "deepseek_r1",
+      adapter = "anythingllm_software_engineer",
       slash_commands = {
-        ["buffer"] = { opts = { provider = "fzf_lua" } },
-        ["file"] = { opts = { provider = "fzf_lua" } },
-        ["help"] = { opts = { provider = "fzf_lua" } },
-        ["symbols"] = { opts = { provider = "fzf_lua" } },
+        ["buffer"] = { opts = { provider = "fzf_lua" } },  -- default|telescope|mini_pick|fzf_lua|snacks
+        ["file"] = { opts = { provider = "fzf_lua" } },    -- default|telescope|mini_pick|fzf_lua|snacks
+        ["help"] = { opts = { provider = "fzf_lua" } },    -- telescope|mini_pick|fzf_lua|snacks
+        ["symbols"] = { opts = { provider = "fzf_lua" } }, -- default|telescope|mini_pick|fzf_lua|snacks
       },
     },
 
     inline = {
-      adapter = "qwen_coder"
+      adapter = "anythingllm_software_engineer",
     },
   },
 })
-
-
 
 --TODO: Revsit the Vultr adapter
 --local CodeCompanionAdapter = require("codecompanion.adapters")
