@@ -18,6 +18,8 @@ packages = %w[
   prettier
   prettier-plugin-nginx
   prettier-plugin-organize-attributes
+  prettier-plugin-rust
+  prettier-plugin-sh
   prettier-plugin-sql
   prettier-plugin-tailwindcss
   prettier-plugin-toml

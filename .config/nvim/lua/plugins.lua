@@ -5,6 +5,7 @@ vim.cmd("Plug 'L3MON4D3/LuaSnip', {'do': 'make install_jsregexp'}")             
 vim.cmd("Plug 'MeanderingProgrammer/render-markdown.nvim', { 'for': ['markdown', 'codecompanion'] }") -- Markdown rendering
 vim.cmd("Plug 'MunifTanjim/nui.nvim'")                                                                -- UI Component Library
 vim.cmd("Plug 'Xuyuanp/nerdtree-git-plugin'")                                                         -- NERDTree with git status
+vim.cmd("Plug 'catppuccin/nvim'")                                                                     -- Soothing pastel theme for (Neo)vim
 vim.cmd("Plug 'chriskempson/base16-vim'")                                                             -- Base16 color support
 vim.cmd("Plug 'duane9/nvim-rg'")                                                                      -- Fast recursive search
 vim.cmd("Plug 'easymotion/vim-easymotion'")                                                           -- Quick navigation (jump to line, word, etc.)

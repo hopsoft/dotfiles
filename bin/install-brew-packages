@@ -32,6 +32,7 @@ packages = %w[
   lua-language-server
   msgpack
   ninja
+  ollama
   pygments
   python-lsp-server
   ruby-build

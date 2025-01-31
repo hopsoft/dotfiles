@@ -22,6 +22,30 @@ fi
 export DOTDIR=$HOME/.dotfiles
 export PATH=$PATH:$HOME/.dotfiles/bin
 
+# ollama .....................................................................................................
+#
+# Hardware Specs:
+# - Chip: Apple M1 Pro
+# - CPU: 10 (8 performance and 2 efficiency)
+# - GPU: 16 Cores
+# - Memory: 32 GB
+# - Disk: 1TB SSD
+#
+# NOTE: Configure these variables in: /opt/homebrew/opt/ollama/homebrew.mxcl.ollama.plist
+#
+# GPU and Processing:
+# export OLLAMA_FLASH_ATTENTION="1"   # Enable optimized attention mechanism for faster processing
+# export OLLAMA_SCHED_SPREAD="1"      # Enables spreading of tasks across all GPUs (DANGER: kills the system while active)
+
+# Memory and Cache:
+# export OLLAMA_KV_CACHE_TYPE="q8_0"  # Sets 8-bit quantization for key/value cache to optimize memory usage
+# export OLLAMA_MAX_LOADED_MODELS="2" # Maximum number of models to keep loaded in memory
+# export OLLAMA_KEEP_ALIVE="4h"       # How long to keep models loaded in memory after last use
+
+# Queue and Processing:
+# export OLLAMA_MAX_QUEUE="32"        # Maximum number of requests that can be queued
+# export OLLAMA_NUM_PARALLEL="2"      # Number of concurrent model executions allowed
+
 # podman ......................................................................................................
 export PODMAN_COMPOSE_WARNING_LOGS=false
 

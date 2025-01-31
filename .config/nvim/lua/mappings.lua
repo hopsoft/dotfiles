@@ -1,25 +1,32 @@
 vim.g.mapleader = ","
+vim.g.maplocalleader = ","
 
-local defaults = {noremap = true, silent = true}
-
-local function map(mode, shortcut, action, opts)
-  vim.api.nvim_set_keymap(mode, shortcut, action, opts or defaults)
-end
+-- Default options for keymaps
+local opts = { noremap = true, silent = true }
 
 -- Neovim --
-map('n', 'jk', '<ESC>') -- escape with jk
-map('n', '<Leader>h', ':set hls! hls?<CR>') ----------------- toggle highlighting
+vim.keymap.set('n', 'jk', '<ESC>', opts)
+vim.keymap.set('n', '<Leader>h', function()
+  vim.opt.hlsearch = not vim.opt.hlsearch:get()
+  print('hlsearch: ' .. tostring(vim.opt.hlsearch:get()))
+end, opts)
 
--- CoC --
-map('n', '<leader>g', ':CocCommand git.foldUnchanged<CR>') -- toggle folding unchanged lines
+-- CodeCompanion --
+vim.keymap.set({ 'n', 'v' }, '<C-a>', '<cmd>CodeCompanionActions<cr>', opts)
+vim.keymap.set({ 'n', 'v' }, '<LocalLeader>a', '<cmd>CodeCompanionChat Toggle<cr>', opts)
+vim.keymap.set('v', 'ga', '<cmd>CodeCompanionChat Add<cr>', opts)
 
 -- NERDTree --
-map('n', '<Leader>nt', ':NERDTreeToggle<CR>') --------------- toggle nerdtree
-map('n', '<Leader>nf', ':NERDTreeFind<CR>') ----------------- find file in nerdtree
+vim.keymap.set('n', '<Leader>nt', '<cmd>NERDTreeToggle<cr>', opts)
+vim.keymap.set('n', '<Leader>nf', '<cmd>NERDTreeFind<cr>', opts)
 
 -- Tagbar --
-map('n', '<Leader>tb', ':TagbarToggle<CR>') ----------------- toggle tagbar
+vim.keymap.set('n', '<Leader>tb', '<cmd>TagbarToggle<cr>', opts)
 
 -- FZF --
-map('n', '<c-P>', '<cmd>lua Current.fzf.files()<CR>') ------- find files
-map('n', '<Leader>f', '<cmd>lua Current.fzf.grep()<CR>') ---- search files
+vim.keymap.set('n', '<C-p>', function()
+  Current.fzf.files()
+end, opts)
+vim.keymap.set('n', '<Leader>f', function()
+  Current.fzf.grep()
+end, opts)
