@@ -10,12 +10,11 @@
 --exclude=public
 --exclude=tmp
 --exclude=vendor
---languages=JavaScript,JSON,Lua,Python,RDoc,RSpec,Ruby,Sh,SQL,SVG,TypeScript,YAML,XML,Zsh
+--languages=Asciidoc,C,C++,CSS,Elixir,Erlang,Go,HTML,JavaScript,JSON,Lua,Markdown,PHP,Python,RDoc,Rust,RSpec,Ruby,Sh,SQL,SVG,TypeScript,YAML,XML,Zsh
 --links=yes
 --recurse=yes
---recurse=yes
 
-# lanaguage specific options
---javascript-kinds=+cf
+# Language specific options
 --python-kinds=+cfm
 --ruby-kinds=+cfm
+--javascript-kinds=-c-f-m-p-v

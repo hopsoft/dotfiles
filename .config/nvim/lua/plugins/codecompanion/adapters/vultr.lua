@@ -5,20 +5,33 @@ local log = require("codecompanion.utils.log")
 local fmt = string.format
 local pp = vim.inspect
 
+-- Vutr Inference API CodeCompanion Adapter
+-- SEE: https://github.com/olimorris/codecompanion.nvim/blob/main/doc/ADAPTERS.md
+-- NOTE: Adapter settings can be cross-referenced (env ref "${key}", adapter ref "foo.bar.baz")
 return adapters.extend(base, {
+  -- Adapter name
   name = "vultr",
+
+  -- LLM Chat API endpoint
   url = "https://api.vultrinference.com/v1/chat/completions",
 
+  -- Controls adapter-specific behavior that extends/overrides CodeCompanion defaults
+  opts = {
+    stream = true,
+  },
+
+  -- ENV var source definitions (names, commands, functions, refs)
   env = {
     api_key = "VULTR_INFERENCE_API_KEY",
   },
 
-  roles = {
-    system = "system",
-    user = "user",
-    llm = "assistant",
+  -- HTTP request headers
+  headers = {
+    ["Content-Type"] = "application/json",
+    Authorization = "Bearer ${api_key}",
   },
 
+  -- Default request parameters (before schema mapping)
   parameters = {
     model = "qwen2.5-coder-32b-instruct",
     temperature = 1,
@@ -27,55 +40,14 @@ return adapters.extend(base, {
     max_tokens = 512,
   },
 
-  features = {
-    text = true,
-    tokens = true,
-    vision = false,
+  -- Extra curl options
+  raw = {
+    "--no-buffer",
+    "--silent",
   },
 
-  opts = {
-    stream = true,
-  },
-
-  headers = {
-    ["Content-Type"] = "application/json",
-    Authorization = "Bearer ${api_key}",
-  },
-
-  handlers = {
-    form_messages = function(self, messages)
-      -- Filter out any empty messages (Vultr rejects empty messages)
-      messages = vim.tbl_filter(function(msg)
-        local content = type(msg.content) == "string" and vim.trim(msg.content) or ""
-        return content ~= ""
-      end, messages)
-
-      -- Merge consecutive messages of the same role
-      messages = utils.merge_messages(messages)
-
-      -- Ensure the last message is a user message
-      local last_msg = messages[#messages]
-      if last_msg.role ~= self.roles.user then
-        -- Raising blocks the plugin from making the request
-        error(
-          "Your prompt appears to be incomplete. Be sure to include context when using commands, tools, or variables.\n" ..
-          "SEE: https://github.com/olimorris/codecompanion.nvim?tab=readme-ov-file#rocket-quickstart"
-        )
-      end
-
-      return { messages = messages }
-    end,
-
-    -- Invoked when a request/response cycle completes.
-    on_exit = function(self, data)
-      if not (data.status >= 200 and data.status < 300) then
-        data = pp(data)
-        data = #data > 1024 and data:sub(1, 1024) .. "..." or data
-        log:error(fmt("Vultr Inference API: Response returned a non 2XX status code!\n%s", data))
-      end
-    end,
-  },
-
+  -- LLM Chat API schema
+  -- SEE: https://api.vultrinference.com/#tag/Chat/operation/create-chat-completion
   schema = {
     model = {
       order = 1,
@@ -173,5 +145,111 @@ return adapters.extend(base, {
         return n >= 0 and n <= 20, "Must be between 0 and 20"
       end,
     }
-  }
+  },
+
+  features = {
+    text = true,
+    tokens = true,
+    vision = false,
+  },
+
+  roles = {
+    system = "system",
+    user = "user",
+    llm = "assistant",
+  },
+
+  agents = {
+    full_stack_dev = {
+      role = "system"
+    }
+  },
+
+  tools = {
+    rag = {
+      role = "user",
+      auto_submit_success = true
+    },
+    cmd_runner = {
+      role = "user",
+      auto_submit_errors = true
+    },
+    editor = {
+      role = "user"
+    },
+    files = {
+      role = "user",
+      auto_submit_errors = true
+    }
+  },
+
+  variables = {
+    buffer = {
+      role = "user"
+    },
+    lsp = {
+      role = "user"
+    },
+    viewport = {
+      role = "user"
+    }
+  },
+
+  inline = {
+    placement = {
+      role = "system",
+      auto_submit = true
+    }
+  },
+
+  -- Handler configuration --
+  -- Mappings for API request/response to CodeCompanion --
+  handlers = {
+    form_messages = function(self, messages)
+      messages = base.handlers.form_messages(self, messages).messages
+      local system_msgs = utils.pluck_messages(messages, self.roles.system)
+
+      if #system_msgs > 1 then
+        for i = 2, #system_msgs do system_msgs[i].role = self.roles.user end
+      end
+
+      --local assistant_msgs = utils.pluck_messages(messages, self.roles.assistant)
+      local user_msgs = utils.pluck_messages(messages, self.roles.user)
+
+      if #user_msgs > 0 then
+        for i = 1, #user_msgs do
+          user_msgs[i].content = vim.trim(user_msgs[i].content or "") .. "\n\n"
+        end
+      end
+
+      messages = utils.merge_messages(messages)
+
+      for i = 1, #messages do
+        messages[i].content = vim.trim(messages[i].content or "")
+      end
+
+      return { messages = messages }
+    end,
+
+    -- Invoked when a request/response cycle completes.
+    on_exit = function(self, data)
+      if not (data.status >= 200 and data.status < 300) then
+        data = pp(data)
+        data = #data > 1024 and data:sub(1, 1024) .. "..." or data
+        log:error(fmt("Vultr Inference API: Response returned a non 2XX status code!\n%s", data))
+      end
+    end,
+
+    tokens = function(self, data)
+      if data then
+        local ok, json = pcall(vim.json.decode, data, { luanil = { object = true } })
+        if not ok then return end
+
+        -- Extract token count from Vultr response
+        if json.usage and json.usage.total_tokens then
+          return json.usage.total_tokens
+        end
+      end
+    end,
+  },
 })
