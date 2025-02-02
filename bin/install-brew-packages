@@ -8,6 +8,7 @@ end
 
 packages = %w[
   1password-cli
+  aichat
   asdf
   awscli
   bash-completion

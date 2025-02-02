@@ -70,11 +70,6 @@ if [ -d /Applications/Postgres.app ]; then
   #export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 fi
 
-# secrets ....................................................................................................
-if [ -f $HOME/.private ]; then
-  . $HOME/.private
-fi
-
 # editors ....................................................................................................
 if [[ -f "$HOME/.asdf/shims/nvim" ]]; then
   export EDITOR="$HOME/.asdf/shims/nvim"

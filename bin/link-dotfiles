@@ -4,8 +4,6 @@ require "fileutils"
 
 DOTDIR = File.expand_path("../", File.dirname(__FILE__))
 
-FileUtils.touch File.join(Dir.home, ".private")
-
 def symlink_files(*files)
   files.each do |file|
     puts "---"

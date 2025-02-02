@@ -108,6 +108,8 @@ require("codecompanion").setup({
   },
 
   display = {
+    confirm_before_accepting = true,
+    show_diff = true,
     action_palette = {
       width = 95,
       height = 10,
