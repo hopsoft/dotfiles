@@ -30,6 +30,7 @@ vim.cmd("Plug 'morhetz/gruvbox'")                                               
 vim.cmd("Plug 'neanias/everforest-nvim'")                                                             -- Everforest colour scheme
 vim.cmd("Plug 'neovim/nvim-lspconfig'")                                                               -- Quickstart LSP configs
 vim.cmd("Plug 'nvim-lua/plenary.nvim'")                                                               -- Lua asynchronous programming using coroutines
+vim.cmd("Plug 'nvim-lualine/lualine.nvim'")                                                           -- Neovim statusline plugin
 vim.cmd("Plug 'nvim-telescope/telescope.nvim'")                                                       -- Fuzzy finder for lists with preview
 vim.cmd("Plug 'nvim-tree/nvim-web-devicons'")                                                         -- File type icons
 vim.cmd("Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}")                                -- Easy tree-sitter UI usage
@@ -49,7 +50,6 @@ vim.cmd("Plug 'tpope/vim-fugitive'")                                            
 vim.cmd("Plug 'tpope/vim-rails'")                                                                     -- Ruby on Rails power tools
 vim.cmd("Plug 'vim-scripts/restore_view.vim'")                                                        -- Autosave/restore cursor position and folds
 vim.cmd("Plug 'wincent/terminus'")                                                                    -- Enhanced terminal integration (iTerm, tmux)
-vim.cmd("Plug 'windwp/windline.nvim'")                                                                -- Animated statuslines
 vim.cmd("Plug 'yggdroot/indentline'")                                                                 -- Visualize indention levels
 
 vim.cmd("call plug#end()")

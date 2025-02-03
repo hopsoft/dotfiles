@@ -13,7 +13,7 @@ require("plugins.fzf_setup")
 require("plugins.gitsigns_setup")
 require("plugins.telescope_setup")
 require("plugins.treesitter_setup")
-require("plugins.windline_setup")
+require("plugins.lualine_setup")
 
 require("settings")
 require("commands")
