@@ -22,32 +22,21 @@ local load_content = function(filepath)
 end
 
 local build_system_prompt = function()
-  local result = {}
-  local content
-  local divider = "\n\n// --- divider ---\n\n"
+  local result
+
+  -- project prompt
+  result = load_content(Current.project_root() .. "/.systemprompt")
+  if content ~= "" then return result end
+
+  -- cursor prompt
+  result = load_content(Current.project_root() .. "/.cursorrules")
+  if content ~= "" then return result end
 
   -- main system prompt
-  content = load_content(os.getenv("HOME") .. "/.systemprompt")
-  if content ~= "" then result[#result + 1] = content end
+  result = load_content(os.getenv("HOME") .. "/.systemprompt")
+  if result ~= "" then return result end
 
-  -- project system prompt
-  content = load_content(Current.project_root() .. "/.systemprompt")
-  if content ~= "" then result[#result + 1] = divider .. content end
-
-  -- cursor system prompt
-  if content ~= "" then
-    content = load_content(Current.project_root() .. "/.cursorrules")
-    if content ~= "" and result[#result] > 0 then
-      result[#result + 1] = divider .. content
-    elseif content ~= "" then
-      result[#result + 1] = content
-    end
-  end
-
-  -- fallback system prompt
-  if #result == 0 then result[#result + 1] = fallback_system_prompt end
-
-  return table.concat(result, "\n")
+  return fallback_system_prompt
 end
 
 local adapter_defaults = {
@@ -161,6 +150,7 @@ require("codecompanion").setup({
   },
 
   opts = {
+    log_level = "INFO",
     system_prompt = build_system_prompt(),
   },
 
@@ -176,7 +166,7 @@ require("codecompanion").setup({
     },
 
     inline = {
-      adapter = "anythingllm_software_engineer",
+      adapter = "ollama_deepseek_coder",
     },
   },
 })
