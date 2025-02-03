@@ -65,6 +65,17 @@ local adapter_defaults = {
   },
 }
 
+local anythingllm_adapter_defaults = {
+  env = {
+    url = "https://hopsoft.useanything.com/api",
+    chat_url = "/v1/openai/chat/completions",
+    api_key = "cmd:op read 'op://Private/AnythingLLM/API KEYS/main'",
+  },
+  headers = { ["Authorization"] = "Bearer ${api_key}" },
+  --opts = { ignore_system_prompt = true },
+  schema = { model = { default = "software-engineer" } },
+}
+
 local build_adapter = function(base, opts)
   return adapters.extend(base, vim.tbl_deep_extend("force", adapter_defaults, opts))
 end
@@ -72,17 +83,29 @@ end
 require("codecompanion").setup({
   adapters = {
     -- Hopsoft LLC: AnythingLLM Instance
-    anythingllm_software_engineer = adapters.extend("openai_compatible", {
-      name = "AnythingLLM: Software Engineer",
-      env = {
-        url = "https://hopsoft.useanything.com/api",
-        chat_url = "/v1/openai/chat/completions",
-        api_key = "cmd:op read 'op://Private/AnythingLLM/API KEYS/main'",
-      },
-      headers = { ["Authorization"] = "Bearer ${api_key}" },
-      opts = { ignore_system_prompt = true },
-      schema = { model = { default = "software-engineer" } },
-    }),
+    anythingllm_software_engineer = build_adapter("openai_compatible",
+      vim.tbl_deep_extend("force", anythingllm_adapter_defaults, {
+        schema = { model = { default = "software-engineer" } },
+      })
+    ),
+
+    anythingllm_web_designer = build_adapter("openai_compatible",
+      vim.tbl_deep_extend("force", anythingllm_adapter_defaults, {
+        schema = { model = { default = "web-designer" } },
+      })
+    ),
+
+    anythingllm_system_prompt_engineer = build_adapter("openai_compatible",
+      vim.tbl_deep_extend("force", anythingllm_adapter_defaults, {
+        schema = { model = { default = "system-prompt-engineer" } },
+      })
+    ),
+
+    anythingllm_system_marketing_advisor = build_adapter("openai_compatible",
+      vim.tbl_deep_extend("force", anythingllm_adapter_defaults, {
+        schema = { model = { default = "marketing" } },
+      })
+    ),
 
     -- Local Ollama Instance
     ollama_deepseek_coder = build_adapter("ollama", {
