@@ -51,7 +51,41 @@ require("codecompanion").setup({
           end
         },
       }),
-    })
+    }),
+
+    -- Ollama: Local Instance (code only)
+    ollama_local_code = adapters.extend("ollama", {
+      name = "Ollama Code (local)",
+      env = { url = "http://localhost:11434" },
+      schema = build_llm_settings({
+        model = {
+          default = "deepseek-coder-v2:16b",
+          choices = function(self)
+            return {
+              "deepseek-coder-v2:16b",
+              "qwen2.5-coder:14b",
+            }
+          end
+        },
+      }),
+    }),
+
+    -- Ollama: Local Instance with tool + function support
+    ollama_local_tools = adapters.extend("ollama", {
+      name = "Ollama Tools (local)",
+      env = { url = "http://localhost:11434" },
+      schema = build_llm_settings({
+        model = {
+          default = "llama3.1:8b",
+          choices = function(self)
+            return {
+              "llama3.1:8b",
+              "mistral:7b",
+            }
+          end
+        },
+      }),
+    }),
   },
 
   strategies = {
@@ -66,7 +100,11 @@ require("codecompanion").setup({
     },
 
     inline = {
-      adapter = "ollama_local",
+      adapter = "ollama_local_code",
+    },
+
+    agent = {
+      adapter = "ollama_local_tools",
     },
   },
 
