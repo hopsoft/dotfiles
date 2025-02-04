@@ -1,19 +1,16 @@
+local codecompanion = require("codecompanion")
 local highlight = require('lualine.highlight')
+
 local M = require("lualine.component"):extend()
 
-M.processing = false
-M.spinner_index = 1
-
---local spinner_symbols = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-local spinner_symbols = { '▙ ', '▛ ', '▜ ', '▟ ' }
-local spinner_symbols_len = #spinner_symbols
-local spinner_color = "#00BFFF" -- deep sky blue
-
--- Initializer
 function M:init(options)
   M.super.init(self, options)
 
-  self.spinner_highlight = highlight.create_component_highlight_group({ fg = spinner_color }, 'spinner', self.options)
+  self.STYLE = highlight.create_component_highlight_group('WarningMsg', 'spinner', self.options)
+  self.SYMBOLS = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" }
+  self.SIZE = #self.SYMBOLS
+  self.index = 1
+  self.active = false
 
   local group = vim.api.nvim_create_augroup("CodeCompanionHooks", {})
 
@@ -22,19 +19,33 @@ function M:init(options)
     group = group,
     callback = function(request)
       if request.match == "CodeCompanionRequestStarted" then
-        self.processing = true
+        self.active = true
       elseif request.match == "CodeCompanionRequestFinished" then
-        self.processing = false
+        self.active = false
       end
     end,
   })
 end
 
--- Function that runs every time statusline is updated
+function M:current_chat()
+  return codecompanion.buf_get_chat(vim.api.nvim_get_current_buf()) or {
+    adapter = {
+      name = "Adapter Name",
+      parameters = { model = "model-name" },
+    },
+  }
+end
+
+function M:next_symbol()
+  self.index = (self.index % self.SIZE) + 1
+  return self.SYMBOLS[self.index]
+end
+
 function M:update_status()
-  if self.processing then
-    self.spinner_index = (self.spinner_index % spinner_symbols_len) + 1
-    return highlight.component_format_highlight(self.spinner_highlight) .. spinner_symbols[self.spinner_index]
+  if self.active then
+    local chat = self:current_chat()
+    local msg = self:next_symbol() .. " " .. chat.adapter.name .. " " .. chat.adapter.parameters.model
+    return highlight.component_format_highlight(self.STYLE) .. msg
   else
     return nil
   end
