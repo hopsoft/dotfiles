@@ -44,7 +44,7 @@ end
 function M:update_status()
   if self.active then
     local chat = self:current_chat()
-    local msg = self:next_symbol() .. " " .. chat.adapter.name .. " " .. chat.adapter.parameters.model
+    local msg = self:next_symbol() .. " " .. chat.adapter.name .. "<" .. chat.adapter.parameters.model .. ">"
     return highlight.component_format_highlight(self.STYLE) .. msg
   else
     return nil

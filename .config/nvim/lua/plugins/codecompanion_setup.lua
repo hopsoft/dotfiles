@@ -9,13 +9,49 @@ require("codecompanion").setup({
   },
 
   adapters = {
+    non_llms = {
+      jina = function()
+        return require("codecompanion.adapters").extend("jina", {
+          env = {
+            api_key = "cmd:op read 'op://Private/jina-ai/api-keys/main'",
+          },
+          headers = {
+            ["Authorization"] = "Bearer ${api_key}",
+          },
+        })
+      end,
+    },
+
+    -- Anthropic
+    -- RAG Examples:
+    -- * @rag search for the latest version of Neovim
+    -- * @rag navigate to https://github.com/neovim/neovim/releases
+    anthropic = function()
+      return require("codecompanion.adapters").extend("anthropic", {
+        env = {
+          api_key = "cmd:op read 'op://Private/anthropic/api-keys/main'",
+        },
+        schema = build_llm_settings({
+          model = {
+            default = "claude-3-5-sonnet-latest",
+            choices = function(self)
+              return {
+                "claude-3-5-sonnet-latest",
+                "claude-3-5-haiku-latest",
+              }
+            end
+          },
+        }),
+      })
+    end,
+
     -- Hopsoft LLC: AnythingLLM Instance
     anythingllm = adapters.extend("openai_compatible", {
       name = "AnythingLLM (hopsoft)",
       env = {
         url = "https://hopsoft.useanything.com/api",
         chat_url = "/v1/openai/chat/completions",
-        api_key = "cmd:op read 'op://Private/AnythingLLM/API KEYS/main'",
+        api_key = "cmd:op read 'op://Private/anythingllm/api-keys/main'",
       },
       headers = { ["Authorization"] = "Bearer ${api_key}" },
       schema = build_llm_settings({
@@ -33,29 +69,27 @@ require("codecompanion").setup({
       }),
     }),
 
-    -- Ollama: Local Instance
-    ollama_local = adapters.extend("ollama", {
-      name = "Ollama (local)",
+    -- Ollama: Local instance with agentic LLMs
+    -- NOTE: @rag doesn't work with these models for some reason?
+    ollama_agent = adapters.extend("ollama", {
+      name = "OllamaAgent",
       env = { url = "http://localhost:11434" },
       schema = build_llm_settings({
         model = {
-          default = "deepseek-r1:14b",
+          default = "llama3.1:8b",
           choices = function(self)
             return {
-              "deepseek-coder-v2:16b",
-              "deepseek-r1:14b",
               "llama3.1:8b",
               "mistral:7b",
-              "qwen2.5-coder:14b",
             }
           end
         },
       }),
     }),
 
-    -- Ollama: Local Instance (code only)
-    ollama_local_code = adapters.extend("ollama", {
-      name = "Ollama Code (local)",
+    -- Ollama: Local instance with code LLMs
+    ollama_code = adapters.extend("ollama", {
+      name = "OllamaCode",
       env = { url = "http://localhost:11434" },
       schema = build_llm_settings({
         model = {
@@ -70,17 +104,16 @@ require("codecompanion").setup({
       }),
     }),
 
-    -- Ollama: Local Instance with tool + function support
-    ollama_local_tools = adapters.extend("ollama", {
-      name = "Ollama Tools (local)",
+    -- Ollama: Local instance with reasoning LLMs
+    ollama_reason = adapters.extend("ollama", {
+      name = "OllamaReason",
       env = { url = "http://localhost:11434" },
       schema = build_llm_settings({
         model = {
-          default = "llama3.1:8b",
+          default = "deepseek-r1:14b",
           choices = function(self)
             return {
-              "llama3.1:8b",
-              "mistral:7b",
+              "deepseek-r1:14b",
             }
           end
         },
@@ -100,11 +133,7 @@ require("codecompanion").setup({
     },
 
     inline = {
-      adapter = "ollama_local_code",
-    },
-
-    agent = {
-      adapter = "ollama_local_tools",
+      adapter = "ollama_code",
     },
   },
 
