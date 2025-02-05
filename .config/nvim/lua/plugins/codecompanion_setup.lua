@@ -45,6 +45,29 @@ require("codecompanion").setup({
       })
     end,
 
+    -- X AI
+    -- RAG Examples:
+    -- * @rag search for the latest version of Neovim
+    -- * @rag navigate to https://github.com/neovim/neovim/releases
+    xai = function()
+      return require("codecompanion.adapters").extend("xai", {
+        env = {
+          api_key = "cmd:op read 'op://Private/xai/api-keys/main'",
+        },
+        schema = build_llm_settings({
+          model = {
+            default = "grok-beta",
+            choices = function(self)
+              return {
+                "grok-beta",
+                "grok-2",
+              }
+            end
+          },
+        }),
+      })
+    end,
+
     -- Hopsoft LLC: AnythingLLM Instance
     anythingllm = adapters.extend("openai_compatible", {
       name = "AnythingLLM (hopsoft)",

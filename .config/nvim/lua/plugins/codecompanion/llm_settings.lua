@@ -1,4 +1,38 @@
 local strict = {
+  --- Controls the user identifier for the AI interaction
+  -- Determines how the AI identifies and addresses the user during interactions.
+  -- This setting helps maintain consistent communication and can be used to
+  -- track or customize interactions based on user identity.
+  --
+  -- Use cases with examples:
+  -- * Personal projects:
+  --   - Individual developer identification
+  --   - Personal coding environment
+  --   - Local development setup
+  --   - Custom configuration tracking
+  --
+  -- * Team environments:
+  --   - Developer role identification
+  --   - Team member distinction
+  --   - Collaboration tracking
+  --   - Project contribution marking
+  --
+  -- * System integration:
+  --   - Service account identification
+  --   - Automation script tracking
+  --   - CI/CD pipeline marking
+  --   - System-level operations
+  --
+  -- Note: Consider using:
+  -- - Consistent naming across sessions
+  -- - Meaningful identifiers for tracking
+  -- - Role-based names for teams
+  -- - Project-specific identifiers
+  --
+  -- @field[type=string] user
+  -- @within options
+  user = { default = "hopsoft-neovim" },
+
   --- Controls how much the AI avoids repeating the same words and phrases
   --
   -- Use cases with examples:
