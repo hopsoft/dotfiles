@@ -17,6 +17,8 @@ fi
 # asdf .......................................................................................................
 [ -f "$BREW_PREFIX/opt/asdf/libexec/asdf.sh" ] && . "$BREW_PREFIX/opt/asdf/libexec/asdf.sh"
 [ -f "$BREW_PREFIX/opt/asdf/etc/bash_completion.d" ] && . "$BREW_PREFIX/opt/asdf/etc/bash_completion.d"
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
 # dotfiles ...................................................................................................
 export DOTDIR=$HOME/.dotfiles
