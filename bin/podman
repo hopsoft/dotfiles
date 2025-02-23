@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require "tempfile"
+
 class PodmanRunner
   DEFAULT_MACHINE = "podman-machine-default".freeze
 
@@ -46,6 +48,33 @@ class PodmanRunner
     args[0] == "machine" && args[1] == "init"
   end
 
+  def playbook
+    file = Tempfile.new('machine-playbook')
+    file.open
+    file.write <<~YAML
+    ---
+    - hosts: localhost
+      become: true
+      tasks:
+        - name: Ensure sysctl.d directory exists
+          file:
+            path: /etc/sysctl.d
+            state: directory
+            mode: '0755'
+
+        - name: Configure unprivileged port start (allows containers to expose port 80)
+          copy:
+            content: "net.ipv4.ip_unprivileged_port_start=80"
+            dest: /etc/sysctl.d/rootless.conf
+
+        - name: Apply sysctl settings
+          command: sysctl --system
+    YAML
+    file
+  ensure
+    file.close
+  end
+
   def init_machine
     unless `pgrep -f "Podman Desktop"`.strip.empty?
       puts "Close Podman Desktop before continuing!"
@@ -74,9 +103,10 @@ class PodmanRunner
     directories.each_value { run "mkdir -p #{it}" }
 
     # create the machine
-    run podman_command(*args)
+    run podman_command(*args.concat(["--playbook", playbook.path]))
 
-    # fix the socket symlink
+    # fix the socket symlink for Docker compatibility
+    puts "Updating the socket symlink for Podman's Docker compatibility..."
     socket = `#{podman_command("machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}' #{name}")}`.chomp.split("\n").last
     exec "sudo ln -sf #{socket} /var/run/docker.sock"
   end
