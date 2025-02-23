@@ -99,11 +99,11 @@ require("codecompanion").setup({
       env = { url = "http://localhost:11434" },
       schema = build_llm_settings({
         model = {
-          default = "llama3.1:8b",
+          default = "mistral:7b-instruct-fp16",
           choices = function(self)
             return {
-              "llama3.1:8b",
-              "mistral:7b",
+              "llama3.1:8b-instruct-q8_0",
+              "mistral:7b-instruct-fp16",
             }
           end
         },
@@ -116,11 +116,11 @@ require("codecompanion").setup({
       env = { url = "http://localhost:11434" },
       schema = build_llm_settings({
         model = {
-          default = "deepseek-coder-v2:16b",
+          default = "qwen2.5-coder:1.5b-instruct-q5_0",
           choices = function(self)
             return {
-              "deepseek-coder-v2:16b",
-              "qwen2.5-coder:14b",
+              "deepseek-coder-v2:16b-lite-instruct-q5_0",
+              "qwen2.5-coder:1.5b-instruct-q5_0",
             }
           end
         },
@@ -146,7 +146,7 @@ require("codecompanion").setup({
 
   strategies = {
     chat = {
-      adapter = "anythingllm",
+      adapter = "ollama_agent",
       slash_commands = {
         ["buffer"] = { opts = { provider = "fzf_lua" } },  -- default|telescope|mini_pick|fzf_lua|snacks
         ["file"] = { opts = { provider = "fzf_lua" } },    -- default|telescope|mini_pick|fzf_lua|snacks

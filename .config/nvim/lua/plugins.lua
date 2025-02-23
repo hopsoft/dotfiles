@@ -1,7 +1,8 @@
 local Plug = vim.fn['plug#']
 
-vim.call('plug#begin', '~/.vim/plugged')
+vim.call('plug#begin', '~/.local/share/nvim/plugged')
 
+vim.call('plug#end')
 Plug('EdenEast/nightfox.nvim')                                                                   -- Customizable theme for neovim with support for lsp
 Plug('L3MON4D3/LuaSnip', { ['do'] = 'make install_jsregexp' })                                   -- Snippets plugin
 Plug('MeanderingProgrammer/render-markdown.nvim', { ['for'] = { 'markdown', 'codecompanion' } }) -- Markdown rendering
@@ -22,7 +23,6 @@ Plug('hrsh7th/cmp-path')                                                        
 Plug('hrsh7th/nvim-cmp')                                                                         -- Autocompletion plugin with LSP support
 Plug('ibhagwan/fzf-lua')                                                                         -- Fuzzy finder
 Plug('isobit/vim-caddyfile')                                                                     -- Caddyfile syntax highlighting
-Plug('j-hui/fidget.nvim')                                                                        -- Extensible UI for Neovim notifications and progress messages
 Plug('jlcrochet/vim-rbs')                                                                        -- Syntax highlighting and indentation for Ruby Signature (RBS) files
 Plug('junegunn/vim-emoji')                                                                       -- Emoji support
 Plug('lewis6991/gitsigns.nvim')                                                                  -- Git integration for buffers

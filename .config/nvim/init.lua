@@ -8,7 +8,6 @@ require("plugins")
 require("current")
 require("filetypes")
 
---require("plugins.fidget_setup")
 require("plugins.fzf_setup")
 require("plugins.gitsigns_setup")
 require("plugins.lualine_setup")
