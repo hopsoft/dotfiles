@@ -33,13 +33,12 @@ require("codecompanion").setup({
         },
         schema = build_llm_settings({
           model = {
-            default = "claude-3-5-sonnet-latest",
-            choices = function(self)
-              return {
-                "claude-3-5-sonnet-latest",
-                "claude-3-5-haiku-latest",
-              }
-            end
+            default = "claude-3-7-sonnet-latest",
+            choices = {
+              "claude-3-7-sonnet-latest",
+              "claude-3-5-sonnet-latest",
+              "claude-3-5-haiku-latest",
+            }
           },
         }),
       })
@@ -57,12 +56,10 @@ require("codecompanion").setup({
         schema = build_llm_settings({
           model = {
             default = "grok-beta",
-            choices = function(self)
-              return {
-                "grok-beta",
-                "grok-2",
-              }
-            end
+            choices = {
+              "grok-beta",
+              "grok-2",
+            }
           },
         }),
       })
@@ -80,32 +77,36 @@ require("codecompanion").setup({
       schema = build_llm_settings({
         model = {
           default = "software-engineer",
-          choices = function(self)
-            return {
-              "marketing",
-              "software-engineer",
-              "system-prompt-engineer",
-              "web-designer",
-            }
-          end
+          choices = {
+            "marketing",
+            "software-engineer",
+            "system-prompt-engineer",
+            "web-designer",
+          }
         },
       }),
     }),
 
     -- Ollama: Local instance with agentic LLMs
-    -- NOTE: @rag doesn't work with these models for some reason?
     ollama_agent = adapters.extend("ollama", {
       name = "OllamaAgent",
       env = { url = "http://localhost:11434" },
       schema = build_llm_settings({
         model = {
-          default = "mistral:7b-instruct-fp16",
-          choices = function(self)
-            return {
-              "llama3.1:8b-instruct-q8_0",
-              "mistral:7b-instruct-fp16",
-            }
-          end
+          default = "mistral:7b-instruct-q8_0",
+          choices = {
+            -- Use-Cases: Suitable for tasks requiring clear instructions like simple coding or documentation.
+            -- Pros: Enhanced performance in understanding instructions.
+            -- Cons: Less versatile in creative writing or complex reasoning.
+            -- Tools: true
+            "llama3.1:8b-instruct-q8_0",
+
+            -- Use-Cases: Ideal for quick, straightforward coding or text instruction tasks.
+            -- Pros: Real-time processing capability.
+            -- Cons: Limited in deep reasoning or complex context tasks.
+            -- Tools: true
+            "mistral:7b-instruct-q8_0",
+          }
         },
       }),
     }),
@@ -116,13 +117,20 @@ require("codecompanion").setup({
       env = { url = "http://localhost:11434" },
       schema = build_llm_settings({
         model = {
-          default = "qwen2.5-coder:1.5b-instruct-q5_0",
-          choices = function(self)
-            return {
-              "deepseek-coder-v2:16b-lite-instruct-q5_0",
-              "qwen2.5-coder:1.5b-instruct-q5_0",
-            }
-          end
+          default = "qwen2.5-coder:7b-instruct-q8_0",
+          choices = {
+            -- Use-Cases: Complex coding problems, advanced code refactoring, or large-scale software development.
+            -- Pros: Provides depth in coding tasks due to its size.
+            -- Cons: Might require more computational resources.
+            -- Tools: false
+            "deepseek-coder-v2:16b-lite-instruct-q5_1",
+
+            -- Use-Cases: Code generation, debugging, and understanding programming languages.
+            -- Pros: Tailored for coding, efficient due to 8-bit quantization.
+            -- Cons: Might underperform in general language tasks.
+            -- Tools: true
+            "qwen2.5-coder:7b-instruct-q8_0",
+          }
         },
       }),
     }),
@@ -133,12 +141,14 @@ require("codecompanion").setup({
       env = { url = "http://localhost:11434" },
       schema = build_llm_settings({
         model = {
-          default = "deepseek-r1:14b",
-          choices = function(self)
-            return {
-              "deepseek-r1:14b",
-            }
-          end
+          default = "deepseek-r1:14b-qwen-distill-q8_0",
+          choices = {
+            -- Use-Cases: Useful for tasks involving logical deduction or where a reasoning AI assistant would be beneficial.
+            -- Pros: Effective in logical reasoning scenarios.
+            -- Cons: Limited model variations in this configuration.
+            -- Tools: true
+            "deepseek-r1:14b-qwen-distill-q8_0",
+          }
         },
       }),
     }),
