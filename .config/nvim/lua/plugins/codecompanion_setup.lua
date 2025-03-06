@@ -1,5 +1,5 @@
 local adapters = require("codecompanion.adapters")
-local build_llm_settings = require("plugins.codecompanion.llm_settings")
+local llm_settings = require("plugins.codecompanion.llm_settings")
 local build_system_prompt = require("plugins.codecompanion.system_prompt")
 
 require("codecompanion").setup({
@@ -31,16 +31,15 @@ require("codecompanion").setup({
         env = {
           api_key = "cmd:op read 'op://Private/anthropic/api-keys/main'",
         },
-        schema = build_llm_settings({
+        schema = llm_settings.build_schema({
           model = {
             default = "claude-3-7-sonnet-latest",
             choices = {
-              "claude-3-7-sonnet-latest",
-              "claude-3-5-sonnet-latest",
-              "claude-3-5-haiku-latest",
+              ["claude-3-7-sonnet-latest"] = { opts = { can_reason = true, can_use_tools = true } },
+              ["claude-3-5-sonnet-latest"] = { opts = { can_reason = true, can_use_tools = true } },
             }
           },
-        }),
+        }, llm_settings.default_schema({ except = { "top_k", "top_p" } }))
       })
     end,
 
@@ -53,15 +52,15 @@ require("codecompanion").setup({
         env = {
           api_key = "cmd:op read 'op://Private/xai/api-keys/main'",
         },
-        schema = build_llm_settings({
+        schema = llm_settings.build_schema({
           model = {
             default = "grok-beta",
             choices = {
-              "grok-beta",
-              "grok-2",
+              ["grok-beta"] = { opts = { can_reason = true, can_use_tools = true } },
+              ["grok-2"] = { opts = { can_reason = true, can_use_tools = true } },
             }
           },
-        }),
+        }, llm_settings.default_schema({ except = { "top_k", "top_p" } }))
       })
     end,
 
@@ -74,14 +73,14 @@ require("codecompanion").setup({
         api_key = "cmd:op read 'op://Private/anythingllm/api-keys/main'",
       },
       headers = { ["Authorization"] = "Bearer ${api_key}" },
-      schema = build_llm_settings({
+      schema = llm_settings.build_schema({
         model = {
           default = "software-engineer",
           choices = {
             "marketing",
-            "software-engineer",
-            "system-prompt-engineer",
-            "web-designer",
+            ["software-engineer"] = { opts = { code_specialized = true } },
+            ["system-prompt-engineer"] = { opts = { prompt_specialized = true } },
+            ["web-designer"] = { opts = { design_specialized = true } },
           }
         },
       }),
@@ -91,21 +90,19 @@ require("codecompanion").setup({
     ollama_agent = adapters.extend("ollama", {
       name = "OllamaAgent",
       env = { url = "http://localhost:11434" },
-      schema = build_llm_settings({
+      schema = llm_settings.build_schema({
         model = {
           default = "mistral:7b-instruct-q8_0",
           choices = {
             -- Use-Cases: Suitable for tasks requiring clear instructions like simple coding or documentation.
             -- Pros: Enhanced performance in understanding instructions.
             -- Cons: Less versatile in creative writing or complex reasoning.
-            -- Tools: true
-            "llama3.1:8b-instruct-q8_0",
+            ["llama3.1:8b-instruct-q8_0"] = { opts = { can_reason = true, can_use_tools = true } },
 
             -- Use-Cases: Ideal for quick, straightforward coding or text instruction tasks.
             -- Pros: Real-time processing capability.
             -- Cons: Limited in deep reasoning or complex context tasks.
-            -- Tools: true
-            "mistral:7b-instruct-q8_0",
+            ["mistral:7b-instruct-q8_0"] = { opts = { can_use_tools = true } },
           }
         },
       }),
@@ -115,21 +112,19 @@ require("codecompanion").setup({
     ollama_code = adapters.extend("ollama", {
       name = "OllamaCode",
       env = { url = "http://localhost:11434" },
-      schema = build_llm_settings({
+      schema = llm_settings.build_schema({
         model = {
           default = "qwen2.5-coder:7b-instruct-q8_0",
           choices = {
             -- Use-Cases: Complex coding problems, advanced code refactoring, or large-scale software development.
             -- Pros: Provides depth in coding tasks due to its size.
             -- Cons: Might require more computational resources.
-            -- Tools: false
-            "deepseek-coder-v2:16b-lite-instruct-q5_1",
+            ["deepseek-coder-v2:16b-lite-instruct-q5_1"] = { opts = { code_specialized = true } },
 
             -- Use-Cases: Code generation, debugging, and understanding programming languages.
             -- Pros: Tailored for coding, efficient due to 8-bit quantization.
             -- Cons: Might underperform in general language tasks.
-            -- Tools: true
-            "qwen2.5-coder:7b-instruct-q8_0",
+            ["qwen2.5-coder:7b-instruct-q8_0"] = { opts = { code_specialized = true, can_use_tools = true } },
           }
         },
       }),
@@ -139,18 +134,17 @@ require("codecompanion").setup({
     ollama_reason = adapters.extend("ollama", {
       name = "OllamaReason",
       env = { url = "http://localhost:11434" },
-      schema = build_llm_settings({
+      schema = llm_settings.build_schema({
         model = {
           default = "deepseek-r1:14b-qwen-distill-q8_0",
           choices = {
             -- Use-Cases: Useful for tasks involving logical deduction or where a reasoning AI assistant would be beneficial.
             -- Pros: Effective in logical reasoning scenarios.
             -- Cons: Limited model variations in this configuration.
-            -- Tools: true
-            "deepseek-r1:14b-qwen-distill-q8_0",
+            ["deepseek-r1:14b-qwen-distill-q8_0"] = { opts = { can_reason = true, can_use_tools = true } },
           }
         },
-      }),
+      }, llm_settings.default_schema({ except = { "top_k", "top_p" } }))
     }),
   },
 

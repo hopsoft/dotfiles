@@ -1,4 +1,6 @@
-local strict = {
+local default_thinking_budget = 4096
+
+local default_schema = {
   --- Controls the user identifier for the AI interaction
   -- Determines how the AI identifies and addresses the user during interactions.
   -- This setting helps maintain consistent communication and can be used to
@@ -89,7 +91,7 @@ local strict = {
   -- * Strong increase (100):
   --   - Ensuring use of exact API method names
   --   - Enforcing specific technical standard terminology
-  --   - Maintaining strict naming conventions in documentation
+  --   - Maintaining default_schema naming conventions in documentation
   --   - Guaranteeing use of precise mathematical or scientific terms
   --
   -- @field[type=number] logit_bias
@@ -127,11 +129,11 @@ local strict = {
   -- @field[type=number] max_tokens
   -- @within options
   -- @range 1-200000
-  max_tokens = { default = 2048 },
+  max_tokens = { default = default_thinking_budget * 2 },
 
   --- Controls whether to enable Mirostat sampling for text generation
   -- Mirostat is a sampling technique that dynamically adjusts top-k sampling
-  -- to maintain a target perplexity (controlled by `mirostat_ent`), balancing
+  -- to maintain a target perplexity (controlled by `microstat_ent`), balancing
   -- generation quality between repetition and randomness.
   --
   -- Use cases with examples:
@@ -215,7 +217,7 @@ local strict = {
   -- @field[type=number] microstat_tau
   -- @within options
   -- @range 5-8
-  microstat_tau = { default = 5 },
+  microstat_tau = { default = 6 },
 
   --- Controls the size of the context window (total tokens for prompt + response)
   -- Determines how much text the model can process at once. A larger context
@@ -256,7 +258,7 @@ local strict = {
   -- @field[type=number] num_ctx
   -- @within options
   -- @range 512-128000+
-  num_ctx = { default = 4096 },
+  num_ctx = { default = default_thinking_budget * 8 },
 
   --- Controls the maximum number of tokens to generate in the response
   -- Determines how long the generated text can be. A higher value allows
@@ -296,7 +298,7 @@ local strict = {
   -- @field[type=number] num_predict
   -- @within options
   -- @range 1-32768
-  num_predict = { default = 2048 },
+  num_predict = { default = default_thinking_budget * 2 },
 
   --- Controls how much the AI avoids repeating topics and themes
   --
@@ -322,7 +324,7 @@ local strict = {
   -- @field[type=number] presence_penalty
   -- @within options
   -- @range 0-2
-  presence_penalty = { default = 0 },
+  presence_penalty = { default = 0.2 },
 
   --- Controls how many tokens to look back when checking for repetition
   -- Determines the size of the window used for repetition detection.
@@ -356,7 +358,7 @@ local strict = {
   -- @field[type=number] repeat_last_n
   -- @within options
   -- @range 64-4096
-  repeat_last_n = { default = 64 },
+  repeat_last_n = { default = 256 },
 
   --- Controls how strongly to penalize repetitions in the generated text
   -- Determines how much to reduce the likelihood of repeating content
@@ -424,7 +426,7 @@ local strict = {
   -- @field[type=number] seed
   -- @within options
   -- @range -1-4294967295
-  seed = { default = 0 },
+  seed = { default = -1 },
 
   --- Controls which sequences of characters will stop text generation
   -- Defines a list of strings that will cause the AI to stop generating
@@ -459,6 +461,38 @@ local strict = {
   -- @field[type=table] stop
   -- @within options
   stop = { default = nil },
+
+  --- Controls the token budget allocated for Claude's thinking before generating a response
+  --
+  -- Use cases with examples:
+  -- * Small thinking budget (100-500 tokens):
+  --   - Simple factual questions
+  --   - Basic text formatting tasks
+  --   - Straightforward code completion
+  --   - Quick summaries of short content
+  --
+  -- * Medium thinking budget (1000-2000 tokens):
+  --   - Analyzing medium-length documents
+  --   - Solving moderately complex problems
+  --   - Providing nuanced explanations
+  --   - Generating structured content
+  --
+  -- * Large thinking budget (3000-5000 tokens):
+  --   - Analyzing complex code bases
+  --   - Solving multi-step reasoning problems
+  --   - Performing detailed document analysis
+  --   - Creating well-structured long-form content
+  --
+  -- * Maximum thinking budget (10000+ tokens):
+  --   - Solving complex mathematical proofs
+  --   - Performing comprehensive code reviews
+  --   - Analyzing lengthy technical documents
+  --   - Tackling multi-stage reasoning challenges
+  --
+  -- @field[type=number] thinking_budget
+  -- @within options
+  -- @range 0-100000
+  thinking_budget = { default = default_thinking_budget },
 
   --- Controls the randomness/creativity in the generated text
   -- Determines how focused or creative the responses will be. Lower values
@@ -496,7 +530,7 @@ local strict = {
   -- @field[type=number] temperature
   -- @within options
   -- @range 0.0-2.0
-  temperature = { default = 0.1 },
+  temperature = { default = 0.2 },
 
   --- Controls tail free sampling, reducing low-probability token noise
   -- Determines how aggressively to filter out unlikely tokens based on
@@ -529,7 +563,7 @@ local strict = {
   -- - Higher values = more focused, conservative text
   -- - Lower values = more creative, varied text
   -- - Works well with temperature adjustment
-  -- - 1.0 can be too restrictive for creative tasks
+  -- - 1.0 can be too redefault_schemaive for creative tasks
   --
   -- @field[type=number] tfs_z Tail free sampling parameter
   -- @within options
@@ -610,11 +644,23 @@ local strict = {
   -- @field[type=number] top_p
   -- @within options
   -- @range 0.0-1.0
-  top_p = { default = 0.1 },
+  top_p = { default = 0.2 },
 }
 
-local function build_llm_settings(overrides, base)
-  return vim.tbl_extend("force", base or strict, overrides)
-end
+return {
+  build_schema = function(overrides, base)
+    return vim.tbl_deep_extend("force", base or default_schema, overrides)
+  end,
 
-return build_llm_settings
+  default_schema = function(options)
+    options = options or {}
+    options.except = options.except or {}
+    local schema = {}
+    for key, val in pairs(default_schema) do
+      if not vim.tbl_contains(options.except, key) then
+        schema[key] = val
+      end
+    end
+    return schema
+  end
+}
