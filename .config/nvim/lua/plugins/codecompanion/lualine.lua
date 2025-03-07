@@ -71,7 +71,7 @@ function M:update_status()
 
   local display = self:next_symbol()
   if self.adapter_info then
-    local strategy_indicator = self.strategy and ("[" .. self.strategy .. "] ") or ""
+    local strategy_indicator = self.strategy and (self.strategy .. ": ") or ""
     display = string.format(
       "%s %s%s%s",
       display,

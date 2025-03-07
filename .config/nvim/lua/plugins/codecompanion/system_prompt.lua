@@ -20,19 +20,19 @@ local load_content = function(filepath)
 end
 
 local build_system_prompt = function()
-  local result
+  local content
 
   -- project prompt
-  result = load_content(Current.project_root() .. "/.systemprompt")
-  if content ~= "" then return result end
+  content = load_content(Current.project_root() .. "/.systemprompt")
+  if content ~= "" then return content end
 
   -- cursor prompt
-  result = load_content(Current.project_root() .. "/.cursorrules")
-  if content ~= "" then return result end
+  content = load_content(Current.project_root() .. "/.cursorrules")
+  if content ~= "" then return content end
 
   -- main system prompt
-  result = load_content(os.getenv("HOME") .. "/.systemprompt")
-  if result ~= "" then return result end
+  content = load_content(os.getenv("HOME") .. "/.systemprompt")
+  if content ~= "" then return content end
 
   return fallback_system_prompt
 end

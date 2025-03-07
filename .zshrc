@@ -39,12 +39,12 @@ export PATH=$HOME/.dotfiles/bin:$PATH
 
 # Memory and Cache:
 # export OLLAMA_KV_CACHE_TYPE="q16_0"  # Sets 16-bit quantization for key/value cache to optimize memory usage
-# export OLLAMA_MAX_LOADED_MODELS="3" # Maximum number of models to keep loaded in memory
+# export OLLAMA_MAX_LOADED_MODELS="4" # Maximum number of models to keep loaded in memory
 # export OLLAMA_KEEP_ALIVE="1h"       # How long to keep models loaded in memory after last use
 
 # Queue and Processing:
 # export OLLAMA_MAX_QUEUE="32"        # Maximum number of requests that can be queued
-# export OLLAMA_NUM_PARALLEL="2"      # Number of concurrent model executions allowed
+# export OLLAMA_NUM_PARALLEL="4"      # Number of concurrent model executions allowed
 
 # Models Location:
 # export OLLAMA_MODELS="/Volumes/OWC Envoy Pro FX 4TB/Ollama/Models"
@@ -63,13 +63,13 @@ export PATH=$HOME/.dotfiles/bin:$PATH
 #   #   <key>OLLAMA_KV_CACHE_TYPE</key>
 #   #   <string>q16_0</string>
 #   #   <key>OLLAMA_MAX_LOADED_MODELS</key>
-#   #   <string>3</string>
+#   #   <string>4</string>
 #   #   <key>OLLAMA_KEEP_ALIVE</key>
 #   #   <string>1h</string>
 #   #   <key>OLLAMA_MAX_QUEUE</key>
 #   #   <string>32</string>
 #   #   <key>OLLAMA_NUM_PARALLEL</key>
-#   #   <string>2</string>
+#   #   <string>4</string>
 #   #   <key>OLLAMA_MODELS</key>
 #   #   <string>/Volumes/OWC-Envoy-Pro-FX-4TB/ollama/models</string>
 #   # </dict>

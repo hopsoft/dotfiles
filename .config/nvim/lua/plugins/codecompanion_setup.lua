@@ -1,5 +1,5 @@
 local adapters = require("codecompanion.adapters")
-local llm_settings = require("plugins.codecompanion.llm_settings")
+local adapter_schema = require("plugins.codecompanion.adapter_schema")
 local build_system_prompt = require("plugins.codecompanion.system_prompt")
 
 require("codecompanion").setup({
@@ -27,72 +27,87 @@ require("codecompanion").setup({
     -- * @rag search for the latest version of Neovim
     -- * @rag navigate to https://github.com/neovim/neovim/releases
     anthropic = function()
-      return require("codecompanion.adapters").extend("anthropic", {
-        env = {
-          api_key = "cmd:op read 'op://Private/anthropic/api-keys/main'",
+      local schema = {
+        model = {
+          default = "claude-3-7-sonnet-latest",
+          choices = {
+            ["claude-3-7-sonnet-latest"] = { opts = { can_reason = true, can_use_tools = true } },
+            ["claude-3-5-sonnet-latest"] = { opts = { can_reason = true, can_use_tools = true } },
+          }
         },
-        schema = llm_settings.build_schema({
-          model = {
-            default = "claude-3-7-sonnet-latest",
-            choices = {
-              ["claude-3-7-sonnet-latest"] = { opts = { can_reason = true, can_use_tools = true } },
-              ["claude-3-5-sonnet-latest"] = { opts = { can_reason = true, can_use_tools = true } },
-            }
-          },
-        }, llm_settings.default_schema({ except = { "top_k", "top_p" } }))
-      })
+      }
+
+      local settings = {
+        env = { api_key = "cmd:op read 'op://Private/anthropic/api-keys/main'" },
+        schema = adapter_schema.expand(schema, { omit = { "top_k", "top_p" } }),
+        temperature = 0.2,
+      }
+
+      return adapters.extend("anthropic", settings)
     end,
 
-    -- X AI
+    -- xAI
     -- RAG Examples:
     -- * @rag search for the latest version of Neovim
     -- * @rag navigate to https://github.com/neovim/neovim/releases
     xai = function()
-      return require("codecompanion.adapters").extend("xai", {
-        env = {
-          api_key = "cmd:op read 'op://Private/xai/api-keys/main'",
+      local schema = {
+        model = {
+          default = "grok-beta",
+          choices = {
+            ["grok-beta"] = { opts = { can_reason = true, can_use_tools = true } },
+            ["grok-2"] = { opts = { can_reason = true, can_use_tools = true } },
+          }
         },
-        schema = llm_settings.build_schema({
-          model = {
-            default = "grok-beta",
-            choices = {
-              ["grok-beta"] = { opts = { can_reason = true, can_use_tools = true } },
-              ["grok-2"] = { opts = { can_reason = true, can_use_tools = true } },
-            }
-          },
-        }, llm_settings.default_schema({ except = { "top_k", "top_p" } }))
-      })
+      }
+
+      local settings = {
+        env = { api_key = "cmd:op read 'op://Private/xai/api-keys/main'", },
+        schema = adapter_schema.expand(schema, { omit = { "top_k", "top_p" } }),
+      }
+
+      return adapters.extend("xai", settings)
     end,
 
     -- Hopsoft LLC: AnythingLLM Instance
-    anythingllm = adapters.extend("openai_compatible", {
-      name = "AnythingLLM (hopsoft)",
-      env = {
-        url = "https://hopsoft.useanything.com/api",
-        chat_url = "/v1/openai/chat/completions",
-        api_key = "cmd:op read 'op://Private/anythingllm/api-keys/main'",
-      },
-      headers = { ["Authorization"] = "Bearer ${api_key}" },
-      schema = llm_settings.build_schema({
+    anythingllm = function()
+      local schema = {
         model = {
           default = "software-engineer",
           choices = {
             "marketing",
-            ["software-engineer"] = { opts = { code_specialized = true } },
-            ["system-prompt-engineer"] = { opts = { prompt_specialized = true } },
-            ["web-designer"] = { opts = { design_specialized = true } },
+            "software-engineer",
+            "system-prompt-engineer",
+            "web-designer",
           }
+        }
+      }
+
+      local settings = {
+        name = "AnythingLLM (hopsoft)",
+        env = {
+          url = "https://hopsoft.useanything.com/api",
+          chat_url = "/v1/openai/chat/completions",
+          api_key = "cmd:op read 'op://Private/anythingllm/api-keys/main'",
         },
-      }),
-    }),
+        headers = { ["Authorization"] = "Bearer ${api_key}" },
+        schema = adapter_schema.expand(schema, {
+          only = {
+            "max_output_tokens",
+            "model",
+            "temperature",
+          },
+        }),
+      }
+
+      return adapters.extend("openai_compatible", settings)
+    end,
 
     -- Ollama: Local instance with agentic LLMs
-    ollama_agent = adapters.extend("ollama", {
-      name = "OllamaAgent",
-      env = { url = "http://localhost:11434" },
-      schema = llm_settings.build_schema({
+    ollama_agent = function()
+      local schema = {
         model = {
-          default = "mistral:7b-instruct-q8_0",
+          default = "llama3.1:8b-instruct-q8_0",
           choices = {
             -- Use-Cases: Suitable for tasks requiring clear instructions like simple coding or documentation.
             -- Pros: Enhanced performance in understanding instructions.
@@ -105,14 +120,20 @@ require("codecompanion").setup({
             ["mistral:7b-instruct-q8_0"] = { opts = { can_use_tools = true } },
           }
         },
-      }),
-    }),
+      }
+
+      local settings = {
+        name = "OllamaAgent",
+        env = { url = "http://localhost:11434" },
+        schema = adapter_schema.expand(schema)
+      }
+
+      return adapters.extend("ollama", settings)
+    end,
 
     -- Ollama: Local instance with code LLMs
-    ollama_code = adapters.extend("ollama", {
-      name = "OllamaCode",
-      env = { url = "http://localhost:11434" },
-      schema = llm_settings.build_schema({
+    ollama_code = function()
+      local schema = {
         model = {
           default = "qwen2.5-coder:7b-instruct-q8_0",
           choices = {
@@ -127,14 +148,20 @@ require("codecompanion").setup({
             ["qwen2.5-coder:7b-instruct-q8_0"] = { opts = { code_specialized = true, can_use_tools = true } },
           }
         },
-      }),
-    }),
+      }
+
+      local settings = {
+        name = "OllamaCode",
+        env = { url = "http://localhost:11434" },
+        schema = adapter_schema.expand(schema)
+      }
+
+      return adapters.extend("ollama", settings)
+    end,
 
     -- Ollama: Local instance with reasoning LLMs
-    ollama_reason = adapters.extend("ollama", {
-      name = "OllamaReason",
-      env = { url = "http://localhost:11434" },
-      schema = llm_settings.build_schema({
+    ollama_reason = function()
+      local schema = {
         model = {
           default = "deepseek-r1:14b-qwen-distill-q8_0",
           choices = {
@@ -144,8 +171,16 @@ require("codecompanion").setup({
             ["deepseek-r1:14b-qwen-distill-q8_0"] = { opts = { can_reason = true, can_use_tools = true } },
           }
         },
-      }, llm_settings.default_schema({ except = { "top_k", "top_p" } }))
-    }),
+      }
+
+      local settings = {
+        name = "OllamaReason",
+        env = { url = "http://localhost:11434" },
+        schema = adapter_schema.expand(schema, { omit = { "top_k", "top_p" } })
+      }
+
+      return adapters.extend("ollama", settings)
+    end,
   },
 
   strategies = {

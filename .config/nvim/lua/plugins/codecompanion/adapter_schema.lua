@@ -35,6 +35,55 @@ local default_schema = {
   -- @within options
   user = { default = "hopsoft-neovim" },
 
+  -- In adapter_schema.lua, add this with the other settings
+
+  --- Controls whether to enable extended thinking mode for complex reasoning
+  -- Enables the model to spend more time analyzing and planning responses,
+  -- particularly useful for complex programming tasks, architecture decisions,
+  -- and detailed code analysis. When enabled, allows configuration of
+  -- thinking-specific parameters like temperature.
+  --
+  -- Use cases with examples:
+  -- * Disabled (false):
+  --   - Quick code completions
+  --   - Simple documentation tasks
+  --   - Direct answers to straightforward questions
+  --   - When fast response time is priority
+  --
+  -- * Enabled with conservative temperature (true, temp: 0.2-0.3):
+  --   - Production code generation
+  --   - Security-critical implementations
+  --   - API design decisions
+  --   - Database schema planning
+  --   - Configuration file generation
+  --
+  -- * Enabled with balanced temperature (true, temp: 0.4-0.6):
+  --   - Architecture discussions
+  --   - Code refactoring analysis
+  --   - Design pattern recommendations
+  --   - Performance optimization planning
+  --   - Technical documentation generation
+  --
+  -- * Enabled with creative temperature (true, temp: 0.7-0.9):
+  --   - Problem-solving exploration
+  --   - Alternative implementation brainstorming
+  --   - System design discussions
+  --   - Learning examples
+  --   - Architectural innovation
+  --
+  -- Note: When enabled:
+  -- - Responses may take longer but show more depth
+  -- - Model considers more context and implications
+  -- - Temperature setting affects reasoning style
+  -- - Thinking budget controls analysis depth
+  --
+  -- @field[type=table] extended_thinking
+  -- @within options
+  extended_thinking = {
+    default = false,
+    opts = { temperature = 0.2 }
+  },
+
   --- Controls how much the AI avoids repeating the same words and phrases
   --
   -- Use cases with examples:
@@ -129,7 +178,7 @@ local default_schema = {
   -- @field[type=number] max_tokens
   -- @within options
   -- @range 1-200000
-  max_tokens = { default = default_thinking_budget * 2 },
+  max_completion_tokens = { default = default_thinking_budget * 2 },
 
   --- Controls whether to enable Mirostat sampling for text generation
   -- Mirostat is a sampling technique that dynamically adjusts top-k sampling
@@ -530,7 +579,10 @@ local default_schema = {
   -- @field[type=number] temperature
   -- @within options
   -- @range 0.0-2.0
-  temperature = { default = 0.2 },
+  temperature = {
+    default = 0.2,
+    mapping = "parameters",
+  },
 
   --- Controls tail free sampling, reducing low-probability token noise
   -- Determines how aggressively to filter out unlikely tokens based on
@@ -606,7 +658,10 @@ local default_schema = {
   -- @field[type=number] top_k Number of tokens to consider
   -- @within options
   -- @range 0-100
-  top_k = { default = 40 },
+  top_k = {
+    default = 40,
+    mapping = "parameters",
+  },
 
   --- Controls token selection based on cumulative probability threshold
   -- Uses nucleus sampling to select tokens whose cumulative probability
@@ -644,23 +699,26 @@ local default_schema = {
   -- @field[type=number] top_p
   -- @within options
   -- @range 0.0-1.0
-  top_p = { default = 0.2 },
+  top_p = {
+    default = 0.2,
+    mapping = "parameters",
+  },
 }
 
-return {
-  build_schema = function(overrides, base)
-    return vim.tbl_deep_extend("force", base or default_schema, overrides)
-  end,
+local expand = function(overrides, options)
+  overrides = overrides or {}
+  options = options or {}
+  options.omit = options.omit or {}
+  options.only = options.only or {}
 
-  default_schema = function(options)
-    options = options or {}
-    options.except = options.except or {}
-    local schema = {}
-    for key, val in pairs(default_schema) do
-      if not vim.tbl_contains(options.except, key) then
-        schema[key] = val
-      end
+  local schema = {}
+  for key, val in pairs(default_schema) do
+    if #options.only == 0 or vim.tbl_contains(options.only, key) then
+      if not vim.tbl_contains(options.omit, key) then schema[key] = val end
     end
-    return schema
   end
-}
+
+  return vim.tbl_deep_extend("force", schema, overrides)
+end
+
+return { expand = expand }
