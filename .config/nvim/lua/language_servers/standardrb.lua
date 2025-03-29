@@ -8,7 +8,7 @@ Current.lsp.config.standardrb.setup({
 
 -- Format Ruby files on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.rb", "*.rake", "*.gemspec", "*.ru" },
+  pattern = { "*.gemspec", "*.opal", "*.rake", "*.rb", "*.ru" },
   callback = function()
     vim.lsp.buf.format({ async = false })
   end,

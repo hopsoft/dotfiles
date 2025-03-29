@@ -2,11 +2,7 @@
 local node_path = vim.fn.system("asdf where nodejs"):gsub("%s+$", "")
 
 vim.g.ackprg = 'rg --hidden --smart-case --vimgrep' ------------------ Set ack program to use ripgrep
-vim.g.airline_powerline_fonts = 1 ------------------------------------ Enable powerline fonts for airline
-vim.g.airline_statusline_ontop = 1 ----------------------------------- Move airline to the top
-vim.g.airline_theme = 'jellybeans' ----------------------------------- Set airline theme
-vim.g['airline#extensions#tabline#enabled'] = 1 ---------------------- Enable airline tabline
-vim.g.copilot_node_command = node_path .. "/bin/node" ---------------- Set Copilot node command
+vim.g.NERDTreeMapActivateNode = 'v' ---------------------------------- Prevent files from opening in the NERDTree buffer
 vim.g.gutentags_enabled = 1 ------------------------------------------ Enable gutentags
 vim.g.gutentags_generate_on_missing = 1 ------------------------------ Generate tags on missing
 vim.g.gutentags_generate_on_write = 1 -------------------------------- Generate tags on write
@@ -41,7 +37,6 @@ vim.opt.expandtab = true --------------------------------------------- Use space
 vim.opt.foldenable = false ------------------------------------------- Disable folding
 vim.opt.guifont = 'MesloLGM\\ Nerd\\ Font:h14' ----------------------- Set GUI font
 vim.opt.hidden = true ------------------------------------------------ Allow switching between unsaved buffers
-vim.opt.laststatus = 0 ----------------------------------------------- Disable status line (using airline)
 vim.opt.lazyredraw = true -------------------------------------------- Disable redrawing during macros
 vim.opt.list = true -------------------------------------------------- Display invisible characters
 vim.opt.listchars:append({ tab = '\\ ⇥', eol = '↲', trail = '―' }) --- Set invisible character symbols

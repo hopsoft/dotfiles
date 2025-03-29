@@ -4,7 +4,18 @@ require "fileutils"
 
 DOTDIR = File.expand_path("../", File.dirname(__FILE__))
 
-FileUtils.touch File.join(Dir.home, ".private")
+def remove_broken_symlinks
+  Dir.glob(File.join(Dir.home, "*")).each do |path|
+    next unless File.symlink?(path)
+
+    unless File.exist?(File.readlink(path))
+      puts "Removing broken symlink: #{path}"
+      FileUtils.rm_f(path, verbose: true)
+    end
+  rescue Errno::ENOENT, Errno::EACCES => error
+    puts "Skipping file: #{path} #{error.message}"
+  end
+end
 
 def symlink_files(*files)
   files.each do |file|
@@ -58,3 +69,4 @@ symlink_files(*%w[
 
 symlink_directory ".ctags.d"
 symlink_directory ".config"
+remove_broken_symlinks

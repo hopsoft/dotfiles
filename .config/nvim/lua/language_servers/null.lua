@@ -2,85 +2,70 @@
 -- SEE: ../plugins.lua
 
 local null_ls = require("null-ls")
+local formatting = null_ls.builtins.formatting
+
+-- Create formatting augroup
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-local sources = {}
-
--- Rustywind formatter for Tailwind class sorting
-table.insert(sources, null_ls.builtins.formatting.rustywind.with({
-  filetypes = { "eex", "erb", "hbs", "heex", "html", "jsx", "php", "svelte", "tsx", "vue" },
-  command = "rustywind",
-  args = { "--stdin" },
-  to_stdin = true
-}))
-
--- HTML/ERB specific formatter with Prettier
-table.insert(sources, null_ls.builtins.formatting.prettier.with({
-  command = "prettier",
-  args = function(params)
-    return {
-      "--parser", "html",
-      "--stdin-filepath", params.fname
-    }
-  end,
-  filetypes = { "eex", "erb", "hbs", "heex", "html", "jsx", "php", "svelte", "tsx", "vue" },
-  to_stdin = true
-}))
-
--- Other file types formatter
-table.insert(sources, null_ls.builtins.formatting.prettier.with({
-  command = "prettier",
-  args = function(params)
-    return {
-      "--parser", params.ft == "javascript" and "babel" or params.ft,
-      "--arrow-parens", "avoid",
-      "--bracket-same-line", "true",
-      "--bracket-spacing", "false",
-      "--embedded-language-formatting", "auto",
-      "--end-of-line", "lf",
-      "--html-whitespace-sensitivity", "css",
-      "--jsx-single-quote", "true",
-      "--print-width", "120",
-      "--prose-wrap", "preserve",
-      "--quote-props", "as-needed",
-      "--semi", "false",
-      "--single-quote", "true",
-      "--tab-width", "2",
-      "--trailing-comma", "none",
-      "--use-tabs", "false",
-      "--vue-indent-script-and-style", "false",
-      "--xml-quote-attributes", "single",
-      "--xml-whitespace-sensitivity", "ignore",
-      "--stdin-filepath", params.fname
-    }
-  end,
-  filetypes = { "css", "graphql", "javascript", "json", "markdown", "scss", "svg", "typescript", "yaml" },
-  to_stdin = true
-}))
-
--- Setup autoformatting
-local function format_if_supported(bufnr)
-  local filetype = vim.bo[bufnr].filetype
-  for _, source in ipairs(sources) do
-    if vim.tbl_contains(source.filetypes, filetype) then
-      vim.lsp.buf.format({ bufnr = bufnr })
-      break
-    end
+-- Format on save setup
+local function setup_format_on_save(client, bufnr)
+  if client.supports_method("textDocument/formatting") then
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format({
+          bufnr = bufnr,
+          timeout_ms = 1000,
+          filter = function(c) return c.name == "null-ls" end
+        })
+      end,
+    })
   end
 end
 
-local function setup_formatting(client, bufnr)
-  if not client.supports_method("textDocument/formatting") then return end
-
-  vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    group = augroup,
-    buffer = bufnr,
-    callback = function() format_if_supported(bufnr) end
-  })
-end
-
+-- Null-ls setup
 null_ls.setup({
-  sources = sources,
-  on_attach = setup_formatting
+  sources = {
+    -- Rustywind for Tailwind class sorting
+    formatting.rustywind.with({
+      filetypes = { "eex", "erb", "hbs", "heex", "html", "jsx", "php", "svelte", "tsx", "vue", },
+      command = "rustywind",
+      args = { "--stdin" },
+      to_stdin = true
+    }),
+
+    -- Prettier
+    formatting.prettier.with({
+      filetypes = { "css", "eex", "erb", "graphql", "hbs", "heex", "html", "javascript", "json", "jsx", "markdown", "php", "scss", "svelte", "svg", "tsx", "typescript", "vue", "yaml", },
+      prefer_local = "node_modules/.bin",
+      args = function(params)
+        local parser = params.ft == "javascript" and "babel" or params.ft
+        return { "--parser", parser, "--stdin-filepath", params.fname }
+      end,
+    }),
+  },
+  on_attach = setup_format_on_save,
+  debug = true,
 })
+
+vim.api.nvim_create_user_command(
+  "FormatInfo",
+  function()
+    local sources = null_ls.get_sources()
+    local ft = vim.bo.filetype
+    local available = vim.tbl_filter(
+      function(source) return source.filetypes[ft] end,
+      sources
+    )
+
+    if #available > 0 then
+      local formatter_names = vim.tbl_map(function(source) return source.name end, available)
+      print(string.format("Available formatters for %s: %s", ft, table.concat(formatter_names, ", ")))
+    else
+      print(string.format("No formatters available for %s", ft))
+    end
+  end,
+  { desc = "Show available formatters for current file" }
+)

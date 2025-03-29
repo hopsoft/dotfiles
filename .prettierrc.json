@@ -6,6 +6,7 @@
   "endOfLine": "lf",
   "htmlWhitespaceSensitivity": "css",
   "jsxSingleQuote": true,
+  "plugins": [],
   "printWidth": 120,
   "proseWrap": "preserve",
   "quoteProps": "as-needed",
@@ -14,11 +15,5 @@
   "tabWidth": 2,
   "trailingComma": "es5",
   "useTabs": false,
-  "vueIndentScriptAndStyle": false,
-  "xmlQuoteAttributes": "single",
-  "xmlWhitespaceSensitivity": "ignore",
-  "attributeSort": "code-guide",
-  "attributeGroups": [
-    "$CODE_GUIDE"
-  ]
+  "vueIndentScriptAndStyle": false
 }

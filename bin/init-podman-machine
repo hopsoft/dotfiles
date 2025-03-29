@@ -1,0 +1,90 @@
+#!/usr/bin/env ruby
+
+require "tempfile"
+
+class PodmanMachineInitializer
+  DEFAULT_MACHINE_NAME = "podman-machine-default".freeze
+  EXT_PATH = "/Volumes/OWC-Envoy-Pro-FX-4TB/.local/share/containers".freeze
+  MAC_PATH = File.join(Dir.home, ".local/share/containers").freeze
+  EXECUTABLE = `which podman`.strip.freeze
+
+  def initialize(args)
+    @args = args
+  end
+
+  def initialize_machine!
+    unless `pgrep -f "Podman Desktop"`.strip.empty?
+      puts "Close Podman Desktop before continuing!"
+      exit 1
+    end
+
+    puts <<~MSG
+      WARNING: This will delete all existing data!
+      DATA: #{EXT_PATH}/*
+      #{"-".ljust(80, "-")}
+      (Re)create the Podman VM #{machine_name}? [yes/NO]
+    MSG
+
+    exit unless $stdin.gets.chomp.downcase == "yes"
+
+    puts "(RE)creating the Podman #{machine_name} VM..."
+    remove_machine!
+
+    exec "#{EXECUTABLE} machine init --playbook #{machine_playbook.path} #{args.join(" ")}"
+  end
+
+  private
+
+  attr_reader :args
+
+  def machine_name
+    @machine_name ||= begin
+      name = args.last
+      name = nil if name&.empty? || name&.start_with?("-")
+      name || DEFAULT_MACHINE_NAME
+    end
+  end
+
+  def machine_playbook
+    file = Tempfile.new('machine-playbook')
+    file.open
+    file.write <<~YAML
+      ---
+      - hosts: localhost
+        become: true
+        tasks:
+          - name: Ensure sysctl.d directory exists
+            file:
+              path: /etc/sysctl.d
+              state: directory
+              mode: '0755'
+
+          - name: Configure unprivileged port start (allows containers to expose port 80)
+            copy:
+              content: "net.ipv4.ip_unprivileged_port_start=80"
+              dest: /etc/sysctl.d/rootless.conf
+
+          - name: Apply sysctl settings
+            command: sysctl --system
+    YAML
+    file
+  ensure
+    file.close
+  end
+
+  def prepare_external_storage!
+    system "rm -rfv #{File.join EXT_PATH, "*"}"
+    system "mv -v #{MAC_PATH} #{MAC_PATH}.bak" if File.exist?(MAC_PATH)
+    system "mkdir -pv #{EXT_PATH}"
+    system "ln -sfv #{EXT_PATH} #{MAC_PATH}"
+  end
+
+  def remove_machine!
+    command = "#{EXECUTABLE} machine rm -f #{machine_name}"
+    puts "➜ #{command}"
+    system command
+    prepare_external_storage!
+  end
+end
+
+PodmanMachineInitializer.new(ARGV.dup).initialize_machine!

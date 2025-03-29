@@ -1,27 +1,21 @@
-package.path = os.getenv("HOME") .. '/.config/nvim/?.lua;' .. package.path
-package.path = os.getenv("HOME") .. '/.config/nvim/lua/?.lua;' .. package.path
-package.path = os.getenv("HOME") .. '/.config/nvim/lua/commands/?.lua;' .. package.path
-package.path = os.getenv("HOME") .. '/.config/nvim/lua/language_servers/?.lua;' .. package.path
-package.path = os.getenv("HOME") .. '/.config/nvim/lua/plugins/?.lua;' .. package.path
+package.path = os.getenv("HOME") .. '/.config/nvim/lua;' .. package.path
 
 -- luacheck: globals vim
 _G.vim = vim
 
--- load plugins
-require("plugins")
-
--- load current globals
-require("current")
-
--- configure plugins
--- require("openai")
-require("fzf")
-
--- configure
-require("settings")
 require("mappings")
+require("plugins")
+require("current")
+require("filetypes")
+
+require("plugins.fzf_setup")
+require("plugins.gitsigns_setup")
+require("plugins.lualine_setup")
+require("plugins.telescope_setup")
+require("plugins.treesitter_setup")
+require("plugins.codecompanion_setup")
+
+require("settings")
 require("commands")
 require("completions")
-
--- load language servers
 require("language_servers")

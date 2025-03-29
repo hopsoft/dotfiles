@@ -110,3 +110,5 @@ rdoc/
 .rvmrc
 _site/
 .sass-cache/
+.cursorrules
+.asciidoctor/

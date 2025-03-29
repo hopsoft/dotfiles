@@ -8,6 +8,7 @@ end
 
 packages = %w[
   1password-cli
+  aichat
   asdf
   awscli
   bash-completion
@@ -32,6 +33,7 @@ packages = %w[
   lua-language-server
   msgpack
   ninja
+  ollama
   pygments
   python-lsp-server
   ruby-build

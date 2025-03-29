@@ -17,12 +17,68 @@ fi
 # asdf .......................................................................................................
 [ -f "$BREW_PREFIX/opt/asdf/libexec/asdf.sh" ] && . "$BREW_PREFIX/opt/asdf/libexec/asdf.sh"
 [ -f "$BREW_PREFIX/opt/asdf/etc/bash_completion.d" ] && . "$BREW_PREFIX/opt/asdf/etc/bash_completion.d"
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
 # dotfiles ...................................................................................................
 export DOTDIR=$HOME/.dotfiles
-export PATH=$PATH:$HOME/.dotfiles/bin
+export PATH=$HOME/.dotfiles/bin:$PATH
+
+# ollama .....................................................................................................
+#
+# Hardware Specs:
+# - Chip: Apple M1 Pro
+# - CPU: 10 (8 performance and 2 efficiency)
+# - GPU: 16 Cores
+# - Memory: 32 GB
+# - Disk: 1TB SSD
+#
+# GPU and Processing:
+# export OLLAMA_FLASH_ATTENTION="1"   # Enable optimized attention mechanism for faster processing
+# export OLLAMA_SCHED_SPREAD="0"      # Enables spreading of tasks across all GPUs (DANGER: kills the system while active)
+
+# Memory and Cache:
+# export OLLAMA_KV_CACHE_TYPE="q16_0"  # Sets 16-bit quantization for key/value cache to optimize memory usage
+# export OLLAMA_MAX_LOADED_MODELS="4" # Maximum number of models to keep loaded in memory
+# export OLLAMA_KEEP_ALIVE="1h"       # How long to keep models loaded in memory after last use
+
+# Queue and Processing:
+# export OLLAMA_MAX_QUEUE="32"        # Maximum number of requests that can be queued
+# export OLLAMA_NUM_PARALLEL="4"      # Number of concurrent model executions allowed
+
+# Models Location:
+# export OLLAMA_MODELS="/Volumes/OWC Envoy Pro FX 4TB/Ollama/Models"
+#
+# NOTE: Configure these variables in: "$(brew --prefix)/opt/ollama/homebrew.mxcl.ollama.plist"
+# EXAMPLE:
+# ➜ nvim /opt/homebrew/opt/ollama/homebrew.mxcl.ollama.plist
+#
+#   # ...
+#   # <key>EnvironmentVariables</key>
+#   # <dict>
+#   #   <key>OLLAMA_FLASH_ATTENTION</key>
+#   #   <string>1</string>
+#   #   <key>OLLAMA_SCHED_SPREAD</key>
+#   #   <string>0</string>
+#   #   <key>OLLAMA_KV_CACHE_TYPE</key>
+#   #   <string>q16_0</string>
+#   #   <key>OLLAMA_MAX_LOADED_MODELS</key>
+#   #   <string>4</string>
+#   #   <key>OLLAMA_KEEP_ALIVE</key>
+#   #   <string>1h</string>
+#   #   <key>OLLAMA_MAX_QUEUE</key>
+#   #   <string>32</string>
+#   #   <key>OLLAMA_NUM_PARALLEL</key>
+#   #   <string>4</string>
+#   #   <key>OLLAMA_MODELS</key>
+#   #   <string>/Volumes/OWC-Envoy-Pro-FX-4TB/ollama/models</string>
+#   # </dict>
+#   # ...
+#
+# ➜ brew services restart ollama
 
 # podman ......................................................................................................
+# SEE: ./bin/podman-machine-create for info on setting up the default machine VM with external storage
 export PODMAN_COMPOSE_WARNING_LOGS=false
 
 # ruby .......................................................................................................
@@ -44,11 +100,6 @@ if [ -d /Applications/Postgres.app ]; then
   #export PATH="/Applications/Postgres.app/Contents/Versions/15/bin:$PATH"
   export PATH="/Applications/Postgres.app/Contents/Versions/16/bin:$PATH"
   #export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-fi
-
-# secrets ....................................................................................................
-if [ -f $HOME/.private ]; then
-  . $HOME/.private
 fi
 
 # editors ....................................................................................................
@@ -199,3 +250,6 @@ plugins=(
   zsh-autosuggestions
   zsh-interactive-cd
 )
+
+# Added by Windsurf
+export PATH="/Users/nathan/.codeium/windsurf/bin:$PATH"

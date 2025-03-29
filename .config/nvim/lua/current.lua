@@ -9,6 +9,17 @@ Current = {
     capabilities = require('cmp_nvim_lsp').default_capabilities()
   },
 
+  project_root = function()
+    -- Use git to determine the project root
+    local output = vim.fn.systemlist('git rev-parse --show-toplevel')
+    if vim.v.shell_error == 0 and #output > 0 then
+      return output[1]
+    else
+      -- If no project root found, use the current file's directory
+      return vim.fn.expand('%:p:h')
+    end
+  end,
+
   -- Returns the metadata about the current selection
   selection = function()
     local buffer = vim.api.nvim_get_current_buf()
