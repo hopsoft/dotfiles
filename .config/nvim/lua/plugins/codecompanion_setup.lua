@@ -4,11 +4,15 @@ local build_system_prompt = require("plugins.codecompanion.system_prompt")
 
 require("codecompanion").setup({
   opts = {
-    log_level = "TRACE",
+    log_level = "WARN",
     system_prompt = build_system_prompt(),
   },
 
   adapters = {
+    opts = {
+      show_defaults = false,
+    },
+
     non_llms = {
       jina = function()
         return require("codecompanion.adapters").extend("jina", {
@@ -84,7 +88,7 @@ require("codecompanion").setup({
       }
 
       local settings = {
-        name = "AnythingLLM (hopsoft)",
+        formatted_name = "AnythingLLM",
         env = {
           url = "https://hopsoft.useanything.com/api",
           chat_url = "/v1/openai/chat/completions",
@@ -123,7 +127,7 @@ require("codecompanion").setup({
       }
 
       local settings = {
-        name = "OllamaAgent",
+        formatted_name = "Ollama Agent",
         env = { url = "http://localhost:11434" },
         schema = adapter_schema.expand(schema)
       }
@@ -140,18 +144,18 @@ require("codecompanion").setup({
             -- Use-Cases: Complex coding problems, advanced code refactoring, or large-scale software development.
             -- Pros: Provides depth in coding tasks due to its size.
             -- Cons: Might require more computational resources.
-            ["deepseek-coder-v2:16b-lite-instruct-q5_1"] = { opts = { code_specialized = true } },
+            ["deepseek-coder-v2:16b-lite-instruct-q5_1"] = { opts = {} },
 
             -- Use-Cases: Code generation, debugging, and understanding programming languages.
             -- Pros: Tailored for coding, efficient due to 8-bit quantization.
             -- Cons: Might underperform in general language tasks.
-            ["qwen2.5-coder:7b-instruct-q8_0"] = { opts = { code_specialized = true, can_use_tools = true } },
+            ["qwen2.5-coder:7b-instruct-q8_0"] = { opts = { can_use_tools = true } },
           }
         },
       }
 
       local settings = {
-        name = "OllamaCode",
+        formatted_name = "Ollama Code",
         env = { url = "http://localhost:11434" },
         schema = adapter_schema.expand(schema)
       }
@@ -174,7 +178,7 @@ require("codecompanion").setup({
       }
 
       local settings = {
-        name = "OllamaReason",
+        formatted_name = "Ollama Reason",
         env = { url = "http://localhost:11434" },
         schema = adapter_schema.expand(schema, { omit = { "top_k", "top_p" } })
       }
@@ -188,23 +192,23 @@ require("codecompanion").setup({
         model = {
           default = "qwen2.5-coder-32b-instruct",
           choices = {
-            "deepseek-r1",                   -- Reasoning, math, coding ............................ complex problem-solving, research, development
-            "deepseek-r1-distill-llama-70b", -- Reasoning math, coding ............................. high-performance applications, resource-limited
-            "deepseek-r1-distill-qwen-32b",  -- Reasoning, math, coding ............................ advanced reasoning tasks, smaller scale
-            "hermes-3-llama-3.1-70b-fp8",    -- Reasoning, roleplaying, convos ..................... interactive chatbots, creative writing
-            "llama-3.1-70b-instruct-fp8",    -- Instruction-following .............................. customer support, task automation
-            "llama-3.3-70b-instruct-fp8",    -- Multilingual instruction-following ................. global applications, language diversity
-            "mistral-7b-v0.3",               -- Reasoning, code generation ......................... small-scale coding, efficient reasoning
-            "mistral-nemo-instruct-2407",    -- Multilingual, large ctx window ..................... global customer support, coding assistance
-            "qwen2.5-32b-instruct",          -- Instruction-following, long text, structured data .. content generation, data analysis
-            "qwen2.5-coder-32b-instruct",    -- Coding, reasoning, gneration, fixing ............... programming assistance, code review
-            "qwq-32b-awq",                   -- Complex reasoning .................................. resource-constrained environments, reasoning
+            ["deepseek-r1"] = { opts = { can_reason = true } },                   -- Reasoning, math, coding ............................ complex problem-solving, research, development
+            ["deepseek-r1-distill-llama-70b"] = { opts = { can_reason = true } }, -- Reasoning math, coding ............................. high-performance applications, resource-limited
+            ["deepseek-r1-distill-qwen-32b"] = { opts = { can_reason = true } },  -- Reasoning, math, coding ............................ advanced reasoning tasks, smaller scale
+            "hermes-3-llama-3.1-70b-fp8",                                         -- Reasoning, roleplaying, convos ..................... interactive chatbots, creative writing
+            "llama-3.1-70b-instruct-fp8",                                         -- Instruction-following .............................. customer support, task automation
+            "llama-3.3-70b-instruct-fp8",                                         -- Multilingual instruction-following ................. global applications, language diversity
+            "mistral-7b-v0.3",                                                    -- Reasoning, code generation ......................... small-scale coding, efficient reasoning
+            "mistral-nemo-instruct-2407",                                         -- Multilingual, large ctx window ..................... global customer support, coding assistance
+            "qwen2.5-32b-instruct",                                               -- Instruction-following, long text, structured data .. content generation, data analysis
+            "qwen2.5-coder-32b-instruct",                                         -- Coding, reasoning, gneration, fixing ............... programming assistance, code review
+            "qwq-32b-awq",                                                        -- Complex reasoning .................................. resource-constrained environments, reasoning
           }
         }
       }
 
       local settings = {
-        name = "Vultr Inference",
+        formatted_name = "Vultr Inference",
         env = {
           url = "https://api.vultrinference.com",
           chat_url = "/v1/chat/completions",
@@ -236,7 +240,7 @@ require("codecompanion").setup({
     },
 
     inline = {
-      adapter = "ollama_code",
+      adapter = "vultr",
     },
   },
 
