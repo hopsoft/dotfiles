@@ -81,7 +81,7 @@ local default_schema = {
   -- @within options
   extended_thinking = {
     default = false,
-    opts = { temperature = 0.2 }
+    opts = { temperature = 0.1 }
   },
 
   --- Controls how much the AI avoids repeating the same words and phrases
@@ -108,7 +108,7 @@ local default_schema = {
   -- @field[type=number] frequency_penalty
   -- @within options
   -- @range 0-2
-  frequency_penalty = { default = 0.7 },
+  frequency_penalty = { default = 0.5 },
 
   --- Controls how likely specific words are to appear in the response
   --
@@ -580,7 +580,7 @@ local default_schema = {
   -- @within options
   -- @range 0.0-2.0
   temperature = {
-    default = 0.2,
+    default = 0.1,
     mapping = "parameters",
   },
 

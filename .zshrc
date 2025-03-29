@@ -250,3 +250,6 @@ plugins=(
   zsh-autosuggestions
   zsh-interactive-cd
 )
+
+# Added by Windsurf
+export PATH="/Users/nathan/.codeium/windsurf/bin:$PATH"

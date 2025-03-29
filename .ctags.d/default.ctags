@@ -1,6 +1,14 @@
 --append=yes
+
+# Exclude
 --exclude=*.min.js
+--exclude=*.min.css
+--exclude=*.map
 --exclude=.git
+--exclude=.svn
+--exclude=.hg
+--exclude=.bzr
+--exclude=.DS_Store
 --exclude=build
 --exclude=builds
 --exclude=coverage
@@ -10,11 +18,63 @@
 --exclude=public
 --exclude=tmp
 --exclude=vendor
+--exclude=package-lock.json
+--exclude=yarn.lock
+--exclude=*.pyc
+--exclude=__pycache__
+--exclude=*.bundle.*
+
+# Languages
 --languages=Asciidoc,C,C++,CSS,Elixir,Erlang,Go,HTML,JavaScript,JSON,Lua,Markdown,PHP,Python,RDoc,Rust,RSpec,Ruby,Sh,SQL,SVG,TypeScript,YAML,XML,Zsh
 --links=yes
 --recurse=yes
 
-# Language specific options
---python-kinds=+cfm
---ruby-kinds=+cfm
---javascript-kinds=-c-f-m-p-v
+# Python
+--python-kinds=+cfmivl
+--regex-python=/^[ \t]*@property[ \t]*def[ \t]+([a-zA-Z0-9_]+)/\1/p,property/
+--regex-python=/^[ \t]*@([a-zA-Z0-9_]+\.)*([a-zA-Z0-9_]+)[ \t]*(\(.*\))?[ \t]*def[ \t]+([a-zA-Z0-9_]+)/\4/D,decorator/
+--regex-python=/^[ \t]*class[ \t]+([a-zA-Z0-9_]+)[ \t]*\((.*dataclass.*)\):/\1/d,dataclass/
+--regex-python=/^[ \t]*async[ \t]+def[ \t]+([a-zA-Z0-9_]+)/\1/A,async/
+--regex-python=/^[ \t]*@abstractmethod[ \t]*\n[ \t]*def[ \t]+([a-zA-Z0-9_]+)/\1/M,abstractmethod/
+--regex-python=/^[ \t]*if[ \t]+TYPE_CHECKING:/TYPE_CHECKING/T,typecheck/
+
+# Ruby
+--ruby-kinds=+cfFmPR
+--regex-ruby=/^[ \t]*attr_(reader|writer|accessor)[ \t]+:([a-zA-Z0-9_]+)/\2/P,property/
+--regex-ruby=/^[ \t]*([A-Z][A-Za-z0-9_]+)[ \t]*=/\1/C,constant/
+--regex-ruby=/^[ \t]*module[ \t]*([A-Z][A-Za-z0-9_]*)/\1/M,module/
+
+# Rails
+--regex-ruby=/^[ \t]*scope[ \t]*:([a-zA-Z0-9_]+)/\1/S,scope/
+--regex-ruby=/^[ \t]*(has_many|has_one|belongs_to|has_and_belongs_to_many)[ \t]+:([a-zA-Z0-9_]+)/\2/A,association/
+--regex-ruby=/^[ \t]*validates[ \t]+:([a-zA-Z0-9_]+)/\1/V,validation/
+--regex-ruby=/^[ \t]*delegate[ \t]+[a-zA-Z0-9_:]+[ \t]+to:[ \t]+:([a-zA-Z0-9_]+)/\1/D,delegate/
+
+# JavaScript
+--javascript-kinds=+cefmpv
+--regex-javascript=/^[ \t]*export[ \t]+(interface|type)[ \t]+([a-zA-Z0-9_]+)/\2/I,interface/
+--regex-javascript=/^[ \t]*export[ \t]+enum[ \t]+([a-zA-Z0-9_]+)/\1/E,enum/
+--regex-javascript=/^[ \t]*const[ \t]+([A-Z][A-Z0-9_]+)[ \t]*=/\1/C,constant/
+
+# CSS/SCSS
+--regex-css=/^[ \t]*\.([A-Za-z0-9_-]+)/.\1/c,class,classes/
+--regex-css=/^[ \t]*#([A-Za-z0-9_-]+)/#\1/i,id,ids/
+--regex-css=/^[ \t]*(([A-Za-z0-9_-]+[ \t\n,]+)+)\{/\1/t,tag,tags/
+--regex-css=/^[ \t]*@media\s+([A-Za-z0-9_-]+)/\1/m,media,medias/
+
+# Universal
+--extras=+f # Include file entries
+--extras=+q # Include class-qualified tags
+--extras=+r # Include reference tags
+
+--fields=+S # Signature of routine (methods)
+--fields=+i # Inheritance information
+--fields=+l # Language of source file
+--fields=+n # Line number
+--fields=+t # Type
+--fields=+z # Include "kind:" key in kind field
+--fields=+K # Include "kind" field
+--fields=+Z # Include "scope" field
+--fields=+D # Include "file:" key in tag entry
+
+--sort=yes

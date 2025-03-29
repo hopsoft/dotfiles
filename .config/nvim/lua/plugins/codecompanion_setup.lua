@@ -181,11 +181,52 @@ require("codecompanion").setup({
 
       return adapters.extend("ollama", settings)
     end,
+
+    -- Hopsoft LLC: AnythingLLM Instance
+    vultr = function()
+      local schema = {
+        model = {
+          default = "qwen2.5-coder-32b-instruct",
+          choices = {
+            "deepseek-r1",                   -- Reasoning, math, coding ............................ complex problem-solving, research, development
+            "deepseek-r1-distill-llama-70b", -- Reasoning math, coding ............................. high-performance applications, resource-limited
+            "deepseek-r1-distill-qwen-32b",  -- Reasoning, math, coding ............................ advanced reasoning tasks, smaller scale
+            "hermes-3-llama-3.1-70b-fp8",    -- Reasoning, roleplaying, convos ..................... interactive chatbots, creative writing
+            "llama-3.1-70b-instruct-fp8",    -- Instruction-following .............................. customer support, task automation
+            "llama-3.3-70b-instruct-fp8",    -- Multilingual instruction-following ................. global applications, language diversity
+            "mistral-7b-v0.3",               -- Reasoning, code generation ......................... small-scale coding, efficient reasoning
+            "mistral-nemo-instruct-2407",    -- Multilingual, large ctx window ..................... global customer support, coding assistance
+            "qwen2.5-32b-instruct",          -- Instruction-following, long text, structured data .. content generation, data analysis
+            "qwen2.5-coder-32b-instruct",    -- Coding, reasoning, gneration, fixing ............... programming assistance, code review
+            "qwq-32b-awq",                   -- Complex reasoning .................................. resource-constrained environments, reasoning
+          }
+        }
+      }
+
+      local settings = {
+        name = "Vultr Inference",
+        env = {
+          url = "https://api.vultrinference.com",
+          chat_url = "/v1/chat/completions",
+          api_key = "cmd:op read 'op://Private/vultr/api-keys/VULTR_INFERENCE_API_KEY'",
+        },
+        headers = { ["Authorization"] = "Bearer ${api_key}" },
+        schema = adapter_schema.expand(schema, {
+          only = {
+            "max_output_tokens",
+            "model",
+            "temperature",
+          },
+        }),
+      }
+
+      return adapters.extend("openai_compatible", settings)
+    end,
   },
 
   strategies = {
     chat = {
-      adapter = "ollama_agent",
+      adapter = "vultr",
       slash_commands = {
         ["buffer"] = { opts = { provider = "fzf_lua" } },  -- default|telescope|mini_pick|fzf_lua|snacks
         ["file"] = { opts = { provider = "fzf_lua" } },    -- default|telescope|mini_pick|fzf_lua|snacks
@@ -229,45 +270,3 @@ require("codecompanion").setup({
     prompts = { provider = "telescope" },      -- default|telescope|mini_pick
   },
 })
-
---TODO: Revsit the Vultr adapter
---local CodeCompanionAdapter = require("codecompanion.adapters")
---local Vultr = require("plugins.codecompanion.adapters.vultr")
-
---require("codecompanion").setup({
---opts = {
---log_level = "TRACE",
---},
-
---adapters = {
---vultr = function()
---return CodeCompanionAdapter.extend(Vultr, {
---schema = {
---model = {
---default = "llama-3.3-70b-instruct"
---}
---}
---})
---end,
-
---vultr_coder = function()
---return CodeCompanionAdapter.extend(Vultr, {
---schema = {
---model = {
---default = "qwen2.5-coder-32b-instruct"
---}
---}
---})
---end
---},
-
---strategies = {
---chat = {
---adapter = "vultr_coder",
---},
-
---inline = {
---adapter = "vultr_coder",
---}
---}
---})
